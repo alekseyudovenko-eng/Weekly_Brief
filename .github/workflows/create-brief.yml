@@ -1,0 +1,28 @@
+name: Create New Weekly Brief
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-brief:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate Date
+        id: date
+        run: echo "TODAY=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      - name: Create new brief file
+        run: |
+          mkdir -p reviews/$(date +'%Y')
+          sed "s/{{DATE}}/${{ steps.date.outputs.TODAY }}/g" template.md > reviews/$(date +'%Y')/${{ steps.date.outputs.TODAY }}.md
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: "chore: add weekly brief for ${{ steps.date.outputs.TODAY }}"
+          title: "New Weekly Brief: ${{ steps.date.outputs.TODAY }}"
+          body: "Автоматически созданный еженедельный обзор."
+          branch: "brief/${{ steps.date.outputs.TODAY }}"
