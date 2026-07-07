@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Brief | Archive</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Weekly Brief</h1>
+            <div class="subtitle">Analytical Report on the Vegetable Oils and Fats Market</div>
+            <div class="badge">International Marketing Agency Ltd</div>
+        </header>
+        <main>
+            <h2>📚 Archive of Reports</h2>
+            <div id="reports-list"></div>
+        </main>
+        <footer>
+            &copy; 2026 International Marketing Agency Ltd. Confidential.
+        </footer>
+    </div>
+    <script>
+        // Автогенерация списка отчетов
+        fetch('reports-list.json')
+            .then(r => r.json())
+            .then(reports => {
+                const list = document.getElementById('reports-list');
+                reports.sort().reverse().forEach(report => {
+                    const card = document.createElement('div');
+                    card.className = 'report-card';
+                    card.innerHTML = `<a href="reviews/${report}.html" class="report-title">${report}</a>`;
+                    list.appendChild(card);
+                });
+            });
+    </script>
+</body>
+</html>
