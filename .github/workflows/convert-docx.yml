@@ -1,0 +1,104 @@
+name: Convert DOCX to HTML
+
+on:
+  push:
+    paths:
+      - 'sources/**/*.docx'
+  workflow_dispatch:
+    inputs:
+      filename:
+        description: 'Имя файла без расширения (например: Weekly Update 22.6.2026)'
+        required: false
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+
+      - name: Convert all DOCX files to HTML
+        run: |
+          mkdir -p docs/reviews
+          
+          # Создаем главную страницу
+          cat > docs/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="ru">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Weekly Brief | Archive</title>
+              <link rel="stylesheet" href="style.css">
+          </head>
+          <body>
+              <div class="container">
+                  <header>
+                      <h1>Weekly Brief</h1>
+                      <div class="subtitle">Analytical Report on the Vegetable Oils and Fats Market</div>
+                      <div class="badge">International Marketing Agency Ltd</div>
+                  </header>
+                  <main>
+                      <h2>📚 Archive of Reports</h2>
+                      <div id="reports-list"></div>
+                  </main>
+                  <footer>
+                      &copy; 2026 International Marketing Agency Ltd. Confidential.
+                  </footer>
+              </div>
+              <script>
+                  // Автогенерация списка отчетов
+                  fetch('reports-list.json')
+                      .then(r => r.json())
+                      .then(reports => {
+                          const list = document.getElementById('reports-list');
+                          reports.sort().reverse().forEach(report => {
+                              const card = document.createElement('div');
+                              card.className = 'report-card';
+                              card.innerHTML = `<a href="reviews/${report}.html" class="report-title">${report}</a>`;
+                              list.appendChild(card);
+                          });
+                      });
+              </script>
+          </body>
+          </html>
+          EOF
+          
+          # Конвертируем все .docx файлы
+          REPORTS_JSON="["
+          for file in sources/*.docx; do
+              if [ -f "$file" ]; then
+                  base=$(basename "$file" .docx)
+                  pandoc "$file" \
+                    -o "docs/reviews/$base.html" \
+                    --standalone \
+                    --metadata title="$base" \
+                    --css=../style.css \
+                    --toc \
+                    --toc-depth=2
+                  echo "✅ Converted: $file → docs/reviews/$base.html"
+                  REPORTS_JSON="$REPORTS_JSON\"$base\","
+              fi
+          done
+          REPORTS_JSON="${REPORTS_JSON%,}]"
+          echo "$REPORTS_JSON" > docs/reports-list.json
+
+      - name: Copy CSS to docs
+        run: cp style.css docs/style.css
+
+      - name: Commit HTML files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git diff --staged --quiet || git commit -m "docs: auto-convert DOCX to HTML"
+          git push
