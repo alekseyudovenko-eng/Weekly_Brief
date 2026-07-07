@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extended Weekly Update | 6.7.2026</title>
+    <style>
+        :root {
+            --bg-color: #f5f5f5;
+            --card-bg: #ffffff;
+            --text-primary: #2c2c2c;
+            --text-secondary: #6b6b6b;
+            --accent: #4a4a4a;
+            --border: #d9d9d9;
+            --header-bg: #e8e8e8;
+            --highlight: #f0f0f0;
+        }
+
+        * { box-sizing: border-box; transition: all 0.2s ease-in-out; }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            font-size: 15px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Controls */
+        header {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .header-content h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .header-content p {
+            margin: 5px 0 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            border-radius: 2px;
+        }
+
+        .btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* Content Sections */
+        .section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        h2 {
+            color: var(--accent);
+            border-bottom: 2px solid var(--highlight);
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-weight: 400;
+            font-size: 1.4rem;
+        }
+
+        h3 {
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-top: 25px;
+            font-size: 1.1rem;
+        }
+
+        h4 {
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        p { margin-bottom: 15px; }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: var(--header-bg);
+            color: var(--text-primary);
+            font-weight: 600;
+            text-align: left;
+            padding: 12px;
+            border: 1px solid var(--border);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        td {
+            padding: 12px;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        tr:nth-child(even) { background-color: #fafafa; }
+
+        /* Utility */
+        .hidden { display: none; }
+        
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="header-content">
+            <h1 data-lang-key="title">Еженедельный аналитический обзор</h1>
+            <p data-lang-key="date">Дата отчета: 6 июля 2026 г.</p>
+            <p style="font-weight: 600; margin-top: 5px;">International Marketing Agency Ltd</p>
+        </div>
+        <div class="lang-switch">
+            <button class="btn active" onclick="setLang('ru')">RU</button>
+            <button class="btn" onclick="setLang('en')">EN</button>
+        </div>
+    </header>
+
+    <!-- Pricing Table -->
+    <div class="section">
+        <h2 data-lang-key="pricing_title">Ценовая динамика и рыночные индикаторы</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th data-lang-key="col_commodity">Актив</th>
+                    <th data-lang-key="col_basis">Базис</th>
+                    <th data-lang-key="col_price">Текущая цена</th>
+                    <th data-lang-key="col_comment">Комментарий</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-lang-key="item_cpo">Crude Palm Oil</td>
+                    <td>Bursa Malaysia Derivatives</td>
+                    <td>4,450–4,650 MYR/T</td>
+                    <td data-lang-key="desc_cpo">Фьючерсы выросли более чем на 1%, остановив недавнее снижение из-за ослабления ринггита и укрепления цен на растительные масла в Китае и Чикаго.</td>
+                </tr>
+                <tr>
+                    <td data-lang-key="item_soy">Soybeans</td>
+                    <td>CBOT</td>
+                    <td>~1,160 ¢/bu (Jul 2026)</td>
+                    <td data-lang-key="desc_soy">Котировки находятся в диапазоне 1,090–1,200 ¢/bu, отражая сбалансированные, но волатильные фундаментальные показатели.</td>
+                </tr>
+                <tr>
+                    <td data-lang-key="item_sbo">Soybean oil</td>
+                    <td>FOB EU</td>
+                    <td>1,280 USD/T</td>
+                    <td data-lang-key="desc_sbo">Средняя цена за последнюю неделю.</td>
+                </tr>
+                <tr>
+                    <td data-lang-key="item_sfo">Sunflower Oil</td>
+                    <td>FOB Black Sea</td>
+                    <td>1,320–1,360 USD/T</td>
+                    <td data-lang-key="desc_sfo">Рост цены поставки на июль 2026 составил 15 USD/T за неделю.</td>
+                </tr>
+                <tr>
+                    <td data-lang-key="item_rapeseed">Rapeseed</td>
+                    <td>MATIF</td>
+                    <td>518 EUR/T</td>
+                    <td data-lang-key="desc_rapeseed">Рост на 0.95% за день. За месяц цена снизилась на 0.50%, но остается на 11.95% выше годичных значений.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Regional Markets -->
+    <div class="section">
+        <h2 data-lang-key="regional_title">Анализ региональных рынков</h2>
+        
+        <h3 data-lang-key="west_europe">Западная и Северная Европа</h3>
+        <p data-lang-key="text_eudr">Продолжается подготовка к вступлению в силу ключевых требований EUDR (30 декабря 2026 г.). Регуляторы выпустили обновленные руководства: вся продукция, содержащая пальмовое и соевое масло, подлежит строгой проверке на отсутствие связи с обезлесением.</p>
+        <p data-lang-key="text_fao">В июне индекс продовольственных цен ФАО составил в среднем 130.3 пункта. Индекс цен на растительные масла вырос на 3.8% до 192 пунктов (+23.3% г/г), компенсировав снижение цен на сахар и зерновые.</p>
+        
+        <h4 data-lang-key="uk_header">Великобритания</h4>
+        <p data-lang-key="text_uk">Правительство вводит отложенные правила проверки цепочек поставок на предмет незаконного обезлесения. Также сохранены антидемпинговые пошлины на индонезийское биодизельное топливо на следующие пять лет (8–18%), исключив из списка устойчивое авиационное топливо (SAF).</p>
+
+        <h3 data-lang-key="east_europe">Южная, Центральная и Восточная Европа</h3>
+        <h4 data-lang-key="romania_header">Румыния и Болгария</h4>
+        <p data-lang-key="text_romania">Аргентина экспортировала рекордные 1.3 млн тонн семян подсолнечника, почти половина которых направлена в Болгарию и Румынию. Это создает давление на местных производителей в Черноморском регионе.</p>
+        
+        <h4 data-lang-key="moldova_header">Молдова</h4>
+        <p data-lang-key="text_moldova">За первые 5 месяцев 2026 года Молдова стала ведущим импортером украинской агропродукции, закупив 42.4% всего экспорта сливочного масла Украины.</p>
+
+        <h3 data-lang-key="black_sea">Черноморский регион</h3>
+        <h4 data-lang-key="ukraine_header">Украина</h4>
+        <p data-lang-key="text_ukraine">Цены на семена подсолнечника остаются высокими (33,000–33,500 грн/т). Вступило в силу соглашение о свободной торговле с ОАЭ, открывающее новые возможности для экспорта.</p>
+        
+        <h4 data-lang-key="russia_header">Россия</h4>
+        <p data-lang-key="text_russia">В июле экспортная пошлина на подсолнечное масло вырастет до 3,294.2 рублей за тонну (против 1,337.5 руб. в июне).</p>
+
+        <h3 data-lang-key="ca_header">Центральная Азия и Кавказ</h3>
+        <p data-lang-key="text_ca_invest">Экономическое сотрудничество Центральной Азии со странами Персидского залива расширяется: совокупные инвестиции достигли $23 млрд. Казахстан прогнозирует хороший урожай подсолнечника в 2026 году.</p>
+        <p data-lang-key="text_uzbek">Население Узбекистана превысило 39 млн человек. Страна активно развивает транзитный потенциал, увеличив грузооборот на 43% за первое полугодие.</p>
+        <p data-lang-key="text_georgia">Казахстан и Грузия подписали заявление о стратегическом партнерстве, фокусируясь на развитии Транскаспийского международного транспортного маршрута (TITR).</p>
+    </div>
+
+    <!-- Regulatory -->
+    <div class="section">
+        <h2 data-lang-key="reg_title">Регуляторный горизонт</h2>
+        <ul>
+            <li data-lang-key="reg_item1"><strong>Россия:</strong> Повышение экспортных пошлин на подсолнечное масло в июле.</li>
+            <li data-lang-key="reg_item2"><strong>ЕС (EUDR):</strong> Продолжение подготовки к декабрю 2026 года. Упрощенные процедуры для малых предприятий, но строгие требования к геолокации.</li>
+        </ul>
+    </div>
+
+    <!-- Logistics -->
+    <div class="section">
+        <h2 data-lang-key="log_title">Логистика и безопасность поставок</h2>
+        <p data-lang-key="text_log_uzbek">Узбекистан стремится стать «настоящим транзитным хабом». Для этого необходимо расширять дороги и логистические центры класса «А».</p>
+        <p data-lang-key="text_log_titr">Европейский Союз официально обязался предоставить масштабное финансирование Транскаспийскому транспортному коридору (до €2 млрд) для усиления связей между Европой и Центральной Азией в обход традиционных северных маршрутов.</p>
+    </div>
+
+    <footer>
+        &copy; 2026 International Marketing Agency Ltd. Confidential. For internal use only.
+    </footer>
+</div>
+
+<script>
+    const translations = {
+        ru: {
+            title: "Еженедельный аналитический обзор",
+            date: "Дата отчета: 6 июля 2026 г.",
+            pricing_title: "Ценовая динамика и рыночные индикаторы",
+            col_commodity: "Актив",
+            col_basis: "Базис",
+            col_price: "Текущая цена",
+            col_comment: "Комментарий",
+            item_cpo: "Crude Palm Oil",
+            desc_cpo: "Фьючерсы выросли более чем на 1%, остановив недавнее снижение из-за ослабления ринггита и укрепления цен на растительные масла в Китае и Чикаго.",
+            item_soy: "Soybeans",
+            desc_soy: "Котировки находятся в диапазоне 1,090–1,200 ¢/bu, отражая сбалансированные, но волатильные фундаментальные показатели.",
+            item_sbo: "Soybean oil",
+            desc_sbo: "Средняя цена за последнюю неделю.",
+            item_sfo: "Sunflower Oil",
+            desc_sfo: "Рост цены поставки на июль 2026 составил 15 USD/T за неделю.",
+            item_rapeseed: "Rapeseed",
+            desc_rapeseed: "Рост на 0.95% за день. За месяц цена снизилась на 0.50%, но остается на 11.95% выше годичных значений.",
+            regional_title: "Анализ региональных рынков",
+            west_europe: "Западная и Северная Европа",
+            text_eudr: "Продолжается подготовка к вступлению в силу ключевых требований EUDR (30 декабря 2026 г.). Регуляторы выпустили обновленные руководства: вся продукция, содержащая пальмовое и соевое масло, подлежит строгой проверке на отсутствие связи с обезлесением.",
+            text_fao: "В июне индекс продовольственных цен ФАО составил в среднем 130.3 пункта. Индекс цен на растительные масла вырос на 3.8% до 192 пунктов (+23.3% г/г), компенсировав снижение цен на сахар и зерновые.",
+            uk_header: "Великобритания",
+            text_uk: "Правительство вводит отложенные правила проверки цепочек поставок на предмет незаконного обезлесения. Также сохранены антидемпинговые пошлины на индонезийское биодизельное топливо на следующие пять лет (8–18%), исключив из списка устойчивое авиационное топливо (SAF).",
+            east_europe: "Южная, Центральная и Восточная Европа",
+            romania_header: "Румыния и Болгария",
+            text_romania: "Аргентина экспортировала рекордные 1.3 млн тонн семян подсолнечника, почти половина которых направлена в Болгарию и Румынию. Это создает давление на местных производителей в Черноморском регионе.",
+            moldova_header: "Молдова",
+            text_moldova: "За первые 5 месяцев 2026 года Молдова стала ведущим импортером украинской агропродукции, закупив 42.4% всего экспорта сливочного масла Украины.",
+            black_sea: "Черноморский регион",
+            ukraine_header: "Украина",
+            text_ukraine: "Цены на семена подсолнечника остаются высокими (33,000–33,500 грн/т). Вступило в силу соглашение о свободной торговле с ОАЭ, открывающее новые возможности для экспорта.",
+            russia_header: "Россия",
+            text_russia: "В июле экспортная пошлина на подсолнечное масло вырастет до 3,294.2 рублей за тонну (против 1,337.5 руб. в июне).",
+            ca_header: "Центральная Азия и Кавказ",
+            text_ca_invest: "Экономическое сотрудничество Центральной Азии со странами Персидского залива расширяется: совокупные инвестиции достигли $23 млрд. Казахстан прогнозирует хороший урожай подсолнечника в 2026 году.",
+            text_uzbek: "Население Узбекистана превысило 39 млн человек. Страна активно развивает транзитный потенциал, увеличив грузооборот на 43% за первое полугодие.",
+            text_georgia: "Казахстан и Грузия подписали заявление о стратегическом партнерстве, фокусируясь на развитии Транскаспийского международного транспортного маршрута (TITR).",
+            reg_title: "Регуляторный горизонт",
+            reg_item1: "<strong>Россия:</strong> Повышение экспортных пошлин на подсолнечное масло в июле.",
+            reg_item2: "<strong>ЕС (EUDR):</strong> Продолжение подготовки к декабрю 2026 года. Упрощенные процедуры для малых предприятий, но строгие требования к геолокации.",
+            log_title: "Логистика и безопасность поставок",
+            text_log_uzbek: "Узбекистан стремится стать «настоящим транзитным хабом». Для этого необходимо расширять дороги и логистические центры класса «А».",
+            text_log_titr: "Европейский Союз официально обязался предоставить масштабное финансирование Транскаспийскому транспортному коридору (до €2 млрд) для усиления связей между Европой и Центральной Азией в обход традиционных северных маршрутов."
+        },
+        en: {
+            title: "Extended Weekly Analytical Update",
+            date: "Report Date: July 6, 2026",
+            pricing_title: "Pricing Dynamics and Market Indicators",
+            col_commodity: "Commodity",
+            col_basis: "Basis",
+            col_price: "Current Price",
+            col_comment: "Short Comment",
+            item_cpo: "Crude Palm Oil",
+            desc_cpo: "Malaysian palm oil futures jumped over 1%, halting a recent losing streak as a weaker ringgit and firmer edible oils in China’s Dalian and Chicago markets boosted sentiment.",
+            item_soy: "Soybeans",
+            desc_soy: "Front-month CBOT soybeans hover near 1,150–1,170 ¢/bu, within a 30-day range of roughly 1,090–1,200 ¢/bu, reflecting balanced but volatile fundamentals.",
+            item_sbo: "Soybean oil",
+            desc_sbo: "Average last week.",
+            item_sfo: "Sunflower Oil",
+            desc_sfo: "The increase in the delivery price for July 2026 for the week was 15 USD/T.",
+            item_rapeseed: "Rapeseed",
+            desc_rapeseed: "Rapeseed rose to 518.89 EUR/T on July 6, 2026, up 0.95% from the previous day. Over the past month, price has fallen 0.50%, but is still 11.95% higher than a year ago.",
+            regional_title: "Regional Markets Analysis",
+            west_europe: "Major Western and Northern European Markets",
+            text_eudr: "Preparations continue for the entry into force of key requirements (December 30, 2026). Regulatory authorities have issued updated guidelines confirming that all products containing palm and soy oil are subject to strict verification of their deforestation-free status.",
+            text_fao: "In June, the FAO Food Price Index averaged 130.3 points. The vegetable oil price index rose 3.8% to 192 points, a 23.3% increase year-on-year, as rising palm and rapeseed oil quotations more than compensated for lower soybean oil prices.",
+            uk_header: "United Kingdom",
+            text_uk: "The U.K. government has announced delayed regulations requiring companies to check supply chains for links to illegal deforestation. The UK also decided to maintain anti-dumping duties on Indonesian biodiesel imports for another five years (8% to 18%), excluding sustainable aviation fuel (SAF).",
+            east_europe: "Southern, Central, and Eastern European Regional Markets",
+            romania_header: "Romania and Bulgaria",
+            text_romania: "Argentina has exported a record 1.3 million metric tons of sunflower seeds this season, with nearly 47% destined for Bulgaria and Romania. This surge has significantly altered the competitive landscape in the Black Sea region.",
+            moldova_header: "Moldova",
+            text_moldova: "In the first five months of 2026, Moldova emerged as the leading importer of Ukrainian agricultural products, accounting for 42.4% of its butter exports.",
+            black_sea: "Production and Balances in the Black Sea Region",
+            ukraine_header: "Ukraine",
+            text_ukraine: "Sunflower seed prices remain high (UAH 33,000–33,500/t). The free trade agreement between Ukraine and the UAE has entered into force, providing preferential access to the UAE market.",
+            russia_header: "Russia",
+            text_russia: "In July, the export duty on sunflower oil in the Russian Federation will increase to 3,294.2 rubles per ton compared to the 1,337.5 rubles per ton in effect this month.",
+            ca_header: "Central Asia and the Caucasus",
+            text_ca_invest: "Economic cooperation between Central Asia and the Gulf states is expanding rapidly, with cumulative investments reaching $23 billion. Kazakhstan is forecast to have a good sunflower harvest in 2026.",
+            text_uzbek: "The population of Uzbekistan has exceeded 39 million people. The country aims to become a 'real transit hub', reporting a 43% increase in total cargo turnover in the first half of the year.",
+            text_georgia: "Presidents of Kazakhstan and Georgia signed a joint statement establishing a strategic partnership, focusing on the development of the Trans-Caspian International Transport Route (TITR).",
+            reg_title: "Regulatory Outlook",
+            reg_item1: "<strong>Russia:</strong> Increase in export duties on sunflower oil in July.",
+            reg_item2: "<strong>EU (EUDR):</strong> Continued preparation for December 2026. Simplified procedures for small enterprises, but core requirements for geolocation remain unchanged.",
+            log_title: "Logistics and Supply Security",
+            text_log_uzbek: "Uzbekistan aims to become a 'real transit hub'. To support this, the country needs to expand roads and class 'A' international logistics centers.",
+            text_log_titr: "The European Union has officially committed to large-scale financing for the Trans-Caspian Transport Corridor, mobilizing up to €2 billion to strengthen strategic links between Europe and Central Asia, bypassing traditional northern routes."
+        }
+    };
+
+    function setLang(lang) {
+        document.querySelectorAll('[data-lang-key]').forEach(el => {
+            const key = el.getAttribute('data-lang-key');
+            if (translations[lang][key]) {
+                el.innerHTML = translations[lang][key];
+            }
+        });
+
+        document.querySelectorAll('.btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelector(`.btn[onclick="setLang('${lang}')"]`).classList.add('active');
+    }
+</script>
+
+</body>
+</html>
