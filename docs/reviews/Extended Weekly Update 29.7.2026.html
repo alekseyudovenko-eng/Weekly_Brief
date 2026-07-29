@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extended Weekly Update | 29.7.2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #f5f5f5;
+            --card-bg: #ffffff;
+            --text-primary: #2c2c2c;
+            --text-secondary: #6b6b6b;
+            --accent: #4a4a4a;
+            --border: #d9d9d9;
+            --header-bg: #e8e8e8;
+            --highlight: #f0f0f0;
+            --button-bg: #3498db;
+            --button-hover: #2980b9;
+            --success: #27ae60;
+            --warning: #f39c12;
+        }
+
+        * { 
+            box-sizing: border-box; 
+            transition: all 0.2s ease-in-out; 
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            font-size: 15px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Controls */
+        header {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            position: relative;
+        }
+
+        .header-content h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .header-content p {
+            margin: 5px 0 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .btn:hover {
+            background: var(--highlight);
+            transform: translateY(-1px);
+        }
+
+        /* Navigation */
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            flex: 1;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .nav-btn:hover {
+            background: var(--highlight);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .nav-btn.prev {
+            justify-content: flex-start;
+        }
+
+        .nav-btn.next {
+            justify-content: flex-end;
+        }
+
+        .nav-btn i {
+            font-size: 1.1rem;
+        }
+
+        /* Content Sections */
+        .section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        h2 {
+            color: var(--accent);
+            border-bottom: 2px solid var(--highlight);
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-weight: 400;
+            font-size: 1.4rem;
+        }
+
+        h3 {
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-top: 25px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h3 i {
+            color: var(--button-bg);
+            font-size: 1.2rem;
+        }
+
+        h4 {
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        p { margin-bottom: 15px; }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: var(--header-bg);
+            color: var(--text-primary);
+            font-weight: 600;
+            text-align: left;
+            padding: 12px;
+            border: 1px solid var(--border);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        th:hover {
+            background: #e0e0e0;
+        }
+
+        td {
+            padding: 12px;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        tr:nth-child(even) { background-color: #fafafa; }
+
+        tr:hover {
+            background-color: #f5f9ff;
+        }
+
+        /* Interactive elements */
+        .collapsible {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .collapsible-header {
+            background-color: var(--highlight);
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 12px 15px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .collapsible-header i {
+            transition: transform 0.3s;
+        }
+
+        .collapsible-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .collapsible.active .collapsible-content {
+            padding: 15px;
+            max-height: 1000px;
+            transition: max-height 0.5s ease-in;
+        }
+
+        .collapsible.active .collapsible-header i {
+            transform: rotate(180deg);
+        }
+
+        /* Illustrations */
+        .illustration {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 25px 0;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .illustration-header {
+            background: var(--header-bg);
+            padding: 12px;
+            width: 100%;
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .illustration-content {
+            padding: 15px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .map-container, .chart-container {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e6f0f5 100%);
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .map-container::before, .chart-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23d9d9d9" stroke-width="1" opacity="0.3"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%23d9d9d9" stroke-width="1" opacity="0.3"/></svg>');
+            background-size: 20px 20px;
+        }
+
+        .map-container::after, .chart-container::after {
+            content: attr(data-label);
+            color: var(--text-secondary);
+            font-style: italic;
+            z-index: 1;
+        }
+
+        .price-indicator {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 3px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .price-up {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .price-down {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        /* Utility */
+        .hidden { display: none; }
+        
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .footer-btn {
+            background: var(--button-bg);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .footer-btn:hover {
+            background: var(--button-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .print-btn {
+            background: var(--card-bg);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .print-btn:hover {
+            background: var(--highlight);
+        }
+
+        /* Progress bars */
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: var(--highlight);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--button-bg);
+            transition: width 0.5s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-bar {
+                flex-direction: column;
+            }
+            
+            .nav-btn {
+                justify-content: center;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .section-header .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="header-content">
+            <h1 data-lang-key="title">Еженедельный аналитический обзор</h1>
+            <p data-lang-key="date">Дата отчета: 29 июля 2026 г.</p>
+            <p style="font-weight: 600; margin-top: 5px;">International Marketing Agency Ltd</p>
+        </div>
+        <div class="lang-switch">
+            <button class="btn active" onclick="setLang('ru')"><i class="fas fa-language"></i> RU</button>
+            <button class="btn" onclick="setLang('en')"><i class="fas fa-language"></i> EN</button>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <div class="nav-bar">
+        <button class="nav-btn prev" onclick="navigateReport('prev')">
+            <i class="fas fa-arrow-left"></i> <span data-lang-key="prev_report">Предыдущий отчет</span>
+        </button>
+        <button class="nav-btn" onclick="toggleSection('summary')">
+            <i class="fas fa-chart-line"></i> <span data-lang-key="summary">Краткое содержание</span>
+        </button>
+        <button class="nav-btn" onclick="toggleSection('pricing')">
+            <i class="fas fa-table"></i> <span data-lang-key="pricing">Цены</span>
+        </button>
+        <button class="nav-btn next" onclick="navigateReport('next')">
+            <span data-lang-key="next_report">Следующий отчет</span> <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+
+    <!-- Summary Section (Collapsible) -->
+    <div class="collapsible active" id="summary-section">
+        <div class="collapsible-header" onclick="toggleCollapsible('summary-section')">
+            <span data-lang-key="summary_title">Краткое содержание отчета</span>
+            <i class="fas fa-chevron-up"></i>
+        </div>
+        <div class="collapsible-content">
+            <p data-lang-key="summary_text">Еженедельный отчет за 29 июля 2026 года демонстрирует рост цен на пальмовое масло до 4,722 MYR/тонну, соевые бобы достигли $12.53/бушель. Ключевые факторы: спекулятивные покупки на фоне роста цен на нефть, ухудшение погодных условий в ЕС, снижение урожайности масличных. Импорт пальмового масла в ЕС упал на 31% г/г.</p>
+            
+            <div class="illustration">
+                <div class="illustration-header" data-lang-key="market_trends">Динамика рынка растительных масел</div>
+                <div class="illustration-content">
+                    <div class="chart-container" data-label="Price Trends Chart - July 2026"></div>
+                    <p data-lang-key="trend_description">Рост цен на CPO на 2.4% за неделю. Соевые бобы выросли на 9.02% за 4 недели. Рапс демонстрирует устойчивый рост на фоне жары в Европе.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pricing Table -->
+    <div class="section" id="pricing-section">
+        <div class="section-header">
+            <h2 data-lang-key="pricing_title">Ценовая динамика и рыночные индикаторы</h2>
+            <button class="btn" onclick="exportTable('pricing-table')">
+                <i class="fas fa-download"></i> <span data-lang-key="export">Экспорт</span>
+            </button>
+        </div>
+        <table id="pricing-table">
+            <thead>
+                <tr>
+                    <th data-lang-key="col_commodity" onclick="sortTable(0)">Актив <i class="fas fa-sort"></i></th>
+                    <th data-lang-key="col_basis" onclick="sortTable(1)">Базис <i class="fas fa-sort"></i></th>
+                    <th data-lang-key="col_price" onclick="sortTable(2)">Текущая цена <i class="fas fa-sort"></i></th>
+                    <th data-lang-key="col_comment" onclick="sortTable(3)">Комментарий <i class="fas fa-sort"></i></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-lang-key="item_cpo">Crude Palm Oil</td>
+                    <td>Bursa Malaysia Derivatives</td>
+                    <td>4,610–4,722 MYR/T <span class="price-indicator price-up"><i class="fas fa-arrow-up"></i></span></td>
+                    <td data-lang-key="desc_cpo">К пятнице котировки подскочили до 4,722 MYR за тонну. Основными драйверами роста стали спекулятивные покупки на фоне скачка цен на сырую нефть.</td>
+                </tr>
+                <tr>
+                    <td data-lang-key="item_soy">Soybeans</td>
+                    <td>CBOT</td>
+                    <td>1,213–1,253 ¢/bu <span class="price-indicator price-up"><i class="fas fa-arrow-up"></i></span></td>
+                    <td data-lang-key="desc_soy">Цены стабильно росли и к пятнице достигли максимума в $12.53 цента/бушель. Рынок отыгрывал ухудшение погодных условий.</td>
+                </tr>
+                <tr>
+                    <td data-lang-key="item_sbo">Soybean oil</td>
+                    <td>CBOT</td>
+                    <td>1,533–1,608 USD/T <span class="price-indicator price-up"><i class="fas fa-arrow-up"></i></span></td>
+                    <td data-lang-key="desc_sbo">Цены稳步 росли и приблизились к 73 центам за фунт. Основным катализатором стал резкий рост цены нефти Brent.</td>
+                </tr>
+                <tr>
+                    <td data-lang-key="item_sfo">Sunflower Oil</td>
+                    <td>FOB Black Sea</td>
+                    <td>1,335–1,370 USD/T <span class="price-indicator price-down"><i class="fas fa-arrow-down"></i></span></td>
+                    <td data-lang-key="desc_sfo">Обвал цен на нефть вынудил продавцов подсолнечного масла снизить цену предложения на августовские партии в среднем на $5-10 за тонну.</td>
+                </tr>
+                <tr>
+                    <td data-lang-key="item_rapeseed">Rapeseed</td>
+                    <td>MATIF</td>
+                    <td>536–562 EUR/T <span class="price-indicator price-up"><i class="fas fa-arrow-up"></i></span></td>
+                    <td data-lang-key="desc_rapeseed">Основным драйвером стал официальный отчет MARS, зафиксировавший сильное снижение урожайности масличных в ЕС из-за длительной жары во Франции и Германии.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Regional Markets -->
+    <div class="section">
+        <div class="section-header">
+            <h2 data-lang-key="regional_title">Анализ региональных рынков</h2>
+            <button class="btn" onclick="toggleSection('regional-maps')">
+                <i class="fas fa-map-marked-alt"></i> <span data-lang-key="maps">Карты</span>
+            </button>
+        </div>
+        
+        <div class="collapsible" id="regional-maps">
+            <div class="collapsible-header" onclick="toggleCollapsible('regional-maps')">
+                <span data-lang-key="regional_maps_title">Карты регионов и логистических коридоров</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="collapsible-content">
+                <div class="illustration">
+                    <div class="illustration-header" data-lang-key="eu_import_map">Импорт масличных в ЕС (2026/27)</div>
+                    <div class="illustration-content">
+                        <div class="chart-container" data-label="EU Import Decline: Palm Oil -31%, Soybeans -47%"></div>
+                        <p data-lang-key="eu_import_desc">Согласно данным Еврокомиссии, импорт пальмового масла в ЕС упал на 31% г/г, соевых бобов - на 47%. Слабый спрос оказывает понижательное давление на спотовые цены.</p>
+                    </div>
+                </div>
+                
+                <div class="illustration">
+                    <div class="illustration-header" data-lang-key="titr_map">Транскаспийский международный транспортный коридор (TITR)</div>
+                    <div class="illustration-content">
+                        <div class="map-container" data-label="TITR Route: Aktau-Kuryk Ports Development"></div>
+                        <p data-lang-key="titr_description">Премьер-министры Узбекистана и Казахстана дали指示 увеличить объем транзитных грузов через порты Актау и Курык. Объем узбекских грузов через эти порты вырос на 60%.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 data-lang-key="west_europe"><i class="fas fa-globe-europe"></i> Западная и Северная Европа</h3>
+        <p data-lang-key="text_eu_overview">Согласно данным Европейской комиссии, в начале текущего маркетингового года (начавшегося 1 июля) общие объемы импорта масличных и растительных масел в Европейский Союз значительно ниже уровней прошлого года, сообщает SunSirs. Импорт пальмового масла в ЕС в MY 2026/27 упал на 31% в годовом выражении. Это подтверждает долгосрочное сдерживающее воздействие Директивы ЕС по возобновляемой энергии (RED) на спрос. Слабый спрос уже оказывает понижательное давление на спотовые цены, и аналитики ожидают аналогичного снижения фьючерсных цен на фоне медвежьих настроений. К 19 июля 2026 года поставки соевых бобов в ЕС-27 составили всего около 379,000 тонн, что на 47% меньше, чем за аналогичный период прошлого года. Резкое снижение закупок одним из крупнейших в мире импортеров отражает слабый краткосрочный потребительский спрос. Эксперты ожидают, что эта тенденция станет дополнительным медвежьим фактором и окажет понижательное давление на глобальные спотовые цены на соевые бобы.</p>
+        
+        <h4 data-lang-key="uk_header">Великобритания</h4>
+        <p data-lang-key="text_uk">Согласно официальным данным UK Agriculture and Horticulture Development Board (AHDB), в течение отчетной недели с 21 по 27 июля 2026 года был зафиксирован мощный скачок цен на рапс нового урожая на внутреннем рынке Соединенного Королевства. Цены укрепились сразу на £17.00 - £18.00 за тонну, обновив локальные максимумы. Основным катализатором британского ралли стал ноябрьский контракт на бирже Euronext (MATIF) в Париже. Опасения по поводу более низкой урожайности в ключевых странах ЕС из-за экстремальной июльской жары подтолкнули котировки вверх. Согласно отзывам трейдеров за июль, на внутреннем рынке Великобритании усилился дефицит промышленного сырья для химической промышленности. Из-за падения маржи на европейских biodiesel заводах производство побочного продукта — рапсового глицерина — резко сократилось. В результате британские переработчики и производители бытовой химии начали массово заменять его на пальмовый глицерин, который оставался более доступным по объему и привлекательным по цене в течение недели 21–27 июля.</p>
+
+        <h4 data-lang-key="france_header">Франция</h4>
+        <p data-lang-key="text_france">Рынок рапса во Франции столкнулся с высокой волатильностью в отчетный период с 21 по 27 июля 2026 года. Ожидания дефицита урожая в ЕС столкнулись с макроэкономическим давлением со стороны нефтяного рынка. Согласно официальным данным FranceAgriMer за 20-24 июля 2026 года, кампания по уборке озимых культур во Франции вступила в завершающую стадию. Из-за экстремальной июльской жары и сухой погоды созревание и высыхание полей происходило гораздо быстрее обычного. Уборка озимого рапса в ключевых сельскохозяйственных регионах (Centre-Loire Valley, Picardy) была завершена более чем на 98-99%. Быстрая уборка создала локальную операционную нагрузку на линейные элеваторы вокруг Парижа, но фермеры сдерживали активные физические продажи в ожидании более высоких цен.</p>
+
+        <h4 data-lang-key="netherlands_header">Нидерланды</h4>
+        <p data-lang-key="text_netherlands">Согласно отраслевым отчетам, опубликованным в июле 2026 года (UFOP, Oils & Fats International), Нидерланды сохранили статус крупнейшего импортера пальмового масла в ЕС. Окончательный годовой импорт Нидерландов был зафиксирован на уровне около 1.05 миллионов тонн, что на 9% выше объема предыдущего сезона. В июле 2026 года признание Netherlands Food and Consumer Product Safety Authority (NVWA) сертификации Malaysian Sustainable Palm Oil (MSPO) в качестве частной системы контроля в рамках European Union Deforestation Regulation (EUDR) укрепляет готовность национальной индустрии пальмового масла соответствовать требованиям рынка Европейского Союза. Министр плантаций и сырья Datuk Seri Dr Noraini Ahmad сказал, что после оценки MSPO был принят как система стороннего подтверждения, которая может поддерживать регуляторный надзор, связанный с соответствием EUDR.</p>
+
+        <h4 data-lang-key="spain_header">Испания</h4>
+        <p data-lang-key="text_spain">22 июля 2026 года Совет министров Испании официально утвердил национальную нормативную базу, направленную на достижение целей декарбонизации транспортного сектора в рамках перехода к стандартам European Renewable Energy Directive (RED III).</p>
+
+        <h3 data-lang-key="east_europe"><i class="fas fa-globe-asia"></i> Южная, Центральная и Восточная Европа</h3>
+        
+        <h4 data-lang-key="romania_header">Румыния</h4>
+        <p data-lang-key="text_romania">Ожидания значительного восстановления производства семян подсолнечника в Румынии (наряду с Украиной, Россией и Болгарией) ограничивают потенциал роста цен на подсолнечное масло, несмотря на неблагоприятные погодные условия во Франции, Испании и Венгрии в конце июня – начале июля 2026 года.</p>
+
+        <h4 data-lang-key="moldova_header">Молдова</h4>
+        <p data-lang-key="text_moldova">По итогам маркетингового года июль 2025 – июнь 2026 Молдова экспортировала около 92 тысяч тонн подсолнечного масла на сумму 2.07 миллиарда леев (средняя цена 22.6 лея/кг). Однако эти данные относятся ко всему сезону.</p>
+
+        <h3 data-lang-key="black_sea"><i class="fas fa-water"></i> Черноморский регион</h3>
+        
+        <h4 data-lang-key="ukraine_header">Украина</h4>
+        <p data-lang-key="text_ukraine">Украина работает над увеличением мощности своих дунайских портов, несмотря на снижение прибытия судов в порты Большой Одессы. Первый заместитель министра Сергей Деркач заявил, что они сотрудничают с Румынией для увеличения портовой мощности, как это было сделано в 2022-2023 годах во время проблем с морской логистикой. Он подчеркнул, что экспортно-импортные операции по железной дороге и автомобильным транспортом все еще жизнеспособны, и «Укрзализныця» работает над восстановлением поврежденных локомотивов. Деркач отметил, что фермеры в первую очередь экспортируют запасы прошлого года и не видят непосредственной необходимости в срочном экспорте, несмотря на продолжающиеся российские удары по портовой инфраструктуре. Всеукраинский аграрный совет (VAR) призвал премьер-министра Сергея Корецкого срочно внедрить кризисные меры из-за прекращения прибытия судов в украинские глубоководные черноморские порты. Они подчеркнули, что проблемы с морской логистикой, поврежденная портовая инфраструктура, экспортные ограничения и рост стоимости ресурсов угрожают рентабельности производства и могут привести к банкротствам. Эксперты оценивают, что в 2026/2027 маркетинговом году производство зерна и масличных достигнет около 81.4 миллионов тонн, в то время как Украине необходимо экспортировать около 67 миллионов тонн. VAR призвал к немедленным действиям правительства для предотвращения значительного экономического кризиса и предложил такие меры, как льготные кредиты и аудит ущерба портам. В 2025/26 маркетинговом году производство рапсового масла в Украине достигло рекордного уровня, было переработано более 1.3 миллионов тонн, что составляет 42% от общего урожая. Это ознаменовало значительное увеличение экспорта, выросшего в 2.5 раза до 520,000 тонн, принесшего $588 миллионов дохода, по сравнению с $194 миллионами. В первой половине 2026 года Украина экспортировала 184,200 тонн рапсового масла, что в 9.7 раза больше по сравнению с предыдущим годом, при этом доход увеличился в 10.9 раза до $208 миллионов. В целом производство рапсового масла выросло до 380,470 тонн в 2025 году, что значительно выше предыдущих лет.</p>
+        
+        <h4 data-lang-key="russia_header">Россия</h4>
+        <p data-lang-key="text_russia">В августе экспортная пошлина на подсолнечное масло в Российской Федерации увеличится до 7748 рублей/тонна по сравнению с текущим месяцем 3292.2 рубля/тонна, сообщило Министерство сельского хозяйства РФ. Министерство также добавило, что экспортные пошлины на следующий месяц были рассчитаны по ориентировочной цене $1,298.5 за тонну (в июле - $1,297.2 за тонну) для подсолнечного масла.</p>
+
+        <h3 data-lang-key="ca_header"><i class="fas fa-landmark"></i> Центральная Азия и Кавказ</h3>
+        
+        <h4 data-lang-key="kazakhstan_header">Казахстан</h4>
+        <p data-lang-key="text_kazakhstan">Казахские экспортеры и импортеры сельскохозяйственной продукции ожидают увеличения стоимости транспортировки через порты Российской Федерации и Беларуси. В России ожидается повышение тарифов и дополнительных сборов за железнодорожные перевозки. Это напрямую повлияет на стоимость логистики для казахских экспортеров и импортеров сельскохозяйственной продукции. 1 июля 2026 года было опубликовано Постановление Правительства Российской Федерации № 1924-р от 22.07.2026, которое предписывает ФАС России проиндексировать железнодорожные тарифы на грузовые перевозки и различные дополнительные сборы на 8.5% с 1 октября 2026 года. Таким образом, в октябре произойдет второе повышение тарифов в этом году (первое было в марте). Это окажет прямое влияние на увеличение стоимости логистики для экспорта зерновых, бобовых и масличных казахскими экспортерами через российские порты и Беларусь, а также на импорт зерновых и масличных по железной дороге, включая переработанную продукцию (масла, шроты, жмыхи, отруби, мука, крупы и т.д.).</p>
+
+        <h4 data-lang-key="uzbekistan_header">Узбекистан</h4>
+        <p data-lang-key="text_uzbekistan">На заседании 29 июля Правление Центрального банка Узбекистана приняло решение оставить основную ставку на уровне 14% годовых. В последние месяцы темпы снижения инфляции замедлились. Давление на цены остается под влиянием определенных факторов предложения, а также внешнеэкономических условий. Внутренний спрос продолжает расти высокими темпами. Правление Центрального банка сочло необходимым сохранить жесткие монетарные условия для достижения целевого показателя инфляции в 5% в условиях высокого внутреннего спроса, вторичных эффектов изменения тарифов на энергию и неопределенности во внешнеэкономической среде. Прогноз по общей инфляции на 2026 год остался неизменным на уровне 6.5%. Экономическая активность в стране остается высокой. В первой половине этого года валовой внутренний продукт вырос на 8.5% в реальном выражении. Высокие темпы роста розничной торговли и услуг отражают потребительскую активность, а динамика инвестиций отражает высокий инвестиционный спрос. К концу 2026 года экономический рост прогнозируется на уровне около 7.5-8%.</p>
+
+        <h4 data-lang-key="georgia_header">Грузия</h4>
+        <p data-lang-key="text_georgia">Грузия почти удвоила импорт подсолнечного масла из России в июне 2026 года. Согласно данным Национального статистического управления Грузии, стоимость российского импорта подсолнечного масла достигла $5.2 млн, по сравнению с $2.9 млн в том же месяце прошлого года. Россия осталась крупнейшим поставщиком подсолнечного масла в Грузию. Украина заняла второе место с экспортом на сумму $607.6 тыс., а Венгрия была третьей, поставив подсолнечное масло на сумму $86.4 тыс. Увеличение подчеркивает растущую зависимость Грузии от поставок российского подсолнечного масла. В годовом выражении стоимость импорта из России почти удвоилась в июне.</p>
+    </div>
+
+    <!-- Regulatory -->
+    <div class="section">
+        <div class="section-header">
+            <h2 data-lang-key="reg_title">Регуляторный горизонт</h2>
+            <button class="btn" onclick="toggleSection('regulatory-details')">
+                <i class="fas fa-file-contract"></i> <span data-lang-key="details">Детали</span>
+            </button>
+        </div>
+        
+        <div class="collapsible" id="regulatory-details">
+            <div class="collapsible-header" onclick="toggleCollapsible('regulatory-details')">
+                <span data-lang-key="regulatory_details_title">Детали регуляторных изменений</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="collapsible-content">
+                <div class="illustration">
+                    <div class="illustration-header" data-lang-key="eudr_infographic">EUDR и RED III: Влияние на рынок</div>
+                    <div class="illustration-content">
+                        <div class="chart-container" data-label="Regulatory Timeline: EUDR & RED III Implementation"></div>
+                        <p data-lang-key="eudr_description">13 июля 2026 года Еврокомиссия приняла Delegated Act, изменяющий сферу действия EUDR. Исключены сложные продукты животноводства, включены производные пальмового масла для олеохимии, мыла и растворимого кофе.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 data-lang-key="eudr_header">Регламент ЕС по обезлесению (EUDR)</h3>
+        <p data-lang-key="text_eudr">13 июля 2026 года Европейская комиссия официально приняла Делегированный акт, изменяющий сферу действия Регламента по обезлесению (обновление Приложения I) и Имплементационный регламент Комиссии (ЕС) 2026/1565. Сложные продукты переработки животноводства, такие как готовая кожа крупного рогатого скота, сырые шкуры и кожа крупного рогатого скота, автомобильные сиденья, восстановленные шины, а также соевые бобы для посева, были полностью исключены из требований соответствия. В то же время Европейская комиссия официально включила производные пальмового масла, используемые для производства олеохимикатов, определенных видов мыла и растворимого кофе, в регулируемый список. Введены строгие критерии исключения для определенных типов олеохимических соединений на основе пальмового масла. Производные, используемые исключительно в качестве сырья для производства лекарственных и ветеринарных препаратов в соответствии с фармацевтическим законодательством ЕС, не подпадают под действие EUDR.</p>
+
+        <h3 data-lang-key="red3_header">Директива ЕС по возобновляемым источникам энергии III (RED III)</h3>
+        <p data-lang-key="text_red3">Хотя директива RED III вступила в силу ранее, в первой половине июля 2026 года на европейский рынок биотоплива и масличных повлияло ключевое решение Европейского Парламента от 8–9 июля 2026 года. Парламент официально отклонил Делегированный регламент Комиссии (ЕС) 2026/2680, который должен был ужесточить стандарты RED II/III и классифицировать соевое масло как сырье с высоким риском косвенного изменения землепользования (высокий iLUC). Если бы акт был принят, использование соевого биодизеля в ЕС подлежало бы прогрессивному сокращению, ведущему к полному запрету к 2030 году. Позиция FEDIOL и коалиции европейских маслобоек, отстаиваемая в июле, позволила временно защитить инвестиционный климат и рентабельность дробления соевых бобов в ЕС. 22 июля 2026 года Совет министров Испании одобрил национальную нормативную базу для достижения целей декарбонизации транспорта в соответствии с RED III. Одновременно немецкий рынок сохранял ценовую динамику для гидроочищенного растительного масла (HVO) в середине июля, обусловленную предыдущим решением Бундестага об отмене двойного подсчета для масел из Приложения IX (Часть A), что удерживало спотовые котировки биотоплива и технических жиров на пиковых уровнях в июле 2026 года.</p>
+    </div>
+
+    <!-- Logistics -->
+    <div class="section">
+        <h2 data-lang-key="log_title">Логистика и безопасность поставок</h2>
+        <p data-lang-key="text_log">Премьер-министры Узбекистана Абдулла Арипов и Казахстана Олжас Бектенов провели межправительственное заседание и лично посетили Международный морской торговый порт Актау. Национальным железнодорожным операторам (Uzbekistan Railways и Kazakhstan Temir Zholy) было официально дано указание разработать конкретную дорожную карту для увеличения объема транзитных грузов через порты Актау и Курык. Объем узбекских грузов через эти порты увеличился на 60%, и стороны договорились предоставить тарифные преференции. Китай активизировал тестирование сухопутных маршрутов через Центральную Азию, обходя уязвимые морские хабы (такие как Ормузский пролив). Официально подтверждена фиксация цепи Китай-Казахстан-Узбекистан-Туркменистан-Афганистан (Герат). Контейнеры доставляются поездом в Узбекистан, а затем автомобильным транспортом через туркменскую границу в Афганистан, служа тестовой ветвью Трансафганского коридора. Евразийский банк развития (ЕАБР) опубликовал обновленный мониторинг транспортных проектов. Согласно отчету, общая стоимость текущих транспортных инициатив в Центральной Азии достигла $71.75 миллиардов, из которых развитие коридора TRACECA, включая Транскаспийский маршрут, составляет наибольшую долю инвестиций - $42.8 миллиардов.</p>
+        
+        <div class="illustration">
+            <div class="illustration-header" data-lang-key="logistic_map">Логистические коридоры и инвестиции</div>
+            <div class="illustration-content">
+                <div class="map-container" data-label="Central Asia Transport Investment: $71.75B Total"></div>
+                <p data-lang-key="logistic_description">TRACECA corridor (включая Trans-Caspian route): $42.8B инвестиций. Объем узбекских грузов через Актау и Курык вырос на 60%. Китай тестирует сухопутные маршруты, обходя Ормузский пролив.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conclusion -->
+    <div class="section">
+        <h2 data-lang-key="conc_title">Заключение: Импликации для индустрии пальмового масла</h2>
+        <ol>
+            <li data-lang-key="conc_1"><strong>Реэкспорт через Турцию:</strong> Необходимо развивать альтернативные маршруты реэкспорта из Турции в Украину, Грузию и Азербайджан.</li>
+            <li data-lang-key="conc_2"><strong>Стратегический хаб в Ташкенте:</strong> Ускорить рассмотрение предложения по созданию регионального распределительного склада малайзийских масел в Ташкенте.</li>
+            <li data-lang-key="conc_3"><strong>Перевод премиальных жиров на Средний коридор (TITR):</strong> Диверсификация цепочек поставок специализированных жиров с морского маршрута на сухопутный TITR (15 дней транзита, стабильное страхование).</li>
+        </ol>
+    </div>
+
+    <footer>
+        <button class="footer-btn" onclick="printReport()">
+            <i class="fas fa-print"></i> <span data-lang-key="print">Печать отчета</span>
+        </button>
+        <button class="footer-btn" onclick="exportReport()">
+            <i class="fas fa-file-pdf"></i> <span data-lang-key="export_pdf">Экспорт в PDF</span>
+        </button>
+        <button class="print-btn" onclick="window.print()">
+            <i class="fas fa-download"></i> <span data-lang-key="download">Скачать отчет</span>
+        </button>
+        <div class="footer-copyright" data-lang-key="copyright">© 2026 International Marketing Agency Ltd. Confidential. For internal use only.</div>
+    </footer>
+</div>
+
+<script>
+    const translations = {
+        ru: {
+            title: "Еженедельный аналитический обзор",
+            date: "Дата отчета: 29 июля 2026 г.",
+            pricing_title: "Ценовая динамика и рыночные индикаторы",
+            col_commodity: "Актив",
+            col_basis: "Базис",
+            col_price: "Текущая цена",
+            col_comment: "Комментарий",
+            item_cpo: "Crude Palm Oil",
+            desc_cpo: "К пятнице котировки подскочили до 4,722 MYR за тонну. Основными драйверами роста стали спекулятивные покупки на фоне скачка цен на сырую нефть.",
+            item_soy: "Soybeans",
+            desc_soy: "Цены стабильно росли и к пятнице достигли максимума в $12.53 цента/бушель. Рынок отыгрывал ухудшение погодных условий.",
+            item_sbo: "Soybean oil",
+            desc_sbo: "Цены稳步 росли и приблизились к 73 центам за фунт. Основным катализатором стал резкий рост цены нефти Brent.",
+            item_sfo: "Sunflower Oil",
+            desc_sfo: "Обвал цен на нефть вынудил продавцов подсолнечного масла снизить цену предложения на августовские партии в среднем на $5-10 за тонну.",
+            item_rapeseed: "Rapeseed",
+            desc_rapeseed: "Основным драйвером стал официальный отчет MARS, зафиксировавший сильное снижение урожайности масличных в ЕС из-за длительной жары во Франции и Германии.",
+            regional_title: "Анализ региональных рынков",
+            west_europe: "Западная и Северная Европа",
+            text_eu_overview: "Согласно данным Европейской комиссии, в начале текущего маркетингового года (начавшегося 1 июля) общие объемы импорта масличных и растительных масел в Европейский Союз значительно ниже уровней прошлого года, сообщает SunSirs. Импорт пальмового масла в ЕС в MY 2026/27 упал на 31% в годовом выражении. Это подтверждает долгосрочное сдерживающее воздействие Директивы ЕС по возобновляемой энергии (RED) на спрос. Слабый спрос уже оказывает понижательное давление на спотовые цены, и аналитики ожидают аналогичного снижения фьючерсных цен на фоне медвежьих настроений. К 19 июля 2026 года поставки соевых бобов в ЕС-27 составили всего около 379,000 тонн, что на 47% меньше, чем за аналогичный период прошлого года. Резкое снижение закупок одним из крупнейших в мире импортеров отражает слабый краткосрочный потребительский спрос. Эксперты ожидают, что эта тенденция станет дополнительным медвежьим фактором и окажет понижательное давление на глобальные спотовые цены на соевые бобы.",
+            uk_header: "Великобритания",
+            text_uk: "Согласно официальным данным UK Agriculture and Horticulture Development Board (AHDB), в течение отчетной недели с 21 по 27 июля 2026 года был зафиксирован мощный скачок цен на рапс нового урожая на внутреннем рынке Соединенного Королевства. Цены укрепились сразу на £17.00 - £18.00 за тонну, обновив локальные максимумы. Основным катализатором британского ралли стал ноябрьский контракт на бирже Euronext (MATIF) в Париже. Опасения по поводу более низкой урожайности в ключевых странах ЕС из-за экстремальной июльской жары подтолкнули котировки вверх. Согласно отзывам трейдеров за июль, на внутреннем рынке Великобритании усилился дефицит промышленного сырья для химической промышленности. Из-за падения маржи на европейских biodiesel заводах производство побочного продукта — рапсового глицерина — резко сократилось. В результате британские переработчики и производители бытовой химии начали массово заменять его на пальмовый глицерин, который оставался более доступным по объему и привлекательным по цене в течение недели 21–27 июля.",
+            france_header: "Франция",
+            text_france: "Рынок рапса во Франции столкнулся с высокой волатильностью в отчетный период с 21 по 27 июля 2026 года. Ожидания дефицита урожая в ЕС столкнулись с макроэкономическим давлением со стороны нефтяного рынка. Согласно официальным данным FranceAgriMer за 20-24 июля 2026 года, кампания по уборке озимых культур во Франции вступила в завершающую стадию. Из-за экстремальной июльской жары и сухой погоды созревание и высыхание полей происходило гораздо быстрее обычного. Уборка озимого рапса в ключевых сельскохозяйственных регионах (Centre-Loire Valley, Picardy) была завершена более чем на 98-99%. Быстрая уборка создала локальную операционную нагрузку на линейные элеваторы вокруг Парижа, но фермеры сдерживали активные физические продажи в ожидании более высоких цен.",
+            netherlands_header: "Нидерланды",
+            text_netherlands: "Согласно отраслевым отчетам, опубликованным в июле 2026 года (UFOP, Oils & Fats International), Нидерланды сохранили статус крупнейшего импортера пальмового масла в ЕС. Окончательный годовой импорт Нидерландов был зафиксирован на уровне около 1.05 миллионов тонн, что на 9% выше объема предыдущего сезона. В июле 2026 года признание Netherlands Food and Consumer Product Safety Authority (NVWA) сертификации Malaysian Sustainable Palm Oil (MSPO) в качестве частной системы контроля в рамках European Union Deforestation Regulation (EUDR) укрепляет готовность национальной индустрии пальмового масла соответствовать требованиям рынка Европейского Союза. Министр плантаций и сырья Datuk Seri Dr Noraini Ahmad сказал, что после оценки MSPO был принят как система стороннего подтверждения, которая может поддерживать регуляторный надзор, связанный с соответствием EUDR.",
+            spain_header: "Испания",
+            text_spain: "22 июля 2026 года Совет министров Испании официально утвердил национальную нормативную базу, направленную на достижение целей декарбонизации транспортного сектора в рамках перехода к стандартам European Renewable Energy Directive (RED III).",
+            east_europe: "Южная, Центральная и Восточная Европа",
+            romania_header: "Румыния",
+            text_romania: "Ожидания значительного восстановления производства семян подсолнечника в Румынии (наряду с Украиной, Россией и Болгарией) ограничивают потенциал роста цен на подсолнечное масло, несмотря на неблагоприятные погодные условия во Франции, Испании и Венгрии в конце июня – начале июля 2026 года.",
+            moldova_header: "Молдова",
+            text_moldova: "По итогам маркетингового года июль 2025 – июнь 2026 Молдова экспортировала около 92 тысяч тонн подсолнечного масла на сумму 2.07 миллиарда леев (средняя цена 22.6 лея/кг). Однако эти данные относятся ко всему сезону.",
+            black_sea: "Черноморский регион",
+            ukraine_header: "Украина",
+            text_ukraine: "Украина работает над увеличением мощности своих дунайских портов, несмотря на снижение прибытия судов в порты Большой Одессы. Первый заместитель министра Сергей Деркач заявил, что они сотрудничают с Румынией для увеличения портовой мощности, как это было сделано в 2022-2023 годах во время проблем с морской логистикой. Он подчеркнул, что экспортно-импортные операции по железной дороге и автомобильным транспортом все еще жизнеспособны, и «Укрзализныця» работает над восстановлением поврежденных локомотивов. Деркач отметил, что фермеры в первую очередь экспортируют запасы прошлого года и не видят непосредственной необходимости в срочном экспорте, несмотря на продолжающиеся российские удары по портовой инфраструктуре. Всеукраинский аграрный совет (VAR) призвал премьер-министра Сергея Корецкого срочно внедрить кризисные меры из-за прекращения прибытия судов в украинские глубоководные черноморские порты. Они подчеркнули, что проблемы с морской логистикой, поврежденная портовая инфраструктура, экспортные ограничения и рост стоимости ресурсов угрожают рентабельности производства и могут привести к банкротствам. Эксперты оценивают, что в 2026/2027 маркетинговом году производство зерна и масличных достигнет около 81.4 миллионов тонн, в то время как Украине необходимо экспортировать около 67 миллионов тонн. VAR призвал к немедленным действиям правительства для предотвращения значительного экономического кризиса и предложил такие меры, как льготные кредиты и аудит ущерба портам. В 2025/26 маркетинговом году производство рапсового масла в Украине достигло рекордного уровня, было переработано более 1.3 миллионов тонн, что составляет 42% от общего урожая. Это ознаменовало значительное увеличение экспорта, выросшего в 2.5 раза до 520,000 тонн, принесшего $588 миллионов дохода, по сравнению с $194 миллионами. В первой половине 2026 года Украина экспортировала 184,200 тонн рапсового масла, что в 9.7 раза больше по сравнению с предыдущим годом, при этом доход увеличился в 10.9 раза до $208 миллионов. В целом производство рапсового масла выросло до 380,470 тонн в 2025 году, что значительно выше предыдущих лет.",
+            russia_header: "Россия",
+            text_russia: "В августе экспортная пошлина на подсолнечное масло в Российской Федерации увеличится до 7748 рублей/тонна по сравнению с текущим месяцем 3292.2 рубля/тонна, сообщило Министерство сельского хозяйства РФ. Министерство также добавило, что экспортные пошлины на следующий месяц были рассчитаны по ориентировочной цене $1,298.5 за тонну (в июле - $1,297.2 за тонну) для подсолнечного масла.",
+            ca_header: "Центральная Азия и Кавказ",
+            kazakhstan_header: "Казахстан",
+            text_kazakhstan: "Казахские экспортеры и импортеры сельскохозяйственной продукции ожидают увеличения стоимости транспортировки через порты Российской Федерации и Беларуси. В России ожидается повышение тарифов и дополнительных сборов за железнодорожные перевозки. Это напрямую повлияет на стоимость логистики для казахских экспортеров и импортеров сельскохозяйственной продукции. 1 июля 2026 года было опубликовано Постановление Правительства Российской Федерации № 1924-р от 22.07.2026, которое предписывает ФАС России проиндексировать железнодорожные тарифы на грузовые перевозки и различные дополнительные сборы на 8.5% с 1 октября 2026 года. Таким образом, в октябре произойдет второе повышение тарифов в этом году (первое было в марте). Это окажет прямое влияние на увеличение стоимости логистики для экспорта зерновых, бобовых и масличных казахскими экспортерами через российские порты и Беларусь, а также на импорт зерновых и масличных по железной дороге, включая переработанную продукцию (масла, шроты, жмыхи, отруби, мука, крупы и т.д.).",
+            uzbekistan_header: "Узбекистан",
+            text_uzbekistan: "На заседании 29 июля Правление Центрального банка Узбекистана приняло решение оставить основную ставку на уровне 14% годовых. В последние месяцы темпы снижения инфляции замедлились. Давление на цены остается под влиянием определенных факторов предложения, а также внешнеэкономических условий. Внутренний спрос продолжает расти высокими темпами. Правление Центрального банка сочло необходимым сохранить жесткие монетарные условия для достижения целевого показателя инфляции в 5% в условиях высокого внутреннего спроса, вторичных эффектов изменения тарифов на энергию и неопределенности во внешнеэкономической среде. Прогноз по общей инфляции на 2026 год остался неизменным на уровне 6.5%. Экономическая активность в стране остается высокой. В первой половине этого года валовой внутренний продукт вырос на 8.5% в реальном выражении. Высокие темпы роста розничной торговли и услуг отражают потребительскую активность, а динамика инвестиций отражает высокий инвестиционный спрос. К концу 2026 года экономический рост прогнозируется на уровне около 7.5-8%.",
+            georgia_header: "Грузия",
+            text_georgia: "Грузия почти удвоила импорт подсолнечного масла из России в июне 2026 года. Согласно данным Национального статистического управления Грузии, стоимость российского импорта подсолнечного масла достигла $5.2 млн, по сравнению с $2.9 млн в том же месяце прошлого года. Россия осталась крупнейшим поставщиком подсолнечного масла в Грузию. Украина заняла второе место с экспортом на сумму $607.6 тыс., а Венгрия была третьей, поставив подсолнечное масло на сумму $86.4 тыс. Увеличение подчеркивает растущую зависимость Грузии от поставок российского подсолнечного масла. В годовом выражении стоимость импорта из России почти удвоилась в июне.",
+            reg_title: "Регуляторный горизонт",
+            eudr_header: "Регламент ЕС по обезлесению (EUDR)",
+            text_eudr: "13 июля 2026 года Европейская комиссия официально приняла Делегированный акт, изменяющий сферу действия Регламента по обезлесению (обновление Приложения I) и Имплементационный регламент Комиссии (ЕС) 2026/1565. Сложные продукты переработки животноводства, такие как готовая кожа крупного рогатого скота, сырые шкуры и кожа крупного рогатого скота, автомобильные сиденья, восстановленные шины, а также соевые бобы для посева, были полностью исключены из требований соответствия. В то же время Европейская комиссия официально включила производные пальмового масла, используемые для производства олеохимикатов, определенных видов мыла и растворимого кофе, в регулируемый список. Введены строгие критерии исключения для определенных типов олеохимических соединений на основе пальмового масла. Производные, используемые исключительно в качестве сырья для производства лекарственных и ветеринарных препаратов в соответствии с фармацевтическим законодательством ЕС, не подпадают под действие EUDR.",
+            red3_header: "Директива ЕС по возобновляемым источникам энергии III (RED III)",
+            text_red3: "Хотя директива RED III вступила в силу ранее, в первой половине июля 2026 года на европейский рынок биотоплива и масличных повлияло ключевое решение Европейского Парламента от 8–9 июля 2026 года. Парламент официально отклонил Делегированный регламент Комиссии (ЕС) 2026/2680, который должен был ужесточить стандарты RED II/III и классифицировать соевое масло как сырье с высоким риском косвенного изменения землепользования (высокий iLUC). Если бы акт был принят, использование соевого биодизеля в ЕС подлежало бы прогрессивному сокращению, ведущему к полному запрету к 2030 году. Позиция FEDIOL и коалиции европейских маслобоек, отстаиваемая в июле, позволила временно защитить инвестиционный климат и рентабельность дробления соевых бобов в ЕС. 22 июля 2026 года Совет министров Испании одобрил национальную нормативную базу для достижения целей декарбонизации транспорта в соответствии с RED III. Одновременно немецкий рынок сохранял ценовую динамику для гидроочищенного растительного масла (HVO) в середине июля, обусловленную предыдущим решением Бундестага об отмене двойного подсчета для масел из Приложения IX (Часть A), что удерживало спотовые котировки биотоплива и технических жиров на пиковых уровнях в июле 2026 года.",
+            log_title: "Логистика и безопасность поставок",
+            text_log: "Премьер-министры Узбекистана Абдулла Арипов и Казахстана Олжас Бектенов провели межправительственное заседание и лично посетили Международный морской торговый порт Актау. Национальным железнодорожным операторам (Uzbekistan Railways и Kazakhstan Temir Zholy) было официально дано указание разработать конкретную дорожную карту для увеличения объема транзитных грузов через порты Актау и Курык. Объем узбекских грузов через эти порты увеличился на 60%, и стороны договорились предоставить тарифные преференции. Китай активизировал тестирование сухопутных маршрутов через Центральную Азию, обходя уязвимые морские хабы (такие как Ормузский пролив). Официально подтверждена фиксация цепи Китай-Казахстан-Узбекистан-Туркменистан-Афганистан (Герат). Контейнеры доставляются поездом в Узбекистан, а затем автомобильным транспортом через туркменскую границу в Афганистан, служа тестовой ветвью Трансафганского коридора. Евразийский банк развития (ЕАБР) опубликовал обновленный мониторинг транспортных проектов. Согласно отчету, общая стоимость текущих транспортных инициатив в Центральной Азии достигла $71.75 миллиардов, из которых развитие коридора TRACECA, включая Транскаспийский маршрут, составляет наибольшую долю инвестиций - $42.8 миллиардов.",
+            conc_title: "Заключение: Импликации для индустрии пальмового масла",
+            conc_1: "<strong>Реэкспорт через Турцию:</strong> Необходимо развивать альтернативные маршруты реэкспорта из Турции в Украину, Грузию и Азербайджан.",
+            conc_2: "<strong>Стратегический хаб в Ташкенте:</strong> Ускорить рассмотрение предложения по созданию регионального распределительного склада малайзийских масел в Ташкенте.",
+            conc_3: "<strong>Перевод премиальных жиров на Средний коридор (TITR):</strong> Диверсификация цепочек поставок специализированных жиров с морского маршрута на сухопутный TITR (15 дней транзита, стабильное страхование).",
+            prev_report: "Предыдущий отчет",
+            next_report: "Следующий отчет",
+            summary: "Краткое содержание",
+            pricing: "Цены",
+            summary_title: "Краткое содержание отчета",
+            summary_text: "Еженедельный отчет за 29 июля 2026 года демонстрирует рост цен на пальмовое масло до 4,722 MYR/тонну, соевые бобы достигли $12.53/бушель. Ключевые факторы: спекулятивные покупки на фоне роста цен на нефть, ухудшение погодных условий в ЕС, снижение урожайности масличных. Импорт пальмового масла в ЕС упал на 31% г/г.",
+            market_trends: "Динамика рынка растительных масел",
+            trend_description: "Рост цен на CPO на 2.4% за неделю. Соевые бобы выросли на 9.02% за 4 недели. Рапс демонстрирует устойчивый рост на фоне жары в Европе.",
+            export: "Экспорт",
+            maps: "Карты",
+            regional_maps_title: "Карты регионов и логистических коридоров",
+            eu_import_map: "Импорт масличных в ЕС (2026/27)",
+            eu_import_desc: "Согласно данным Еврокомиссии, импорт пальмового масла в ЕС упал на 31% г/г, соевых бобов - на 47%. Слабый спрос оказывает понижательное давление на спотовые цены.",
+            titr_map: "Транскаспийский международный транспортный коридор (TITR)",
+            titr_description: "Премьер-министры Узбекистана и Казахстана дали指示 увеличить объем транзитных грузов через порты Актау и Курык. Объем узбекских грузов через эти порты вырос на 60%.",
+            regulatory_details_title: "Детали регуляторных изменений",
+            eudr_infographic: "EUDR и RED III: Влияние на рынок",
+            eudr_description: "13 июля 2026 года Еврокомиссия приняла Delegated Act, изменяющий сферу действия EUDR. Исключены сложные продукты животноводства, включены производные пальмового масла для олеохимии, мыла и растворимого кофе.",
+            logistic_map: "Логистические коридоры и инвестиции",
+            logistic_description: "TRACECA corridor (включая Trans-Caspian route): $42.8B инвестиций. Объем узбекских грузов через Актау и Курык вырос на 60%. Китай тестирует сухопутные маршруты, обходя Ормузский пролив.",
+            print: "Печать отчета",
+            export_pdf: "Экспорт в PDF",
+            download: "Скачать отчет",
+            copyright: "© 2026 International Marketing Agency Ltd. Confidential. For internal use only."
+        },
+        en: {
+            title: "Extended Weekly Analytical Update",
+            date: "Report Date: July 29, 2026",
+            pricing_title: "Pricing Dynamics and Market Indicators",
+            col_commodity: "Commodity",
+            col_basis: "Basis",
+            col_price: "Current Price",
+            col_comment: "Short Comment",
+            item_cpo: "Crude Palm Oil",
+            desc_cpo: "By Friday, quotations soared to 4,722 MYR per tonne. The main drivers of growth were speculative purchases against the backdrop of a jump in crude oil prices.",
+            item_soy: "Soybeans",
+            desc_soy: "Prices went up steadily and by Friday reached a high of $12.53 c/bushel. The market was recouping the deterioration of weather conditions.",
+            item_sbo: "Soybean oil",
+            desc_sbo: "Prices rose steadily and approached 73 cents per pound. The main catalyst was a sharp rise in the price of Brent crude oil.",
+            item_sfo: "Sunflower Oil",
+            desc_sfo: "The collapse of oil prices forced sellers of sunflower oil to reduce the offer price for August batches by an average of $5-10 per ton.",
+            item_rapeseed: "Rapeseed",
+            desc_rapeseed: "The main driver was the official MARS report, which recorded a strong decline in oilseed yields in the EU due to prolonged heat in France and Germany.",
+            regional_title: "Regional Markets Analysis",
+            west_europe: "Major Western and Northern European Markets",
+            text_eu_overview: "According to the European Commission, at the beginning of the current marketing year (which began on July 1), total import volumes of oilseeds and vegetable oils into the European Union are significantly below last year's levels, SunSirs reports. Palm oil imports into the EU in the MY 2026/27 fell by 31% year-on-year. This confirms the long-term dampening effect of the EU Renewable Energy Directive (RED) on demand. Weak demand is already putting downward pressure on spot prices, and analysts expect a similar decline in futures prices amid bearish sentiment. By July 19, 2026, soybean shipments to the EU-27 totaled only approximately 379,000 tonnes, down 47% from the same period last year. The sharp decline in purchases by one of the world's largest importers reflects weak short-term consumer demand. Experts expect this trend to become an additional bearish factor and put downward pressure on global soybean spot prices.",
+            uk_header: "United Kingdom",
+            text_uk: "According to official data from the UK Agriculture and Horticulture Development Board (AHDB), during the reporting week from July 21 to July 27, 2026, a powerful jump in prices for rapeseed of the new crop was recorded in the domestic market of the United Kingdom. Prices strengthened immediately by £17.00 - £18.00 per tonne, updating local highs. The main catalyst for the domestic British rally was the November contract on the Euronext Exchange (MATIF) in Paris. Concerns about lower yields in key EU countries due to the extreme July heat pushed quotes higher. According to July trader reviews, the shortage of industrial raw materials for the chemical industry has intensified on the UK domestic market. Due to falling margins at European biodiesel plants, the production of the byproduct — rapeseed glycerin — has sharply decreased. As a result, British processors and household chemical manufacturers began to mass-replace it with palm glycerin, which remained more available in volume and attractive in price during the week of July 21–27.",
+            france_header: "France",
+            text_france: "The rapeseed market in France faced high volatility in the reporting period from July 21 to July 27, 2026. Expectations of a crop deficit in the EU have faced macroeconomic pressure from the oil market. According to the official data of FranceAgriMer for July 20-24, 2026, the harvesting campaign for winter crops in France has entered the final stage. Due to the extreme July heat and dry weather, the ripening and drying of the fields occurred much faster than normal. The harvest of winter rapeseed in key agricultural regions (Centre-Loire Valley, Picardy) was more than 98-99% complete. The rapid harvest put a local operational strain on linear elevators around Paris, but farmers held back active physical sales in anticipation of higher prices.",
+            netherlands_header: "Netherlands",
+            text_netherlands: "According to industry reports published in July 2026 (UFOP, Oils & Fats International), the Netherlands has retained its status as the largest importer of palm oil to the EU. The final annual import of the Netherlands was recorded at about 1.05 million tons, which is 9% higher than the volume of the previous season. In July 2026, the Netherlands Food and Consumer Product Safety Authority's (NVWA) recognition of the Malaysian Sustainable Palm Oil (MSPO) certification as a private control system under the European Union Deforestation Regulation (EUDR) framework reinforces the readiness of the nation's palm oil industry to meet the European Union market requirements. Plantation and Commodities Minister Datuk Seri Dr Noraini Ahmad said following an assessment, MSPO had been accepted as a third-party assurance system that could support regulatory oversight related to EUDR compliance.",
+            spain_header: "Spain",
+            text_spain: "On July 22, 2026, the Spanish Council of Ministers officially approved a national regulatory framework aimed at meeting the decarbonization targets of the transport sector as part of the transition to the standards of the European Renewable Energy Directive (RED III).",
+            east_europe: "Southern, Central, and Eastern European Regional Markets",
+            romania_header: "Romania",
+            text_romania: "Expectations of a significant recovery in sunflower seed production in Romania (along with Ukraine, Russia and Bulgaria) limit the growth potential of sunflower oil prices, despite unfavorable weather conditions in France, Spain and Hungary in late June – early July 2026.",
+            moldova_header: "Moldova",
+            text_moldova: "According to the results of the marketing year July 2025 – June 2026, Moldova exported about 92 thousand tons of sunflower oil worth 2.07 billion lei (average price 22.6 lei/kg). However, this data refers to the whole season.",
+            black_sea: "Production and Balances in the Black Sea Region",
+            ukraine_header: "Ukraine",
+            text_ukraine: "Ukraine is working to increase the capacity of its Danube ports, despite a decrease in ship arrivals at the Greater Odesa ports. First Deputy Minister Serhiy Derkach stated that they are cooperating with Romania to enhance port capacity, as done in 2022-2023 during maritime logistics challenges. He emphasized that export-import operations via rail and road are still viable, and \"Ukrzaliznytsia\" is working to restore damaged locomotives. Derkach noted that farmers are primarily exporting last year's stockpiles and do not see an immediate need for urgent exports, despite ongoing Russian strikes on port infrastructure. The All-Ukrainian Agrarian Council (VAR) urged Prime Minister Serhiy Koretsky to urgently implement crisis measures due to the halt of vessel arrivals at Ukrainian deep-sea Black Sea ports. They highlighted that issues with maritime logistics, damaged port infrastructure, export restrictions, and rising resource costs threaten production profitability and could lead to bankruptcies. Experts estimate that in the 2026/2027 marketing year, grain and oilseed production will reach about 81.4 million tons, while Ukraine needs to export around 67 million tons. VAR called for immediate government action to prevent a significant economic crisis and proposed measures like preferential loans and an audit of port damages. In the 2025/26 marketing year, Ukraine's rapeseed oil production reached a record high, with over 1.3 million tons processed, accounting for 42% of the total harvest. This marked a significant increase in exports, rising 2.5 times to 520,000 tons, generating $588 million in revenue, up from $194 million. In the first half of 2026, Ukraine exported 184,200 tons of rapeseed oil, a 9.7-fold increase compared to the previous year, with revenue increasing 10.9 times to $208 million. Overall, rapeseed oil production rose to 380,470 tons in 2025, significantly up from previous years.",
+            russia_header: "Russia",
+            text_russia: "In August, the export duty on sunflower oil in the Russian Federation will increase to 7748 rubles/ton compared to the current month 3292.2 rubles/t, the Ministry of Agriculture of the Russian Federation said. The ministry also added that export duties for the next month were calculated at an indicative price of $1,298.5 per ton (in July - $1,297.2 per ton) for sunflower oil.",
+            ca_header: "Central Asia and the Caucasus",
+            kazakhstan_header: "Kazakhstan",
+            text_kazakhstan: "Kazakh exporters and importers of agricultural products expect an increase in the cost of transportation through the ports of the Russian Federation and Belarus. In Russia, an increase in tariffs and additional charges for rail transportation is expected. This will directly affect the cost of logistics for Kazakh exporters and importers of agricultural products. On July 1, 2026, the Decree of the Government of the Russian Federation No 1924-r dated 22.07.2026 was published, which instructs the FAS of Russia to index railway tariffs for freight transportation and various additional charges by 8.5% from October 1, 2026. Thus, in October, the second increase in tariffs this year will take place (the first was in March). This will have a direct impact on the increase in the cost of logistics for the export of grains, legumes and oilseeds by Kazakh exporters through Russian ports and Belarus, as well as on the import of grains and oilseeds by rail, including processed products (oils, meals, cakes, bran, flour, cereals, etc.).",
+            uzbekistan_header: "Uzbekistan",
+            text_uzbekistan: "At a meeting on July 29, the Board of the Central Bank of Uzbekistan decided to keep the main rate at 14% per annum. In recent months, the rate of decline in inflation has slowed down. Pressure on prices remains under the influence of certain supply factors, as well as external economic conditions. Domestic demand continues to grow at a high pace. The Board of the Central Bank considered it necessary to maintain tight monetary conditions in order to achieve the inflation target of 5% in the face of high domestic demand, secondary effects of changes in energy tariffs and uncertainty in the external economic environment. The forecast for headline inflation for 2026 has remained unchanged at 6.5%. Economic activity in the country remains high. In the first half of this year, the gross domestic product grew by 8.5% in real terms. The high growth rates of retail trade and services reflect consumer activity, and the dynamics of investments reflect high investment demand. By the end of 2026, economic growth is projected at about 7.5-8%.",
+            georgia_header: "Georgia",
+            text_georgia: "Georgia nearly doubled its imports of sunflower oil from Russia in June 2026. According to the National Statistics Office of Georgia, the value of Russian sunflower oil imports reached $5.2 mln, up from $2.9 mln in the same month last year. Russia remained Georgia's largest supplier of sunflower oil. Ukraine ranked second with exports worth $607.6 thsd, while Hungary was third, supplying sunflower oil valued at $86.4 thsd. The increase highlights Georgia's growing reliance on Russian sunflower oil supplies. In annual terms, the value of imports from Russia almost doubled in June.",
+            reg_title: "Regulatory Outlook",
+            eudr_header: "EU Deforestation Regulation (EUDR)",
+            text_eudr: "On July 13, 2026, the European Commission officially adopted a Delegated Act amending the scope of the Deforestation Regulation (update of Annex I) and Commission Implementing Regulation (EU) 2026/1565. Complex livestock processing products, such as finished cattle leather, raw hides and skins of cattle, car seats, retreaded tires, as well as soybeans for sowing, were completely excluded from the compliance requirements. At the same time, the European Commission officially included palm oil derivatives used for the production of oleochemicals, certain types of soap, and instant coffee in the regulated list. Strict exemption criteria have been introduced for certain types of palm oil-based oleochemical compounds. Derivatives used exclusively as raw materials for the production of medicinal and veterinary products under EU pharmaceutical legislation are not subject to the EUDR.",
+            red3_header: "EU Renewable Energy Directive III (RED III)",
+            text_red3: "Although the RED III Directive had entered into force earlier, in the first half of July 2026, the European biofuel and oilseed market was influenced by a crucial decision of the European Parliament dated July 8–9, 2026. The Parliament officially rejected Commission Delegated Regulation (EU) 2026/2680, which was intended to tighten RED II/III standards and classify soybean oil as a high indirect land-use change (high ILUC) risk feedstock. Had the act been adopted, the use of soy-based biodiesel in the EU would have been subject to a progressive reduction leading to a total ban by 2030. The position of FEDIOL and the European crushers' coalition, advocated in July, allowed for the temporary protection of the investment climate and the profitability of soybean crushing in the EU. On July 22, 2026, the Spanish Council of Ministers approved the national regulatory framework to meet transport decarbonization targets in accordance with RED III. Simultaneously, the German market maintained price momentum for hydrotreated vegetable oil (HVO) in mid-July, driven by a previous decision of the Bundestag to abolish double counting for oils from Annex IX (Part A), which kept spot quotes for biofuels and technical fats at peak levels in July 2026.",
+            log_title: "Logistics and Supply Security",
+            text_log: "Prime Ministers of Uzbekistan Abdulla Aripov and Kazakhstan Olzhas Bektenov held an intergovernmental meeting and personally visited the Aktau International Sea Trade Port. National railway operators (Uzbekistan Railways and Kazakhstan Temir Zholy) were officially instructed to develop a specific roadmap to increase the volume of transit cargo through the ports of Aktau and Kuryk. The volume of Uzbek cargo through these ports increased by 60%, and the parties agreed to provide tariff preferences. China has stepped up testing of land routes through Central Asia, bypassing vulnerable maritime hubs (such as the Strait of Hormuz). The fixation of the China-Kazakhstan-Uzbekistan-Turkmenistan-Afghanistan (Herat) chain has been officially confirmed. The containers are delivered by rail to Uzbekistan, and then by road across the Turkmen border to Afghanistan, serving as a test branch of the Trans-Afghan corridor. The Eurasian Development Bank (EDB) has published an updated monitoring of transport projects. According to the report, the total cost of ongoing transport initiatives in Central Asia reached $71.75 billion, of which the development of the TRACECA corridor, including the Trans-Caspian route, accounts for the largest share of investments - $42.8 billion.",
+            conc_title: "Conclusion: Implications for the Palm Oil Industry",
+            conc_1: "<strong>Re-export from Turkey:</strong> It is necessary to develop alternative routes for the re-export of Malaysian palm oil from Turkey towards Ukraine, Georgia, and Azerbaijan.",
+            conc_2: "<strong>Strategic Hub in Tashkent:</strong> Expedite the consideration of the official proposal from Uzbekistan's Ambassador Karomidin Gadoev to establish a regional distribution logistics warehouse for Malaysian oils in Tashkent.",
+            conc_3: "<strong>Shifting Premium Fats to the Middle Corridor (TITR):</strong> Diversify supply chains for specialty fats bound for the confectionery industry. Redirect them from the ocean route (where spot freight has soared to $10,000) to the land-based Middle Corridor with its guaranteed 15-day transit and stable insurance environment.",
+            prev_report: "Previous Report",
+            next_report: "Next Report",
+            summary: "Summary",
+            pricing: "Prices",
+            summary_title: "Report Summary",
+            summary_text: "The weekly report for July 29, 2026 demonstrates palm oil price growth to 4,722 MYR/tonne, soybeans reached $12.53/bushel. Key factors: speculative purchases amid rising oil prices, deteriorating weather conditions in the EU, declining oilseed yields. EU palm oil imports fell 31% y/y.",
+            market_trends: "Vegetable Oil Market Trends",
+            trend_description: "CPO prices rose 2.4% for the week. Soybeans gained 9.02% over 4 weeks. Rapeseed shows steady growth amid heat in Europe.",
+            export: "Export",
+            maps: "Maps",
+            regional_maps_title: "Regional Maps and Logistics Corridors",
+            eu_import_map: "EU Oilseeds Import (2026/27)",
+            eu_import_desc: "According to the European Commission, EU palm oil imports fell 31% y/y, soybeans -47%. Weak demand is putting downward pressure on spot prices.",
+            titr_map: "Trans-Caspian International Transport Route (TITR)",
+            titr_description: "Prime Ministers of Uzbekistan and Kazakhstan instructed to increase transit cargo volume through Aktau and Kuryk ports. Uzbek cargo volume through these ports increased by 60%.",
+            regulatory_details_title: "Regulatory Details",
+            eudr_infographic: "EUDR and RED III: Market Impact",
+            eudr_description: "On July 13, 2026, the European Commission adopted a Delegated Act amending the scope of EUDR. Complex livestock products excluded, palm oil derivatives for oleochemicals, soap and instant coffee included.",
+            logistic_map: "Logistics Corridors and Investments",
+            logistic_description: "TRACECA corridor (including Trans-Caspian route): $42.8B investment. Uzbek cargo volume through Aktau and Kuryk increased 60%. China testing land routes bypassing Hormuz Strait.",
+            print: "Print Report",
+            export_pdf: "Export to PDF",
+            download: "Download Report",
+            copyright: "© 2026 International Marketing Agency Ltd. Confidential. For internal use only."
+        }
+    };
+
+    function setLang(lang) {
+        document.querySelectorAll('[data-lang-key]').forEach(el => {
+            const key = el.getAttribute('data-lang-key');
+            if (translations[lang][key]) {
+                el.innerHTML = translations[lang][key];
+            }
+        });
+
+        document.querySelectorAll('.btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelector(`.btn[onclick="setLang('${lang}')"]`).classList.add('active');
+    }
+
+    function toggleCollapsible(id) {
+        const section = document.getElementById(id);
+        section.classList.toggle('active');
+    }
+
+    function toggleSection(sectionId) {
+        const section = document.getElementById(sectionId + '-section');
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            section.classList.add('active');
+            setTimeout(() => {
+                section.style.boxShadow = '0 0 20px rgba(52, 152, 219, 0.3)';
+                setTimeout(() => {
+                    section.style.boxShadow = '';
+                }, 2000);
+            }, 500);
+        }
+    }
+
+    function sortTable(columnIndex) {
+        const table = document.getElementById('pricing-table');
+        const rows = Array.from(table.tBodies[0].rows);
+        
+        rows.sort((a, b) => {
+            const cellA = a.cells[columnIndex].textContent;
+            const cellB = b.cells[columnIndex].textContent;
+            
+            const numA = parseFloat(cellA.replace(/[^0-9.-]+/g, ''));
+            const numB = parseFloat(cellB.replace(/[^0-9.-]+/g, ''));
+            
+            if (!isNaN(numA) && !isNaN(numB)) {
+                return numA - numB;
+            }
+            
+            return cellA.localeCompare(cellB);
+        });
+        
+        const header = table.tHead.rows[0].cells[columnIndex];
+        if (header.classList.contains('sorted-asc')) {
+            rows.reverse();
+            header.classList.remove('sorted-asc');
+            header.classList.add('sorted-desc');
+        } else {
+            header.classList.remove('sorted-desc');
+            header.classList.add('sorted-asc');
+        }
+        
+        const tbody = table.tBodies[0];
+        tbody.innerHTML = '';
+        rows.forEach(row => tbody.appendChild(row));
+    }
+
+    function navigateReport(direction) {
+        alert(`Navigating to ${direction} report`);
+    }
+
+    function printReport() {
+        window.print();
+    }
+
+    function exportReport() {
+        alert("Exporting report to PDF...");
+    }
+
+    function exportTable(tableId) {
+        const table = document.getElementById(tableId);
+        let csv = [];
+        const rows = table.querySelectorAll('tr');
+        
+        for (let i = 0; i < rows.length; i++) {
+            const row = [], cols = rows[i].querySelectorAll('td, th');
+            for (let j = 0; j < cols.length; j++) 
+                row.push(cols[j].innerText);
+            csv.push(row.join(','));
+        }
+        
+        const csvContent = csv.join('\n');
+        const blob = new Blob([csvContent], { type: 'text/csv' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.setAttribute('hidden', '');
+        a.setAttribute('href', url);
+        a.setAttribute('download', 'pricing_data.csv');
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const summarySection = document.getElementById('summary-section');
+        if (summarySection) {
+            summarySection.classList.add('active');
+        }
+    });
+</script>
+
+</body>
+</html>
