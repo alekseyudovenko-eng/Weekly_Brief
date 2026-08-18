@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vegetable Oils &amp; Fats Market — Weekly Intelligence / Растительные масла и жиры — Еженедельная аналитика</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================= TOKENS ============================= */
+:root{
+  --ink:#0A1F30;
+  --ink-2:#0F2C44;
+  --paper:#F1F2ED;
+  --paper-2:#E8EAE3;
+  --card:#FFFFFF;
+  --line:#DBDED4;
+  --line-soft:#E5E7E0;
+  --text:#16232D;
+  --text-soft:#48586A;
+  --text-inv:#EAF1F7;
+  --text-inv-soft:#AEC4D6;
+  --blue:#0B63B4;
+  --blue-deep:#0A4C8C;
+  --gold:#C68A2E;
+  --gold-soft:#EAD9B8;
+  --green:#2E7D5A;
+  --green-bg:#E4F0EA;
+  --red:#B23A32;
+  --red-bg:#F6E8E6;
+  --flat:#7A6A45;
+  --flat-bg:#F1ECDD;
+  --radius:10px;
+  --radius-lg:16px;
+  --serif:'IBM Plex Serif', Georgia, serif;
+  --sans:'IBM Plex Sans', -apple-system, Segoe UI, sans-serif;
+  --mono:'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace;
+  --shadow: 0 1px 2px rgba(10,31,48,.04), 0 8px 24px -12px rgba(10,31,48,.18);
+  --sidebar-w: 264px;
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
+}
+body{
+  margin:0;
+  font-family:var(--sans);
+  background:var(--paper);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:var(--serif); font-weight:600; color:var(--ink); margin:0;}
+p{margin:0;}
+a{color:var(--blue);}
+img,svg{display:block; max-width:100%;}
+button{font-family:inherit; cursor:pointer;}
+:focus-visible{outline:2.5px solid var(--gold); outline-offset:2px;}
+
+/* language toggling --------------------------------------------------- */
+[data-lang="en"] .lang-ru{display:none !important;}
+[data-lang="ru"] .lang-en{display:none !important;}
+
+/* ============================= LAYOUT ============================= */
+.shell{display:flex; min-height:100vh;}
+
+/* ---- Sidebar ---- */
+.sidebar{
+  width:var(--sidebar-w); flex-shrink:0;
+  background:var(--ink);
+  color:var(--text-inv);
+  position:fixed; top:0; left:0; bottom:0;
+  display:flex; flex-direction:column;
+  z-index:80;
+  transition:transform .28s ease;
+}
+.sidebar-brand{
+  padding:26px 24px 18px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+.brand-mark{
+  display:flex; align-items:center; gap:10px; margin-bottom:14px;
+}
+.brand-mark svg{width:30px;height:30px;flex-shrink:0;}
+.brand-name{font-family:var(--serif); font-weight:600; font-size:14.5px; line-height:1.25; color:#fff; letter-spacing:.01em;}
+.brand-tag{font-size:11px; color:var(--text-inv-soft); font-family:var(--mono); letter-spacing:.04em; text-transform:uppercase; margin-top:2px;}
+
+.sidebar-nav{flex:1; overflow-y:auto; padding:14px 12px;}
+.nav-item{
+  display:flex; align-items:center; gap:11px;
+  width:100%; padding:10px 12px; margin-bottom:2px;
+  background:none; border:none; border-radius:8px;
+  color:var(--text-inv-soft); font-size:13.5px; font-weight:500;
+  text-align:left; text-decoration:none;
+  transition:background .15s, color .15s;
+}
+.nav-item svg{width:17px;height:17px; flex-shrink:0; opacity:.85;}
+.nav-item .num{
+  font-family:var(--mono); font-size:11px; color:var(--gold);
+  width:16px; flex-shrink:0;
+}
+.nav-item:hover{background:rgba(255,255,255,.06); color:#fff;}
+.nav-item.active{background:rgba(198,138,46,.16); color:#fff;}
+.nav-item.active .num{color:var(--gold);}
+
+.sidebar-foot{
+  padding:16px 20px 20px;
+  border-top:1px solid rgba(255,255,255,.1);
+}
+.lang-toggle{
+  display:flex; background:rgba(255,255,255,.08); border-radius:999px; padding:3px; gap:2px;
+}
+.lang-btn{
+  flex:1; border:none; background:none; padding:7px 0; border-radius:999px;
+  font-family:var(--mono); font-size:12px; font-weight:600; letter-spacing:.03em;
+  color:var(--text-inv-soft); transition:background .15s, color .15s;
+}
+.lang-btn.active{background:var(--gold); color:var(--ink);}
+.sidebar-meta{margin-top:14px; font-size:11px; color:var(--text-inv-soft); font-family:var(--mono); line-height:1.6;}
+
+.sidebar-close{display:none;}
+
+/* ---- Topbar (mobile) ---- */
+.topbar{
+  display:none;
+  position:fixed; top:0; left:0; right:0; z-index:70;
+  background:var(--ink); color:#fff;
+  align-items:center; justify-content:space-between;
+  padding:12px 16px;
+  box-shadow:var(--shadow);
+}
+.topbar .brand-mark{margin-bottom:0;}
+.topbar .brand-name{font-size:13px;}
+.hamburger{
+  background:none;border:none;color:#fff;padding:6px;
+  display:flex; align-items:center; justify-content:center;
+}
+.hamburger svg{width:22px;height:22px;}
+.scrim{
+  display:none; position:fixed; inset:0; background:rgba(10,31,48,.5); z-index:55;
+}
+
+/* progress bar */
+.progress{
+  position:fixed; top:0; left:var(--sidebar-w); right:0; height:3px; z-index:80;
+  background:transparent;
+}
+.progress-fill{height:100%; width:0%; background:linear-gradient(90deg,var(--gold),var(--blue)); transition:width .08s linear;}
+
+/* ---- Main content ---- */
+.main{margin-left:var(--sidebar-w); flex:1; min-width:0;}
+.wrap{max-width:920px; margin:0 auto; padding:0 40px;}
+
+/* ============================= HERO ============================= */
+.hero{
+  background:
+    radial-gradient(circle at 88% -10%, rgba(198,138,46,.20), transparent 45%),
+    radial-gradient(circle at 6% 110%, rgba(11,99,180,.30), transparent 50%),
+    var(--ink);
+  color:var(--text-inv);
+  padding:64px 0 0;
+  position:relative;
+  overflow:hidden;
+}
+.hero .wrap{position:relative; z-index:2;}
+.eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--gold); background:rgba(198,138,46,.12); border:1px solid rgba(198,138,46,.35);
+  padding:6px 12px; border-radius:999px; margin-bottom:22px;
+}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--gold); animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;} 50%{opacity:.35;}}
+
+.hero h1{
+  font-size:clamp(30px, 4.4vw, 46px); line-height:1.12; color:#fff; letter-spacing:-.01em;
+  max-width:16ch;
+}
+.hero-sub{
+  margin-top:18px; font-size:16px; color:var(--text-inv-soft); max-width:60ch; line-height:1.65;
+}
+.pill-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:24px;}
+.pill{
+  font-family:var(--mono); font-size:12px; color:var(--text-inv-soft);
+  border:1px solid rgba(255,255,255,.18); padding:6px 12px; border-radius:999px;
+}
+.hero-ctas{display:flex; flex-wrap:wrap; gap:12px; margin-top:32px;}
+.btn{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:13.5px; font-weight:600; padding:12px 20px; border-radius:8px;
+  text-decoration:none; border:1px solid transparent; transition:transform .15s, background .15s, border-color .15s;
+}
+.btn:hover{transform:translateY(-1px);}
+.btn-primary{background:var(--gold); color:var(--ink);}
+.btn-primary:hover{background:#D69A3D;}
+.btn-ghost{background:rgba(255,255,255,.06); color:#fff; border-color:rgba(255,255,255,.25);}
+.btn-ghost:hover{background:rgba(255,255,255,.12);}
+.btn svg{width:15px;height:15px;}
+
+/* ticker */
+.ticker-wrap{
+  margin-top:48px; border-top:1px solid rgba(255,255,255,.12);
+  background:rgba(0,0,0,.18);
+  overflow:hidden; position:relative;
+}
+.ticker-wrap::before,.ticker-wrap::after{
+  content:""; position:absolute; top:0; bottom:0; width:60px; z-index:2; pointer-events:none;
+}
+.ticker-wrap::before{left:0; background:linear-gradient(90deg, var(--ink), transparent);}
+.ticker-wrap::after{right:0; background:linear-gradient(270deg, var(--ink), transparent);}
+.ticker-track{
+  display:flex; width:max-content; gap:0;
+  animation:ticker 34s linear infinite;
+  padding:13px 0;
+}
+.ticker-wrap:hover .ticker-track{animation-play-state:paused;}
+@keyframes ticker{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+.tick{
+  display:flex; align-items:center; gap:9px;
+  font-family:var(--mono); font-size:12.5px; color:var(--text-inv-soft);
+  padding:0 26px; border-right:1px solid rgba(255,255,255,.12); white-space:nowrap;
+}
+.tick b{color:#fff; font-weight:600;}
+.tick .arrow-up{color:#6FCF9E;}
+.tick .arrow-down{color:#E08A82;}
+.tick .arrow-flat{color:var(--gold);}
+
+/* signature corridor illustration in hero */
+.corridor{position:absolute; right:-40px; top:30px; width:380px; opacity:.55; z-index:1;}
+@media (max-width:1180px){.corridor{display:none;}}
+
+/* ============================= STAT STRIP ============================= */
+.stat-strip{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+  background:var(--line); border:1px solid var(--line);
+  margin:-1px 0 0; border-radius:var(--radius-lg); overflow:hidden;
+  transform:translateY(-34px);
+  box-shadow:var(--shadow);
+}
+.stat{background:var(--card); padding:22px 20px;}
+.stat-num{font-family:var(--serif); font-size:26px; font-weight:600; color:var(--ink);}
+.stat-num.up{color:var(--green);}
+.stat-num.down{color:var(--red);}
+.stat-label{font-size:12.5px; color:var(--text-soft); margin-top:6px; line-height:1.4;}
+@media (max-width:760px){.stat-strip{grid-template-columns:repeat(2,1fr);}}
+
+/* ============================= SECTIONS ============================= */
+section.block{padding:8px 0 64px; scroll-margin-top:26px;}
+.block-head{margin-bottom:28px; display:flex; align-items:flex-start; gap:16px;}
+.block-icon{
+  width:44px;height:44px; border-radius:10px; background:var(--ink); color:var(--gold);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.block-icon svg{width:22px;height:22px;}
+.block-eyebrow{font-family:var(--mono); font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--blue); margin-bottom:4px;}
+.block-head h2{font-size:26px;}
+.block-intro{font-size:15.5px; color:var(--text-soft); margin:14px 0 26px; max-width:74ch; line-height:1.7;}
+
+/* ---- Key Signals accordion ---- */
+.signal{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius-lg);
+  margin-bottom:12px; overflow:hidden; box-shadow:var(--shadow);
+}
+.signal-head{
+  width:100%; display:flex; align-items:center; gap:16px; padding:18px 20px;
+  background:none; border:none; text-align:left;
+}
+.signal-rank{
+  font-family:var(--mono); font-size:13px; font-weight:600; color:var(--gold);
+  width:30px; height:30px; border-radius:8px; background:var(--paper-2);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.signal-head-text{flex:1; min-width:0;}
+.signal-title{font-family:var(--serif); font-weight:600; font-size:16.5px; color:var(--ink); line-height:1.3;}
+.signal-region{font-family:var(--mono); font-size:11.5px; color:var(--text-soft); margin-top:3px;}
+.signal-chev{width:18px;height:18px; color:var(--text-soft); flex-shrink:0; transition:transform .2s;}
+.signal.open .signal-chev{transform:rotate(180deg);}
+.signal-body{
+  max-height:0; overflow:hidden; transition:max-height .3s ease;
+}
+.signal.open .signal-body{max-height:900px;}
+.signal-grid{
+  display:grid; grid-template-columns:1fr 1fr; gap:16px 22px;
+  padding:0 20px 22px; border-top:1px solid var(--line-soft); margin-top:2px; padding-top:18px;
+}
+.signal-field .field-label{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.07em; text-transform:uppercase; color:var(--gold); margin-bottom:5px; font-weight:600;
+}
+.signal-field p{font-size:14px; color:var(--text); line-height:1.6;}
+.signal-source{
+  grid-column:1 / -1; font-size:12.5px; color:var(--text-soft); font-style:italic; padding-top:8px; border-top:1px dashed var(--line);
+}
+@media (max-width:640px){.signal-grid{grid-template-columns:1fr;}}
+
+/* ---- Pricing ---- */
+.chip-row{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;}
+.chip{
+  font-family:var(--mono); font-size:12.5px; font-weight:500; padding:8px 15px; border-radius:999px;
+  border:1px solid var(--line); background:var(--card); color:var(--text-soft); transition:all .15s;
+  display:flex; align-items:center; gap:6px;
+}
+.chip .dot{width:7px;height:7px;border-radius:50%;}
+.chip[data-filter="all"] .dot{background:var(--blue);}
+.chip[data-filter="up"] .dot{background:var(--green);}
+.chip[data-filter="down"] .dot{background:var(--red);}
+.chip[data-filter="flat"] .dot{background:var(--flat);}
+.chip.active{background:var(--ink); color:#fff; border-color:var(--ink);}
+.chip.active .dot{background:var(--gold) !important;}
+
+.price-table-wrap{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow);
+}
+table.price-table{width:100%; border-collapse:collapse;}
+.price-table thead th{
+  text-align:left; font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.06em;
+  color:var(--text-soft); background:var(--paper-2); padding:13px 16px; border-bottom:1px solid var(--line); font-weight:600;
+}
+.price-table td{padding:16px; border-bottom:1px solid var(--line-soft); vertical-align:top; font-size:14px;}
+.price-table tr:last-child td{border-bottom:none;}
+.price-table tr.hidden{display:none;}
+.cell-commodity{font-family:var(--serif); font-weight:600; color:var(--ink); font-size:15px; white-space:nowrap;}
+.cell-basis{color:var(--text-soft); font-size:13px; white-space:nowrap;}
+.cell-price{font-family:var(--mono); font-size:13.5px; white-space:nowrap;}
+.badge{
+  display:inline-flex; align-items:center; gap:5px; font-family:var(--mono); font-size:12px; font-weight:600;
+  padding:4px 9px; border-radius:6px;
+}
+.badge.up{background:var(--green-bg); color:var(--green);}
+.badge.down{background:var(--red-bg); color:var(--red);}
+.badge.flat{background:var(--flat-bg); color:var(--flat);}
+.badge svg{width:11px;height:11px;}
+.cell-comment{color:var(--text-soft); font-size:13.5px; line-height:1.6; max-width:340px;}
+.table-legend{padding:14px 16px; font-size:12px; color:var(--text-soft); border-top:1px solid var(--line); background:var(--paper-2);}
+
+/* ---- Regional tabs ---- */
+.tabbar{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:22px; border-bottom:1px solid var(--line); padding-bottom:0;}
+.tab-btn{
+  background:none; border:none; padding:11px 16px; font-size:13.5px; font-weight:600; color:var(--text-soft);
+  border-bottom:2.5px solid transparent; margin-bottom:-1px; transition:color .15s, border-color .15s;
+}
+.tab-btn:hover{color:var(--ink);}
+.tab-btn.active{color:var(--blue); border-color:var(--gold);}
+.tab-panel{display:none;}
+.tab-panel.active{display:block; animation:fadein .25s ease;}
+@keyframes fadein{from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);}}
+
+.country{
+  border:1px solid var(--line); border-radius:var(--radius); margin-bottom:10px; background:var(--card); overflow:hidden;
+}
+.country-head{
+  width:100%; display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:14px 18px; background:none; border:none; text-align:left;
+}
+.country-name{font-family:var(--serif); font-weight:600; font-size:15px; color:var(--ink);}
+.country-chev{width:16px;height:16px; color:var(--text-soft); transition:transform .2s; flex-shrink:0;}
+.country.open .country-chev{transform:rotate(180deg);}
+.country-body{max-height:0; overflow:hidden; transition:max-height .3s ease;}
+.country.open .country-body{max-height:600px;}
+.country-body-inner{padding:0 18px 18px; font-size:14px; color:var(--text-soft); line-height:1.7; border-top:1px solid var(--line-soft); padding-top:14px;}
+
+.corridor-strip{margin:6px 0 30px; border:1px solid var(--line); border-radius:var(--radius-lg); background:var(--card); padding:18px 22px; box-shadow:var(--shadow);}
+.corridor-strip svg{width:100%; height:auto;}
+
+.note-card{
+  display:flex; gap:12px; align-items:flex-start; background:var(--flat-bg); border:1px solid var(--gold-soft);
+  border-radius:var(--radius); padding:14px 16px; margin-top:6px; font-size:13.5px; color:#5c4c26;
+}
+.note-card svg{width:17px;height:17px; flex-shrink:0; margin-top:1px; color:var(--gold);}
+
+/* ---- Regulatory / Logistics cards ---- */
+.card-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+@media (max-width:700px){.card-grid{grid-template-columns:1fr;}}
+.info-card{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius-lg); padding:22px;
+  box-shadow:var(--shadow);
+}
+.info-card-head{display:flex; align-items:center; gap:11px; margin-bottom:12px;}
+.info-card-head .ic{
+  width:34px;height:34px; border-radius:8px; background:var(--paper-2); color:var(--blue);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.info-card-head .ic svg{width:18px;height:18px;}
+.info-card h3{font-size:16px;}
+.info-card p{font-size:14px; color:var(--text-soft); line-height:1.7;}
+
+/* logistics timeline */
+.timeline{border-left:2px solid var(--line); margin-left:6px; padding-left:26px;}
+.tl-item{position:relative; padding-bottom:26px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-item::before{
+  content:""; position:absolute; left:-32px; top:2px; width:12px;height:12px; border-radius:50%;
+  background:var(--gold); border:3px solid var(--paper);
+}
+.tl-item h4{font-size:14.5px; font-family:var(--serif); font-weight:600; color:var(--ink); margin-bottom:6px;}
+.tl-item p{font-size:14px; color:var(--text-soft); line-height:1.7;}
+
+/* ============================= FOOTER ============================= */
+footer{background:var(--ink); color:var(--text-inv-soft); padding:44px 0 34px; margin-top:20px;}
+footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:24px; align-items:flex-start;}
+.foot-brand{display:flex; align-items:center; gap:10px;}
+.foot-brand svg{width:24px;height:24px;}
+.foot-brand-text{font-family:var(--serif); font-weight:600; color:#fff; font-size:14px;}
+.foot-meta{font-family:var(--mono); font-size:11.5px; line-height:1.9;}
+.back-top{
+  position:fixed; right:28px; bottom:28px; z-index:50;
+  width:46px;height:46px; border-radius:50%; background:var(--ink); color:var(--gold);
+  border:1px solid rgba(255,255,255,.15); display:flex; align-items:center; justify-content:center;
+  box-shadow:var(--shadow); opacity:0; pointer-events:none; transform:translateY(8px);
+  transition:opacity .2s, transform .2s;
+}
+.back-top.show{opacity:1; pointer-events:auto; transform:translateY(0);}
+.back-top svg{width:18px;height:18px;}
+
+/* ============================= RESPONSIVE ============================= */
+@media (max-width:980px){
+  :root{--sidebar-w:0px;}
+  .sidebar{
+    width:280px; transform:translateX(-100%); box-shadow:0 0 0 2000px rgba(0,0,0,0);
+  }
+  .sidebar.open{transform:translateX(0); box-shadow:20px 0 60px rgba(0,0,0,.35);}
+  .sidebar-close{
+    display:flex; align-items:center; justify-content:center; position:absolute; top:16px; right:14px;
+    width:30px;height:30px; background:rgba(255,255,255,.08); border:none; border-radius:7px; color:#fff;
+  }
+  .sidebar-close svg{width:16px;height:16px;}
+  .main{margin-left:0;}
+  .topbar{display:flex;}
+  .scrim.show{display:block;}
+  .progress{left:0;}
+  .hero{padding-top:88px;}
+  .wrap{padding:0 20px;}
+}
+@media (max-width:560px){
+  .signal-head{padding:15px;}
+  .signal-title{font-size:15px;}
+  .price-table td, .price-table th{padding:10px;}
+  .cell-comment{max-width:180px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================= TOPBAR (mobile) ============================= -->
+<div class="topbar">
+  <div class="brand-mark">
+    <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="#C68A2E" stroke-width="1.4"/><path d="M16 8c3 4 5 6.5 5 10a5 5 0 0 1-10 0c0-3.5 2-6 5-10Z" fill="#C68A2E"/></svg>
+    <span class="brand-name lang-en">IMA · Market Intelligence</span>
+    <span class="brand-name lang-ru">IMA · Аналитика рынка</span>
+  </div>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+</div>
+<div class="scrim" id="scrim"></div>
+
+<!-- ============================= PROGRESS BAR ============================= -->
+<div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="shell">
+  <!-- ============================= SIDEBAR ============================= -->
+  <aside class="sidebar" id="sidebar">
+    <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+    </button>
+    <div class="sidebar-brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="#C68A2E" stroke-width="1.4"/><path d="M16 8c3 4 5 6.5 5 10a5 5 0 0 1-10 0c0-3.5 2-6 5-10Z" fill="#C68A2E"/></svg>
+        <div>
+          <div class="brand-name">International Marketing Agency Ltd</div>
+        </div>
+      </div>
+      <div class="brand-tag lang-en">Weekly Market Intelligence</div>
+      <div class="brand-tag lang-ru">Еженедельная аналитика рынка</div>
+    </div>
+    <nav class="sidebar-nav" id="sidebarNav">
+      <a href="#overview" class="nav-item"><span class="num">00</span>
+        <span class="lang-en">Overview</span><span class="lang-ru">Обзор</span>
+      </a>
+      <a href="#signals" class="nav-item"><span class="num">I</span>
+        <span class="lang-en">Key Signals</span><span class="lang-ru">Ключевые сигналы</span>
+      </a>
+      <a href="#pricing" class="nav-item"><span class="num">II</span>
+        <span class="lang-en">Pricing Dynamics</span><span class="lang-ru">Динамика цен</span>
+      </a>
+      <a href="#regional" class="nav-item"><span class="num">III</span>
+        <span class="lang-en">Regional Markets</span><span class="lang-ru">Регионы</span>
+      </a>
+      <a href="#regulatory" class="nav-item"><span class="num">IV</span>
+        <span class="lang-en">Regulatory Outlook</span><span class="lang-ru">Регулирование</span>
+      </a>
+      <a href="#logistics" class="nav-item"><span class="num">V</span>
+        <span class="lang-en">Logistics &amp; Supply</span><span class="lang-ru">Логистика</span>
+      </a>
+    </nav>
+    <div class="sidebar-foot">
+      <div class="lang-toggle">
+        <button class="lang-btn" id="btnEN" data-set-lang="en">EN</button>
+        <button class="lang-btn" id="btnRU" data-set-lang="ru">RU</button>
+      </div>
+      <div class="sidebar-meta">
+        <span class="lang-en">3–10 AUG 2026</span><span class="lang-ru">3–10 АВГ 2026</span><br>
+        <span class="lang-en">EU · UK · BALKANS · CENTRAL ASIA</span>
+        <span class="lang-ru">ЕС · ВЕЛИКОБРИТАНИЯ · БАЛКАНЫ · ЦА</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============================= MAIN ============================= -->
+  <div class="main">
+
+    <!-- ===== HERO ===== -->
+    <header class="hero" id="overview">
+      <svg class="corridor" viewBox="0 0 380 260" fill="none">
+        <path d="M20 210 C 90 150, 130 140, 180 130" stroke="#C68A2E" stroke-width="1.5" stroke-dasharray="3 5" opacity=".6"/>
+        <path d="M180 130 C 230 118, 260 90, 320 60" stroke="#0B63B4" stroke-width="1.5" stroke-dasharray="3 5" opacity=".6"/>
+        <path d="M180 130 C 210 160, 230 175, 260 210" stroke="#EAF1F7" stroke-width="1.2" stroke-dasharray="3 5" opacity=".35"/>
+        <circle cx="20" cy="210" r="5" fill="#0B63B4"/>
+        <circle cx="180" cy="130" r="6" fill="#C68A2E"/>
+        <circle cx="320" cy="60" r="5" fill="#6FCF9E"/>
+        <circle cx="260" cy="210" r="4" fill="#EAF1F7"/>
+        <text x="26" y="230" fill="#AEC4D6" font-size="9" font-family="IBM Plex Mono">EU</text>
+        <text x="150" y="118" fill="#AEC4D6" font-size="9" font-family="IBM Plex Mono">BLACK SEA</text>
+        <text x="292" y="48" fill="#AEC4D6" font-size="9" font-family="IBM Plex Mono">CENTRAL ASIA</text>
+        <text x="234" y="228" fill="#AEC4D6" font-size="9" font-family="IBM Plex Mono">MALAYSIA</text>
+      </svg>
+
+      <div class="wrap">
+        <span class="eyebrow"><span class="dot"></span>
+          <span class="lang-en">Weekly Market Intelligence</span>
+          <span class="lang-ru">Еженедельная рыночная аналитика</span>
+        </span>
+        <h1 class="lang-en">Analytical Report on the Vegetable Oils and Fats Market</h1>
+        <h1 class="lang-ru">Аналитический отчёт по рынку растительных масел и жиров</h1>
+
+        <p class="hero-sub lang-en">Key events, 3–10 August 2026. A week-on-week read on prices, production, trade flows and logistics across the global oils &amp; fats complex — what changed, by how much, why, and what it means for the market.</p>
+        <p class="hero-sub lang-ru">Ключевые события за 3–10 августа 2026 года. Недельная динамика цен, производства, торговых потоков и логистики на мировом рынке масел и жиров — что изменилось, насколько, почему и что это значит для рынка.</p>
+
+        <div class="pill-row">
+          <span class="pill lang-en">European Union (EU-27)</span><span class="pill lang-ru">Европейский союз (ЕС-27)</span>
+          <span class="pill lang-en">United Kingdom</span><span class="pill lang-ru">Великобритания</span>
+          <span class="pill lang-en">Balkan Region</span><span class="pill lang-ru">Балканский регион</span>
+          <span class="pill lang-en">Central Asia &amp; Caucasus</span><span class="pill lang-ru">Центральная Азия и Кавказ</span>
+        </div>
+
+        <div class="hero-ctas">
+          <a href="#signals" class="btn btn-primary">
+            <span class="lang-en">View key signals</span><span class="lang-ru">К ключевым сигналам</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#pricing" class="btn btn-ghost">
+            <span class="lang-en">Jump to price table</span><span class="lang-ru">К таблице цен</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="ticker-wrap">
+        <div class="ticker-track" id="tickerTrack"><!-- filled by JS (duplicated for loop) --></div>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <!-- ===== STAT STRIP ===== -->
+      <div class="stat-strip">
+        <div class="stat">
+          <div class="stat-num down">16.55M<span style="font-size:14px;">t</span></div>
+          <div class="stat-label lang-en">EU 2026/27 vegetable-oil output forecast, −5% vs. prior estimate</div>
+          <div class="stat-label lang-ru">Прогноз производства раст. масел в ЕС 2026/27, −5% к прошлой оценке</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num up">$588M</div>
+          <div class="stat-label lang-en">Ukraine rapeseed-oil export revenue, up from $194M</div>
+          <div class="stat-label lang-ru">Выручка Украины от экспорта рапсового масла — рост с $194 млн</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num down">−31%</div>
+          <div class="stat-label lang-en">EU palm oil imports, year-on-year (MY 2026/27)</div>
+          <div class="stat-label lang-ru">Импорт пальмового масла в ЕС, год к году (сезон 2026/27)</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num down">1,450<span style="font-size:14px;"> m³/s</span></div>
+          <div class="stat-label lang-en">Record-low Danube inflow at the Iron Gate hydro plants</div>
+          <div class="stat-label lang-ru">Рекордно низкий приток Дуная у ГЭС «Джердап»</div>
+        </div>
+      </div>
+
+      <p class="block-intro" style="margin-top:6px;">
+        <span class="lang-en"><b>Overview.</b> The global vegetable oils and fats market showed mixed, not uniformly bearish, dynamics over the week of 3–10 August 2026. Malaysian palm oil futures eased toward MYR 4,650/tonne as a firmer ringgit and weaker rival edible oils outweighed seasonally supportive stock forecasts, while the soft-oil complex moved the other way: sunflower oil held at multi-month highs on Black Sea risk, and rapeseed and rapeseed oil rallied after Brussels cut its EU oilseed-production forecast by 770,000 tonnes. The dominant story of the week is supply-side tightening in Europe — drought is cutting oilseed and olive harvests just as Ukraine's export duty diverts raw material into domestic crushing, reshaping regional trade flows ahead of the 2026/27 season.</span>
+        <span class="lang-ru"><b>Обзор.</b> Мировой рынок растительных масел и жиров на неделе 3–10 августа 2026 года показал разнонаправленную, а не однозначно понижательную динамику. Фьючерсы на малайзийское пальмовое масло снизились к отметке 4650 ринггитов/т — укрепление ринггита и более слабые конкурирующие масла перевесили в целом благоприятные сезонные прогнозы по запасам. Комплекс мягких масел двигался в обратном направлении: подсолнечное масло удержалось на многомесячных максимумах на фоне рисков в Черном море, а рапс и рапсовое масло выросли в цене после того, как Брюссель снизил прогноз производства масличных в ЕС на 770 тыс. тонн. Главный сюжет недели — сокращение предложения в Европе: засуха снижает урожай масличных и оливок именно тогда, когда экспортная пошлина Украины перенаправляет сырьё на внутреннюю переработку, меняя региональные торговые потоки в преддверии сезона 2026/27.</span>
+      </p>
+
+      <!-- ===== SECTION I: KEY SIGNALS ===== -->
+      <section class="block" id="signals">
+        <div class="block-head">
+          <div class="block-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg>
+          </div>
+          <div>
+            <div class="block-eyebrow lang-en">Section I</div>
+            <div class="block-eyebrow lang-ru">Раздел I</div>
+            <h2 class="lang-en">Key Signals of the Week</h2>
+            <h2 class="lang-ru">Ключевые сигналы недели</h2>
+          </div>
+        </div>
+        <p class="block-intro">
+          <span class="lang-en">Five developments stand out this week as the most consequential for professional market participants, ranked by scale and likely follow-through into subsequent weeks. Click a signal to expand the full read.</span>
+          <span class="lang-ru">Пять событий недели заслуживают наибольшего внимания профессиональных участников рынка — по масштабу влияния и вероятному развитию в последующие недели. Нажмите на сигнал, чтобы раскрыть подробный разбор.</span>
+        </p>
+
+        <div id="signalsList"><!-- filled by JS --></div>
+      </section>
+
+      <!-- ===== SECTION II: PRICING ===== -->
+      <section class="block" id="pricing">
+        <div class="block-head">
+          <div class="block-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+          </div>
+          <div>
+            <div class="block-eyebrow lang-en">Section II</div>
+            <div class="block-eyebrow lang-ru">Раздел II</div>
+            <h2 class="lang-en">Pricing Dynamics &amp; Competitive Analysis</h2>
+            <h2 class="lang-ru">Динамика цен и конкурентный анализ</h2>
+          </div>
+        </div>
+        <p class="block-intro">
+          <span class="lang-en">Price action this week was not uniformly bearish: only palm oil moved lower, while soybeans, soybean oil, sunflower oil, rapeseed and rapeseed oil all firmed versus the prior week. That split points to two regional stories running in parallel — a stronger ringgit softening Asian benchmark prices, against tightening EU supply and persistent Black Sea risk pushing Western complex prices up.</span>
+          <span class="lang-ru">Ценовая динамика недели не была однозначно понижательной: снизилось только пальмовое масло, тогда как соя, соевое масло, подсолнечное масло, рапс и рапсовое масло выросли по отношению к предыдущей неделе. Это расхождение отражает два параллельных региональных сюжета — укрепление ринггита, сдерживающее азиатские бенчмарки, и сокращение предложения в ЕС на фоне сохраняющихся рисков в Черном море, толкающее вверх цены западного комплекса.</span>
+        </p>
+
+        <div class="chip-row" id="chipRow">
+          <button class="chip active" data-filter="all"><span class="dot"></span><span class="lang-en">All</span><span class="lang-ru">Все</span></button>
+          <button class="chip" data-filter="up"><span class="dot"></span><span class="lang-en">Up</span><span class="lang-ru">Рост</span></button>
+          <button class="chip" data-filter="down"><span class="dot"></span><span class="lang-en">Down</span><span class="lang-ru">Снижение</span></button>
+          <button class="chip" data-filter="flat"><span class="dot"></span><span class="lang-en">Flat</span><span class="lang-ru">Без изменений</span></button>
+        </div>
+
+        <div class="price-table-wrap">
+          <table class="price-table">
+            <thead>
+              <tr>
+                <th class="lang-en">Commodity</th><th class="lang-ru">Товар</th>
+                <th class="lang-en">Basis</th><th class="lang-ru">Базис</th>
+                <th class="lang-en">Current Price</th><th class="lang-ru">Текущая цена</th>
+                <th class="lang-en">WoW</th><th class="lang-ru">Δ Нед.</th>
+                <th class="lang-en">Why It Moved &amp; What It Means</th><th class="lang-ru">Почему и что это значит</th>
+              </tr>
+            </thead>
+            <tbody id="priceTbody"><!-- filled by JS --></tbody>
+          </table>
+          <div class="table-legend">
+            <span class="lang-en">WoW = direction of price movement versus the previous week (week-on-week).</span>
+            <span class="lang-ru">Δ Нед. = направление изменения цены по сравнению с предыдущей неделей (неделя к неделе).</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SECTION III: REGIONAL ===== -->
+      <section class="block" id="regional">
+        <div class="block-head">
+          <div class="block-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.9 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.9-3.8-9S9.5 5.7 12 3Z"/></svg>
+          </div>
+          <div>
+            <div class="block-eyebrow lang-en">Section III</div>
+            <div class="block-eyebrow lang-ru">Раздел III</div>
+            <h2 class="lang-en">Regional Markets Analysis</h2>
+            <h2 class="lang-ru">Анализ региональных рынков</h2>
+          </div>
+        </div>
+        <p class="block-intro">
+          <span class="lang-en">Organised by trade geography. Select a region, then open a country for the full weekly read.</span>
+          <span class="lang-ru">Структурировано по торговым регионам. Выберите регион, затем откройте страну для подробного обзора недели.</span>
+        </p>
+
+        <div class="corridor-strip">
+          <svg viewBox="0 0 900 90" fill="none" preserveAspectRatio="xMidYMid meet">
+            <line x1="40" y1="45" x2="860" y2="45" stroke="#DBDED4" stroke-width="1.5"/>
+            <g font-family="IBM Plex Mono" font-size="10.5" fill="#48586A">
+              <circle cx="120" cy="45" r="7" fill="#0B63B4"/><text x="120" y="72" text-anchor="middle" class="lang-en">W/N EUROPE</text><text x="120" y="72" text-anchor="middle" class="lang-ru">З/С ЕВРОПА</text>
+              <circle cx="340" cy="45" r="7" fill="#C68A2E"/><text x="340" y="72" text-anchor="middle" class="lang-en">S/C/E EUROPE</text><text x="340" y="72" text-anchor="middle" class="lang-ru">Ю/Ц/В ЕВРОПА</text>
+              <circle cx="560" cy="45" r="7" fill="#B23A32"/><text x="560" y="72" text-anchor="middle" class="lang-en">BLACK SEA</text><text x="560" y="72" text-anchor="middle" class="lang-ru">ЧЕРНОЕ МОРЕ</text>
+              <circle cx="780" cy="45" r="7" fill="#2E7D5A"/><text x="780" y="72" text-anchor="middle" class="lang-en">CENTRAL ASIA</text><text x="780" y="72" text-anchor="middle" class="lang-ru">ЦЕНТР. АЗИЯ</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="tabbar" id="tabbar">
+          <button class="tab-btn active" data-tab="eu"><span class="lang-en">Western &amp; Northern Europe</span><span class="lang-ru">Западная и Северная Европа</span></button>
+          <button class="tab-btn" data-tab="scee"><span class="lang-en">Southern, Central &amp; Eastern Europe</span><span class="lang-ru">Южная, Центральная и Восточная Европа</span></button>
+          <button class="tab-btn" data-tab="bsea"><span class="lang-en">Black Sea Region</span><span class="lang-ru">Черноморский регион</span></button>
+          <button class="tab-btn" data-tab="ca"><span class="lang-en">Central Asia &amp; Caucasus</span><span class="lang-ru">Центральная Азия и Кавказ</span></button>
+        </div>
+
+        <div class="tab-panel active" data-panel="eu" id="panel-eu"></div>
+        <div class="tab-panel" data-panel="scee" id="panel-scee"></div>
+        <div class="tab-panel" data-panel="bsea" id="panel-bsea"></div>
+        <div class="tab-panel" data-panel="ca" id="panel-ca"></div>
+      </section>
+
+      <!-- ===== SECTION IV: REGULATORY ===== -->
+      <section class="block" id="regulatory">
+        <div class="block-head">
+          <div class="block-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 7l9 4 9-4-9-4Z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg>
+          </div>
+          <div>
+            <div class="block-eyebrow lang-en">Section IV</div>
+            <div class="block-eyebrow lang-ru">Раздел IV</div>
+            <h2 class="lang-en">Regulatory Outlook</h2>
+            <h2 class="lang-ru">Регуляторный ландшафт</h2>
+          </div>
+        </div>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="info-card-head">
+              <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+              <h3 class="lang-en">EU Deforestation Regulation (EUDR)</h3>
+              <h3 class="lang-ru">Регламент ЕС о недопущении обезлесения (EUDR)</h3>
+            </div>
+            <p class="lang-en">The European Commission adopted a Delegated Act narrowing the Deforestation Regulation's scope (update of Annex I), alongside Implementing Regulation (EU) 2026/1565: soybeans for sowing are now excluded from compliance requirements, while palm oil derivatives used in oleochemicals, certain soaps and instant coffee have been added to the regulated list. <b>What it means:</b> a targeted expansion that adds traceability-documentation requirements for palm-derivative importers even as it eases the burden on seed trade.</p>
+            <p class="lang-ru">Европейская комиссия приняла делегированный акт, уточняющий сферу действия Регламента о недопущении обезлесения (обновление Приложения I), наряду с Имплементационным регламентом (ЕС) 2026/1565: соевые бобы для посева теперь полностью исключены из требований по соответствию, тогда как производные пальмового масла, используемые в олеохимии, отдельных видах мыла и растворимом кофе, добавлены в регулируемый перечень. <b>Что это значит:</b> точечное расширение регулирования, добавляющее требования к прослеживаемости для импортёров производных пальмового масла, при одновременном снижении нагрузки на торговлю семенами.</p>
+          </div>
+
+          <div class="info-card">
+            <div class="info-card-head">
+              <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v20M5 12h14"/><circle cx="12" cy="12" r="9"/></svg></div>
+              <h3 class="lang-en">EU Renewable Energy Directive III (RED III)</h3>
+              <h3 class="lang-ru">Директива ЕС по возобновляемой энергетике III (RED III)</h3>
+            </div>
+            <p class="lang-en">Spain's Council of Ministers approved its national RED III transport-decarbonization framework, while Germany's decision to abolish double-counting for Annex IX (Part A) oils has kept HVO and technical-fat spot prices at peak July levels. <b>What it means:</b> biofuel policy divergence between member states is becoming a real driver of regional fat/oil price spreads, and merits tracking country by country.</p>
+            <p class="lang-ru">Совет министров Испании утвердил национальную нормативную базу для целей декарбонизации транспорта в соответствии с RED III. Одновременно на немецком рынке сохраняется ценовой импульс на гидрообработанное растительное масло (HVO) на фоне решения отменить двойной зачёт для масел из Приложения IX (часть A), что удержало спотовые котировки на биотопливо и технический жир на пиковых уровнях июля. <b>Что это значит:</b> расхождение биотопливной политики между странами-членами становится реальным фактором региональных ценовых спредов на жиры и масла — заслуживает отслеживания в разрезе по странам.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SECTION V: LOGISTICS ===== -->
+      <section class="block" id="logistics">
+        <div class="block-head">
+          <div class="block-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="7" width="15" height="11" rx="1"/><path d="M16 10h4l3 3v5h-7"/><circle cx="6" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/></svg>
+          </div>
+          <div>
+            <div class="block-eyebrow lang-en">Section V</div>
+            <div class="block-eyebrow lang-ru">Раздел V</div>
+            <h2 class="lang-en">Logistics &amp; Supply Security</h2>
+            <h2 class="lang-ru">Логистика и надёжность поставок</h2>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="timeline">
+            <div class="tl-item">
+              <h4 class="lang-en">Record Kazakh rail exports to Central Asia</h4>
+              <h4 class="lang-ru">Рекордный ж/д экспорт Казахстана в Центральную Азию</h4>
+              <p class="lang-en">Kazakhstan Temir Zholy (KTZ) reported record grain and flour exports of 13.9 million tonnes for the September 2025–July 2026 period, with rail shipments to Uzbekistan up 36% to 5.8 million tonnes — underlining the growing rail capacity available for Central Asian agri-trade, including vegetable oil and oilseed cargo, along the same corridors. <i>(Source: KTZ.)</i></p>
+              <p class="lang-ru">Национальная компания «Қазақстан темір жолы» (KTZ) сообщила о рекордном экспорте зерна и муки — 13,9 млн тонн за период с сентября 2025 по июль 2026 года; железнодорожные перевозки в Узбекистан выросли на 36% — до 5,8 млн тонн. Это подчёркивает растущую доступность железнодорожных мощностей для агроторговли в Центральной Азии, включая перевозки растительного масла и масличных, по тем же коридорам. <i>(Источник: KTZ.)</i></p>
+            </div>
+            <div class="tl-item">
+              <h4 class="lang-en">Beyneu–Saksaulsk highway construction begins</h4>
+              <h4 class="lang-ru">Начало строительства автомагистрали Бейнеу — Сакcaульск</h4>
+              <p class="lang-en">Kazakhstan confirmed the start of construction on the new Beyneu–Saksaulsk highway, which President Tokayev says will cut roughly 1,000 km off transit times on the Trans-Caspian route — directly relevant to the China-to-Caspian (Aktau/Kuryk) logistics chain used to re-export Malaysian and other Asian oils into the region.</p>
+              <p class="lang-ru">Казахстан подтвердил начало строительства новой автомагистрали Бейнеу — Сакcaульск, которая, по словам президента Токаева, сократит транзитное время на Транскаспийском маршруте примерно на 1000 км — что напрямую связано с логистической цепочкой Китай – Каспий (порты Актау/Курык), используемой для реэкспорта малайзийских и других азиатских масел в регион.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+      <div class="wrap">
+        <div class="foot-brand">
+          <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="#C68A2E" stroke-width="1.4"/><path d="M16 8c3 4 5 6.5 5 10a5 5 0 0 1-10 0c0-3.5 2-6 5-10Z" fill="#C68A2E"/></svg>
+          <div>
+            <div class="foot-brand-text">International Marketing Agency Ltd</div>
+            <div class="foot-meta">
+              <span class="lang-en">Vegetable oils &amp; fats market intelligence</span>
+              <span class="lang-ru">Аналитика рынка растительных масел и жиров</span>
+            </div>
+          </div>
+        </div>
+        <div class="foot-meta">
+          <span class="lang-en">Key events: 3–10 August 2026</span><span class="lang-ru">Ключевые события: 3–10 августа 2026</span><br>
+          <span class="lang-en">Coverage: EU-27 · UK · Balkans · Central Asia · Caucasus</span>
+          <span class="lang-ru">Охват: ЕС-27 · Великобритания · Балканы · Центральная Азия · Кавказ</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<button class="back-top" id="backTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script>
+/* ============================= CONTENT DATA ============================= */
+const ARROW_UP = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+const ARROW_DOWN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>';
+const ARROW_FLAT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>';
+const CHEV = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>';
+
+const tickers = [
+  {en:"Crude Palm Oil", ru:"Пальмовое масло", val:"4,629–4,702 MYR/T", dir:"down"},
+  {en:"Soybeans", ru:"Соя-бобы", val:"1,151–1,168 ¢/bu", dir:"up"},
+  {en:"Soybean Oil", ru:"Соевое масло", val:"1,492–1,503 USD/T", dir:"flat"},
+  {en:"Sunflower Oil", ru:"Подсолнечное масло", val:"1,370–1,385 USD/T", dir:"up"},
+  {en:"Rapeseed", ru:"Рапс", val:"504–533 EUR/T", dir:"up"},
+  {en:"Rapeseed Oil", ru:"Рапсовое масло", val:"1,360–1,385 EUR/T", dir:"up"},
+];
+
+const signals = [
+  {
+    rank:"1",
+    title_en:"EU harvest outlook cut sharply — bullish for European oils", title_ru:"Резкое снижение прогноза урожая в ЕС — бычий фактор для европейских масел",
+    region_en:"Region: EU-27", region_ru:"Регион: ЕС-27",
+    what_en:"The European Commission cut its 2026/27 EU vegetable-oil production forecast to 16.55 million tonnes and lowered its total oilseed forecast.",
+    what_ru:"Европейская комиссия снизила прогноз производства растительных масел в ЕС на сезон 2026/27 до 16,55 млн тонн и понизила общий прогноз по масличным культурам.",
+    mag_en:"−5% vs. the previous estimate; oilseed forecast down 770,000 tonnes.",
+    mag_ru:"−5% к предыдущей оценке; прогноз по масличным снижен на 770 тыс. тонн.",
+    why_en:"Record heat and drought are damaging oilseed and olive yields, prompting an earlier-than-usual harvest.",
+    why_ru:"Рекордная жара и засуха повреждают урожай масличных и оливок, что ускоряет начало уборочной кампании.",
+    imp_en:"Structural support for European rapeseed and olive oil spot prices into autumn, and added cost pressure for EU refiners and food manufacturers.",
+    imp_ru:"Структурная поддержка спотовых цен на рапсовое и оливковое масло в Европе на осень, а также дополнительное давление на издержки европейских переработчиков и производителей продуктов питания.",
+    src_en:"Source: European Commission.", src_ru:"Источник: Европейская комиссия."
+  },
+  {
+    rank:"2",
+    title_en:"Palm oil eases on currency and rival-oil pressure", title_ru:"Пальмовое масло дешевеет под давлением курса ринггита и конкурирующих масел",
+    region_en:"Region: Malaysia / global benchmark", region_ru:"Регион: Малайзия / мировой бенчмарк",
+    what_en:"Bursa Malaysia CPO futures fell toward MYR 4,650/tonne, reversing the prior week's gains.",
+    what_ru:"Фьючерсы на CPO на бирже Bursa Malaysia снизились к отметке 4650 ринггитов/т, растеряв рост предыдущей недели.",
+    mag_en:"Range MYR 4,629–4,702/t.",
+    mag_ru:"Диапазон 4629–4702 ринггита/т.",
+    why_en:"A stronger ringgit and weaker Dalian/Chicago edible-oil prices weighed on demand, with positioning ahead of the 10 August MPOB stocks report, which consensus expects to show a fourth consecutive monthly stock build.",
+    why_ru:"Укрепление ринггита и снижение цен на конкурирующие масла на биржах Далянь и Чикаго давили на спрос; участники рынка также занимали позиции перед публикацией отчёта MPOB по запасам 10 августа — консенсус-прогноз предполагает четвёртый подряд ежемесячный рост запасов.",
+    imp_en:"Near-term cap on palm oil — the world's cheapest vegetable oil and a key substitute for sunflower/soybean oil in Asian and African import markets. A confirmed stock build on 10 August would extend the pullback.",
+    imp_ru:"Краткосрочное ограничение роста для пальмового масла — самого доступного растительного масла в мире и ключевого заменителя подсолнечного/соевого масла на рынках Азии и Африки. Подтверждение роста запасов 10 августа может продлить снижение.",
+    src_en:"Source: Bursa Malaysia; MPOB consensus surveys.", src_ru:"Источник: Bursa Malaysia; консенсус-опросы MPOB."
+  },
+  {
+    rank:"3",
+    title_en:"Ukraine's export duty triples rapeseed-oil export revenue", title_ru:"Экспортная пошлина Украины утраивает выручку от экспорта рапсового масла",
+    region_en:"Region: Ukraine / Black Sea", region_ru:"Регион: Украина / Черное море",
+    what_en:"Ukraine's rapeseed crushing hit a record 1.3 million tonnes (42% of the harvest); rapeseed oil exports more than doubled to 520,000 tonnes.",
+    what_ru:"Переработка рапса в Украине достигла рекордных 1,3 млн тонн (42% урожая); экспорт рапсового масла увеличился более чем вдвое — до 520 тыс. тонн.",
+    mag_en:"Export revenue up from $194M to $588M year-on-year (≈ 3x).",
+    mag_ru:"Экспортная выручка выросла со $194 млн до $588 млн в годовом выражении (≈ в 3 раза).",
+    why_en:"A 10% export duty on raw rapeseed introduced this season is redirecting seed away from export and toward domestic crushers.",
+    why_ru:"Введённая в этом сезоне 10%-ная экспортная пошлина на сырой рапс перенаправляет сырьё с экспорта на внутреннюю переработку.",
+    imp_en:"A structural shift in Black Sea trade flows — from raw-seed exporter to oil exporter — that adds Ukrainian value-added supply competing with EU and Russian rapeseed oil, while reducing seed available to EU crushers that rely on Ukrainian imports.",
+    imp_ru:"Структурный сдвиг в торговых потоках Черноморского региона — от экспорта сырья к экспорту готового продукта; это увеличивает предложение украинского рапсового масла с добавленной стоимостью, конкурирующего с маслом из ЕС и России, и одновременно сокращает объём сырья, доступного европейским переработчикам, зависящим от украинского импорта.",
+    src_en:"Source: Ukrainian trade/customs data.", src_ru:"Источник: торгово-таможенная статистика Украины."
+  },
+  {
+    rank:"4",
+    title_en:"Black Sea war-risk keeps sunflower oil at multi-month highs", title_ru:"Военные риски в Черном море удерживают подсолнечное масло у многомесячных максимумов",
+    region_en:"Region: Black Sea / Russia", region_ru:"Регион: Черное море / Россия",
+    what_en:"FOB Black Sea sunflower oil is holding at 1,370–1,385 USD/t, near multi-month highs; Turkey formally proposed a Ukraine–Russia moratorium on strikes against merchant shipping.",
+    what_ru:"Подсолнечное масло на условиях FOB Черное море держится в диапазоне 1370–1385 долл./т, вблизи многомесячных максимумов; Турция официально предложила Украине и России мораторий на удары по торговым судам.",
+    mag_en:"Russian sunflower-oil exports for August projected down ≈40% y/y to ≈150,000 tonnes.",
+    mag_ru:"Экспорт подсолнечного масла из России в августе прогнозируется ниже примерно на 40% г/г — около 150 тыс. тонн.",
+    why_en:"Elevated war-risk insurance and freight costs, plus Indian buyers substituting Russian volume with palm oil as logistics risk rises.",
+    why_ru:"Повышенные премии за военные риски страхования и рост фрахтовых ставок, а также замещение индийскими покупателями российских объёмов пальмовым маслом на фоне роста логистических рисков.",
+    imp_en:"The freight/insurance premium is structurally repricing Black Sea soft oils; a diplomatic breakthrough on shipping safety is the key downside risk to current price levels.",
+    imp_ru:"Премия за фрахт/страхование структурно переоценивает мягкие масла Черноморского региона; дипломатический прорыв в вопросах безопасности судоходства — ключевой риск снижения текущих ценовых уровней.",
+    src_en:"Source: FOB Black Sea market quotes; Turkish MFA via Anadolu Agency.", src_ru:"Источник: рыночные котировки FOB Черное море; МИД Турции (Anadolu Agency)."
+  },
+  {
+    rank:"5",
+    title_en:"Danube water crisis disrupts Balkan oilseed logistics", title_ru:"Кризис уровня воды на Дунае нарушает логистику масличных на Балканах",
+    region_en:"Region: Serbia / Balkans", region_ru:"Регион: Сербия / Балканы",
+    what_en:"Danube inflows at the Iron Gate dropped to a record low of 1,450 m³/s.",
+    what_ru:"Приток воды на гидроузле «Джердап» (Железные Ворота) упал до рекордно низкого уровня — 1450 м³/с.",
+    mag_en:"Record low for the gauge; a recurring, worsening drought pattern.",
+    mag_ru:"Рекордный минимум показателя; повторяющаяся и усиливающаяся засуха.",
+    why_en:"Severe, recurring drought across Serbia.",
+    why_ru:"Сильная, повторяющаяся засуха на территории Сербии.",
+    imp_en:"Barge logistics for oilseed cargo are being disrupted just as the harvest ramps up, pushing up transport costs across the Balkan corridor and reinforcing the region's supply-tightening narrative alongside Romania and Bulgaria.",
+    imp_ru:"Речная баржевая логистика для перевозки масличных нарушается именно в разгар уборочной кампании, что повышает транспортные издержки по всему балканскому коридору и усиливает общий нарратив дефицита предложения в регионе — наряду с Румынией и Болгарией.",
+    src_en:"Source: Iron Gate hydropower plant data.", src_ru:"Источник: данные ГЭС «Джердап»."
+  },
+];
+
+const prices = [
+  {c_en:"Crude Palm Oil", c_ru:"Пальмовое масло (CPO)", basis:"Bursa Malaysia Derivatives", price:"4,629–4,702 MYR/T", dir:"down",
+   com_en:"Fell toward MYR 4,650/t, reversing recent gains as a stronger ringgit and weaker rival oils on the Dalian and Chicago exchanges weighed on demand; caps upside ahead of the 10 August MPOB stocks report.",
+   com_ru:"Снизилось к отметке 4650 ринггитов/т, растеряв недавний рост: укрепление ринггита и снижение цен на конкурирующие масла на биржах Далянь и Чикаго ограничили спрос; рост цены сдерживается ожиданием отчёта MPOB по запасам 10 августа."},
+  {c_en:"Soybeans", c_ru:"Соя-бобы", basis_en:"CBOT (continuous)", basis_ru:"CBOT (непрерывный контракт)", price:"1,151–1,168 ¢/bu", dir:"up",
+   com_en:"Rose above $11.6/bu, rebounding from a five-week low on stronger Chinese demand and firmer crude oil prices; supports the wider oilseed complex.",
+   com_ru:"Выросла выше $11,6 за бушель, отыгрывая пятинедельный минимум на фоне более сильного спроса со стороны Китая и роста цен на нефть; поддерживает весь масличный комплекс."},
+  {c_en:"Soybean Oil", c_ru:"Соевое масло", basis:"CBOT", price:"1,492–1,503 USD/T", dir:"flat",
+   com_en:"USDA's weekly Export Sales report put accumulated US soybean sales at 41.715 MMT, down 19% y/y — a demand-pacing signal more than a price mover, but a headwind for US soy-oil competitiveness abroad.",
+   com_ru:"Еженедельный отчёт USDA по экспортным продажам зафиксировал накопленные продажи сои США на уровне 41,715 млн тонн — на 19% ниже год к году; это скорее сигнал темпов спроса, чем прямой ценовой драйвер, но фактор давления на конкурентоспособность американского соевого масла на внешних рынках."},
+  {c_en:"Sunflower Oil", c_ru:"Подсолнечное масло", basis_en:"FOB Black Sea", basis_ru:"FOB Черное море", price:"1,370–1,385 USD/T", dir:"up",
+   com_en:"At multi-month highs on escalating Black Sea risk and sharply higher freight/insurance costs; the structural war-risk premium keeps a floor under prices.",
+   com_ru:"У многомесячных максимумов на фоне эскалации рисков в Черном море и резкого роста ставок фрахта/страхования; структурная военная премия удерживает цену от снижения."},
+  {c_en:"Rapeseed", c_ru:"Рапс", basis:"MATIF", price:"504–533 EUR/T", dir:"up",
+   com_en:"Rallied after the European Commission cut its EU 2026/27 oilseed-production forecast by 770,000 tonnes, tightening the supply outlook.",
+   com_ru:"Выросла после того, как Еврокомиссия снизила прогноз производства масличных в ЕС на сезон 2026/27 на 770 тыс. тонн, ужесточив баланс предложения."},
+  {c_en:"Rapeseed Oil", c_ru:"Рапсовое масло", basis_en:"FOB EU", basis_ru:"FOB ЕС", price:"1,360–1,385 EUR/T", dir:"up",
+   com_en:"Tracked the rapeseed futures rally on MATIF, passing tighter seed supply through to the refined-oil price.",
+   com_ru:"Следует за ростом фьючерсов на рапс на MATIF: более сжатое предложение сырья транслируется в цену готового продукта."},
+];
+
+const regions = {
+  eu: [
+    {name_en:"European Union", name_ru:"Европейский союз",
+     body_en:"Import volumes of oilseeds and vegetable oils into the EU remain well below last year's pace: palm oil imports into the EU fell 31% y/y in MY 2026/27, per the European Commission, confirming the long-run demand-dampening effect of the Renewable Energy Directive (RED). Brussels also cut its EU vegetable-oil production forecast for 2026/27 to 16.55 million tonnes — 5% below the previous estimate — a reduction that has already fed through into firmer localized rapeseed oil spot prices. Heatwave and drought damage to the olive harvest points the same way: industry contacts expect an earlier harvest with lower yields, and renewed upward pressure on the wider European vegetable oil complex over the coming weeks. <i>(Source: European Commission.)</i>",
+     body_ru:"Импорт масличных и растительных масел в ЕС остаётся заметно ниже прошлогодних темпов: по данным Еврокомиссии, импорт пальмового масла в ЕС в сезоне 2026/27 упал на 31% г/г, что подтверждает долгосрочный сдерживающий эффект Директивы ЕС по возобновляемой энергетике (RED) на спрос. Брюссель также снизил прогноз производства растительных масел в ЕС на 2026/27 сезон до 16,55 млн тонн — на 5% ниже предыдущей оценки; это снижение уже отразилось в укреплении локальных спотовых цен на рапсовое масло. Ущерб от жары и засухи для урожая оливок говорит о том же: по данным отраслевых источников, ожидается более ранняя уборка при более низкой урожайности, что усиливает ожидания дальнейшего роста цен на весь европейский комплекс растительных масел в ближайшие недели. <i>(Источник: Европейская комиссия.)</i>"},
+    {name_en:"United Kingdom", name_ru:"Великобритания",
+     body_en:"The UK oils-and-fats market is seeing less of a weekly price shock and more of a structural cost re-rating: sector value is estimated at £1.2bn for 2026, down 3.3% y/y, as consolidation trims the number of domestic manufacturers to roughly 73. Demand for traceable waste fats, tallow and used cooking oil remains the key growth driver, underpinned by the Renewable Transport Fuel Obligation (RTFO), which continues to intensify competition among collectors, refiners and renderers for feedstock.",
+     body_ru:"Рынок масел и жиров Великобритании переживает не столько недельный ценовой шок, сколько структурную переоценку издержек: объём сектора оценивается в £1,2 млрд на 2026 год — на 3,3% ниже год к году, поскольку консолидация сокращает число отечественных производителей примерно до 73. Ключевым драйвером роста остаётся спрос на прослеживаемые отходы жиров, технический жир (tallow) и использованное растительное масло, поддерживаемый программой RTFO (Renewable Transport Fuel Obligation), что усиливает конкуренцию между сборщиками, переработчиками и рендерами за сырьё."},
+    {name_en:"France", name_ru:"Франция",
+     body_en:"Extreme heat and a severe rainfall deficit have hit French oilseed and food output; the growers' association Légumes de France is warning of significant damage to crop yields and expects material upward price pressure on regional vegetable and olive oils from this autumn. Short-term, FOB Paris rapeseed softened slightly to around €680/t on temporary, harvest-related selling — but with the EU import pool down overall, local crushers are being advised to use any dip to secure coverage rather than read it as a trend reversal.",
+     body_ru:"Экстремальная жара и острый дефицит осадков нанесли удар по урожаю масличных и продовольственных культур во Франции; ассоциация производителей Légumes de France предупреждает о существенном ущербе для урожайности и ожидает заметного роста цен на региональные растительные и оливковые масла начиная с осени. В краткосрочном плане котировки рапса FOB Париж немного снизились — примерно до €680/т — на фоне временных продаж, связанных с уборкой урожая, однако при общем сокращении импортного пула ЕС местным переработчикам рекомендуется использовать любое снижение цены для обеспечения сырьевого покрытия, а не рассматривать его как разворот тренда."},
+    {name_en:"Spain", name_ru:"Испания",
+     body_en:"Spain's Ministry of Agriculture trimmed its sunflower crop outlook on prolonged heat and drought, pointing to a 7% EU-wide decline in sunflower seed output and tighter regional cooking-oil availability. Olive oil faces similar pressure: successive heatwaves, drought and wildfires have cut domestic olive oil output 9% this season, forcing reliance on carryover stocks and raising concern over 2026/27 yield potential.",
+     body_ru:"Министерство сельского хозяйства Испании понизило прогноз урожая подсолнечника на фоне продолжительной жары и засухи, что указывает на снижение производства подсолнечника в ЕС на 7% и сокращение доступности региональных пищевых масел. Оливковое масло испытывает аналогичное давление: череда волн жары, засуха и лесные пожары привели к падению внутреннего производства оливкового масла на 9% в текущем сезоне, вынуждая участников рынка полагаться на переходящие запасы и усиливая опасения по поводу урожая 2026/27."},
+  ],
+  scee: [
+    {name_en:"Romania", name_ru:"Румыния",
+     body_en:"Romanian sunflower seed opened the 2026/27 season at firm premiums — new-crop FOB Constanța offers are quoted around $650–660/t — supported by multi-year-low EU ending stocks, continued Turkish demand under duty-free quotas, and disrupted Ukrainian shipments. Early harvesting is underway due to accelerated crop maturity, though heat/moisture stress is a risk to final oil content. Separately, Ukraine and Romania agreed to expand transshipment capacity at Constanța — more border checkpoints, 24/7 phytosanitary controls, and additional floating-crane offshore transfer — to keep grain and oil flows moving around Black Sea disruption.",
+     body_ru:"Румынский рынок подсолнечника открыл сезон 2026/27 с высокими премиями — новые экспортные предложения FOB Констанца котируются на уровне $650–660/т — на фоне многолетних минимумов переходящих запасов в ЕС, устойчивого турецкого спроса в рамках беспошлинных квот и нарушений украинских отгрузок. Ранняя уборка урожая уже началась из-за ускоренного созревания культур, хотя жара и влагостресс остаются риском для итогового масличного содержания. Отдельно Украина и Румыния договорились о расширении перевалочных мощностей в порту Констанца — увеличение числа пограничных пунктов пропуска, переход фитосанитарного контроля на круглосуточный режим и дополнительная плавучая крановая перевалка в открытом море — чтобы поддерживать движение зерновых и масличных потоков в обход сбоев в Черном море."},
+    {name_en:"Poland", name_ru:"Польша",
+     body_en:"Domestic rapeseed advanced 0.5% on the week to 2,330 PLN/t (+12.7% y/y), with refined rapeseed oil up 1.1% to 5,176 PLN/t, as drought-linked crop strain tightens raw-material availability for a crushing sector that structurally outstrips domestic seed supply.",
+     body_ru:"Внутренние цены на рапс в Польше выросли на 0,5% за неделю — до 2330 злотых/т (+12,7% г/г), а цены на рафинированное рапсовое масло прибавили 1,1% за ту же неделю — до 5176 злотых/т — на фоне вызванного засухой сокращения предложения сырья для перерабатывающего сектора, структурно превышающего внутреннее производство семян."},
+    {name_en:"Bulgaria", name_ru:"Болгария",
+     body_en:"Bulgaria's Agriculture Ministry introduced mandatory pesticide-residue testing for sunflower seed imports from Ukraine, raising the compliance bar for cross-border trade even as spot prices for local seed hold in a narrow range — a sign the Balkan crop outlook for 2026/27 is stabilizing even as freight and geopolitical risk persist.",
+     body_ru:"Министерство сельского хозяйства Болгарии ввело обязательное тестирование на остатки пестицидов для импорта подсолнечника из Украины, повысив планку соответствия для трансграничной торговли, при этом спотовые цены на местные семена удерживаются в узком диапазоне — признак того, что прогноз балканского урожая 2026/27 стабилизируется, несмотря на сохраняющиеся фрахтовые и геополитические риски."},
+    {name_en:"Serbia", name_ru:"Сербия",
+     body_en:"The Danube's record-low inflow at the Iron Gate (1,450 m³/s) is disrupting river-barge logistics for oilseed cargo, pushing up transport costs and adding a regional logistics constraint on top of the drought's direct crop impact.",
+     body_ru:"Рекордно низкий приток воды на гидроузле «Джердап» (1450 м³/с) нарушает речную баржевую логистику для перевозки масличных, повышая транспортные издержки и добавляя региональное логистическое ограничение к прямому влиянию засухи на урожай."},
+    {name_en:"Moldova", name_ru:"Молдова",
+     body_en:"Local producers are lobbying for the reinstatement of import licensing on Ukrainian grain and oilseeds, arguing that the recent removal of controls has exposed domestic processors to price pressure from cheaper imports — a policy dispute worth watching for its read-through to regional trade barriers.",
+     body_ru:"Местные производители добиваются восстановления лицензирования импорта зерна и масличных из Украины, утверждая, что недавняя отмена импортного контроля подвергла внутренних переработчиков ценовому давлению со стороны более дешёвого импортного сырья — спор в сфере торговой политики, за развитием которого стоит следить с точки зрения его влияния на региональные торговые барьеры."},
+  ],
+  bsea: [
+    {name_en:"Ukraine", name_ru:"Украина",
+     body_en:"Kernel Holding, one of Ukraine's largest oilseed processors, grew total vegetable-oil sales 2% y/y to 1.44 million tonnes despite ongoing port and security disruption — evidence the sector is adapting logistics rather than losing volume. The bigger structural move is the export-duty-driven crushing surge detailed under Key Signals above (record 1.3 million tonnes of rapeseed handled; oil exports more than doubling to 520,000 tonnes; revenue up to $588M). On shipping safety, Turkish Foreign Minister Hakan Fidan said Ankara has proposed a mutual Ukraine–Russia moratorium on strikes against commercial vessels — already put to Kyiv and now relayed to Moscow — after repeated attacks affected Turkish-flagged and Turkish-crewed ships. Fidan said neither side is yet ready for real concessions, but called for urgent de-escalation. <i>(Source: Anadolu Agency interview.)</i>",
+     body_ru:"Kernel Holding, один из крупнейших переработчиков масличных Украины, увеличил общие продажи растительного масла на 2% г/г — до 1,44 млн тонн, несмотря на сохраняющиеся проблемы с инфраструктурой и безопасностью в Черном море — свидетельство того, что отрасль адаптирует логистику, а не теряет объёмы. Более значимый структурный сдвиг — рост переработки на фоне экспортной пошлины, описанный в разделе «Ключевые сигналы недели» (рекордные 1,3 млн тонн переработанного рапса; экспорт масла вырос более чем вдвое — до 520 тыс. тонн; выручка — до $588 млн). В сфере безопасности судоходства министр иностранных дел Турции Хакан Фидан заявил, что Анкара предложила взаимный мораторий Украины и России на удары по торговым судам — предложение уже передано Киеву и теперь направлено Москве — после того как атаки затронули суда под турецким флагом и с турецкими экипажами. Фидан отметил, что ни одна из сторон пока не готова к реальным уступкам, но призвал к срочной деэскалации. <i>(Источник: интервью Anadolu Agency.)</i>"},
+    {name_en:"Russia", name_ru:"Россия",
+     body_en:"Russian sunflower-oil exports for August are projected down ≈40% y/y to around 150,000 tonnes on Black Sea/Sea of Azov logistics and security disruption, with Indian buyers substituting toward palm oil and other soft oils. Longer-term, forecasters flag a widening structural gap between Russian production (projected 9.91 million tonnes) and domestic consumption (3.36 million tonnes) — leaving crushers almost three times over-reliant on export markets just as those export lanes are becoming costlier and riskier to use.",
+     body_ru:"Экспорт подсолнечного масла из России в августе прогнозируется ниже примерно на 40% г/г — около 150 тыс. тонн — на фоне нарушений логистики и рисков безопасности в Черном и Азовском морях, при этом индийские покупатели замещают российские объёмы пальмовым и другими мягкими маслами. В более долгосрочной перспективе аналитики отмечают увеличивающийся структурный разрыв между производством в России (прогноз — 9,91 млн тонн) и внутренним потреблением (3,36 млн тонн) — это оставляет перерабатывающие мощности почти втрое зависимыми от экспортных рынков именно в тот момент, когда использование экспортных маршрутов становится дороже и рискованнее."},
+  ],
+  ca: [
+    {name_en:"Kazakhstan", name_ru:"Казахстан",
+     body_en:"Astana confirmed it is steering oilseed acreage toward higher-margin sunflower and flaxseed for the 2026 harvest, aiming to boost domestic refinery feedstock and expand refined-fat exports to Central Asian neighbors and China — a supply-side move worth tracking as it scales. <i>(Source: Ministry of Agriculture of Kazakhstan.)</i>",
+     body_ru:"Астана подтвердила курс на смещение посевных площадей масличных в пользу более маржинальных подсолнечника и льна для урожая 2026 года, с целью увеличить сырьевую базу для отечественных маслоперерабатывающих заводов и нарастить экспорт готовых жиров в страны Центральной Азии и Китай — сдвиг со стороны предложения, за масштабированием которого стоит следить. <i>(Источник: Министерство сельского хозяйства Казахстана.)</i>"},
+    {name_en:"Uzbekistan", name_ru:"Узбекистан",
+     body_en:"Fayz Oil is developing high-oleic sunflower- and palm-olein-based frying-oil formulations for the HoReCa and food-processing segments, presented at an industry conference in Tashkent on food safety and palm oil solutions for Central Asia — part of a broader push to substitute imported specialty oils with domestic production.",
+     body_ru:"Компания Fayz Oil разрабатывает рецептуры фритюрных масел на основе высокоолеинового подсолнечного масла и пальмового олеина для сегментов HoReCa и пищевой переработки, представленные на отраслевой конференции в Ташкенте, посвящённой безопасности пищевой продукции и решениям на основе пальмового масла для Центральной Азии — часть более широкой стратегии по замещению импортных специализированных масел отечественным производством."},
+    {name_en:"Georgia", name_ru:"Грузия",
+     body_en:"Geostat's July data showed a 0.9% monthly fall in Food and Non-Alcoholic Beverages prices — a mild tailwind for retail fat and oil costs, though with limited read-through for regional trade absent further data. <i>(Source: National Statistics Office of Georgia.)</i>",
+     body_ru:"Данные Национальной службы статистики Грузии (Geostat) за июль показали снижение цен в категории «Продукты питания и безалкогольные напитки» на 0,9% за месяц — умеренный позитивный фактор для розничных цен на жиры и масла, хотя его значение для региональной торговли ограничено без дополнительных данных. <i>(Источник: Национальная служба статистики Грузии.)</i>"},
+  ],
+};
+
+/* ============================= RENDER ============================= */
+function dirIcon(dir){ return dir==="up"?ARROW_UP:dir==="down"?ARROW_DOWN:ARROW_FLAT; }
+function dirLabel(dir){
+  return {en:{up:"Up",down:"Down",flat:"Flat"}, ru:{up:"Рост",down:"Снижение",flat:"Без изм."}};
+}
+
+// ---- ticker (duplicate list for seamless loop)
+(function renderTicker(){
+  const track = document.getElementById('tickerTrack');
+  const build = () => tickers.map(t => `
+    <div class="tick">
+      <span class="lang-en">${t.en}</span><span class="lang-ru">${t.ru}</span>
+      <b>${t.val}</b>
+      <span class="arrow-${t.dir}">${dirIcon(t.dir)}</span>
+    </div>`).join('');
+  track.innerHTML = build() + build();
+})();
+
+// ---- signals
+(function renderSignals(){
+  const list = document.getElementById('signalsList');
+  list.innerHTML = signals.map((s,i) => `
+    <div class="signal${i===0?' open':''}">
+      <button class="signal-head" data-toggle-signal>
+        <span class="signal-rank">${s.rank}</span>
+        <span class="signal-head-text">
+          <span class="signal-title lang-en">${s.title_en}</span>
+          <span class="signal-title lang-ru">${s.title_ru}</span>
+          <span class="signal-region lang-en">${s.region_en}</span>
+          <span class="signal-region lang-ru">${s.region_ru}</span>
+        </span>
+        <span class="signal-chev">${CHEV}</span>
+      </button>
+      <div class="signal-body">
+        <div class="signal-grid">
+          <div class="signal-field"><div class="field-label lang-en">What Changed</div><div class="field-label lang-ru">Что изменилось</div><p class="lang-en">${s.what_en}</p><p class="lang-ru">${s.what_ru}</p></div>
+          <div class="signal-field"><div class="field-label lang-en">Magnitude</div><div class="field-label lang-ru">Масштаб</div><p class="lang-en">${s.mag_en}</p><p class="lang-ru">${s.mag_ru}</p></div>
+          <div class="signal-field"><div class="field-label lang-en">Why</div><div class="field-label lang-ru">Почему</div><p class="lang-en">${s.why_en}</p><p class="lang-ru">${s.why_ru}</p></div>
+          <div class="signal-field"><div class="field-label lang-en">Market Impact</div><div class="field-label lang-ru">Влияние на рынок</div><p class="lang-en">${s.imp_en}</p><p class="lang-ru">${s.imp_ru}</p></div>
+          <div class="signal-source lang-en">${s.src_en}</div>
+          <div class="signal-source lang-ru">${s.src_ru}</div>
+        </div>
+      </div>
+    </div>`).join('');
+
+  list.querySelectorAll('[data-toggle-signal]').forEach(btn=>{
+    btn.addEventListener('click', ()=> btn.closest('.signal').classList.toggle('open'));
+  });
+})();
+
+// ---- price table
+(function renderPrices(){
+  const tbody = document.getElementById('priceTbody');
+  tbody.innerHTML = prices.map(p => `
+    <tr data-dir="${p.dir}">
+      <td class="cell-commodity"><span class="lang-en">${p.c_en}</span><span class="lang-ru">${p.c_ru}</span></td>
+      <td class="cell-basis">${p.basis ? `<span>${p.basis}</span>` : `<span class="lang-en">${p.basis_en}</span><span class="lang-ru">${p.basis_ru}</span>`}</td>
+      <td class="cell-price">${p.price}</td>
+      <td><span class="badge ${p.dir}">${dirIcon(p.dir)}<span class="lang-en">${dirLabel()['en'][p.dir]}</span><span class="lang-ru">${dirLabel()['ru'][p.dir]}</span></span></td>
+      <td class="cell-comment"><span class="lang-en">${p.com_en}</span><span class="lang-ru">${p.com_ru}</span></td>
+    </tr>`).join('');
+
+  document.getElementById('chipRow').addEventListener('click', (e)=>{
+    const chip = e.target.closest('.chip');
+    if(!chip) return;
+    document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+    chip.classList.add('active');
+    const f = chip.dataset.filter;
+    document.querySelectorAll('#priceTbody tr').forEach(row=>{
+      row.classList.toggle('hidden', f!=='all' && row.dataset.dir!==f);
+    });
+  });
+})();
+
+// ---- regional tabs + country accordions
+(function renderRegions(){
+  Object.keys(regions).forEach(key=>{
+    const panel = document.getElementById('panel-'+key);
+    panel.innerHTML = regions[key].map(c => `
+      <div class="country">
+        <button class="country-head" data-toggle-country>
+          <span class="country-name lang-en">${c.name_en}</span>
+          <span class="country-name lang-ru">${c.name_ru}</span>
+          <span class="country-chev">${CHEV}</span>
+        </button>
+        <div class="country-body">
+          <div class="country-body-inner">
+            <p class="lang-en">${c.body_en}</p>
+            <p class="lang-ru">${c.body_ru}</p>
+          </div>
+        </div>
+      </div>`).join('');
+  });
+
+  // Kyrgyzstan note appended to Central Asia panel
+  document.getElementById('panel-ca').insertAdjacentHTML('beforeend', `
+    <div class="note-card">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+      <div>
+        <span class="lang-en">Note: Kyrgyzstan is omitted this week — the only available data point is a long-range forecast to 2030 with no material week-on-week change to report.</span>
+        <span class="lang-ru">Примечание: Кыргызстан не включён в обзор на этой неделе — единственная доступная информация представляет собой долгосрочный прогноз до 2030 года без существенных изменений в недельной динамике.</span>
+      </div>
+    </div>`);
+
+  document.querySelectorAll('[data-toggle-country]').forEach(btn=>{
+    btn.addEventListener('click', ()=> btn.closest('.country').classList.toggle('open'));
+  });
+  // open first country of each panel by default
+  document.querySelectorAll('.tab-panel').forEach(p=>{
+    const first = p.querySelector('.country');
+    if(first) first.classList.add('open');
+  });
+
+  document.getElementById('tabbar').addEventListener('click', (e)=>{
+    const btn = e.target.closest('.tab-btn');
+    if(!btn) return;
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-'+btn.dataset.tab).classList.add('active');
+  });
+})();
+
+/* ============================= UI: LANGUAGE, NAV, SCROLL ============================= */
+function setLang(lang){
+  document.documentElement.setAttribute('data-lang', lang);
+  document.documentElement.setAttribute('lang', lang);
+  document.getElementById('btnEN').classList.toggle('active', lang==='en');
+  document.getElementById('btnRU').classList.toggle('active', lang==='ru');
+  try{ localStorage.setItem('report-lang', lang); }catch(e){}
+}
+document.getElementById('btnEN').addEventListener('click', ()=>setLang('en'));
+document.getElementById('btnRU').addEventListener('click', ()=>setLang('ru'));
+let savedLang = 'en';
+try{ savedLang = localStorage.getItem('report-lang') || 'en'; }catch(e){}
+setLang(savedLang);
+
+// mobile sidebar
+const sidebar = document.getElementById('sidebar');
+const scrim = document.getElementById('scrim');
+function openSidebar(){ sidebar.classList.add('open'); scrim.classList.add('show'); }
+function closeSidebar(){ sidebar.classList.remove('open'); scrim.classList.remove('show'); }
+document.getElementById('hamburgerBtn').addEventListener('click', openSidebar);
+document.getElementById('sidebarClose').addEventListener('click', closeSidebar);
+scrim.addEventListener('click', closeSidebar);
+document.querySelectorAll('.nav-item').forEach(a=>a.addEventListener('click', closeSidebar));
+
+// scroll progress + back-to-top + scrollspy
+const progressFill = document.getElementById('progressFill');
+const backTop = document.getElementById('backTop');
+const navItems = document.querySelectorAll('.nav-item');
+const sections = ['overview','signals','pricing','regional','regulatory','logistics'].map(id=>document.getElementById(id));
+
+function onScroll(){
+  const doc = document.documentElement;
+  const scrollTop = doc.scrollTop || document.body.scrollTop;
+  const height = doc.scrollHeight - doc.clientHeight;
+  progressFill.style.width = height>0 ? (scrollTop/height*100)+'%' : '0%';
+  backTop.classList.toggle('show', scrollTop > 600);
+
+  let current = sections[0];
+  const probe = scrollTop + 140;
+  sections.forEach(sec=>{ if(sec && sec.offsetTop <= probe) current = sec; });
+  navItems.forEach(a=>{
+    a.classList.toggle('active', current && a.getAttribute('href') === '#'+current.id);
+  });
+}
+document.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+backTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+</script>
+</body>
+</html>
