@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MPOC Terminal - July 2026</title>
+    <title>MPOC Terminal - August 2026</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -13,8 +13,8 @@
                 extend: {
                     colors: {
                         bloomberg: {
-                            dark: '#0a0d14',
-                            card: '#121722',
+                            dark: '#07090e',
+                            card: '#0f141d',
                             border: '#1e293b',
                             orange: '#f59e0b',
                             accent: '#3b82f6',
@@ -26,76 +26,112 @@
             }
         }
     </script>
-    <!-- Font Inter & Telegram WebApp SDK -->
+    <!-- Font Inter & JetBrains Mono -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
         .mono { font-family: 'JetBrains Mono', monospace; }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="bg-bloomberg-dark text-bloomberg-text min-h-screen pb-24 selection:bg-orange-500 selection:text-white">
+<body class="bg-bloomberg-dark text-bloomberg-text min-h-screen pb-28 selection:bg-orange-500 selection:text-white">
 
-    <!-- Header -->
-    <header class="sticky top-0 z-50 bg-bloomberg-dark/95 backdrop-blur border-b border-bloomberg-border px-4 py-3">
+    <header class="sticky top-0 z-50 bg-bloomberg-dark/95 backdrop-blur border-b border-bloomberg-border px-3 py-3">
         <div class="flex items-center justify-between">
             <div class="flex items-center space-x-2">
                 <div class="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse"></div>
-                <h1 class="font-bold text-xs sm:text-sm tracking-widest uppercase text-orange-400">
-                    MPOC TERMINAL <span class="text-bloomberg-muted font-normal text-xs">| <span data-i18n="header_sub">Июль 2026</span></span>
+                <h1 class="font-bold text-xs tracking-widest uppercase text-orange-400">
+                    MPOC TERMINAL <span class="text-bloomberg-muted font-normal text-[11px]">| <span data-i18n="header_sub">Август 2026</span></span>
                 </h1>
             </div>
             <div class="flex items-center space-x-2">
-                <!-- Language Switcher -->
-                <button onclick="toggleLanguage()" id="lang-btn" class="text-xs mono bg-bloomberg-card hover:bg-bloomberg-border px-3 py-1 rounded border border-bloomberg-border text-orange-400 font-semibold transition-all">
+                <button onclick="toggleLanguage()" id="lang-btn" class="text-xs mono bg-bloomberg-card hover:bg-bloomberg-border px-2.5 py-1.5 rounded border border-bloomberg-border text-orange-400 font-semibold transition-all">
                     🌐 EN / RU
+                </button>
+                <!-- Hamburger Menu Button for Mobile Navigation -->
+                <button onclick="toggleMenu()" class="bg-bloomberg-card p-2 rounded border border-bloomberg-border text-orange-400 focus:outline-none">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
             </div>
         </div>
 
-        <!-- Tab Navigation -->
-        <div class="flex space-x-1.5 mt-3 overflow-x-auto hide-scrollbar pb-1">
-            <button onclick="switchTab('overview')" id="btn-overview" class="tab-btn px-3 py-1.5 text-xs font-semibold rounded bg-orange-500 text-white transition-all whitespace-nowrap shadow-sm">📊 <span data-i18n="tab_overview">Обзор</span></button>
-            <button onclick="switchTab('centralasia')" id="btn-centralasia" class="tab-btn px-3 py-1.5 text-xs font-semibold rounded bg-bloomberg-card text-bloomberg-muted hover:text-white transition-all whitespace-nowrap border border-bloomberg-border">🌍 <span data-i18n="tab_ca">Ц. Азия & РУ/УКР</span></button>
-            <button onclick="switchTab('europe')" id="btn-europe" class="tab-btn px-3 py-1.5 text-xs font-semibold rounded bg-bloomberg-card text-bloomberg-muted hover:text-white transition-all whitespace-nowrap border border-bloomberg-border">🇪🇺 <span data-i18n="tab_eu">Европа & Регулирование</span></button>
-            <button onclick="switchTab('table')" id="btn-table" class="tab-btn px-3 py-1.5 text-xs font-semibold rounded bg-bloomberg-card text-bloomberg-muted hover:text-white transition-all whitespace-nowrap border border-bloomberg-border">📈 <span data-i18n="tab_data">Импорт MPOB</span></button>
+        <!-- Dropdown Menu Drawer for Mobile Touch Ease -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-bloomberg-card border-b border-bloomberg-border shadow-2xl p-3 space-y-2 z-50">
+            <button onclick="switchTab('overview'); toggleMenu();" id="menu-btn-overview" class="w-full text-left px-3 py-2.5 text-xs font-semibold rounded bg-orange-500 text-white flex items-center space-x-2">
+                <span>📊</span> <span data-i18n="tab_overview">Обзор недели</span>
+            </button>
+            <button onclick="switchTab('centralasia'); toggleMenu();" id="menu-btn-centralasia" class="w-full text-left px-3 py-2.5 text-xs font-semibold rounded bg-bloomberg-dark text-bloomberg-muted hover:text-white flex items-center space-x-2">
+                <span>🌍</span> <span data-i18n="tab_ca">Ц. Азия & РУ/УКР</span>
+            </button>
+            <button onclick="switchTab('europe'); toggleMenu();" id="menu-btn-europe" class="w-full text-left px-3 py-2.5 text-xs font-semibold rounded bg-bloomberg-dark text-bloomberg-muted hover:text-white flex items-center space-x-2">
+                <span>🇪🇺</span> <span data-i18n="tab_eu">Европа & Регулирование</span>
+            </button>
+            <button onclick="switchTab('balances'); toggleMenu();" id="menu-btn-balances" class="w-full text-left px-3 py-2.5 text-xs font-semibold rounded bg-bloomberg-dark text-bloomberg-muted hover:text-white flex items-center space-x-2">
+                <span>📈</span> <span data-i18n="tab_balances">Региональный баланс</span>
+            </button>
         </div>
     </header>
 
-    <main class="p-3.5 max-w-4xl mx-auto space-y-4">
+    <main class="p-3 max-w-lg mx-auto space-y-3.5">
 
         <!-- TAB 1: OVERVIEW -->
-        <div id="tab-overview" class="space-y-4 tab-content">
-            <div class="bg-bloomberg-card border border-bloomberg-border rounded-lg p-4 shadow-lg relative overflow-hidden">
+        <div id="tab-overview" class="space-y-3.5 tab-content">
+            <div class="bg-bloomberg-card border border-bloomberg-border rounded-xl p-3.5 shadow-lg relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 rounded-full blur-2xl"></div>
-                <div class="text-[10px] uppercase tracking-wider text-orange-400 font-semibold mb-1" data-i18n="exec_subtitle">Макроэкономический анализ | Июль 2026</div>
-                <h2 class="text-lg font-bold mb-2 text-white" data-i18n="exec_title">Рекордная переработка и региональные тренды</h2>
+                <div class="text-[10px] uppercase tracking-wider text-orange-400 font-semibold mb-1" data-i18n="exec_subtitle">Главные сигналы недели (11–17 августа 2026)</div>
+                <h2 class="text-base font-bold mb-2 text-white leading-snug" data-i18n="exec_title">Логистический кризис в Черном море и засуха в ЕС</h2>
                 <p class="text-xs text-bloomberg-muted leading-relaxed mb-3" data-i18n="exec_desc">
-                    Мировой рынок масличных в августе 2026 года характеризуется высоким спросом. USDA прогнозирует рекордный объем переработки сои в США на уровне <strong class="text-white">2.78 млрд бушелей</strong> и мировой показатель на уровне <strong class="text-white">384.8 млн тонн</strong>.
+                    Удары по портам Одессы, Новороссийска и Тамани заблокировали морской экспорт из РФ и Украины. Экспорт подсолнечного масла из РФ в августе может упасть на <strong class="text-rose-400">40% (до 150 тыс. т)</strong>. Ценовая инверсия: российское масло ($1400–1410/т FOB) стало дороже украинского ($1380–1400/т FOB) из-за ставок фрахта и военных рисков.
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                    <div class="bg-bloomberg-dark/60 p-2.5 rounded border border-bloomberg-border">
-                        <div class="text-[11px] text-bloomberg-muted" data-i18n="card_malaysia_stocks">Запасы пальмового масла в Малайзии</div>
-                        <div class="text-base font-bold mono text-orange-400 mt-0.5">2.63M MT</div>
-                        <div class="text-[11px] text-emerald-400 mt-0.5">↑ 3.32% MoM (5-мес. максимум)</div>
+                <div class="grid grid-cols-1 gap-2.5">
+                    <div class="bg-bloomberg-dark/70 p-3 rounded-lg border border-bloomberg-border flex items-center justify-between">
+                        <div>
+                            <div class="text-[11px] text-bloomberg-muted">Crude Palm Oil (BMD)</div>
+                            <div class="text-sm font-bold mono text-orange-400 mt-0.5">4,670 - 4,820 RM/T</div>
+                        </div>
+                        <div class="text-right text-[11px] text-emerald-400 font-medium" data-i18n="card_cpo_desc">Рост на экспортных трендах</div>
                     </div>
-                    <div class="bg-bloomberg-dark/60 p-2.5 rounded border border-bloomberg-border">
-                        <div class="text-[11px] text-bloomberg-muted" data-i18n="card_india_imports">Импорт пальмового масла в Индию</div>
-                        <div class="text-base font-bold mono text-blue-400 mt-0.5">719k MT</div>
-                        <div class="text-[11px] text-emerald-400 mt-0.5">↑ 48% MoM рост</div>
+                    <div class="bg-bloomberg-dark/70 p-3 rounded-lg border border-bloomberg-border flex items-center justify-between">
+                        <div>
+                            <div class="text-[11px] text-bloomberg-muted">Soybean Oil (CBOT)</div>
+                            <div class="text-sm font-bold mono text-blue-400 mt-0.5">1,500 - 1,560 USD/T</div>
+                        </div>
+                        <div class="text-right text-[11px] text-emerald-400 font-medium" data-i18n="card_soy_desc">Рекордные отгрузки в Китай</div>
                     </div>
-                    <div class="bg-bloomberg-dark/60 p-2.5 rounded border border-bloomberg-border">
-                        <div class="text-[11px] text-bloomberg-muted" data-i18n="card_eu_imports">Импорт пальмового масла в ЕС</div>
-                        <div class="text-base font-bold mono text-purple-400 mt-0.5">476k MT</div>
-                        <div class="text-[11px] text-rose-400 mt-0.5">↓ 20% YoY падение</div>
+                    <div class="bg-bloomberg-dark/70 p-3 rounded-lg border border-bloomberg-border flex items-center justify-between">
+                        <div>
+                            <div class="text-[11px] text-bloomberg-muted">Rapeseed (MATIF)</div>
+                            <div class="text-sm font-bold mono text-purple-400 mt-0.5">538 - 546 EUR/T</div>
+                        </div>
+                        <div class="text-right text-[11px] text-rose-400 font-medium" data-i18n="card_rapeseed_desc">Мелководье на Рейне</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bursa Malaysia CPO Price Dynamics (Last 7 Days Chart) -->
+            <div class="bg-bloomberg-card border border-bloomberg-border rounded-xl p-3.5 shadow-lg">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-semibold text-xs text-orange-400 uppercase tracking-wider" data-i18n="chart_title">📊 Динамика цен CPO Bursa Malaysia (Последние 7 дней)</h3>
+                    <span class="text-[10px] bg-orange-500/20 text-orange-400 px-2 py-0.5 rounded mono">RM / Tonne</span>
+                </div>
+                <p class="text-xs text-bloomberg-muted mb-3" data-i18n="chart_desc">Динамика спотовых котировок сырого пальмового масла на бирже в Куала-Лумпуре за прошедшую неделю.</p>
+                <div class="bg-bloomberg-dark/80 p-3 rounded-lg border border-bloomberg-border">
+                    <!-- Canvas for Interactive Price Chart -->
+                    <div class="relative w-full h-40">
+                        <canvas id="cpoPriceChart" class="w-full h-full"></canvas>
+                    </div>
+                    <div class="flex justify-between text-[10px] text-bloomberg-muted mt-2 border-t border-bloomberg-border pt-2 mono">
+                        <span>11 Авг: 4,670</span>
+                        <span>14 Авг: 4,740</span>
+                        <span class="text-orange-400 font-bold">17 Авг: 4,820 RM</span>
                     </div>
                 </div>
             </div>
 
             <!-- Interactive Scenario Simulator -->
-            <div class="bg-bloomberg-card border border-bloomberg-border rounded-lg p-4 shadow-lg">
+            <div class="bg-bloomberg-card border border-bloomberg-border rounded-xl p-3.5 shadow-lg">
                 <div class="flex items-center justify-between mb-2">
                     <h3 class="font-semibold text-xs text-orange-400 uppercase tracking-wider" data-i18n="sim_title">⚡ Симулятор торговых потоков региона</h3>
                     <span class="text-[10px] bg-orange-500/20 text-orange-400 px-2 py-0.5 rounded mono">Live Model</span>
@@ -107,16 +143,16 @@
                             <span data-i18n="sim_multiplier">Множитель роста: <strong id="multiplier-val" class="text-orange-400">1.34x</strong></span>
                             <span class="text-bloomberg-muted">База: 82,685 MT</span>
                         </div>
-                        <input type="range" id="growth-slider" min="0.8" max="2.0" step="0.05" value="1.34" oninput="updateSimulation(this.value)" class="w-full accent-orange-500 bg-bloomberg-dark h-2 rounded cursor-pointer">
+                        <input type="range" id="growth-slider" min="0.8" max="2.0" step="0.05" value="1.34" oninput="updateSimulation(this.value)" class="w-full accent-orange-500 bg-bloomberg-dark h-2.5 rounded cursor-pointer">
                     </div>
-                    <div class="bg-bloomberg-dark/80 p-3 rounded flex items-center justify-between border border-bloomberg-border">
+                    <div class="bg-bloomberg-dark/80 p-3 rounded-lg flex items-center justify-between border border-bloomberg-border">
                         <div>
                             <div class="text-[11px] text-bloomberg-muted" data-i18n="sim_vol">Симулированный объем региона:</div>
-                            <div id="simulated-total" class="text-lg font-bold mono text-white">110,871 MT</div>
+                            <div id="simulated-total" class="text-base font-bold mono text-white">110,871 MT</div>
                         </div>
                         <div class="text-right">
                             <div class="text-[11px] text-bloomberg-muted" data-i18n="sim_yoy">Динамика YoY:</div>
-                            <div id="simulated-pct" class="text-base font-bold mono text-emerald-400">+34.0%</div>
+                            <div id="simulated-pct" class="text-sm font-bold mono text-emerald-400">+34.0%</div>
                         </div>
                     </div>
                 </div>
@@ -124,106 +160,115 @@
         </div>
 
         <!-- TAB 2: CENTRAL ASIA & RUSSIA/UKRAINE -->
-        <div id="tab-centralasia" class="space-y-4 tab-content hidden">
-            <div class="bg-bloomberg-card border border-bloomberg-border rounded-lg p-4 shadow-lg">
+        <div id="tab-centralasia" class="space-y-3.5 tab-content hidden">
+            <div class="bg-bloomberg-card border border-bloomberg-border rounded-xl p-3.5 shadow-lg">
                 <div class="text-[10px] uppercase tracking-wider text-orange-400 font-semibold mb-1" data-i18n="focus_primary">Главный фокус | Война и логистика</div>
-                <h3 class="text-base font-bold mb-2 text-white" data-i18n="ru_ua_title">Россия и Украина: Перенаправление потоков и урожай</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-                    <div class="bg-bloomberg-dark/60 p-3 rounded border border-bloomberg-border space-y-1.5">
+                <h3 class="text-sm font-bold mb-2 text-white" data-i18n="ru_ua_title">Россия и Украина: Санкции, пошлины и транспортный коллапс</h3>
+                <div class="space-y-3 text-xs">
+                    <div class="bg-bloomberg-dark/70 p-3 rounded-lg border border-bloomberg-border space-y-1.5">
                         <div class="font-bold text-orange-400 flex items-center justify-between">
                             <span>🇷🇺 Россия</span>
-                            <span class="text-[10px] mono bg-orange-500/20 px-2 py-0.5 rounded">Рапс +44%</span>
+                            <span class="text-[10px] mono bg-orange-500/20 px-2 py-0.5 rounded" data-i18n="ru_duty">Пошлина 7,748 руб/т</span>
                         </div>
                         <p class="text-bloomberg-muted leading-relaxed" data-i18n="ru_desc">
-                            Сбор рапса достиг 1.6 млн тонн (+44% YoY). Остановка терминала в Тамани после ударов БПЛА заставила экспортеров перенаправить потоки на Балтику и Каспийский коридор через Иран, увеличив сроки доставки на 1-2 недели.
+                            Экспортная пошлина на подсолнечное масло выросла на +135%. Масложировой союз прогнозирует дефицит сырья для МЭЗов в 2026 г. на уровне 2.5 млн тонн. Удары БПЛА по портам Новороссийска и Тамани парализовали отгрузки.
                         </p>
                     </div>
-                    <div class="bg-bloomberg-dark/60 p-3 rounded border border-bloomberg-border space-y-1.5">
+                    <div class="bg-bloomberg-dark/70 p-3 rounded-lg border border-bloomberg-border space-y-1.5">
                         <div class="font-bold text-blue-400 flex items-center justify-between">
                             <span>🇺🇦 Украина</span>
-                            <span class="text-[10px] mono bg-blue-500/20 px-2 py-0.5 rounded">Урожай 21.9M MT</span>
+                            <span class="text-[10px] mono bg-blue-500/20 px-2 py-0.5 rounded" data-i18n="ua_stock">Запасы: 947k т подсолнечника</span>
                         </div>
                         <p class="text-bloomberg-muted leading-relaxed" data-i18n="ua_desc">
-                            Переработка внутри страны превысила сырьевой экспорт (переработано 9.66 млн тонн подсолнечника). Стоимость автоперевозок в ЕС подскочила с €100 до €170–200/т, стимулируя выпуск масел с высокой добавленной стоимостью.
+                            Запасы истощены, переработка снизилась, однако в сентябре стартует массовый новый урожай (Kernel, Allseeds). Закупка рапса на заводах просела до €455–495/т CPT на фоне заторов на Дунае.
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-bloomberg-card border border-bloomberg-border rounded-lg p-4 shadow-lg">
-                <div class="text-[10px] uppercase tracking-wider text-orange-400 font-semibold mb-1" data-i18n="ca_hub_subtitle">Центральноазиатский хаб переработки</div>
-                <h3 class="text-base font-bold mb-2 text-white" data-i18n="ca_hub_title">Доминирование Казахстана и стратегия Узбекистана</h3>
-                <div class="space-y-2.5 text-xs text-bloomberg-muted leading-relaxed">
-                    <div class="bg-bloomberg-dark/60 p-2.5 rounded border border-bloomberg-border">
-                        <strong class="text-white" data-i18n="kz_title">Казахстан:</strong> Посевные площади масличных выросли на <strong class="text-orange-400">+30% YoY</strong> (>5.17 млн га). Обеспечивает <strong class="text-white">~90%</strong> импорта растительного масла в Таджикистан и Узбекистан, перехватывая экспортные ниши Китая.
+            <div class="bg-bloomberg-card border border-bloomberg-border rounded-xl p-3.5 shadow-lg">
+                <div class="text-[10px] uppercase tracking-wider text-orange-400 font-semibold mb-1" data-i18n="ca_hub_subtitle">Центральноазиатский хаб и ТИТР</div>
+                <h3 class="text-sm font-bold mb-2 text-white" data-i18n="ca_hub_title">Казахстан, Узбекистан и Средний коридор</h3>
+                <div class="space-y-3 text-xs text-bloomberg-muted leading-relaxed">
+                    <div class="bg-bloomberg-dark/70 p-3 rounded-lg border border-bloomberg-border">
+                        <strong class="text-white" data-i18n="kz_title">Казахстан:</strong> <span data-i18n="kz_desc">Посевные площади масличных выросли на <strong class="text-orange-400">+30%</strong> (5.18 млн га, подсолнечник — 2.2 млн га). Строительство нового МЭЗ («Атамекен-Агро»). Запуск автодороги Бейнеу – Саксаульск и контейнеров Nomad Express по ТИТР в обход Черного моря.</span>
                     </div>
-                    <div class="bg-bloomberg-dark/60 p-2.5 rounded border border-bloomberg-border">
-                        <strong class="text-white" data-i18n="uz_title">Узбекистан:</strong> Импорт пальмового масла вырос на <strong class="text-emerald-400">+14% YoY</strong> (13,032 MT). Делегация APVO в Китае оптимизирует переработку шрота. Узбекистан переходит от импортозависимости к роли регионального хаба переработки.
+                    <div class="bg-bloomberg-dark/70 p-3 rounded-lg border border-bloomberg-border space-y-2">
+                        <div>
+                            <strong class="text-white" data-i18n="uz_title">Узбекистан:</strong> <span data-i18n="uz_desc">Импорт из Казахстана вырос на <strong class="text-emerald-400">+31%</strong> (до 553 тыс. т, доля >90%). Обсуждение акциза на импорт пальмового масла ($139/т) для стимулирования собственной переработки.</span>
+                        </div>
+                        <!-- Chamber of Commerce position -->
+                        <div class="bg-bloomberg-card p-3 rounded-lg border border-orange-500/40 text-bloomberg-text">
+                            <div class="text-[10px] text-orange-400 font-bold uppercase tracking-wider mb-1" data-i18n="chamber_title">Позиция Торгово-промышленной палаты Узбекистана:</div>
+                            <p class="text-[11px] text-bloomberg-muted leading-relaxed" data-i18n="chamber_desc">
+                                Торгово-промышленная палата Республики Узбекистан выступила с критикой данного акциза, предупреждая, что введение фискального сбора на пальмовое масло приведет к неизбежному росту цен на маргарины, кондитерские и молочные жиры, усилив инфляционное давление на потребительском рынке.
+                            </p>
+                        </div>
                     </div>
-                    <div class="bg-bloomberg-dark/60 p-2.5 rounded border border-bloomberg-border">
-                        <strong class="text-white" data-i18n="kg_tj_title">Кыргызстан и Таджикистан:</strong> Производство нерафинированного масла в Кыргызстане упало на <strong class="text-rose-400">7.6%</strong> (4,200 тонн). Таджикистан полностью зависит от внешних поставок, где ценовая политика диктуется Казахстаном.
+                    <div class="bg-bloomberg-dark/70 p-3 rounded-lg border border-bloomberg-border">
+                        <strong class="text-white" data-i18n="kg_ge_title">Кыргызстан & Грузия:</strong> <span data-i18n="kg_ge_desc">Кыргызстан увеличил импорт из Казахстана (+49.1%), снизив зависимость от РФ. Грузия сохраняет критическую зависимость от поставок масла из РФ (+25.6% в I полугодии).</span>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- TAB 3: EUROPE & REGULATIONS -->
-        <div id="tab-europe" class="space-y-4 tab-content hidden">
-            <div class="bg-bloomberg-card border border-bloomberg-border rounded-lg p-4 shadow-lg">
+        <div id="tab-europe" class="space-y-3.5 tab-content hidden">
+            <div class="bg-bloomberg-card border border-bloomberg-border rounded-xl p-3.5 shadow-lg">
                 <div class="text-[10px] uppercase tracking-wider text-orange-400 font-semibold mb-1" data-i18n="focus_secondary">Второстепенный фокус | Климат и биотопливо</div>
-                <h3 class="text-base font-bold mb-2 text-white" data-i18n="eu_title">Европейский Союз: Засуха против мандатов возобновляемой энергетики</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-bloomberg-muted">
-                    <div class="bg-bloomberg-dark/60 p-3 rounded border border-bloomberg-border space-y-1.5">
+                <h3 class="text-sm font-bold mb-2 text-white" data-i18n="eu_title">Европейский Союз: Засуха в Германии/Польше и бум HVO</h3>
+                <div class="space-y-3 text-xs text-bloomberg-muted">
+                    <div class="bg-bloomberg-dark/70 p-3 rounded-lg border border-bloomberg-border space-y-1.5">
                         <div class="font-bold text-white">🇩🇪 Германия & 🇵🇱 Польша</div>
-                        <p data-i18n="eu_ger_pol">Аномальная жара сократила урожай озимого рапса в Германии на 20% (3.3 млн тонн). Польский урожай снизился до 2.8 млн тонн при сохранении запрета на агроимпорт с Украины.</p>
+                        <p data-i18n="eu_ger_pol">Засуха сократила урожай в Германии на 3 млн тонн (€600 млн убытков). В Польше прогноз сбора рапса снижен с 3.6 до 2.8 млн тонн. Мелководье на Рейне парализовало речные баржи.</p>
                     </div>
-                    <div class="bg-bloomberg-dark/60 p-3 rounded border border-bloomberg-border space-y-1.5">
-                        <div class="font-bold text-white">🇳🇱 Нидерланды & 🇬🇧 Великобритания</div>
-                        <p data-i18n="eu_ned_uk">SkyNRG и KLM запустили проект завода SAF (DSL-01) в Нидерландах. Урожай рапса в УК превысил 5-летний средний показатель на 18%, строго соблюдая требования HEFA/UCO.</p>
+                    <div class="bg-bloomberg-dark/70 p-3 rounded-lg border border-bloomberg-border space-y-1.5">
+                        <div class="font-bold text-white">🇪🇸 Испания & 🇧🇬 Болгария</div>
+                        <p data-i18n="eu_esp_bul">Успешные испытания 100% HVO на железной дороге Renfe. Болгария увеличила урожай рапса на 104.3% (582 тыс. т), сделав его самой прибыльной культурой страны.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-bloomberg-card border border-bloomberg-border rounded-lg p-4 shadow-lg">
+            <div class="bg-bloomberg-card border border-bloomberg-border rounded-xl p-3.5 shadow-lg">
                 <div class="text-[10px] uppercase tracking-wider text-orange-400 font-semibold mb-1" data-i18n="reg_title">Регуляторная политика</div>
-                <h3 class="text-base font-bold mb-2 text-white" data-i18n="reg_subtitle">EUDR, RED III и стандарты MOAH</h3>
-                <div class="space-y-2 text-xs text-bloomberg-muted">
-                    <div class="p-2.5 bg-bloomberg-dark/60 rounded border border-bloomberg-border flex items-start space-x-2">
+                <h3 class="text-sm font-bold mb-2 text-white" data-i18n="reg_subtitle">EUDR, RED III и стандарты MOAH (Октябрь 2026)</h3>
+                <div class="space-y-2.5 text-xs text-bloomberg-muted">
+                    <div class="p-3 bg-bloomberg-dark/70 rounded-lg border border-bloomberg-border flex items-start space-x-2">
                         <span class="text-orange-400 font-bold">1.</span>
-                        <div><strong class="text-white" data-i18n="reg_eudr">Регламент EUDR:</strong> Срок соблюдения для пальмового масла и сои установлен на 30 декабря 2026 года. Производные продукты — до 30 декабря 2027 года.</div>
+                        <div><strong class="text-white" data-i18n="reg_eudr">Регламент EUDR:</strong> <span data-i18n="reg_eudr_desc">Сроки подачи Due Diligence — 30 декабря 2026 г. (крупный бизнес) и 30 июня 2027 г. (SME). Более 50% ферм в Азии и Африке испытывают трудности с геокартированием.</span></div>
                     </div>
-                    <div class="p-2.5 bg-bloomberg-dark/60 rounded border border-bloomberg-border flex items-start space-x-2">
+                    <div class="p-3 bg-bloomberg-dark/70 rounded-lg border border-bloomberg-border flex items-start space-x-2">
                         <span class="text-orange-400 font-bold">2.</span>
-                        <div><strong class="text-white" data-i18n="reg_red">RED III iLUC Фаза-аут:</strong> Полный отказ от пальмового и соевого масел как сырья для биотоплива к 2030 году (снижение порогов с 71.4% в 2025 до 14.3% в 2029).</div>
+                        <div><strong class="text-white" data-i18n="reg_red">RED III & HVO Class III:</strong> <span data-i18n="reg_red_desc">Норматив выбросов ПГ в Испании -14.5% к 2030 г. Дефицит качественного сырья HVO стимулирует прямые закупки растительных масел.</span></div>
                     </div>
-                    <div class="p-2.5 bg-bloomberg-dark/60 rounded border border-bloomberg-border flex items-start space-x-2">
+                    <div class="p-3 bg-bloomberg-dark/70 rounded-lg border border-bloomberg-border flex items-start space-x-2">
                         <span class="text-orange-400 font-bold">3.</span>
-                        <div><strong class="text-white" data-i18n="reg_moah">Стандарты MOAH:</strong> Введение обязательных жестких лимитов на содержание минеральных углеводородов (MOAH) в растительных маслах в октябре 2026 года.</div>
+                        <div><strong class="text-white" data-i18n="reg_moah">Стандарты MOAH:</strong> <span data-i18n="reg_moah_desc">Обязательные лимиты на минеральные углеводороды (C10–C50) в пищевых маслах вступают в силу в октябре 2026 года.</span></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- TAB 4: MPOB IMPORT DATA -->
-        <div id="tab-table" class="space-y-4 tab-content hidden">
-            <div class="bg-bloomberg-card border border-bloomberg-border rounded-lg p-4 shadow-lg">
+        <!-- TAB 4: BALANCES & MPOB IMPORT DATA -->
+        <div id="tab-balances" class="space-y-3.5 tab-content hidden">
+            <div class="bg-bloomberg-card border border-bloomberg-border rounded-xl p-3.5 shadow-lg">
                 <div class="flex items-center justify-between mb-3">
                     <div>
-                        <div class="text-[10px] uppercase tracking-wider text-orange-400 font-semibold" data-i18n="table_subtitle">Данные MPOB</div>
-                        <h3 class="text-base font-bold text-white" data-i18n="table_title">Импорт масложировой продукции Малайзии</h3>
+                        <div class="text-[10px] uppercase tracking-wider text-orange-400 font-semibold" data-i18n="balances_subtitle">Региональный баланс</div>
+                        <h3 class="text-base font-bold text-white" data-i18n="balances_title">Баланс MPOB (Янв-Июль 2026)</h3>
                     </div>
-                    <span class="text-[10px] mono bg-orange-500/20 text-orange-400 px-2 py-1 rounded">Янв-Июль 2026</span>
+                    <span class="text-[10px] mono bg-orange-500/20 text-orange-400 px-2 py-1 rounded">Итог: 110,871 MT</span>
                 </div>
-                <p class="text-xs text-bloomberg-muted mb-3" data-i18n="table_desc">Совокупный импорт региона вырос на <strong class="text-emerald-400">+34%</strong> до <strong class="text-white">110,871 тонн</strong>.</p>
+                <p class="text-xs text-bloomberg-muted mb-3" data-i18n="balances_desc">Совокупный объем импорта пальмовой продукции регионом вырос на +34% благодаря увеличению поставок в РФ, Украину и страны Балтии.</p>
                 
                 <!-- Search filter -->
                 <div class="mb-3">
-                    <input type="text" id="table-search" placeholder="Поиск страны / Search country..." onkeyup="filterTable()" class="w-full bg-bloomberg-dark border border-bloomberg-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-orange-500">
+                    <input type="text" id="table-search" placeholder="Поиск страны / Search country..." onkeyup="filterTable()" class="w-full bg-bloomberg-dark border border-bloomberg-border rounded-lg px-3 py-2.5 text-xs text-white focus:outline-none focus:border-orange-500">
                 </div>
 
-                <div class="overflow-x-auto max-h-[380px] overflow-y-auto border border-bloomberg-border rounded">
+                <div class="overflow-x-auto max-h-[420px] overflow-y-auto border border-bloomberg-border rounded-lg">
                     <table id="import-table" class="w-full text-left border-collapse text-xs">
-                        <thead class="bg-bloomberg-dark sticky top-0 text-bloomberg-muted uppercase tracking-wider">
+                        <thead class="bg-bloomberg-dark sticky top-0 text-bloomberg-muted uppercase tracking-wider z-10">
                             <tr>
                                 <th class="p-2.5 border-b border-bloomberg-border" data-i18n="th_country">Страна</th>
                                 <th class="p-2.5 border-b border-bloomberg-border text-right">2026 (MT)</th>
@@ -257,90 +302,113 @@
 
     </main>
 
-    <!-- Translations and Logic Script -->
     <script>
         let currentLang = 'ru';
 
         const translations = {
             ru: {
-                header_sub: "Июль 2026",
-                tab_overview: "Обзор",
+                header_sub: "Август 2026",
+                tab_overview: "Обзор недели",
                 tab_ca: "Ц. Азия & РУ/УКР",
                 tab_eu: "Европа & Регулирование",
-                tab_data: "Импорт MPOB",
-                exec_subtitle: "Макроэкономический анализ | Июль 2026",
-                exec_title: "Рекордная переработка и региональные тренды",
-                exec_desc: "Мировой рынок масличных в августе 2026 года характеризуется высоким спросом. USDA прогнозирует рекордный объем переработки сои в США на уровне 2.78 млрд бушелей и мировой показатель на уровне 384.8 млн тонн.",
-                card_malaysia_stocks: "Запасы пальмового масла в Малайзии",
-                card_india_imports: "Импорт пальмового масла в Индию",
-                card_eu_imports: "Импорт пальмового масла в ЕС",
+                tab_balances: "Региональный баланс",
+                exec_subtitle: "Главные сигналы недели (11–17 августа 2026)",
+                exec_title: "Логистический кризис в Черном море и засуха в ЕС",
+                exec_desc: "Удары по портам Одессы, Новороссийска и Тамани заблокировали морской экспорт из РФ и Украины. Экспорт подсолнечного масла из РФ в августе может упасть на 40% (до 150 тыс. т). Ценовая инверсия: российское масло ($1400–1410/т FOB) стало дороже украинского ($1380–1400/т FOB) из-за ставок фрахта и военных рисков.",
+                card_cpo_desc: "Рост на экспортных трендах",
+                card_soy_desc: "Рекордные отгрузки в Китай",
+                card_rapeseed_desc: "Мелководье на Рейне",
+                chart_title: "📊 Динамика цен CPO Bursa Malaysia (Последние 7 дней)",
+                chart_desc: "Динамика спотовых котировок сырого пальмового масла на бирже в Куала-Лумпуре за прошедшую неделю.",
                 sim_title: "⚡ Симулятор торговых потоков региона",
                 sim_desc: "Моделирование изменения объемов импорта на основе базы 2026 года (База: 110,871 MT, +34% YoY).",
                 sim_multiplier: "Множитель роста:",
                 sim_vol: "Симулированный объем региона:",
                 sim_yoy: "Динамика YoY:",
                 focus_primary: "Главный фокус | Война и логистика",
-                ru_ua_title: "Россия и Украина: Перенаправление потоков и урожай",
-                ru_desc: "Сбор рапса достиг 1.6 млн тонн (+44% YoY). Остановка терминала в Тамани после ударов БПЛА заставила экспортеров перенаправить потоки на Балтику и Каспийский коридор через Иран, увеличив сроки доставки на 1-2 недели.",
-                ua_desc: "Переработка внутри страны превысила сырьевой экспорт (переработано 9.66 млн тонн подсолнечника). Стоимость автоперевозок в ЕС подскочила с €100 до €170–200/т, стимулируя выпуск масел с высокой добавленной стоимостью.",
-                ca_hub_subtitle: "Центральноазиатский хаб переработки",
-                ca_hub_title: "Доминирование Казахстана и стратегия Узбекистана",
+                ru_ua_title: "Россия и Украина: Санкции, пошлины и транспортный коллапс",
+                ru_duty: "Пошлина 7,748 руб/т",
+                ru_desc: "Экспортная пошлина на подсолнечное масло выросла на +135%. Масложировой союз прогнозирует дефицит сырья для МЭЗов в 2026 г. на уровне 2.5 млн тонн. Удары БПЛА по портам Новороссийска и Тамани парализовали отгрузки.",
+                ua_stock: "Запасы: 947k т подсолнечника",
+                ua_desc: "Запасы истощены, переработка снизилась, однако в сентябре стартует массовый новый урожай (Kernel, Allseeds). Закупка рапса на заводах просела до €455–495/т CPT на фоне заторов на Дунае.",
+                ca_hub_subtitle: "Центральноазиатский хаб и ТИТР",
+                ca_hub_title: "Казахстан, Узбекистан и Средний коридор",
                 kz_title: "Казахстан:",
+                kz_desc: "Посевные площади масличных выросли на +30% (5.18 млн га, подсолнечник — 2.2 млн га). Строительство нового МЭЗ («Атамекен-Агро»). Запуск автодороги Бейнеу – Саксаульск и контейнеров Nomad Express по ТИТР в обход Черного моря.",
                 uz_title: "Узбекистан:",
-                kg_tj_title: "Кыргызстан и Таджикистан:",
+                uz_desc: "Импорт из Казахстана вырос на +31% (до 553 тыс. т, доля >90%). Обсуждение акциза на импорт пальмового масла ($139/т) для стимулирования собственной переработки.",
+                chamber_title: "Позиция Торгово-промышленной палаты Узбекистана:",
+                chamber_desc: "Торгово-промышленная палата Республики Узбекистан выступила с критикой данного акциза, предупреждая, что введение фискального сбора на пальмовое масло приведет к неизбежному росту цен на маргарины, кондитерские и молочные жиры, усилив инфляционное давление на потребительском рынке.",
+                kg_ge_title: "Кыргызстан & Грузия:",
+                kg_ge_desc: "Кыргызстан увеличил импорт из Казахстана (+49.1%), снизив зависимость от РФ. Грузия сохраняет критическую зависимость от поставок масла из РФ (+25.6% в I полугодии).",
                 focus_secondary: "Второстепенный фокус | Климат и биотопливо",
-                eu_title: "Европейский Союз: Засуха против мандатов возобновляемой энергетики",
-                eu_ger_pol: "Аномальная жара сократила урожай озимого рапса в Германии на 20% (3.3 млн тонн). Польский урожай снизился до 2.8 млн тонн при сохранении запрета на агроимпорт с Украины.",
-                eu_ned_uk: "SkyNRG и KLM запустили проект завода SAF (DSL-01) в Нидерландах. Урожай рапса в УК превысил 5-летний средний показатель на 18%, строго соблюдая требования HEFA/UCO.",
+                eu_title: "Европейский Союз: Засуха в Германии/Польше и бум HVO",
+                eu_ger_pol: "Засуха сократила урожай в Германии на 3 млн тонн (€600 млн убытков). В Польше прогноз сбора рапса снижен с 3.6 до 2.8 млн тонн. Мелководье на Рейне парализовало речные баржи.",
+                eu_esp_bul: "Успешные испытания 100% HVO на железной дороге Renfe. Болгария увеличила урожай рапса на 104.3% (582 тыс. т), сделав его самой прибыльной культурой страны.",
                 reg_title: "Регуляторная политика",
-                reg_subtitle: "EUDR, RED III и стандарты MOAH",
+                reg_subtitle: "EUDR, RED III и стандарты MOAH (Октябрь 2026)",
                 reg_eudr: "Регламент EUDR:",
-                reg_red: "RED III iLUC Фаза-аут:",
+                reg_eudr_desc: "Сроки подачи Due Diligence — 30 декабря 2026 г. (крупный бизнес) и 30 июня 2027 г. (SME). Более 50% ферм в Азии и Африке испытывают трудности с геокартированием.",
+                reg_red: "RED III & HVO Class III:",
+                reg_red_desc: "Норматив выбросов ПГ в Испании -14.5% к 2030 г. Дефицит качественного сырья HVO стимулирует прямые закупки растительных масел.",
                 reg_moah: "Стандарты MOAH:",
-                table_subtitle: "Данные MPOB",
-                table_title: "Импорт масложировой продукции Малайзии",
-                table_desc: "Совокупный импорт региона вырос на +34% до 110,871 тонн.",
+                reg_moah_desc: "Обязательные лимиты на минеральные углеводороды (C10–C50) в пищевых маслах вступают в силу в октябре 2026 года.",
+                balances_subtitle: "Региональный баланс",
+                balances_title: "Баланс MPOB (Янв-Июль 2026)",
+                balances_desc: "Совокупный объем импорта пальмовой продукции регионом вырос на +34% благодаря увеличению поставок в РФ, Украину и страны Балтии.",
                 th_country: "Страна",
                 th_change: "Измен."
             },
             en: {
-                header_sub: "July 2026",
-                tab_overview: "Overview",
+                header_sub: "August 2026",
+                tab_overview: "Weekly Review",
                 tab_ca: "Central Asia & RU/UA",
                 tab_eu: "Europe & Regulation",
-                tab_data: "MPOB Data",
-                exec_subtitle: "Macroeconomic Analysis | July 2026",
-                exec_title: "Record Crush & Regional Divergence",
-                exec_desc: "The global oilseed market in August 2026 features robust demand. USDA projects a record U.S. soybean crush of 2.78B bushels and global crush of 384.8M metric tons.",
-                card_malaysia_stocks: "Malaysian Palm Oil Stockpiles",
-                card_india_imports: "India Palm Oil Imports",
-                card_eu_imports: "EU Palm Oil Imports",
+                tab_balances: "Regional Balance",
+                exec_subtitle: "Key Weekly Signals (Aug 11–17, 2026)",
+                exec_title: "Black Sea Logistical Crisis & EU Drought",
+                exec_desc: "Missile and drone strikes on Odesa, Novorossiysk and Taman ports blocked maritime exports from Russia and Ukraine. Russian sunflower oil exports in August may drop by 40% (to 150k MT). Price inversion: Russian oil ($1400–1410/t FOB) became more expensive than Ukrainian ($1380–1400/t FOB) due to high freight rates and war risk surcharges.",
+                card_cpo_desc: "Growth on export trends",
+                card_soy_desc: "Record shipments to China",
+                card_rapeseed_desc: "Low water on the Rhine",
+                chart_title: "📊 Bursa Malaysia CPO Price Dynamics (Last 7 Days)",
+                chart_desc: "Spot crude palm oil price trend on the Kuala Lumpur exchange over the past week.",
                 sim_title: "⚡ Regional Trade Flow Simulator",
                 sim_desc: "Simulate regional import changes based on 2026 baseline data (Total: 110,871 MT, +34% YoY).",
                 sim_multiplier: "Growth Multiplier:",
                 sim_vol: "Simulated Regional Total:",
                 sim_yoy: "Estimated YoY:",
                 focus_primary: "Primary Focus | War & Logistics",
-                ru_ua_title: "Russia & Ukraine: Re-routing & Harvest Dynamics",
-                ru_desc: "Rapeseed harvest reached 1.6M tons (+44% YoY). Taman terminal suspension forced exporters to reroute shipments to Baltic & Caspian corridors via Iran, adding 1-2 weeks delivery time.",
-                ua_desc: "Domestic processing outpaced raw exports (9.66M tons of sunflower crushed). EU road transport costs surged to €170–200/t, accelerating value-added vegetable oil production.",
-                ca_hub_subtitle: "Central Asian Processing Hub Shift",
-                ca_hub_title: "Kazakhstan Dominance & Uzbekistan Strategy",
+                ru_ua_title: "Russia & Ukraine: Sanctions, Tariffs & Transport Collapse",
+                ru_duty: "Duty 7,748 RUB/t",
+                ru_desc: "Export duty on sunflower oil surged by +135%. The Fat and Oil Union forecasts a raw material deficit for crushers of 2.5M tons in 2026. UAV strikes on Novorossiysk and Taman paralyzed shipments.",
+                ua_stock: "Stocks: 947k t sunflower",
+                ua_desc: "Inventories are depleted, but mass harvesting of the new crop starts in September (Kernel, Allseeds). Rapeseed purchase prices dropped to €455–495/t CPT amid Danube congestion.",
+                ca_hub_subtitle: "Central Asian Hub & TITR",
+                ca_hub_title: "Kazakhstan, Uzbekistan & Middle Corridor",
                 kz_title: "Kazakhstan:",
+                kz_desc: "Oilseed acreage grew by +30% (5.18M ha, sunflower 2.2M ha). New crushing plant under construction ('Atameken-Agro'). Launch of Beineu-Saksaulsk road and Nomad Express containers via TITR bypassing the Black Sea.",
                 uz_title: "Uzbekistan:",
-                kg_tj_title: "Kyrgyzstan & Tajikistan:",
+                uz_desc: "Imports from Kazakhstan rose by +31% (to 553k MT, share >90%). Discussion of a palm oil import excise tax ($139/t) to stimulate domestic processing.",
+                chamber_title: "Position of the Chamber of Commerce and Industry of Uzbekistan:",
+                chamber_desc: "The Chamber of Commerce and Industry of the Republic of Uzbekistan criticized the proposed excise tax, warning that introducing a fiscal levy on palm oil would lead to inevitable price hikes for margarine, confectionery, and dairy fats, thereby increasing inflationary pressure on the consumer market.",
+                kg_ge_title: "Kyrgyzstan & Georgia:",
+                kg_ge_desc: "Kyrgyzstan increased imports from Kazakhstan (+49.1%), reducing reliance on Russia. Georgia maintains critical dependence on oil supplies from Russia (+25.6% in H1).",
                 focus_secondary: "Secondary Focus | Climate & Biofuels",
-                eu_title: "European Union: Heatwaves vs. Renewable Mandates",
-                eu_ger_pol: "Severe summer heatwaves caused winter rapeseed yield losses of 20% in Germany (3.3M MT). Poland's harvest dropped to 2.8M MT while maintaining Ukrainian import bans.",
-                eu_ned_uk: "SkyNRG and KLM broke ground on DSL-01 SAF plant in the Netherlands. UK rapeseed harvest exceeded 5-year avg by 18%, complying strictly with HEFA/UCO frameworks.",
+                eu_title: "European Union: Germany/Poland Drought & HVO Boom",
+                eu_ger_pol: "Drought cut German harvests by 3M tons (€600M losses). In Poland, rapeseed forecasts dropped from 3.6 to 2.8M tons. Low water levels on the Rhine halted river barges.",
+                eu_esp_bul: "Successful 100% HVO tests on Renfe railways. Bulgaria increased rapeseed production by +104.3% (582k MT), making it the country's most profitable crop.",
                 reg_title: "Regulatory Frameworks",
-                reg_subtitle: "EUDR, RED III & MOAH Standards",
+                reg_subtitle: "EUDR, RED III & MOAH Standards (October 2026)",
                 reg_eudr: "EUDR Regulation:",
-                reg_red: "RED III iLUC Phase-Out:",
+                reg_eudr_desc: "Due Diligence submission deadlines: Dec 30, 2026 (large businesses) and June 30, 2027 (SMEs). Over 50% of farms in Asia and Africa face mapping challenges.",
+                reg_red: "RED III & HVO Class III:",
+                reg_red_desc: "Spain GHG reduction target -14.5% by 2030. Quality HVO feedstock deficits stimulate direct vegetable oil procurement.",
                 reg_moah: "MOAH Standards:",
-                table_subtitle: "MPOB Trade Data",
-                table_title: "Malaysian Oil Palm Products Import",
-                table_desc: "Total regional imports increased by +34% to 110,871 tons.",
+                reg_moah_desc: "Mandatory mineral oil hydrocarbon limits (C10–C50) in food oils take effect in October 2026.",
+                balances_subtitle: "Regional Import Balances",
+                balances_title: "MPOB Import Balance (Jan-July 2026)",
+                balances_desc: "Total regional palm product imports increased by +34% driven by growth in shipments to Russia, Ukraine, and the Baltics.",
                 th_country: "Country",
                 th_change: "Change (%)"
             }
@@ -349,8 +417,13 @@
         let tg = window.Telegram?.WebApp;
         if (tg) {
             tg.expand();
-            if (tg.setHeaderColor) tg.setHeaderColor('#0a0d14');
-            if (tg.setBackgroundColor) tg.setBackgroundColor('#0a0d14');
+            if (tg.setHeaderColor) tg.setHeaderColor('#07090e');
+            if (tg.setBackgroundColor) tg.setBackgroundColor('#07090e');
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
         }
 
         function switchTab(tabId) {
@@ -358,15 +431,21 @@
                 tg.HapticFeedback.impactOccurred('light');
             }
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('bg-orange-500', 'text-white', 'shadow-sm');
-                btn.classList.add('bg-bloomberg-card', 'text-bloomberg-muted', 'border', 'border-bloomberg-border');
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            
+            // Highlight active menu item
+            ['overview', 'centralasia', 'europe', 'balances'].forEach(id => {
+                const btn = document.getElementById('menu-btn-' + id);
+                if (id === tabId) {
+                    btn.classList.remove('bg-bloomberg-dark', 'text-bloomberg-muted');
+                    btn.classList.add('bg-orange-500', 'text-white');
+                } else {
+                    btn.classList.remove('bg-orange-500', 'text-white');
+                    btn.classList.add('bg-bloomberg-dark', 'text-bloomberg-muted');
+                }
             });
 
-            document.getElementById('tab-' + tabId).classList.remove('hidden');
-            const activeBtn = document.getElementById('btn-' + tabId);
-            activeBtn.classList.remove('bg-bloomberg-card', 'text-bloomberg-muted', 'border', 'border-bloomberg-border');
-            activeBtn.classList.add('bg-orange-500', 'text-white', 'shadow-sm');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function toggleLanguage() {
@@ -377,7 +456,6 @@
             document.getElementById('lang-btn').innerText = currentLang.toUpperCase() + ' / ' + (currentLang === 'ru' ? 'EN' : 'RU');
             document.documentElement.lang = currentLang;
             
-            // Apply translations
             const elements = document.querySelectorAll('[data-i18n]');
             elements.forEach(el => {
                 const key = el.getAttribute('data-i18n');
@@ -412,6 +490,84 @@
                 }
             }
         }
+
+        // Render Pure Canvas CPO Price Chart for Bursa Malaysia (Last 7 Days)
+        function drawCPOChart() {
+            const canvas = document.getElementById('cpoPriceChart');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas resolution for crisp display
+            canvas.width = canvas.parentElement.clientWidth * 2;
+            canvas.height = canvas.parentElement.clientHeight * 2;
+            ctx.scale(2, 2);
+
+            const width = canvas.parentElement.clientWidth;
+            const height = canvas.parentElement.clientHeight;
+
+            // 7 Days Data (Aug 11 - Aug 17, 2026)
+            const prices = [4670, 4695, 4710, 4740, 4730, 4780, 4820];
+            const minP = 4650;
+            const maxP = 4850;
+
+            ctx.clearRect(0, 0, width, height);
+
+            // Draw grid lines
+            ctx.strokeStyle = '#1e293b';
+            ctx.lineWidth = 1;
+            for (let i = 1; i < 4; i++) {
+                let y = (height / 4) * i;
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(width, y);
+                ctx.stroke();
+            }
+
+            // Map points
+            const points = prices.map((p, idx) => {
+                let x = (width / (prices.length - 1)) * idx;
+                let y = height - ((p - minP) / (maxP - minP)) * (height - 20) - 10;
+                return { x, y };
+            });
+
+            // Draw area gradient under line
+            const gradient = ctx.createLinearGradient(0, 0, 0, height);
+            gradient.addColorStop(0, 'rgba(245, 158, 11, 0.25)');
+            gradient.addColorStop(1, 'rgba(245, 158, 11, 0.0)');
+
+            ctx.beginPath();
+            ctx.moveTo(points[0].x, height);
+            points.forEach(pt => ctx.lineTo(pt.x, pt.y));
+            ctx.lineTo(points[points.length - 1].x, height);
+            ctx.fillStyle = gradient;
+            ctx.fill();
+
+            // Draw line
+            ctx.beginPath();
+            ctx.moveTo(points[0].x, points[0].y);
+            for (let i = 1; i < points.length; i++) {
+                ctx.lineTo(points[i].x, points[i].y);
+            }
+            ctx.strokeStyle = '#f59e0b';
+            ctx.lineWidth = 2.5;
+            ctx.stroke();
+
+            // Draw points
+            points.forEach((pt, idx) => {
+                ctx.beginPath();
+                ctx.arc(pt.x, pt.y, 3.5, 0, Math.PI * 2);
+                ctx.fillStyle = '#07090e';
+                ctx.fill();
+                ctx.strokeStyle = '#f59e0b';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            });
+        }
+
+        window.onload = function() {
+            drawCPOChart();
+            window.addEventListener('resize', drawCPOChart);
+        };
     </script>
 </body>
 </html>
