@@ -1,0 +1,1846 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extended Weekly Update | 21.9.2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-primary: #2c3e50;
+            --text-secondary: #6c757d;
+            --accent: #34495e;
+            --border: #dee2e6;
+            --header-bg: #e9ecef;
+            --highlight: #f0f4f8;
+            --button-bg: #3498db;
+            --button-hover: #2980b9;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --info: #17a2b8;
+            --section-1: #3498db;
+            --section-2: #27ae60;
+            --section-3: #e67e22;
+            --section-4: #9b59b6;
+        }
+
+        * { box-sizing: border-box; transition: all 0.2s ease; }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            font-size: 15px;
+        }
+
+        .top-nav {
+            position: sticky;
+            top: 0;
+            background: var(--card-bg);
+            border-bottom: 2px solid var(--border);
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .nav-links { display: flex; gap: 10px; flex-wrap: wrap; }
+
+        .nav-link {
+            background: var(--highlight);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: var(--button-bg);
+            color: white;
+            border-color: var(--button-bg);
+            transform: translateY(-2px);
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
+
+        header {
+            background: linear-gradient(135deg, var(--card-bg) 0%, var(--highlight) 100%);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header-content h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+        }
+
+        .header-content .subtitle {
+            margin: 10px 0 0;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-content .company {
+            font-weight: 600;
+            margin-top: 5px;
+            color: var(--accent);
+        }
+
+        .lang-switch { display: flex; gap: 10px; }
+
+        .btn {
+            background: transparent;
+            border: 2px solid var(--border);
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+        .btn:hover { background: var(--highlight); transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .stat-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .stat-card .stat-icon { font-size: 1.8rem; margin-bottom: 8px; color: var(--button-bg); }
+        .stat-card .stat-title { font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
+        .stat-card .stat-value { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); }
+        .stat-card .stat-change { font-size: 0.85rem; margin-top: 5px; }
+        .stat-change.up { color: var(--success); }
+        .stat-change.down { color: var(--danger); }
+
+        .section-nav {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .section-nav h3 { margin: 0; font-size: 1rem; color: var(--text-secondary); min-width: 150px; }
+
+        .section-nav .nav-btn {
+            background: var(--highlight);
+            border: 1px solid var(--border);
+            padding: 10px 18px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .section-nav .nav-btn:hover { background: var(--button-bg); color: white; transform: translateY(-2px); }
+
+        .section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            margin-bottom: 25px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, var(--highlight) 0%, var(--card-bg) 100%);
+            padding: 20px 25px;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-header h2 i { color: var(--button-bg); font-size: 1.4rem; }
+
+        .section-header .toggle-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .section-header .toggle-btn:hover { background: var(--button-bg); color: white; transform: rotate(180deg); }
+        .section-content { padding: 25px; display: block; }
+        .section.collapsed .section-content { display: none; }
+        .section.collapsed .toggle-btn { transform: rotate(180deg); }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 20px 0;
+            font-size: 0.95rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .pricing-table thead { background: linear-gradient(135deg, var(--accent) 0%, var(--button-bg) 100%); color: white; }
+
+        .pricing-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .pricing-table th:hover { background: rgba(255,255,255,0.1); }
+        .pricing-table td { padding: 15px; border-bottom: 1px solid var(--border); background: var(--card-bg); vertical-align: top; }
+        .pricing-table tbody tr { transition: all 0.2s; }
+        .pricing-table tbody tr:hover { background: var(--highlight); transform: scale(1.01); }
+        .pricing-table tbody tr:nth-child(even) { background: #f8f9fa; }
+
+        .price-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .price-up { background: #d4edda; color: #155724; }
+        .price-down { background: #f8d7da; color: #721c24; }
+        .price-neutral { background: var(--highlight); color: var(--text-secondary); }
+
+        .region-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .region-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .region-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+
+        .region-card-header {
+            background: linear-gradient(135deg, var(--section-1) 0%, var(--button-bg) 100%);
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .region-card:nth-child(2) .region-card-header { background: linear-gradient(135deg, var(--section-2) 0%, #229954 100%); }
+        .region-card:nth-child(3) .region-card-header { background: linear-gradient(135deg, var(--section-3) 0%, #d35400 100%); }
+        .region-card:nth-child(4) .region-card-header { background: linear-gradient(135deg, var(--section-4) 0%, #8e44ad 100%); }
+
+        .region-card-content { padding: 20px; }
+
+        .country-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .country-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+        .country-item h4 { margin: 0 0 8px; color: var(--accent); font-size: 1rem; display: flex; align-items: center; gap: 8px; }
+        .country-item p { margin: 0; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+
+        .chart-container { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px; margin: 20px 0; }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .chart-title { font-size: 1.1rem; font-weight: 600; color: var(--text-primary); }
+
+        .chart-placeholder {
+            background: linear-gradient(135deg, var(--highlight) 0%, var(--card-bg) 100%);
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-placeholder::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23dee2e6" stroke-width="1" opacity="0.3"/></svg>');
+            background-size: 20px 20px;
+        }
+
+        .chart-placeholder i { font-size: 3rem; margin-bottom: 15px; color: var(--button-bg); z-index: 1; }
+
+        .progress-container { margin: 15px 0; }
+        .progress-label { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.9rem; }
+
+        .progress-bar {
+            height: 24px;
+            background: var(--highlight);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--button-bg) 0%, var(--info) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: width 1s ease;
+        }
+
+        .tabs-container { margin: 20px 0; }
+
+        .tabs-header {
+            display: flex;
+            gap: 5px;
+            border-bottom: 2px solid var(--border);
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 12px 24px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active { color: var(--button-bg); border-bottom-color: var(--button-bg); }
+        .tab-btn:hover { color: var(--button-bg); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.3s; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-left: 4px solid var(--button-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .info-box.warning { background: linear-gradient(135deg, #fff3cd 0%, #ffe69c 100%); border-left-color: var(--warning); }
+        .info-box.success { background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%); border-left-color: var(--success); }
+        .info-box.danger { background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%); border-left-color: var(--danger); }
+
+        .info-box i { font-size: 1.5rem; color: var(--button-bg); }
+        .info-box.warning i { color: var(--warning); }
+        .info-box.success i { color: var(--success); }
+        .info-box.danger i { color: var(--danger); }
+
+        .info-box-content { flex: 1; }
+        .info-box-title { font-weight: 600; margin-bottom: 5px; color: var(--text-primary); }
+        .info-box-text { margin: 0; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; }
+
+        .footer-actions {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
+        }
+
+        .footer-actions .action-btn {
+            background: var(--button-bg);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .footer-actions .action-btn:hover { background: var(--button-hover); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+
+        .footer-actions .secondary-btn { background: var(--card-bg); color: var(--text-secondary); border: 2px solid var(--border); }
+        .footer-actions .secondary-btn:hover { background: var(--highlight); }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .metric-item {
+            background: var(--highlight);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid var(--button-bg);
+        }
+
+        .metric-item .metric-label { font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; }
+        .metric-item .metric-value { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin-top: 5px; }
+
+        .timeline { position: relative; padding-left: 30px; margin: 20px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item { position: relative; padding: 15px 0; }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 20px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--button-bg);
+            border: 2px solid var(--card-bg);
+        }
+
+        .timeline-date { font-weight: 600; color: var(--button-bg); font-size: 0.9rem; }
+        .timeline-content { margin-top: 5px; color: var(--text-secondary); }
+
+        .search-box { position: relative; margin: 20px 0; }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 20px 12px 45px;
+            border: 2px solid var(--border);
+            border-radius: 25px;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus { outline: none; border-color: var(--button-bg); box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1); }
+
+        .search-box i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { width: 100%; justify-content: center; }
+            header { flex-direction: column; text-align: center; }
+            .header-content h1 { font-size: 1.5rem; }
+            .section-header { flex-direction: column; align-items: flex-start; }
+            .region-grid { grid-template-columns: 1fr; }
+            .footer-actions { flex-direction: column; text-align: center; }
+            .footer-actions .action-btn { width: 100%; justify-content: center; }
+        }
+
+        @media print {
+            .top-nav, .section-nav, .footer-actions, .toggle-btn, .search-box { display: none !important; }
+            .section { break-inside: avoid; box-shadow: none; border: 1px solid #000; }
+            .section.collapsed .section-content { display: block !important; }
+            body { background: white; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="#pricing" class="nav-link active"><i class="fas fa-chart-line"></i> <span data-lang-key="nav_prices">Цены</span></a>
+                <a href="#regional" class="nav-link"><i class="fas fa-globe"></i> <span data-lang-key="nav_regions">Регионы</span></a>
+                <a href="#blacksea" class="nav-link"><i class="fas fa-water"></i> <span data-lang-key="nav_blacksea">Черное море</span></a>
+                <a href="#regulatory" class="nav-link"><i class="fas fa-file-contract"></i> <span data-lang-key="nav_regulatory">Регулирование</span></a>
+                <a href="#logistics" class="nav-link"><i class="fas fa-shipping-fast"></i> <span data-lang-key="nav_logistics">Логистика</span></a>
+            </div>
+            <div class="lang-switch">
+                <button class="btn active" onclick="setLang('ru')"><i class="fas fa-language"></i> RU</button>
+                <button class="btn" onclick="setLang('en')"><i class="fas fa-language"></i> EN</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1 data-lang-key="title">Еженедельный аналитический обзор</h1>
+                <p class="subtitle">
+                    <i class="fas fa-calendar-alt"></i> 
+                    <span data-lang-key="date">Дата отчета: 21 сентября 2026 г.</span>
+                </p>
+                <p class="company">International Marketing Agency Ltd</p>
+            </div>
+        </header>
+
+        <div class="quick-stats">
+            <div class="stat-card" onclick="scrollToSection('pricing')">
+                <div class="stat-icon"><i class="fas fa-seedling"></i></div>
+                <div class="stat-title" data-lang-key="stat_cpo">CPO Цена</div>
+                <div class="stat-value">1,200-1,225 USD/T</div>
+                <div class="stat-change down"><i class="fas fa-arrow-down"></i> <span data-lang-key="stat_cpo_change">Слабый экспорт</span></div>
+            </div>
+            <div class="stat-card" onclick="scrollToSection('pricing')">
+                <div class="stat-icon"><i class="fas fa-oil-can"></i></div>
+                <div class="stat-title" data-lang-key="stat_sbo">Соевое масло</div>
+                <div class="stat-value">1,500-1,550 USD/T</div>
+                <div class="stat-change neutral"><i class="fas fa-minus"></i> <span data-lang-key="stat_sbo_change">Новый урожай США</span></div>
+            </div>
+            <div class="stat-card" onclick="scrollToSection('pricing')">
+                <div class="stat-icon"><i class="fas fa-sun"></i></div>
+                <div class="stat-title" data-lang-key="stat_sfo">Подсолнечное масло</div>
+                <div class="stat-value">$1,250-1,260/T</div>
+                <div class="stat-change down"><i class="fas fa-arrow-down"></i> <span data-lang-key="stat_sfo_change">UA $1,100 CPT</span></div>
+            </div>
+            <div class="stat-card" onclick="scrollToSection('pricing')">
+                <div class="stat-icon"><i class="fas fa-leaf"></i></div>
+                <div class="stat-title" data-lang-key="stat_rapeseed">Рапс</div>
+                <div class="stat-value">$588-590/T</div>
+                <div class="stat-change down"><i class="fas fa-arrow-down"></i> <span data-lang-key="stat_rapeseed_change">Давление смежных рынков</span></div>
+            </div>
+            <div class="stat-card" onclick="scrollToSection('blacksea')">
+                <div class="stat-icon"><i class="fas fa-flag"></i></div>
+                <div class="stat-title" data-lang-key="stat_ua_min_price">UA мин. цена экспорта</div>
+                <div class="stat-value">$1,350/t CPT</div>
+                <div class="stat-change up"><i class="fas fa-arrow-up"></i> <span data-lang-key="stat_ua_min_text">+ $225 vs рынок</span></div>
+            </div>
+            <div class="stat-card" onclick="scrollToSection('blacksea')">
+                <div class="stat-icon"><i class="fas fa-train"></i></div>
+                <div class="stat-title" data-lang-key="stat_ua_alt_routes">UA альтернативные маршруты</div>
+                <div class="stat-value">~40% емкости</div>
+                <div class="stat-change up"><i class="fas fa-arrow-up"></i> <span data-lang-key="stat_ua_alt_text">Улучшение с августа</span></div>
+            </div>
+        </div>
+
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Поиск по отчету..." onkeyup="searchContent()">
+        </div>
+
+        <div class="section-nav">
+            <h3><i class="fas fa-compass"></i> <span data-lang-key="navigate">Навигация:</span></h3>
+            <button class="nav-btn" onclick="expandAll()"><i class="fas fa-expand-alt"></i> <span data-lang-key="expand_all">Развернуть все</span></button>
+            <button class="nav-btn" onclick="collapseAll()"><i class="fas fa-compress-alt"></i> <span data-lang-key="collapse_all">Свернуть все</span></button>
+            <button class="nav-btn" onclick="window.print()"><i class="fas fa-print"></i> <span data-lang-key="print">Печать</span></button>
+            <button class="nav-btn" onclick="exportCSV()"><i class="fas fa-file-csv"></i> <span data-lang-key="export_csv">CSV</span></button>
+        </div>
+
+        <section class="section" id="pricing">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2><i class="fas fa-chart-line"></i> <span data-lang-key="pricing_title">Ценовая динамика и рыночные индикаторы</span></h2>
+                <div class="toggle-btn"><i class="fas fa-chevron-down"></i></div>
+            </div>
+            <div class="section-content">
+                <table class="pricing-table" id="pricingTable">
+                    <thead>
+                        <tr>
+                            <th onclick="sortTable(0)"><i class="fas fa-sort"></i> <span data-lang-key="col_commodity">Актив</span></th>
+                            <th onclick="sortTable(1)"><i class="fas fa-sort"></i> <span data-lang-key="col_basis">Базис</span></th>
+                            <th onclick="sortTable(2)"><i class="fas fa-sort"></i> <span data-lang-key="col_price">Цена</span></th>
+                            <th><span data-lang-key="col_comment">Комментарий</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong data-lang-key="item_cpo">Пальмовое масло (CPO)</strong></td>
+                            <td>BMD</td>
+                            <td>1,200-1,225 USD/T <span class="price-indicator price-down"><i class="fas fa-arrow-down"></i></span></td>
+                            <td data-lang-key="desc_cpo">Пожары в Индонезии и угроза урожая 2027 года. Сезонный пик производства. Снижение текущего экспорта. Ослабление смежных рынков.</td>
+                        </tr>
+                        <tr>
+                            <td><strong data-lang-key="item_sbo">Соевое масло</strong></td>
+                            <td>CBOT</td>
+                            <td>1,500-1,550 USD/T <span class="price-indicator price-neutral"><i class="fas fa-minus"></i></span></td>
+                            <td data-lang-key="desc_sbo">Прибытие нового урожая сои 2026 года в США для переработки увеличивает физическое предложение шрота и масла на внутреннем рынке, сокращая локальный дефицит.</td>
+                        </tr>
+                        <tr>
+                            <td><strong data-lang-key="item_sfo">Подсолнечное масло</strong></td>
+                            <td>FOB Black Sea</td>
+                            <td>1,250-1,260 USD/T <span class="price-indicator price-down"><i class="fas fa-arrow-down"></i></span></td>
+                            <td data-lang-key="desc_sfo">В Украине цены спроса упали примерно на $100/т до $1,100–1,120/т CPT порты Дуная из-за более высоких рисков для портовой логистики и роста стоимости фрахта.</td>
+                        </tr>
+                        <tr>
+                            <td><strong data-lang-key="item_rapeseed">Рапс</strong></td>
+                            <td>MATIF</td>
+                            <td>$588-590/T <span class="price-indicator price-down"><i class="fas fa-arrow-down"></i></span></td>
+                            <td data-lang-key="desc_rapeseed">В течение недели сильное давление оказывало падение смежных рынков растительных масел.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box warning">
+                    <i class="fas fa-balance-scale"></i>
+                    <div class="info-box-content">
+                        <div class="info-box-title" data-lang-key="premium_narrowing">Премиум подсолнечного масла над соевым сузился</div>
+                        <p class="info-box-text" data-lang-key="premium_narrowing_text">В сентябре 2026 года ценовой премиум подсолнечного масла над соевым сузился до $205/т с $265/т в январе. Увеличение производства в Аргентине и нормализация переработки в ЕС облегчили более ранний дефицит. Хотя глобальные запасы в Q1 были на 12% ниже в годовом выражении, рост предложения в Q2-Q3 сузил ценовой разрыв. Подсолнечное масло остается высоко коррелированным с соевым (0,85-0,90) и пальмовым (0,75-0,80) маслами из-за рыночной взаимозаменяемости. Цены на соевое масло упали до $1,090/т, в то время как пальмовое масло оставалось стабильным на уровне $920-960/т. Будущие ценовые тренды подсолнечного масла будут зависеть от глобальных балансов предложения и производительности конкурирующих растительных масел.</p>
+                    </div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_my_stock">Запасы Малайзии (прогноз)</div>
+                        <div class="metric-value">~3M т</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_my_export_sep">Экспорт MY (1-15 сен)</div>
+                        <div class="metric-value">-17.8% to -25.6%</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_ua_min_price_m">UA мин. экспортная цена</div>
+                        <div class="metric-value">$1,350/t CPT</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_ua_market_price">Рыночная цена UA</div>
+                        <div class="metric-value">~$1,125/t</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_global_rapeseed">Прогноз мирового рапса</div>
+                        <div class="metric-value">99.97M т (+1.86M)</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_oil_price">Нефть Brent</div>
+                        <div class="metric-value">&gt;$100/bbl</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="regional">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2><i class="fas fa-globe"></i> <span data-lang-key="regional_title">Анализ региональных рынков</span></h2>
+                <div class="toggle-btn"><i class="fas fa-chevron-down"></i></div>
+            </div>
+            <div class="section-content">
+                
+                <div class="tabs-container">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" onclick="switchTab('europe', event)"><span data-lang-key="tab_europe">Европа</span></button>
+                        <button class="tab-btn" onclick="switchTab('blacksea', event)"><span data-lang-key="tab_blacksea">Черное море</span></button>
+                        <button class="tab-btn" onclick="switchTab('central', event)"><span data-lang-key="tab_central">Центральная Азия и Кавказ</span></button>
+                    </div>
+
+                    <div id="tab-europe" class="tab-content active">
+                        <div class="info-box">
+                            <i class="fas fa-chart-line"></i>
+                            <div class="info-box-content">
+                                <div class="info-box-title" data-lang-key="eu_overview">Обзор европейского рынка</div>
+                                <p class="info-box-text" data-lang-key="eu_overview_text">Европейские рынки растительных масел показали расходящиеся тенденции в середине сентября: цены на рапс укрепились на фоне ограниченного предложения из Черноморского региона и стабильного спроса на растительные масла; пальмовое масло отступило от 21-месячного максимума из-за слабого малазийского экспорта; соевое масло и соевые бобы выросли до многолетних максимумов на фоне сильного китайского спроса, в то время как экспортные цены на украинское подсолнечное масло оказались под новым регуляторным давлением из-за установленной правительством минимальной экспортной цены.</p>
+                            </div>
+                        </div>
+
+                        <div class="region-grid">
+                            <div class="region-card">
+                                <div class="region-card-header">
+                                    <i class="fas fa-leaf"></i>
+                                    <span data-lang-key="rapeseed_market">Рапсовый рынок</span>
+                                </div>
+                                <div class="region-card-content">
+                                    <div class="country-item">
+                                        <h4><i class="fas fa-chart-line"></i> <span data-lang-key="rapeseed_benchmarks">Глобальные бенчмарки</span></h4>
+                                        <p data-lang-key="rapeseed_benchmarks_text">Цены на рапс в Европе продолжали укрепляться на фоне ограниченного предложения из Черноморского региона и стабильного спроса на растительные масла. В начале недели ноябрьские фьючерсы на рапс на Euronext в Париже выросли до €555,5/т, приблизившись к недавнему максимуму €556,75/т. Одним из ключевых поддерживающих факторов остается ограниченное предложение рапса из Украины и России, снижающее доступность сырья на европейском рынке, в то время как украинский рапс продолжает поступать в Германию, где переработчики сохраняют спрос. По состоянию на 11 сентября экспортные цены на украинский рапс составили $649/т FOB Европа, согласно данным UkrAgroConsult.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="region-card">
+                                <div class="region-card-header">
+                                    <i class="fas fa-seedling"></i>
+                                    <span data-lang-key="my_palm">Малайзийское пальмовое масло</span>
+                                </div>
+                                <div class="region-card-content">
+                                    <div class="country-item">
+                                        <h4><i class="fas fa-arrow-down"></i> <span data-lang-key="my_palm_decline">Откат от максимума</span></h4>
+                                        <p data-lang-key="my_palm_decline_text">Фьючерсы на малайзийское пальмовое масло отступили от 21-месячного максимума в середине сентября под давлением слабого экспорта и ожиданий роста запасов в этом месяце. Фундаментальные показатели оставались под давлением слабого сентябрьского экспорта и ожиданий, что запасы на конец месяца могут вырасти до около 3 миллионов тонн, согласно брокерской компании Pelindung Bestari из Селангора. Сюрвейеры грузов оценили, что экспорт продуктов малайзийского пальмового масла за период 1–15 сентября упал на 17,8–25,6% по сравнению с предыдущим месяцем. К 18–19 сентября рынок частично восстановился: пальмовое масло выросло до 4 898 MYR/T 18 сентября 2026 года, увеличившись на 1,70% по сравнению с предыдущим днем, благодаря ослаблению ринггита и ожиданиям ужесточения предложения. Более слабый экспорт малайзийского пальмового масла и более высокое производство, вместе с решением Индонезии сохранить мандат B50 на биодизель в 2027 году, снизили фьючерсы CPO, в то время как настроения рынка также давили более слабые цены на соевое масло и сырую нефть.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="region-card">
+                                <div class="region-card-header">
+                                    <i class="fas fa-wheat-awn"></i>
+                                    <span data-lang-key="soybeans">Соевые бобы</span>
+                                </div>
+                                <div class="region-card-content">
+                                    <div class="country-item">
+                                        <h4><i class="fas fa-arrow-up"></i> <span data-lang-key="soy_rally">Ралли до максимума с декабря 2023</span></h4>
+                                        <p data-lang-key="soy_rally_text">Соевые бобы выросли выше $13 за бушель в середине сентября, приблизившись к самому высокому уровню с декабря 2023 года, поскольку сильные закупки Китая поддержали рынок, в то время как трейдеры взвешивали последний отчет USDA о предложении и спросе, что оказало дополнительную поддержку глобальному ценообразованию на соевое масло.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab-blacksea" class="tab-content">
+                        <div class="info-box danger">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <div class="info-box-content">
+                                <div class="info-box-title" data-lang-key="ua_min_price_alert">Украина: Минимальная экспортная цена vs Рынок</div>
+                                <p class="info-box-text" data-lang-key="ua_min_price_alert_text">Министерство экономики Украины установило минимальную допустимую экспортную цену на подсолнечное масло на базисе CPT на уровне $1 350/т, в то время как фактические предложения на украинском рынке составляли около $1 125/т — примерно на $225/т ниже. Украинское подсолнечное масло предлагалось по цене около $1 360/т CIF Турция, с котировками FOB шесть портов около $1 385–1 390/т; российское подсолнечное масло торговалось по $1 306–1 310/т, при этом некоторые сделки на поставки в Китай были заключены около $1 250/т. Трейдеры также выразили обеспокоенность по поводу сопутствующей минимальной экспортной цены на базисе FAS, установленной на уровне $873/т, призвав к пересмотру методологии расчета.</p>
+                            </div>
+                        </div>
+
+                        <div class="region-grid">
+                            <div class="region-card">
+                                <div class="region-card-header">
+                                    <i class="fas fa-flag"></i>
+                                    <span data-lang-key="ukraine">Украина</span>
+                                </div>
+                                <div class="region-card-content">
+                                    <div class="country-item">
+                                        <h4><i class="fas fa-ship"></i> <span data-lang-key="ua_logistics_sep">Логистика в сентябре</span></h4>
+                                        <p data-lang-key="ua_logistics_sep_text">Нарушения экспорта в Черном море продолжают менять сельскохозяйственную логистику Украины, хотя данные сентября показывают скромное улучшение по сравнению с почти полной блокадой августа. Рынок рапса в Украине оставался под давлением более высоких логистических расходов и более слабого спроса со стороны переработчиков в середине сентября, при этом падающие цены на семена подсолнечника и соевые бобы добавляли напряжения, в то время как сырая нефть выше $100/баррель обеспечивала лишь частичную поддержку. Украина экспортировала 124 тысячи тонн рапса и 53,7 тысячи тонн рапсового масла в первые 10 дней сентября. Транспортные расходы продолжали расти: автомобильные доставки в румынские порты стали на 10–20% дороже за месяц, в то время как октябрьские железнодорожные перевозки европейской колеи от границы Украины до Германии обошлись примерно на 30% дороже, чем в июле–августе. Экспортные цены предложений на рапс выросли на $10–20/т за неделю до $490–510/т с доставкой в порты Дуная и $500–520/т на терминалах западной границы, в то время как цены на доставку в Констанцу, Румыния, остались на уровне $590–600/т на фоне растущих очередей на прием зерна. В то же время спрос со стороны украинских переработчиков ослаб, так как падающие цены на семена подсолнечника сделали переработку подсолнечника более привлекательной, опустив цены на рапс с содержанием масла 44% примерно на UAH 500/т за неделю до UAH 19–21 тыс./т с доставкой на заводы.</p>
+                                    </div>
+                                    <div class="country-item">
+                                        <h4><i class="fas fa-chart-pie"></i> <span data-lang-key="ua_alt_capacity">Альтернативная логистика</span></h4>
+                                        <p data-lang-key="ua_alt_capacity_text">По альтернативной экспортной логистике Украина отгрузила 630 тысяч тонн сельскохозяйственной продукции через альтернативные маршруты с начала сентября — около 40% от объема, который логистическая система могла бы обработать при полной мощности, по сравнению с 33% в августе. Из этого 380 тысяч тонн составили зерновые (35% от необходимого объема), 94 тысячи тонн — масличные (60% от потребности), 97 тысяч тонн — растительные масла (около 66% от потребности) и 60 тысяч тонн — шрот (примерно треть от потребности). Чиновники отметили, что альтернативная логистика работала лучше в сентябре, чем в августе, но страна все еще экспортирует только около 40% от объема, который она могла бы обработать при полностью функционирующей морской портовой логистике — система могла бы обработать примерно в 2,5 раза больше при полной работе морских портов. Железнодорожные доставки зерна в порты Дуная почти утроились в августе по сравнению с июлем, достигнув 248 800 тонн, в то время как отгрузки в порты Большой Одессы рухнули на 94,9% до 68 500 тонн, согласно данным Spike Brokers.</p>
+                                    </div>
+                                    <div class="country-item">
+                                        <h4><i class="fas fa-money-bill-wave"></i> <span data-lang-key="ua_duty_revenue">Доходы от экспортной пошлины</span></h4>
+                                        <p data-lang-key="ua_duty_revenue_text">По политике экспортной пошлины были опубликованы данные о доходах и переработке за полный маркетинговый год 2025/26: бюджетные доходы от 10% экспортной пошлины на соевые бобы и рапс достигли UAH 2,174 млрд за сезон, согласно заместителю председателя парламентского комитета по экономическому развитию Дмитрию Кисилевскому, ссылающемуся на данные Министерства сельского хозяйства. Переработка рапса в Украине выросла в 2,7 раза в годовом выражении, а экспорт рапсового масла вырос в 2,5 раза; 42% урожая рапса было переработано внутри страны, по сравнению с 15% годом ранее — абсолютный рекорд для этой культуры в Украине. Валютная выручка от экспорта рапсового масла более чем утроилась до $588 млн. Доля внутренней переработки соевых бобов также выросла с 39% до 54,2% от урожая, при этом экспортная выручка от соевого масла и шрота выросла на 12,3% до $1,02 млрд.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="region-card">
+                                <div class="region-card-header">
+                                    <i class="fas fa-star"></i>
+                                    <span data-lang-key="russia">Россия</span>
+                                </div>
+                                <div class="region-card-content">
+                                    <div class="country-item">
+                                        <h4><i class="fas fa-file-invoice-dollar"></i> <span data-lang-key="ru_china_imports">Импорт из РФ в Китай</span></h4>
+                                        <p data-lang-key="ru_china_imports_text">20 сентября китайская таможня опубликовала данные за январь–август об импорте из России. Импорт пшеницы вырос в семь раз в годовом выражении до $17,6 млн, поставки ячменя более чем удвоились до $112,3 млн, а поставки кукурузы выросли в 1,4 раза до $95,9 млн.</p>
+                                    </div>
+                                    <div class="country-item">
+                                        <h4><i class="fas fa-warehouse"></i> <span data-lang-key="ru_stocks">Запасы масличных</span></h4>
+                                        <p data-lang-key="ru_stocks_text">Согласно данным Росстата, опубликованным 14 сентября, запасы масличных культур в сельскохозяйственных организациях на конец августа выросли на 11% до 1,7 млн тонн, в то время как запасы семян подсолнечника снизились на 27,3% до 270 000 тонн.</p>
+                                    </div>
+                                    <div class="country-item">
+                                        <h4><i class="fas fa-industry"></i> <span data-lang-key="ru_margarine">Производство маргарина</span></h4>
+                                        <p data-lang-key="ru_margarine_text">Данные Росстата, цитируемые Коммерсантом 21 сентября, показывают, что производство маргарина, растительных спредов и заменителей молочного жира (ЗМЖ) в январе–июле упало на 12% в годовом выражении до 676,8 тыс. тонн, в то время как один только маргарин снизился на 0,5% до 260,1 тыс. тонн.</p>
+                                    </div>
+                                    <div class="country-item">
+                                        <h4><i class="fas fa-exclamation-circle"></i> <span data-lang-key="ru_palm_shortage">Дефицит пальмового масла</span></h4>
+                                        <p data-lang-key="ru_palm_shortage_text">Рынок пальмового масла оставался под давлением. Данные Союза масложировиков показывают, что сырое пальмовое масло стоило около 100 рублей за килограмм в январе и 118 рублей в сентябре, в то время как участники рынка заявили, что продукты на основе пальмового масла, закупаемые пищевыми производителями, выросли с 140 до 200–220 рублей за килограмм за последний месяц, что составляет увеличение примерно на 43–57%. Союз заявляет, что физического дефицита нет, есть только сокращение запасов специализированных жиров и маргаринов после того, как танкеры были временно перенаправлены в Санкт-Петербург после атак на терминал EFKO в Тамани. Ожидается, что первые грузы пальмового масла достигнут северо-западных портов примерно через неделю. OleoScope связывает дефицит с атаками 30 июля на Тамань и сообщает, что импорт пальмового масла в январе–июле упал на 22,2% до 491 тыс. тонн (пальмоядровое масло: −25,7% до 55 тыс. тонн), в то время как мировые цены на пальмовое масло в среднем составляли около $1,2 тыс. за тонну, что на 12,5% выше, чем в январе. 15 сентября Национальный союз пекарей попросил Федеральную антимонопольную службу пересмотреть рост цен: в августе некоторые позиции маргарина выросли на 15–20% по сравнению с июлем, и пекари ожидают, что сентябрьские цены будут на 30% выше июльских, а ЗМЖ вырастет до 60%. EFKO заявляет, что снижение цен на масложировую продукцию возможно только после возобновления работы портов Азово-Черноморского бассейна.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="region-card">
+                                <div class="region-card-header">
+                                    <i class="fas fa-flag"></i>
+                                    <span data-lang-key="romania_bulgaria">Румыния и Болгария</span>
+                                </div>
+                                <div class="region-card-content">
+                                    <div class="country-item">
+                                        <h4><i class="fas fa-chart-line"></i> <span data-lang-key="rb_prices_sep">Цены в середине сентября</span></h4>
+                                        <p data-lang-key="rb_prices_sep_text">Цены на подсолнечник в Румынии продолжали снижаться в середине сентября. Котировка DAP Констанца на семена подсолнечника составила €519 за тонну 14 сентября после снижения на €9, и снова €519 в отчете от 16 сентября. В отчете от 17 сентября подсолнечник упал еще на €18 до €501 за тонну, самого большого падения среди шести отслеживаемых товаров, в то время как рапс остался практически неизменным на уровне €533 за тонну. Комментарий рынка связал снижение с перспективами большего урожая. В Болгарии сигналы были смешанными: AgroPortal отметил 14 сентября, что пшеница дешевеет, в то время как кукуруза и подсолнечник дорожают, а 15 сентября — что урожаи подсолнечника и кукурузы показывают улучшающиеся результаты. В своем сентябрьском отчете USDA повысило оценку производства подсолнечника в Румынии на 2026/27 год с 2,60 до 2,8 млн тонн, несмотря на сокращение убранной площади с 1,22 до 1,17 млн гектаров, что подразумевает значительно лучшую урожайность. Для ЕС в целом Expana оценивает урожай подсолнечника в 9,5 млн тонн, в то время как USDA оценивает его в 9,72 млн тонн.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_ua_rapeseed_exp">Экспорт рапса UA (10 дн.)</div>
+                                <div class="metric-value">124k т</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_ua_rapeseed_oil_exp">Экспорт рапс. масла UA</div>
+                                <div class="metric-value">53.7k т</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_ua_alt_total">UA альтернативные маршруты</div>
+                                <div class="metric-value">630k т (~40%)</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_ua_grain_danube">Зерно ж/д в Дунай</div>
+                                <div class="metric-value">248.8k т</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_ua_duty_rev">Доход от пошлины UA</div>
+                                <div class="metric-value">UAH 2.174B</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_ua_crush_record">Переработка рапса UA</div>
+                                <div class="metric-value">42% урожая</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_ru_wheat_cn">Пшеница РФ → Китай</div>
+                                <div class="metric-value">x7 ($17.6M)</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_ru_barley_cn">Ячмень РФ → Китай</div>
+                                <div class="metric-value">x2+ ($112.3M)</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_ru_oilseed_stocks">Запасы масличных РФ</div>
+                                <div class="metric-value">1.7M т (+11%)</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_ru_sunflower_stocks">Запасы подсолнечника РФ</div>
+                                <div class="metric-value">270k т (-27.3%)</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_ru_margarine_prod">Производство маргарина РФ</div>
+                                <div class="metric-value">676.8k т (-12%)</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_ru_palm_price">Цена пальм. масла РФ</div>
+                                <div class="metric-value">200-220 ₽/кг</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_ro_sunflower_usda">Урожай подсолнечника RO</div>
+                                <div class="metric-value">2.8M т</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_eu_sunflower_usda">Урожай подсолнечника ЕС</div>
+                                <div class="metric-value">9.72M т</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab-central" class="tab-content">
+                        <div class="region-grid">
+                            <div class="region-card">
+                                <div class="region-card-header">
+                                    <i class="fas fa-mountain"></i>
+                                    <span data-lang-key="kazakhstan">Казахстан</span>
+                                </div>
+                                <div class="region-card-content">
+                                    <div class="country-item">
+                                        <h4><i class="fas fa-handshake"></i> <span data-lang-key="kz_korea_deal">Сделка с Южной Кореей</span></h4>
+                                        <p data-lang-key="kz_korea_deal_text">Инвестиционная компания Samsar Investment Казахстана планирует экспортировать 3000 тонн подсолнечного масла ежемесячно в Южную Корею, что составит 36 000 тонн ежегодно. Эта сделка, finalized на Казахстанско-корейском бизнес-форуме в Алматы, укрепляет присутствие Казахстана на азиатском рынке. Кроме того, компании договорились построить агроперерабатывающий комплекс стоимостью $1,3 млн в Казахстане. Форум resulted в коммерческих соглашениях на сумму $54,8 млн. Торговля между двумя странами продолжает расти, при этом двусторонний оборот достиг $1,3 млрд в первом полугодии 2026 года, driven by a 17.2% increase in Kazakh exports to South Korea.</p>
+                                    </div>
+                                    <div class="country-item">
+                                        <h4><i class="fas fa-industry"></i> <span data-lang-key="kz_production">Производство и экспорт</span></h4>
+                                        <p data-lang-key="kz_production_text">Казахстан произвел 673,2 тыс. тонн рафинированного и нерафинированного растительного масла в январе–июле 2026 года, что на 29,1% больше в годовом выражении. В первом полугодии экспорт вырос на 46,2% до 560,6 тыс. тонн, в то время как внутренние продажи упали на 24,5%. Экспорт одного только подсолнечного масла достиг 481 тыс. тонн (+41,2%) на сумму $533 млн. Сырьевая база продолжает расширяться: под масличные культуры засеяно 5,2 млн гектаров, что на 30% больше, чем годом ранее, включая рекордные 2,2 млн гектаров подсолнечника. По состоянию на 18 сентября было убрано 1,5 млн гектаров масличных культур, с намолотом 1,4 млн тонн при средней урожайности 9,7 центнера с гектара. Растущий экспорт не снизил внутренние цены. В августе растительное масло стоило на 7,7% больше, чем годом ранее, а подсолнечное масло — на 7,5% больше, в среднем 904 тенге за литр.</p>
+                                    </div>
+                                    <div class="country-item">
+                                        <h4><i class="fas fa-seedling"></i> <span data-lang-key="kz_harvest_forecast">Прогноз урожая 2026</span></h4>
+                                        <p data-lang-key="kz_harvest_forecast_text">Урожай масличных культур Казахстана в 2026 году, вероятно, совпадет с прошлогодним рекордом, несмотря на увеличение площадей на 30% до 5,32 млн гектаров, из-за неблагоприятных погодных условий. NOPA прогнозирует общий урожай в 4,15–4,3 млн тонн, при этом семена подсолнечника составят 2,06–2,16 млн тонн. Растущие перерабатывающие мощности, особенно в рафинировании, усилят конкуренцию за сырье. Между тем, растет спрос на семена высокоолеинового подсолнечника, driven by major manufacturers like PepsiCo and Mareven, who require 50,000–55,000 tons annually for stable domestic production.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="region-card">
+                                <div class="region-card-header">
+                                    <i class="fas fa-industry"></i>
+                                    <span data-lang-key="uzbekistan">Узбекистан</span>
+                                </div>
+                                <div class="region-card-content">
+                                    <div class="country-item">
+                                        <h4><i class="fas fa-chart-line"></i> <span data-lang-key="uz_import_dependence">Зависимость от импорта</span></h4>
+                                        <p data-lang-key="uz_import_dependence_text">Рынок масличных культур Узбекистана растет быстрее, чем внутреннее предложение, оставляя страну сильно зависимой от импорта. Несмотря на рост производства на 38% в 2026 году, импорт достиг $985 млн, во главе с соевым шротом и подсолнечным маслом. Ойбек Зуфаров из Ассоциации производителей растительного масла Узбекистана выступает за более тесную координацию с Казахстаном, который поставляет 48% импорта масла Узбекистана. Он предполагает, что инвестиции Узбекистана в перерабатывающие мощности Казахстана могут обеспечить цепочки поставок, сместить фокус с сырья на рафинированную продукцию и снизить ценовую волатильность, превратив региональную конкуренцию во взаимовыгодное партнерство.</p>
+                                    </div>
+                                    <div class="country-item">
+                                        <h4><i class="fas fa-handshake"></i> <span data-lang-key="uz_syria_forum">Узбекско-сирийский форум</span></h4>
+                                        <p data-lang-key="uz_syria_forum_text">19 сентября в Ташкенте прошел Узбекско-сирийский бизнес-форум, в котором приняли участие министр инвестиций, промышленности и торговли Узбекистана Лазиз Кудратов и министр экономики и промышленности Сирии Мохаммед Нидал аль-Шаар. Сирийскую сторону представляли руководители более 30 крупных компаний, работающих в текстильной, фармацевтической, пищевой и химической промышленности, сельском хозяйстве, строительных материалах, электротехнике и других секторах. Подписанный меморандум о создании Совместного экономического и торгового комитета, наряду с вновь созданным Деловым советом, заложил институциональную основу для регулярного взаимодействия между государственными органами и бизнесом двух стран. В феврале 2027 года планируется выставка «Сделано в Узбекистане» в Алеппо и Дамаске, а позже в том же году — выставка сирийской продукции в Ташкенте. Деловая программа продолжилась встречами B2B и B2G, и две стороны создали рабочую группу для подготовки единой дорожной карты сотрудничества.</p>
+                                    </div>
+                                    <div class="country-item">
+                                        <h4><i class="fas fa-globe"></i> <span data-lang-key="uz_wef">Всемирный экономический форум</span></h4>
+                                        <p data-lang-key="uz_wef_text">15 сентября заместитель министра инвестиций, промышленности и торговли Узбекистана Акрам Алиев встретился с представителем Всемирного экономического форума Дитрихом Н. Джоном. Обсуждения касались продвижения реформ Узбекистана, инвестиционных возможностей и перспективных экономических инициатив среди ведущих международных компаний и финансовых институтов, а также укрепления участия узбекских компаний в мероприятиях ВЭФ и建立 прямых контактов с глобальными бизнес-лидерами и инвесторами. Обе стороны подтвердили готовность использовать платформу ВЭФ для укрепления позиции Узбекистана в глобальной экономической повестке дня.</p>
+                                    </div>
+                                    <div class="country-item">
+                                        <h4><i class="fas fa-building"></i> <span data-lang-key="uz_fdi">Иностранные инвестиции</span></h4>
+                                        <p data-lang-key="uz_fdi_text">Согласно Государственному комитету по статистике, по состоянию на 1 сентября 2026 года в Узбекистане насчитывалось 21 490 предприятий с иностранными инвестициями — 4 758 совместных предприятий и 16 732 полностью иностранных предприятия. Китай остается лидером по количеству таких предприятий — 6 436 компаний, или около 29,9% от общего числа, за ним следуют Россия (16,7%), Турция (11%), Казахстан (6,3%), а также Южная Корея и Афганистан (по 3,4% each). За последние пять лет общее количество предприятий с иностранными инвестициями выросло в 1,7 раза, а доля полностью иностранных предприятий выросла с 56,2% до 77,9%. В годовом выражении, с сентября 2025 по сентябрь 2026 года, их число увеличилось на 4 544 (26,8%), при этом основной рост пришелся на торговлю, промышленность и строительство; Ташкент занимает 62,4% всех активных предприятий с иностранными инвестициями.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="region-card">
+                                <div class="region-card-header">
+                                    <i class="fas fa-flag"></i>
+                                    <span data-lang-key="azerbaijan">Азербайджан</span>
+                                </div>
+                                <div class="region-card-content">
+                                    <div class="country-item">
+                                        <h4><i class="fas fa-chart-line"></i> <span data-lang-key="az_trade_sep">Внешняя торговля (янв-авг)</span></h4>
+                                        <p data-lang-key="az_trade_sep_text">Согласно Государственному таможенному комитету Азербайджана, в январе–августе 2026 года внешнеторговый оборот страны составил $33,2 млрд, превысив показатель того же периода прошлого года на $1,12 млрд (3,49%). Из этой суммы экспорт составил $21,8 млрд, а импорт — $11,4 млрд; за год экспорт вырос на $4,75 млрд (27,83%), в то время как импорт упал на $3,63 млрд (24,11%). В результате торговый профицит более чем quintupled, достигнув $10,39 млрд, что на $8,37 млрд больше в годовом выражении. Во внешнеторговых операциях Азербайджана за этот период участвовали 175 зарубежных стран, всего 37 474 участника торговли — 27 354 физических лица и 10 120 юридических лиц, из которых 145 относились к государственному сектору, а 9 975 — к частному сектору. Ранее сообщалось, что Азербайджан экспортировал 14,678 млн метрических тонн сырой нефти и нефтепродуктов в январе–августе на сумму $9,282 млрд — рост на 10,6% в стоимостном выражении, несмотря на падение объема на 7,8%, в то время как экспорт природного газа за тот же период составил 16,37 млрд кубометров на сумму $5,7 млрд, снизившись на 4,8% в стоимостном выражении в годовом выражении.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_kz_korea_vol">Экспорт масла KZ → KR</div>
+                                <div class="metric-value">36k т/год</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_kz_korea_deals">Сделки на форуме KZ-KR</div>
+                                <div class="metric-value">$54.8M</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_kz_trade_kr">Торговый оборот KZ-KR</div>
+                                <div class="metric-value">$1.3B (H1)</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_kz_oil_prod">Производство масла KZ</div>
+                                <div class="metric-value">673.2k т (+29.1%)</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_kz_oil_export">Экспорт масла KZ</div>
+                                <div class="metric-value">560.6k т (+46.2%)</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_kz_harvested">Убрано масличных KZ</div>
+                                <div class="metric-value">1.5M га</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_kz_yield">Урожайность KZ</div>
+                                <div class="metric-value">9.7 ц/га</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_kz_forecast">Прогноз урожая KZ</div>
+                                <div class="metric-value">4.15-4.3M т</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_uz_imports">Импорт масел UZ</div>
+                                <div class="metric-value">$985M</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_uz_fdi">Предприятия с ИИ UZ</div>
+                                <div class="metric-value">21,490</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_az_turnover">Внешнеторговый оборот AZ</div>
+                                <div class="metric-value">$33.2B</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_az_surplus">Торговый профицит AZ</div>
+                                <div class="metric-value">$10.39B</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="blacksea">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2><i class="fas fa-water"></i> <span data-lang-key="blacksea_logistics_title">Логистика Черноморского региона</span></h2>
+                <div class="toggle-btn"><i class="fas fa-chevron-down"></i></div>
+            </div>
+            <div class="section-content">
+                <div class="info-box success">
+                    <i class="fas fa-chart-line"></i>
+                    <div class="info-box-content">
+                        <div class="info-box-title" data-lang-key="ua_logistics_improvement">Экспортная логистика Украины улучшилась в сентябре</div>
+                        <p class="info-box-text" data-lang-key="ua_logistics_improvement_text">Экспортная логистика улучшилась в сентябре, когда Украина отгрузила 630,000 тонн сельскохозяйственной продукции по альтернативным маршрутам. Заместитель министра Т. Высоцкий отметил, что это составляет около 40% потенциальной экспортной мощности, по сравнению с 33% в августе. Железнодорожные перевозки растительного масла резко выросли, увеличившись на 54,7% до 113,000 тонн. Большинство этих поставок (79%) было направлено к западным пограничным переходам, и только 21% — в порты, что подчеркивает значительный сдвиг в логистике в сторону железной дороги для экспорта масла.</p>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <div class="chart-title" data-lang-key="logistics_map">Карта логистических коридоров</div>
+                    </div>
+                    <div class="chart-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span data-lang-key="map_placeholder">Интерактивная карта коридоров TITR, Дуная и Черного моря</span>
+                    </div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_ua_sept_export">UA экспорт сент.</div>
+                        <div class="metric-value">630k т</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_ua_sept_capacity">Доля потенциала</div>
+                        <div class="metric-value">~40%</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_ua_aug_capacity">Доля в августе</div>
+                        <div class="metric-value">33%</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_ua_oil_rail_sept">Ж/д масло UA</div>
+                        <div class="metric-value">113k т</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_ua_oil_yoy_sept">Рост YoY</div>
+                        <div class="metric-value">+54.7%</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_ua_west_border">Через западную границу</div>
+                        <div class="metric-value">79%</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="regulatory">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2><i class="fas fa-file-contract"></i> <span data-lang-key="regulatory_title">Регуляторный горизонт</span></h2>
+                <div class="toggle-btn"><i class="fas fa-chevron-down"></i></div>
+            </div>
+            <div class="section-content">
+                <div class="tabs-container">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" onclick="switchRegTab('eudr', event)">EUDR</button>
+                        <button class="tab-btn" onclick="switchRegTab('red3', event)">RED III</button>
+                        <button class="tab-btn" onclick="switchRegTab('moah', event)">MOAH</button>
+                    </div>
+
+                    <div id="reg-eudr" class="tab-content active">
+                        <div class="info-box danger">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <div class="info-box-content">
+                                <div class="info-box-title" data-lang-key="fefac_update">FEFAC: Дефицит соевого шрота в ЕС ≥5 млн тонн</div>
+                                <p class="info-box-text" data-lang-key="fefac_update_text">17 сентября 2026 года Европейская федерация производителей комбикормов (FEFAC) опубликовала свое четвертое обновление о риске нарушения цепочки поставок кормов и экономическом воздействии EUDR на поставки сои для кормов животных. Оценка предупреждает, что сильная засуха, нарушение торговли в Черном море и ограничения sourcing EUDR сходятся, чтобы одновременно сжать цепочку кормов ЕС, прогнозируя потенциальный дефицит предложения соевого шрота в ЕС не менее 5 миллионов тонн — примерно 20% от общего следа соевого шрота ЕС — на маркетинговый год 2026/2027, с очень ограниченными вариантами замены. FEFAC оценивает прямые дополнительные расходы на сою, соответствующую EUDR, для использования в кормах до €1,05 млрд (около $1,20 млрд), исходя из общего использования около 35 миллионов тонн; поскольку цены на рапсовый и подсолнечный шрот привязаны к котировкам соевого шрота, увеличение добавляет еще €449 млн расходов на эти альтернативные белки. Президент FEFAC Николя Кудри-Месни сказал, что неминуемое применение EUDR после 30 декабря 2026 года уже нарушает закупки сои в ЕС с глобальных рынков, усугубляя давление от засухи и закрытых морских коридоров. Федерация призывает институты ЕС обеспечить немедленное упрощенное внедрение EUDR для подпадающих под действие продуктов сои и приостановить применение EUDR к Palm Kernel Expeller (PKE), чтобы защитить этот альтернативный источник кормов для скота перед 2027 годом.</p>
+                            </div>
+                        </div>
+
+                        <div class="chart-container">
+                            <div class="chart-header">
+                                <div class="chart-title" data-lang-key="eudr_timeline">Сроки соответствия EUDR</div>
+                            </div>
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-date" data-lang-key="eudr_date1">30 декабря 2026</div>
+                                    <div class="timeline-content" data-lang-key="eudr_deadline1">Крупные и средние операторы: обязательная подача Due Diligence Statements</div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-date" data-lang-key="eudr_date2">30 июня 2027</div>
+                                    <div class="timeline-content" data-lang-key="eudr_deadline2">Малый и микробизнес (SMEs)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="reg-red3" class="tab-content">
+                        <div class="info-box">
+                            <i class="fas fa-ship"></i>
+                            <div class="info-box-content">
+                                <div class="info-box-title" data-lang-key="red3_maritime">RED III в морском секторе</div>
+                                <p class="info-box-text" data-lang-key="red3_maritime_text">Никаких новых developments RED III/морского сектора, специфичных для окна 11–21 сентября, не было verifiable в открытых источниках; самый последний подтвержденный отчет (Offshore Source, 1 сентября 2026 года) все еще описывает ту же фазу реализации, что и ранее отмечалось — государства-члены продолжают национальную транспозицию, при этом общеевропейская цель составляет не менее 14% возобновляемой энергии в транспортном секторе к 2030 году, а передовые биотоплива имеют право учитываться в двойном размере их энергетического содержания для достижения национальных целей в рамках RED III, reinforced by FuelEU Maritime's compliance multipliers for qualifying fuels.</p>
+                            </div>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_red3_target">Цель RED III (транспорт)</div>
+                                <div class="metric-value">≥14%</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_red3_deadline">Дедлайн</div>
+                                <div class="metric-value">2030</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_red3_multiplier">Множитель для advanced biofuels</div>
+                                <div class="metric-value">2x</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="reg-moah" class="tab-content">
+                        <div class="info-box warning">
+                            <i class="fas fa-flask"></i>
+                            <div class="info-box-content">
+                                <div class="info-box-title" data-lang-key="moah_delay">MOAH: Принятие перенесено на октябрь 2026</div>
+                                <p class="info-box-text" data-lang-key="moah_delay_text">Вопреки более раннему ожиданию принятия в сентябре 2026 года, собственный каталог продовольственной безопасности Европейской комиссии и несколько отраслевых трекеров теперь подтверждают, что формальное принятие поправки к Регламенту (ЕС) 2023/915, устанавливающей первые гармонизированные statutory максимальные уровни для ароматических углеводородов минерального масла (MOAH) — на основе принципа ALARA — targeted for October 2026, subject to scrutiny by the European Parliament and the Council, rather than September as previously reported. Мера, поддержанная государствами-членами на голосовании Постоянного комитета по растениям, животным, пищевым продуктам и кормам (SCoPAFF) 13 мая 2026 года, все еще должна применяться generally from January 1, 2027. Для масел и жиров лимиты будут progressively reduced до 2,0 мг/кг к 2030 году, в то время как сухие продукты с низким содержанием жира сталкиваются с порогом 0,5 мг/кг — цифры consistent with the previous outlook, though the adoption date itself has slipped by roughly a month.</p>
+                            </div>
+                        </div>
+
+                        <div class="chart-container">
+                            <div class="chart-header">
+                                <div class="chart-title" data-lang-key="moah_timeline">График внедрения MOAH</div>
+                            </div>
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-date" data-lang-key="moah_oct">Октябрь 2026</div>
+                                    <div class="timeline-content" data-lang-key="moah_oct_text">Ожидаемое окончательное принятие поправок к Регламенту ЕС 2023/915</div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-date" data-lang-key="moah_jan">1 января 2027</div>
+                                    <div class="timeline-content" data-lang-key="moah_jan_text">Вступление регулирования в силу</div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-date" data-lang-key="moah_2030">2030</div>
+                                    <div class="timeline-content" data-lang-key="moah_2030_text">Лимит для масел и жиров: 2.0 мг/кг</div>
+                                </div>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-label">
+                                    <span data-lang-key="moah_progress">До вступления в силу</span>
+                                    <span>~3.5 месяца</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 72%; background: linear-gradient(90deg, #f39c12 0%, #e67e22 100%);">72%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_moah_oil">Лимит MOAH (масла/жиры 2030)</div>
+                                <div class="metric-value">2.0 мг/кг</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_moah_dry">Лимит MOAH (сухие продукты)</div>
+                                <div class="metric-value">0.5 мг/кг</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_moah_principle">Принцип ALARA</div>
+                                <div class="metric-value">✓</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="logistics">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2><i class="fas fa-shipping-fast"></i> <span data-lang-key="logistics_title">Логистика и безопасность поставок</span></h2>
+                <div class="toggle-btn"><i class="fas fa-chevron-down"></i></div>
+            </div>
+            <div class="section-content">
+                <div class="info-box success">
+                    <i class="fas fa-route"></i>
+                    <div class="info-box-content">
+                        <div class="info-box-title" data-lang-key="afghanistan_hub">Афганистан как транзитный хаб</div>
+                        <p class="info-box-text" data-lang-key="afghanistan_hub_text">Афганистан emerges as a vital transit hub linking Central Asia, Iran, and Turkey. Key projects like the $780 million Herat-Mazar-i-Sharif railway and the "Five Nations Corridor" aim to connect China to the West. These routes offer Afghanistan alternatives to Pakistani ports, while Iran seeks to bypass maritime risks. Uzbekistan is actively coordinating with Kabul and Tehran, integrating its infrastructure to boost regional trade. If realized, this interconnected network will bypass traditional bottlenecks, transforming Afghanistan from a regional barrier into a strategic Eurasian transit link, significantly expanding trade access to the Persian Gulf, Turkey, and the EU.</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <i class="fas fa-train"></i>
+                    <div class="info-box-content">
+                        <div class="info-box-title" data-lang-key="china_iran_train">Первый блок-поезд Китай → Иран</div>
+                        <p class="info-box-text" data-lang-key="china_iran_train_text">Первый блок-поезд из Китая в Иран, организованный Uztemiryulkonteyner, начал свой путь через Узбекистан. 55-вагонный поезд, перевозящий автомобильные запчасти и потребительские товары, преодолевает более 6000 км через Китай, Казахстан, Узбекистан и Туркменистан. После въезда через переход Хоргос-Алтынколь и транзита через Узбекистан ожидается, что поезд достигнет пограничной станции Сарахс через 14–16 дней. Этот новый маршрут marks a significant step in establishing regular container block train services along the China–Central Asia–Iran corridor, further integrating regional logistics networks and enhancing trans-Eurasian trade connectivity.</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <i class="fas fa-ship"></i>
+                    <div class="info-box-content">
+                        <div class="info-box-title" data-lang-key="bar_port">Порт Бар (Черногория)</div>
+                        <p class="info-box-text" data-lang-key="bar_port_text">Посол Казахстана в Черногории Даулет Батрашев посетил порт Бар, чтобы изучить использование черногорской инфраструктуры для транзита грузов между Казахстаном, Западными Балканами и Европой. Обсуждения с представителями порта и местными чиновниками focused on integrating the Port of Bar into the Trans-Caspian International Transport Route (Middle Corridor). Стороны examined potential cooperation in logistics, specifically for transporting Kazakh agricultural products and grain, as well as developing container shipping. Обе стороны agreed to further evaluate the economic feasibility of joint investment projects and the use of terminal facilities to enhance trade connectivity.</p>
+                    </div>
+                </div>
+
+                <div class="info-box warning">
+                    <i class="fas fa-ruble-sign"></i>
+                    <div class="info-box-content">
+                        <div class="info-box-title" data-lang-key="ru_zero_duties">Россия: Нулевые пошлины на зерно</div>
+                        <p class="info-box-text" data-lang-key="ru_zero_duties_text">Таможенная подкомиссия Министерства сельского хозяйства Российской Федерации приняла fundamental decision об обнулении пошлин на пшеницу, кукурузу и ячмень до конца 2026 года, мера, которая вступила в силу 1 сентября, но continued to draw scrutiny through mid-September, as reported by trade outlets on September 17. Москва говорит, что эта мера предназначена для поддержки экспортеров после repeated Ukrainian strikes on Black Sea port infrastructure left grain shippers struggling to move the new harvest; before the change, Russia charged 787.5 rubles per tonne on wheat exports and 406.5 rubles per tonne on corn, with barley duties zeroed out as well, while duties on sunflower oil (a major Indian import) remain unchanged at 7,748 rubles per tonne. As of the week of the report, the decision had reportedly still not been formally published in Russia's official gazette — an unusual gap traders were watching closely — reflecting how the Azov-Black Sea basin's shipping constraints continue to disrupt the country's main export corridor.</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <i class="fas fa-clock"></i>
+                    <div class="info-box-content">
+                        <div class="info-box-title" data-lang-key="ua_settlement_extension">Украина: Продление сроков расчетов</div>
+                        <p class="info-box-text" data-lang-key="ua_settlement_extension_text">На related front, Национальный банк Украины extended the payment settlement deadline for imports of selected industrial equipment from 180 to 270 days, effective September 17, 2026 — a further easing of foreign-exchange control rules following the National Bank's earlier extension (in late August) of agricultural export settlement periods to 150 days, and the Cabinet of Ministers' related decision allowing the Ministry of Economy to extend settlement deadlines for wheat, corn, soybeans, sunflower seeds, sunflower oil, and oilcake by up to 180 days upon exporter request, both adopted in response to the same Black Sea logistics disruptions.</p>
+                    </div>
+                </div>
+
+                <div class="info-box success">
+                    <i class="fas fa-network-wired"></i>
+                    <div class="info-box-content">
+                        <div class="info-box-title" data-lang-key="caspian_connectivity">Каспийская связность</div>
+                        <p class="info-box-text" data-lang-key="caspian_connectivity_text">On Caspian connectivity, Kazakhstan and Azerbaijan are preparing to resume passenger ferry service on the Kuryk–Baku (Alat) route, Trend.Az reported on September 10, 2026, alongside plans to develop joint AI-based solutions for managing cargo flows, processing documentation, and assessing risk in cross-border trade between Kazakhstan Railways and the Baku International Sea Trade Port at Alat. A 391-kilometer fiber-optic cable across the Caspian Sea, with capacity of up to 400 Tbps, is expected to be completed by the end of 2026, and cargo shipments along the Middle Corridor through Azerbaijan have grown by roughly 90% over the past three years.</p>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <div class="chart-title" data-lang-key="logistics_map">Карта логистических коридоров</div>
+                    </div>
+                    <div class="chart-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span data-lang-key="map_placeholder">Интерактивная карта коридоров TITR, Дуная и Черного моря</span>
+                    </div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_afghan_railway">Ж/д Герат-Мазари-Шариф</div>
+                        <div class="metric-value">$780M</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_china_iran_dist">Расстояние Китай-Иран</div>
+                        <div class="metric-value">6,000+ км</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_china_iran_time">Время в пути</div>
+                        <div class="metric-value">14-16 дней</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_caspian_cable">Каспийский кабель</div>
+                        <div class="metric-value">391 км / 400 Tbps</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_middle_corridor_growth">Рост Среднего коридора</div>
+                        <div class="metric-value">+90% (3 года)</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_ua_settlement_days">Продление расчетов UA</div>
+                        <div class="metric-value">до 270 дней</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer-actions">
+            <div>
+                <button class="action-btn" onclick="window.print()">
+                    <i class="fas fa-print"></i> <span data-lang-key="print_report">Печать отчета</span>
+                </button>
+                <button class="action-btn secondary-btn" onclick="exportCSV()">
+                    <i class="fas fa-file-csv"></i> <span data-lang-key="export_csv">CSV</span>
+                </button>
+                <button class="action-btn secondary-btn" onclick="window.print()">
+                    <i class="fas fa-file-pdf"></i> <span data-lang-key="export_pdf_btn">PDF</span>
+                </button>
+            </div>
+            <div style="color: var(--text-secondary); font-size: 0.85rem;">
+                <i class="fas fa-lock"></i> <span data-lang-key="confidential">Confidential. For internal use only.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            ru: {
+                title: "Еженедельный аналитический обзор",
+                date: "Дата отчета: 21 сентября 2026 г.",
+                nav_prices: "Цены",
+                nav_regions: "Регионы",
+                nav_blacksea: "Черное море",
+                nav_regulatory: "Регулирование",
+                nav_logistics: "Логистика",
+                pricing_title: "Ценовая динамика и рыночные индикаторы",
+                col_commodity: "Актив",
+                col_basis: "Базис",
+                col_price: "Цена",
+                col_comment: "Комментарий",
+                item_cpo: "Пальмовое масло (CPO)",
+                desc_cpo: "Пожары в Индонезии и угроза урожая 2027 года. Сезонный пик производства. Снижение текущего экспорта. Ослабление смежных рынков.",
+                item_sbo: "Соевое масло",
+                desc_sbo: "Прибытие нового урожая сои 2026 года в США для переработки увеличивает физическое предложение шрота и масла на внутреннем рынке, сокращая локальный дефицит.",
+                item_sfo: "Подсолнечное масло",
+                desc_sfo: "В Украине цены спроса упали примерно на $100/т до $1,100–1,120/т CPT порты Дуная из-за более высоких рисков для портовой логистики и роста стоимости фрахта.",
+                item_rapeseed: "Рапс",
+                desc_rapeseed: "В течение недели сильное давление оказывало падение смежных рынков растительных масел.",
+                regional_title: "Анализ региональных рынков",
+                navigate: "Навигация:",
+                expand_all: "Развернуть все",
+                collapse_all: "Свернуть все",
+                print: "Печать",
+                export_csv: "CSV",
+                stat_cpo: "CPO Цена",
+                stat_cpo_change: "Слабый экспорт",
+                stat_sbo: "Соевое масло",
+                stat_sbo_change: "Новый урожай США",
+                stat_sfo: "Подсолнечное масло",
+                stat_sfo_change: "UA $1,100 CPT",
+                stat_rapeseed: "Рапс",
+                stat_rapeseed_change: "Давление смежных рынков",
+                stat_ua_min_price: "UA мин. цена экспорта",
+                stat_ua_min_text: "+ $225 vs рынок",
+                stat_ua_alt_routes: "UA альтернативные маршруты",
+                stat_ua_alt_text: "Улучшение с августа",
+                metric_my_stock: "Запасы Малайзии (прогноз)",
+                metric_my_export_sep: "Экспорт MY (1-15 сен)",
+                metric_ua_min_price_m: "UA мин. экспортная цена",
+                metric_ua_market_price: "Рыночная цена UA",
+                metric_global_rapeseed: "Прогноз мирового рапса",
+                metric_oil_price: "Нефть Brent",
+                premium_narrowing: "Премиум подсолнечного масла над соевым сузился",
+                premium_narrowing_text: "В сентябре 2026 года ценовой премиум подсолнечного масла над соевым сузился до $205/т с $265/т в январе. Увеличение производства в Аргентине и нормализация переработки в ЕС облегчили более ранний дефицит. Хотя глобальные запасы в Q1 были на 12% ниже в годовом выражении, рост предложения в Q2-Q3 сузил ценовой разрыв. Подсолнечное масло остается высоко коррелированным с соевым (0,85-0,90) и пальмовым (0,75-0,80) маслами из-за рыночной взаимозаменяемости. Цены на соевое масло упали до $1,090/т, в то время как пальмовое масло оставалось стабильным на уровне $920-960/т. Будущие ценовые тренды подсолнечного масла будут зависеть от глобальных балансов предложения и производительности конкурирующих растительных масел.",
+                tab_europe: "Европа",
+                tab_blacksea: "Черное море",
+                tab_central: "Центральная Азия и Кавказ",
+                eu_overview: "Обзор европейского рынка",
+                eu_overview_text: "Европейские рынки растительных масел показали расходящиеся тенденции в середине сентября: цены на рапс укрепились на фоне ограниченного предложения из Черноморского региона и стабильного спроса на растительные масла; пальмовое масло отступило от 21-месячного максимума из-за слабого малазийского экспорта; соевое масло и соевые бобы выросли до многолетних максимумов на фоне сильного китайского спроса, в то время как экспортные цены на украинское подсолнечное масло оказались под новым регуляторным давлением из-за установленной правительством минимальной экспортной цены.",
+                rapeseed_market: "Рапсовый рынок",
+                rapeseed_benchmarks: "Глобальные бенчмарки",
+                rapeseed_benchmarks_text: "Цены на рапс в Европе продолжали укрепляться на фоне ограниченного предложения из Черноморского региона и стабильного спроса на растительные масла. В начале недели ноябрьские фьючерсы на рапс на Euronext в Париже выросли до €555,5/т, приблизившись к недавнему максимуму €556,75/т. Одним из ключевых поддерживающих факторов остается ограниченное предложение рапса из Украины и России, снижающее доступность сырья на европейском рынке, в то время как украинский рапс продолжает поступать в Германию, где переработчики сохраняют спрос. По состоянию на 11 сентября экспортные цены на украинский рапс составили $649/т FOB Европа, согласно данным UkrAgroConsult.",
+                my_palm: "Малайзийское пальмовое масло",
+                my_palm_decline: "Откат от максимума",
+                my_palm_decline_text: "Фьючерсы на малайзийское пальмовое масло отступили от 21-месячного максимума в середине сентября под давлением слабого экспорта и ожиданий роста запасов в этом месяце. Фундаментальные показатели оставались под давлением слабого сентябрьского экспорта и ожиданий, что запасы на конец месяца могут вырасти до около 3 миллионов тонн, согласно брокерской компании Pelindung Bestari из Селангора. Сюрвейеры грузов оценили, что экспорт продуктов малайзийского пальмового масла за период 1–15 сентября упал на 17,8–25,6% по сравнению с предыдущим месяцем. К 18–19 сентября рынок частично восстановился: пальмовое масло выросло до 4 898 MYR/T 18 сентября 2026 года, увеличившись на 1,70% по сравнению с предыдущим днем, благодаря ослаблению ринггита и ожиданиям ужесточения предложения. Более слабый экспорт малайзийского пальмового масла и более высокое производство, вместе с решением Индонезии сохранить мандат B50 на биодизель в 2027 году, снизили фьючерсы CPO, в то время как настроения рынка также давили более слабые цены на соевое масло и сырую нефть.",
+                soybeans: "Соевые бобы",
+                soy_rally: "Ралли до максимума с декабря 2023",
+                soy_rally_text: "Соевые бобы выросли выше $13 за бушель в середине сентября, приблизившись к самому высокому уровню с декабря 2023 года, поскольку сильные закупки Китая поддержали рынок, в то время как трейдеры взвешивали последний отчет USDA о предложении и спросе, что оказало дополнительную поддержку глобальному ценообразованию на соевое масло.",
+                ua_min_price_alert: "Украина: Минимальная экспортная цена vs Рынок",
+                ua_min_price_alert_text: "Министерство экономики Украины установило минимальную допустимую экспортную цену на подсолнечное масло на базисе CPT на уровне $1 350/т, в то время как фактические предложения на украинском рынке составляли около $1 125/т — примерно на $225/т ниже. Украинское подсолнечное масло предлагалось по цене около $1 360/т CIF Турция, с котировками FOB шесть портов около $1 385–1 390/т; российское подсолнечное масло торговалось по $1 306–1 310/т, при этом некоторые сделки на поставки в Китай были заключены около $1 250/т. Трейдеры также выразили обеспокоенность по поводу сопутствующей минимальной экспортной цены на базисе FAS, установленной на уровне $873/т, призвав к пересмотру методологии расчета.",
+                ukraine: "Украина",
+                ua_logistics_sep: "Логистика в сентябре",
+                ua_logistics_sep_text: "Нарушения экспорта в Черном море продолжают менять сельскохозяйственную логистику Украины, хотя данные сентября показывают скромное улучшение по сравнению с почти полной блокадой августа. Рынок рапса в Украине оставался под давлением более высоких логистических расходов и более слабого спроса со стороны переработчиков в середине сентября, при этом падающие цены на семена подсолнечника и соевые бобы добавляли напряжения, в то время как сырая нефть выше $100/баррель обеспечивала лишь частичную поддержку. Украина экспортировала 124 тысячи тонн рапса и 53,7 тысячи тонн рапсового масла в первые 10 дней сентября. Транспортные расходы продолжали расти: автомобильные доставки в румынские порты стали на 10–20% дороже за месяц, в то время как октябрьские железнодорожные перевозки европейской колеи от границы Украины до Германии обошлись примерно на 30% дороже, чем в июле–августе. Экспортные цены предложений на рапс выросли на $10–20/т за неделю до $490–510/т с доставкой в порты Дуная и $500–520/т на терминалах западной границы, в то время как цены на доставку в Констанцу, Румыния, остались на уровне $590–600/т на фоне растущих очередей на прием зерна. В то же время спрос со стороны украинских переработчиков ослаб, так как падающие цены на семена подсолнечника сделали переработку подсолнечника более привлекательной, опустив цены на рапс с содержанием масла 44% примерно на UAH 500/т за неделю до UAH 19–21 тыс./т с доставкой на заводы.",
+                ua_alt_capacity: "Альтернативная логистика",
+                ua_alt_capacity_text: "По альтернативной экспортной логистике Украина отгрузила 630 тысяч тонн сельскохозяйственной продукции через альтернативные маршруты с начала сентября — около 40% от объема, который логистическая система могла бы обработать при полной мощности, по сравнению с 33% в августе. Из этого 380 тысяч тонн составили зерновые (35% от необходимого объема), 94 тысячи тонн — масличные (60% от потребности), 97 тысяч тонн — растительные масла (около 66% от потребности) и 60 тысяч тонн — шрот (примерно треть от потребности). Чиновники отметили, что альтернативная логистика работала лучше в сентябре, чем в августе, но страна все еще экспортирует только около 40% от объема, который она могла бы обработать при полностью функционирующей морской портовой логистике — система могла бы обработать примерно в 2,5 раза больше при полной работе морских портов. Железнодорожные доставки зерна в порты Дуная почти утроились в августе по сравнению с июлем, достигнув 248 800 тонн, в то время как отгрузки в порты Большой Одессы рухнули на 94,9% до 68 500 тонн, согласно данным Spike Brokers.",
+                ua_duty_revenue: "Доходы от экспортной пошлины",
+                ua_duty_revenue_text: "По политике экспортной пошлины были опубликованы данные о доходах и переработке за полный маркетинговый год 2025/26: бюджетные доходы от 10% экспортной пошлины на соевые бобы и рапс достигли UAH 2,174 млрд за сезон, согласно заместителю председателя парламентского комитета по экономическому развитию Дмитрию Кисилевскому, ссылающемуся на данные Министерства сельского хозяйства. Переработка рапса в Украине выросла в 2,7 раза в годовом выражении, а экспорт рапсового масла вырос в 2,5 раза; 42% урожая рапса было переработано внутри страны, по сравнению с 15% годом ранее — абсолютный рекорд для этой культуры в Украине. Валютная выручка от экспорта рапсового масла более чем утроилась до $588 млн. Доля внутренней переработки соевых бобов также выросла с 39% до 54,2% от урожая, при этом экспортная выручка от соевого масла и шрота выросла на 12,3% до $1,02 млрд.",
+                russia: "Россия",
+                ru_china_imports: "Импорт из РФ в Китай",
+                ru_china_imports_text: "20 сентября китайская таможня опубликовала данные за январь–август об импорте из России. Импорт пшеницы вырос в семь раз в годовом выражении до $17,6 млн, поставки ячменя более чем удвоились до $112,3 млн, а поставки кукурузы выросли в 1,4 раза до $95,9 млн.",
+                ru_stocks: "Запасы масличных",
+                ru_stocks_text: "Согласно данным Росстата, опубликованным 14 сентября, запасы масличных культур в сельскохозяйственных организациях на конец августа выросли на 11% до 1,7 млн тонн, в то время как запасы семян подсолнечника снизились на 27,3% до 270 000 тонн.",
+                ru_margarine: "Производство маргарина",
+                ru_margarine_text: "Данные Росстата, цитируемые Коммерсантом 21 сентября, показывают, что производство маргарина, растительных спредов и заменителей молочного жира (ЗМЖ) в январе–июле упало на 12% в годовом выражении до 676,8 тыс. тонн, в то время как один только маргарин снизился на 0,5% до 260,1 тыс. тонн.",
+                ru_palm_shortage: "Дефицит пальмового масла",
+                ru_palm_shortage_text: "Рынок пальмового масла оставался под давлением. Данные Союза масложировиков показывают, что сырое пальмовое масло стоило около 100 рублей за килограмм в январе и 118 рублей в сентябре, в то время как участники рынка заявили, что продукты на основе пальмового масла, закупаемые пищевыми производителями, выросли с 140 до 200–220 рублей за килограмм за последний месяц, что составляет увеличение примерно на 43–57%. Союз заявляет, что физического дефицита нет, есть только сокращение запасов специализированных жиров и маргаринов после того, как танкеры были временно перенаправлены в Санкт-Петербург после атак на терминал EFKO в Тамани. Ожидается, что первые грузы пальмового масла достигнут северо-западных портов примерно через неделю. OleoScope связывает дефицит с атаками 30 июля на Тамань и сообщает, что импорт пальмового масла в январе–июле упал на 22,2% до 491 тыс. тонн (пальмоядровое масло: −25,7% до 55 тыс. тонн), в то время как мировые цены на пальмовое масло в среднем составляли около $1,2 тыс. за тонну, что на 12,5% выше, чем в январе. 15 сентября Национальный союз пекарей попросил Федеральную антимонопольную службу пересмотреть рост цен: в августе некоторые позиции маргарина выросли на 15–20% по сравнению с июлем, и пекари ожидают, что сентябрьские цены будут на 30% выше июльских, а ЗМЖ вырастет до 60%. EFKO заявляет, что снижение цен на масложировую продукцию возможно только после возобновления работы портов Азово-Черноморского бассейна.",
+                romania_bulgaria: "Румыния и Болгария",
+                rb_prices_sep: "Цены в середине сентября",
+                rb_prices_sep_text: "Цены на подсолнечник в Румынии продолжали снижаться в середине сентября. Котировка DAP Констанца на семена подсолнечника составила €519 за тонну 14 сентября после снижения на €9, и снова €519 в отчете от 16 сентября. В отчете от 17 сентября подсолнечник упал еще на €18 до €501 за тонну, самого большого падения среди шести отслеживаемых товаров, в то время как рапс остался практически неизменным на уровне €533 за тонну. Комментарий рынка связал снижение с перспективами большего урожая. В Болгарии сигналы были смешанными: AgroPortal отметил 14 сентября, что пшеница дешевеет, в то время как кукуруза и подсолнечник дорожают, а 15 сентября — что урожаи подсолнечника и кукурузы показывают улучшающиеся результаты. В своем сентябрьском отчете USDA повысило оценку производства подсолнечника в Румынии на 2026/27 год с 2,60 до 2,8 млн тонн, несмотря на сокращение убранной площади с 1,22 до 1,17 млн гектаров, что подразумевает значительно лучшую урожайность. Для ЕС в целом Expana оценивает урожай подсолнечника в 9,5 млн тонн, в то время как USDA оценивает его в 9,72 млн тонн.",
+                metric_ua_rapeseed_exp: "Экспорт рапса UA (10 дн.)",
+                metric_ua_rapeseed_oil_exp: "Экспорт рапс. масла UA",
+                metric_ua_alt_total: "UA альтернативные маршруты",
+                metric_ua_grain_danube: "Зерно ж/д в Дунай",
+                metric_ua_duty_rev: "Доход от пошлины UA",
+                metric_ua_crush_record: "Переработка рапса UA",
+                metric_ru_wheat_cn: "Пшеница РФ → Китай",
+                metric_ru_barley_cn: "Ячмень РФ → Китай",
+                metric_ru_oilseed_stocks: "Запасы масличных РФ",
+                metric_ru_sunflower_stocks: "Запасы подсолнечника РФ",
+                metric_ru_margarine_prod: "Производство маргарина РФ",
+                metric_ru_palm_price: "Цена пальм. масла РФ",
+                metric_ro_sunflower_usda: "Урожай подсолнечника RO",
+                metric_eu_sunflower_usda: "Урожай подсолнечника ЕС",
+                kazakhstan: "Казахстан",
+                kz_korea_deal: "Сделка с Южной Кореей",
+                kz_korea_deal_text: "Инвестиционная компания Samsar Investment Казахстана планирует экспортировать 3000 тонн подсолнечного масла ежемесячно в Южную Корею, что составит 36 000 тонн ежегодно. Эта сделка, finalized на Казахстанско-корейском бизнес-форуме в Алматы, укрепляет присутствие Казахстана на азиатском рынке. Кроме того, компании договорились построить агроперерабатывающий комплекс стоимостью $1,3 млн в Казахстане. Форум resulted в коммерческих соглашениях на сумму $54,8 млн. Торговля между двумя странами продолжает расти, при этом двусторонний оборот достиг $1,3 млрд в первом полугодии 2026 года, driven by a 17.2% increase in Kazakh exports to South Korea.",
+                kz_production: "Производство и экспорт",
+                kz_production_text: "Казахстан произвел 673,2 тыс. тонн рафинированного и нерафинированного растительного масла в январе–июле 2026 года, что на 29,1% больше в годовом выражении. В первом полугодии экспорт вырос на 46,2% до 560,6 тыс. тонн, в то время как внутренние продажи упали на 24,5%. Экспорт одного только подсолнечного масла достиг 481 тыс. тонн (+41,2%) на сумму $533 млн. Сырьевая база продолжает расширяться: под масличные культуры засеяно 5,2 млн гектаров, что на 30% больше, чем годом ранее, включая рекордные 2,2 млн гектаров подсолнечника. По состоянию на 18 сентября было убрано 1,5 млн гектаров масличных культур, с намолотом 1,4 млн тонн при средней урожайности 9,7 центнера с гектара. Растущий экспорт не снизил внутренние цены. В августе растительное масло стоило на 7,7% больше, чем годом ранее, а подсолнечное масло — на 7,5% больше, в среднем 904 тенге за литр.",
+                kz_harvest_forecast: "Прогноз урожая 2026",
+                kz_harvest_forecast_text: "Урожай масличных культур Казахстана в 2026 году, вероятно, совпадет с прошлогодним рекордом, несмотря на увеличение площадей на 30% до 5,32 млн гектаров, из-за неблагоприятных погодных условий. NOPA прогнозирует общий урожай в 4,15–4,3 млн тонн, при этом семена подсолнечника составят 2,06–2,16 млн тонн. Растущие перерабатывающие мощности, особенно в рафинировании, усилят конкуренцию за сырье. Между тем, растет спрос на семена высокоолеинового подсолнечника, driven by major manufacturers like PepsiCo and Mareven, who require 50,000–55,000 tons annually for stable domestic production.",
+                uzbekistan: "Узбекистан",
+                uz_import_dependence: "Зависимость от импорта",
+                uz_import_dependence_text: "Рынок масличных культур Узбекистана растет быстрее, чем внутреннее предложение, оставляя страну сильно зависимой от импорта. Несмотря на рост производства на 38% в 2026 году, импорт достиг $985 млн, во главе с соевым шротом и подсолнечным маслом. Ойбек Зуфаров из Ассоциации производителей растительного масла Узбекистана выступает за более тесную координацию с Казахстаном, который поставляет 48% импорта масла Узбекистана. Он предполагает, что инвестиции Узбекистана в перерабатывающие мощности Казахстана могут обеспечить цепочки поставок, сместить фокус с сырья на рафинированную продукцию и снизить ценовую волатильность, превратив региональную конкуренцию во взаимовыгодное партнерство.",
+                uz_syria_forum: "Узбекско-сирийский форум",
+                uz_syria_forum_text: "19 сентября в Ташкенте прошел Узбекско-сирийский бизнес-форум, в котором приняли участие министр инвестиций, промышленности и торговли Узбекистана Лазиз Кудратов и министр экономики и промышленности Сирии Мохаммед Нидал аль-Шаар. Сирийскую сторону представляли руководители более 30 крупных компаний, работающих в текстильной, фармацевтической, пищевой и химической промышленности, сельском хозяйстве, строительных материалах, электротехнике и других секторах. Подписанный меморандум о создании Совместного экономического и торгового комитета, наряду с вновь созданным Деловым советом, заложил институциональную основу для регулярного взаимодействия между государственными органами и бизнесом двух стран. В феврале 2027 года планируется выставка «Сделано в Узбекистане» в Алеппо и Дамаске, а позже в том же году — выставка сирийской продукции в Ташкенте. Деловая программа продолжилась встречами B2B и B2G, и две стороны создали рабочую группу для подготовки единой дорожной карты сотрудничества.",
+                uz_wef: "Всемирный экономический форум",
+                uz_wef_text: "15 сентября заместитель министра инвестиций, промышленности и торговли Узбекистана Акрам Алиев встретился с представителем Всемирного экономического форума Дитрихом Н. Джоном. Обсуждения касались продвижения реформ Узбекистана, инвестиционных возможностей и перспективных экономических инициатив среди ведущих международных компаний и финансовых институтов, а также укрепления участия узбекских компаний в мероприятиях ВЭФ и建立 прямых контактов с глобальными бизнес-лидерами и инвесторами. Обе стороны подтвердили готовность использовать платформу ВЭФ для укрепления позиции Узбекистана в глобальной экономической повестке дня.",
+                uz_fdi: "Иностранные инвестиции",
+                uz_fdi_text: "Согласно Государственному комитету по статистике, по состоянию на 1 сентября 2026 года в Узбекистане насчитывалось 21 490 предприятий с иностранными инвестициями — 4 758 совместных предприятий и 16 732 полностью иностранных предприятия. Китай остается лидером по количеству таких предприятий — 6 436 компаний, или около 29,9% от общего числа, за ним следуют Россия (16,7%), Турция (11%), Казахстан (6,3%), а также Южная Корея и Афганистан (по 3,4% each). За последние пять лет общее количество предприятий с иностранными инвестициями выросло в 1,7 раза, а доля полностью иностранных предприятий выросла с 56,2% до 77,9%. В годовом выражении, с сентября 2025 по сентябрь 2026 года, их число увеличилось на 4 544 (26,8%), при этом основной рост пришелся на торговлю, промышленность и строительство; Ташкент занимает 62,4% всех активных предприятий с иностранными инвестициями.",
+                azerbaijan: "Азербайджан",
+                az_trade_sep: "Внешняя торговля (янв-авг)",
+                az_trade_sep_text: "Согласно Государственному таможенному комитету Азербайджана, в январе–августе 2026 года внешнеторговый оборот страны составил $33,2 млрд, превысив показатель того же периода прошлого года на $1,12 млрд (3,49%). Из этой суммы экспорт составил $21,8 млрд, а импорт — $11,4 млрд; за год экспорт вырос на $4,75 млрд (27,83%), в то время как импорт упал на $3,63 млрд (24,11%). В результате торговый профицит более чем quintupled, достигнув $10,39 млрд, что на $8,37 млрд больше в годовом выражении. Во внешнеторговых операциях Азербайджана за этот период участвовали 175 зарубежных стран, всего 37 474 участника торговли — 27 354 физических лица и 10 120 юридических лиц, из которых 145 относились к государственному сектору, а 9 975 — к частному сектору. Ранее сообщалось, что Азербайджан экспортировал 14,678 млн метрических тонн сырой нефти и нефтепродуктов в январе–августе на сумму $9,282 млрд — рост на 10,6% в стоимостном выражении, несмотря на падение объема на 7,8%, в то время как экспорт природного газа за тот же период составил 16,37 млрд кубометров на сумму $5,7 млрд, снизившись на 4,8% в стоимостном выражении в годовом выражении.",
+                metric_kz_korea_vol: "Экспорт масла KZ → KR",
+                metric_kz_korea_deals: "Сделки на форуме KZ-KR",
+                metric_kz_trade_kr: "Торговый оборот KZ-KR",
+                metric_kz_oil_prod: "Производство масла KZ",
+                metric_kz_oil_export: "Экспорт масла KZ",
+                metric_kz_harvested: "Убрано масличных KZ",
+                metric_kz_yield: "Урожайность KZ",
+                metric_kz_forecast: "Прогноз урожая KZ",
+                metric_uz_imports: "Импорт масел UZ",
+                metric_uz_fdi: "Предприятия с ИИ UZ",
+                metric_az_turnover: "Внешнеторговый оборот AZ",
+                metric_az_surplus: "Торговый профицит AZ",
+                blacksea_logistics_title: "Логистика Черноморского региона",
+                ua_logistics_improvement: "Экспортная логистика Украины улучшилась в сентябре",
+                ua_logistics_improvement_text: "Экспортная логистика улучшилась в сентябре, когда Украина отгрузила 630,000 тонн сельскохозяйственной продукции по альтернативным маршрутам. Заместитель министра Т. Высоцкий отметил, что это составляет около 40% потенциальной экспортной мощности, по сравнению с 33% в августе. Железнодорожные перевозки растительного масла резко выросли, увеличившись на 54,7% до 113,000 тонн. Большинство этих поставок (79%) было направлено к западным пограничным переходам, и только 21% — в порты, что подчеркивает значительный сдвиг в логистике в сторону железной дороги для экспорта масла.",
+                logistics_map: "Карта логистических коридоров",
+                map_placeholder: "Интерактивная карта коридоров TITR, Дуная и Черного моря",
+                metric_ua_sept_export: "UA экспорт сент.",
+                metric_ua_sept_capacity: "Доля потенциала",
+                metric_ua_aug_capacity: "Доля в августе",
+                metric_ua_oil_rail_sept: "Ж/д масло UA",
+                metric_ua_oil_yoy_sept: "Рост YoY",
+                metric_ua_west_border: "Через западную границу",
+                regulatory_title: "Регуляторный горизонт",
+                fefac_update: "FEFAC: Дефицит соевого шрота в ЕС ≥5 млн тонн",
+                fefac_update_text: "17 сентября 2026 года Европейская федерация производителей комбикормов (FEFAC) опубликовала свое четвертое обновление о риске нарушения цепочки поставок кормов и экономическом воздействии EUDR на поставки сои для кормов животных. Оценка предупреждает, что сильная засуха, нарушение торговли в Черном море и ограничения sourcing EUDR сходятся, чтобы одновременно сжать цепочку кормов ЕС, прогнозируя потенциальный дефицит предложения соевого шрота в ЕС не менее 5 миллионов тонн — примерно 20% от общего следа соевого шрота ЕС — на маркетинговый год 2026/2027, с очень ограниченными вариантами замены. FEFAC оценивает прямые дополнительные расходы на сою, соответствующую EUDR, для использования в кормах до €1,05 млрд (около $1,20 млрд), исходя из общего использования около 35 миллионов тонн; поскольку цены на рапсовый и подсолнечный шрот привязаны к котировкам соевого шрота, увеличение добавляет еще €449 млн расходов на эти альтернативные белки. Президент FEFAC Николя Кудри-Месни сказал, что неминуемое применение EUDR после 30 декабря 2026 года уже нарушает закупки сои в ЕС с глобальных рынков, усугубляя давление от засухи и закрытых морских коридоров. Федерация призывает институты ЕС обеспечить немедленное упрощенное внедрение EUDR для подпадающих под действие продуктов сои и приостановить применение EUDR к Palm Kernel Expeller (PKE), чтобы защитить этот альтернативный источник кормов для скота перед 2027 годом.",
+                eudr_timeline: "Сроки соответствия EUDR",
+                eudr_date1: "30 декабря 2026",
+                eudr_deadline1: "Крупные и средние операторы: обязательная подача Due Diligence Statements",
+                eudr_date2: "30 июня 2027",
+                eudr_deadline2: "Малый и микробизнес (SMEs)",
+                red3_maritime: "RED III в морском секторе",
+                red3_maritime_text: "Никаких новых developments RED III/морского сектора, специфичных для окна 11–21 сентября, не было verifiable в открытых источниках; самый последний подтвержденный отчет (Offshore Source, 1 сентября 2026 года) все еще описывает ту же фазу реализации, что и ранее отмечалось — государства-члены продолжают национальную транспозицию, при этом общеевропейская цель составляет не менее 14% возобновляемой энергии в транспортном секторе к 2030 году, а передовые биотоплива имеют право учитываться в двойном размере их энергетического содержания для достижения национальных целей в рамках RED III, reinforced by FuelEU Maritime's compliance multipliers for qualifying fuels.",
+                metric_red3_target: "Цель RED III (транспорт)",
+                metric_red3_deadline: "Дедлайн",
+                metric_red3_multiplier: "Множитель для advanced biofuels",
+                moah_delay: "MOAH: Принятие перенесено на октябрь 2026",
+                moah_delay_text: "Вопреки более раннему ожиданию принятия в сентябре 2026 года, собственный каталог продовольственной безопасности Европейской комиссии и несколько отраслевых трекеров теперь подтверждают, что формальное принятие поправки к Регламенту (ЕС) 2023/915, устанавливающей первые гармонизированные statutory максимальные уровни для ароматических углеводородов минерального масла (MOAH) — на основе принципа ALARA — targeted for October 2026, subject to scrutiny by the European Parliament and the Council, rather than September as previously reported. Мера, поддержанная государствами-членами на голосовании Постоянного комитета по растениям, животным, пищевым продуктам и кормам (SCoPAFF) 13 мая 2026 года, все еще должна применяться generally from January 1, 2027. Для масел и жиров лимиты будут progressively reduced до 2,0 мг/кг к 2030 году, в то время как сухие продукты с низким содержанием жира сталкиваются с порогом 0,5 мг/кг — цифры consistent with the previous outlook, though the adoption date itself has slipped by roughly a month.",
+                moah_timeline: "График внедрения MOAH",
+                moah_oct: "Октябрь 2026",
+                moah_oct_text: "Ожидаемое окончательное принятие поправок к Регламенту ЕС 2023/915",
+                moah_jan: "1 января 2027",
+                moah_jan_text: "Вступление регулирования в силу",
+                moah_2030: "2030",
+                moah_2030_text: "Лимит для масел и жиров: 2.0 мг/кг",
+                moah_progress: "До вступления в силу",
+                metric_moah_oil: "Лимит MOAH (масла/жиры 2030)",
+                metric_moah_dry: "Лимит MOAH (сухие продукты)",
+                metric_moah_principle: "Принцип ALARA",
+                logistics_title: "Логистика и безопасность поставок",
+                afghanistan_hub: "Афганистан как транзитный хаб",
+                afghanistan_hub_text: "Афганистан emerges as a vital transit hub linking Central Asia, Iran, and Turkey. Key projects like the $780 million Herat-Mazar-i-Sharif railway and the \"Five Nations Corridor\" aim to connect China to the West. These routes offer Afghanistan alternatives to Pakistani ports, while Iran seeks to bypass maritime risks. Uzbekistan is actively coordinating with Kabul and Tehran, integrating its infrastructure to boost regional trade. If realized, this interconnected network will bypass traditional bottlenecks, transforming Afghanistan from a regional barrier into a strategic Eurasian transit link, significantly expanding trade access to the Persian Gulf, Turkey, and the EU.",
+                china_iran_train: "Первый блок-поезд Китай → Иран",
+                china_iran_train_text: "Первый блок-поезд из Китая в Иран, организованный Uztemiryulkonteyner, начал свой путь через Узбекистан. 55-вагонный поезд, перевозящий автомобильные запчасти и потребительские товары, преодолевает более 6000 км через Китай, Казахстан, Узбекистан и Туркменистан. После въезда через переход Хоргос-Алтынколь и транзита через Узбекистан ожидается, что поезд достигнет пограничной станции Сарахс через 14–16 дней. Этот новый маршрут marks a significant step in establishing regular container block train services along the China–Central Asia–Iran corridor, further integrating regional logistics networks and enhancing trans-Eurasian trade connectivity.",
+                bar_port: "Порт Бар (Черногория)",
+                bar_port_text: "Посол Казахстана в Черногории Даулет Батрашев посетил порт Бар, чтобы изучить использование черногорской инфраструктуры для транзита грузов между Казахстаном, Западными Балканами и Европой. Обсуждения с представителями порта и местными чиновниками focused on integrating the Port of Bar into the Trans-Caspian International Transport Route (Middle Corridor). Стороны examined potential cooperation in logistics, specifically for transporting Kazakh agricultural products and grain, as well as developing container shipping. Обе стороны agreed to further evaluate the economic feasibility of joint investment projects and the use of terminal facilities to enhance trade connectivity.",
+                ru_zero_duties: "Россия: Нулевые пошлины на зерно",
+                ru_zero_duties_text: "Таможенная подкомиссия Министерства сельского хозяйства Российской Федерации приняла fundamental decision об обнулении пошлин на пшеницу, кукурузу и ячмень до конца 2026 года, мера, которая вступила в силу 1 сентября, но continued to draw scrutiny through mid-September, as reported by trade outlets on September 17. Москва говорит, что эта мера предназначена для поддержки экспортеров после repeated Ukrainian strikes on Black Sea port infrastructure left grain shippers struggling to move the new harvest; before the change, Russia charged 787.5 rubles per tonne on wheat exports and 406.5 rubles per tonne on corn, with barley duties zeroed out as well, while duties on sunflower oil (a major Indian import) remain unchanged at 7,748 rubles per tonne. As of the week of the report, the decision had reportedly still not been formally published in Russia's official gazette — an unusual gap traders were watching closely — reflecting how the Azov-Black Sea basin's shipping constraints continue to disrupt the country's main export corridor.",
+                ua_settlement_extension: "Украина: Продление сроков расчетов",
+                ua_settlement_extension_text: "На related front, Национальный банк Украины extended the payment settlement deadline for imports of selected industrial equipment from 180 to 270 days, effective September 17, 2026 — a further easing of foreign-exchange control rules following the National Bank's earlier extension (in late August) of agricultural export settlement periods to 150 days, and the Cabinet of Ministers' related decision allowing the Ministry of Economy to extend settlement deadlines for wheat, corn, soybeans, sunflower seeds, sunflower oil, and oilcake by up to 180 days upon exporter request, both adopted in response to the same Black Sea logistics disruptions.",
+                caspian_connectivity: "Каспийская связность",
+                caspian_connectivity_text: "On Caspian connectivity, Kazakhstan and Azerbaijan are preparing to resume passenger ferry service on the Kuryk–Baku (Alat) route, Trend.Az reported on September 10, 2026, alongside plans to develop joint AI-based solutions for managing cargo flows, processing documentation, and assessing risk in cross-border trade between Kazakhstan Railways and the Baku International Sea Trade Port at Alat. A 391-kilometer fiber-optic cable across the Caspian Sea, with capacity of up to 400 Tbps, is expected to be completed by the end of 2026, and cargo shipments along the Middle Corridor through Azerbaijan have grown by roughly 90% over the past three years.",
+                metric_afghan_railway: "Ж/д Герат-Мазари-Шариф",
+                metric_china_iran_dist: "Расстояние Китай-Иран",
+                metric_china_iran_time: "Время в пути",
+                metric_caspian_cable: "Каспийский кабель",
+                metric_middle_corridor_growth: "Рост Среднего коридора",
+                metric_ua_settlement_days: "Продление расчетов UA",
+                print_report: "Печать отчета",
+                export_pdf_btn: "PDF",
+                confidential: "Confidential. For internal use only."
+            },
+            en: {
+                title: "Extended Weekly Analytical Update",
+                date: "Report Date: September 21, 2026",
+                nav_prices: "Prices",
+                nav_regions: "Regions",
+                nav_blacksea: "Black Sea",
+                nav_regulatory: "Regulatory",
+                nav_logistics: "Logistics",
+                pricing_title: "Pricing Dynamics and Market Indicators",
+                col_commodity: "Commodity",
+                col_basis: "Basis",
+                col_price: "Price",
+                col_comment: "Comment",
+                item_cpo: "Crude Palm Oil",
+                desc_cpo: "Fires in Indonesia and the threat of the 2027 harvest. Seasonal peak production. Drop in current exports. Weakening of related markets.",
+                item_sbo: "Soybean oil",
+                desc_sbo: "The arrival of the new 2026 soybean crop in the United States for processing increases the physical supply of meal and oil in the domestic market, reducing local shortages.",
+                item_sfo: "Sunflower Oil",
+                desc_sfo: "In Ukraine, demand prices dropped by around $100/t to $1,100–1,120/t delivered to Danube ports due to higher risks for port logistics and rising freight costs.",
+                item_rapeseed: "Rapeseed",
+                desc_rapeseed: "During the week, strong pressure was exerted by the fall of related vegetable oil markets.",
+                regional_title: "Regional Markets Analysis",
+                navigate: "Navigation:",
+                expand_all: "Expand All",
+                collapse_all: "Collapse All",
+                print: "Print",
+                export_csv: "CSV",
+                stat_cpo: "CPO Price",
+                stat_cpo_change: "Weak exports",
+                stat_sbo: "Soybean oil",
+                stat_sbo_change: "New US crop",
+                stat_sfo: "Sunflower Oil",
+                stat_sfo_change: "UA $1,100 CPT",
+                stat_rapeseed: "Rapeseed",
+                stat_rapeseed_change: "Related market pressure",
+                stat_ua_min_price: "UA min export price",
+                stat_ua_min_text: "+ $225 vs market",
+                stat_ua_alt_routes: "UA alternative routes",
+                stat_ua_alt_text: "Improvement from Aug",
+                metric_my_stock: "Malaysia Stocks (forecast)",
+                metric_my_export_sep: "MY Export (Sep 1-15)",
+                metric_ua_min_price_m: "UA min export price",
+                metric_ua_market_price: "UA market price",
+                metric_global_rapeseed: "Global rapeseed forecast",
+                metric_oil_price: "Brent Crude",
+                premium_narrowing: "Sunflower-to-soybean oil premium narrows",
+                premium_narrowing_text: "In September 2026, the sunflower-to-soybean oil price premium narrowed to $205/t from $265/t in January. Increased production in Argentina and normalized EU processing have eased earlier shortages. While Q1 global stocks were 12% lower year-on-year, supply growth in Q2–Q3 narrowed the price gap. Sunflower oil remains highly correlated with soybean (0.85–0.90) and palm oil (0.75–0.80) due to market substitutability. Soybean oil prices dropped to $1,090/t, while palm oil remained stable at $920–960/t. Future sunflower oil price trends will depend on global supply balances and the performance of competing vegetable oils.",
+                tab_europe: "Europe",
+                tab_blacksea: "Black Sea",
+                tab_central: "Central Asia & Caucasus",
+                eu_overview: "European Market Overview",
+                eu_overview_text: "European vegetable oil markets showed diverging trends in mid-September: rapeseed prices strengthened on tight Black Sea supply, palm oil pulled back from a 21-month high on weak Malaysian exports, soybean oil and soybeans rallied to multi-year highs on strong Chinese demand, while Ukrainian sunflower oil export prices came under new regulatory pressure from a government-set minimum export price.",
+                rapeseed_market: "Rapeseed Market",
+                rapeseed_benchmarks: "Global Benchmarks",
+                rapeseed_benchmarks_text: "Rapeseed prices in Europe continued to strengthen amid limited supply from the Black Sea region and steady demand for vegetable oils. At the beginning of the week, November rapeseed futures on Euronext in Paris rose to €555.5/t, approaching the recent high of €556.75/t. One of the key supportive factors remains limited rapeseed supply from Ukraine and Russia, reducing the availability of raw material on the European market, while Ukrainian rapeseed continues to reach Germany, where crushers maintain demand. As of 11 September, Ukrainian rapeseed export prices stood at $649/t FOB Europe, according to UkrAgroConsult data.",
+                my_palm: "Malaysian Palm Oil",
+                my_palm_decline: "Retreat from High",
+                my_palm_decline_text: "Malaysian palm oil futures pulled back from a 21-month high in mid-September, pressured by weak exports and expectations that stocks could rise this month. Fundamentals remained weighed down by weak September exports and expectations that end-month stocks could rise to around 3 million tons, according to Selangor-based brokerage Pelindung Bestari. Cargo surveyors estimated that exports of Malaysian palm oil products for September 1–15 fell between 17.8% and 25.6% from a month earlier. By 18–19 September the market had partially rebounded: Palm oil rose to 4,898 MYR/T on September 18, 2026, up 1.70% from the previous day, driven by a weaker ringgit and expectations of tighter supply. Weaker Malaysian palm oil exports and higher production, together with Indonesia's decision to keep the B50 biodiesel mandate in 2027, dampened CPO futures, while market sentiment was also weighed down by weaker soybean oil and crude oil prices.",
+                soybeans: "Soybeans",
+                soy_rally: "Rally to Highest Since Dec 2023",
+                soy_rally_text: "Soybeans rose above $13 per bushel in mid-September, near their highest since December 2023, as strong Chinese buying supported the market, while traders weighed the USDA's latest supply-and-demand report, with knock-on support for global soybean oil pricing.",
+                ua_min_price_alert: "Ukraine: Minimum Export Price vs Market",
+                ua_min_price_alert_text: "Ukraine's Economy Ministry set the minimum allowable export price for sunflower oil on a CPT basis at $1,350/t, while actual offers on the Ukrainian market stood around $1,125/t — roughly $225/t lower. Ukrainian sunflower oil was offered at around $1,360/t CIF Turkey, with FOB six-port quotations around $1,385–1,390/t; Russian sunflower oil traded at $1,306–1,310/t, with some deals for shipments to China concluded around $1,250/t. Traders also raised concerns over the accompanying FAS-basis minimum export price set at $873/t, calling for a review of the calculation methodology.",
+                ukraine: "Ukraine",
+                ua_logistics_sep: "September Logistics",
+                ua_logistics_sep_text: "Export disruptions in the Black Sea continue to reshape Ukraine's agricultural logistics, though September data shows a modest improvement over August's near-total blockade. Ukraine's rapeseed market remained under pressure from higher logistics costs and weaker demand from processors in mid-September, with falling sunflower seed and soybean prices adding to the strain, while crude oil above $100/barrel provided only partial support. Ukraine exported 124 thousand tons of rapeseed and 53.7 thousand tons of rapeseed oil in the first 10 days of September. Transport costs continued rising: truck deliveries to Romanian ports became 10–20% more expensive over the month, while October rail shipments on the European gauge from Ukraine's border to Germany ran around 30% higher than in July–August. Export bid prices for rapeseed rose by $10–20/t over the week to $490–510/t delivered to Danube ports and $500–520/t at western border terminals, while prices for delivery to Constanța, Romania remained at $590–600/t amid growing queues for grain intake. At the same time, demand from Ukrainian processors weakened as falling sunflower seed prices made sunflower crushing more attractive, pushing rapeseed prices with 44% oil content down by around UAH 500/t over the week to UAH 19–21 thousand/t delivered to plants.",
+                ua_alt_capacity: "Alternative Logistics Capacity",
+                ua_alt_capacity_text: "On alternative export logistics, Ukraine shipped 630 thousand tons of agricultural products via alternative routes since the start of September — around 40% of the volume the logistics system could handle at full capacity, up from 33% in August. Of this, 380 thousand tons were grains (35% of required volume), 94 thousand tons were oilseeds (60% of requirement), 97 thousand tons were vegetable oils (about 66% of requirement), and 60 thousand tons were meal (roughly a third of requirement). Officials noted that alternative logistics performed better in September than in August, but the country is still exporting only around 40% of the volume it could handle with fully functioning seaport logistics — the system could handle roughly 2.5 times more with full seaport operations. Rail deliveries of grain to Danube ports nearly tripled in August compared to July, to 248,800 tons, while shipments to Greater Odesa ports collapsed 94.9% to 68,500 tons, according to Spike Brokers.",
+                ua_duty_revenue: "Export Duty Revenue",
+                ua_duty_revenue_text: "On the export duty policy, revenue and processing data for the full MY 2025/26 season were released: budget revenue from the 10% export duty on soybeans and rapeseed reached UAH 2.174 billion for the season, according to Deputy Chairman of the Parliamentary Committee on Economic Development Dmytro Kysilevskyi, citing Agriculture Ministry data. Rapeseed processing in Ukraine rose 2.7-fold year-on-year, and rapeseed oil exports rose 2.5-fold; 42% of the rapeseed crop was processed domestically, up from 15% a year earlier — an absolute record for the crop in Ukraine. Foreign currency earnings from rapeseed oil exports more than tripled to $588 million. The share of domestic soybean processing also rose, from 39% to 54.2% of the crop, with soybean oil and meal export earnings up 12.3% to $1.02 billion.",
+                russia: "Russia",
+                ru_china_imports: "Imports from RF to China",
+                ru_china_imports_text: "On September 20, Chinese customs published January–August data on imports from Russia. Wheat imports rose sevenfold year on year to $17.6 million, barley supplies more than doubled to $112.3 million, and corn deliveries rose 1.4 times to $95.9 million.",
+                ru_stocks: "Oilseed Stocks",
+                ru_stocks_text: "According to Rosstat data reported on September 14, oilseed stocks at agricultural organizations at the end of August rose 11% to 1.7 million tons, while sunflower seed stocks were 27.3% lower at 270,000 tons.",
+                ru_margarine: "Margarine Production",
+                ru_margarine_text: "Rosstat data cited by Kommersant on September 21 show that January–July output of margarines, vegetable spreads and milk fat substitutes (MFS) fell 12% year on year to 676.8 thousand tons, while margarine alone declined 0.5% to 260.1 thousand tons.",
+                ru_palm_shortage: "Palm Oil Shortage",
+                ru_palm_shortage_text: "The palm oil market remained under pressure. Oil and Fat Union data show raw palm oil at about 100 rubles per kilogram in January and 118 rubles in September, while market participants said palm-oil-based products bought by food producers rose from 140 to 200–220 rubles per kilogram over the past month, an increase of roughly 43–57%. The Union says there is no physical shortage, only reduced stocks of specialty fats and margarines, after tankers were temporarily redirected to St. Petersburg following attacks on the EFKO terminal in Taman. It expects the first palm oil cargoes to reach northwestern ports in about a week. OleoScope links the shortage to the July 30 attacks on Taman and reports that palm oil imports in January–July fell 22.2% to 491 thousand tons (palm kernel oil: −25.7% to 55 thousand tons), while world palm oil prices averaged about $1.2 thousand per ton, up 12.5% from January. On September 15 the National Bakers Union asked the Federal Antimonopoly Service to review price increases: in August some margarine items rose 15–20% versus July, and bakers expect September prices to be 30% above July, with MFS up to 60%. EFKO says price cuts on fat-and-oil products are possible only after Azov–Black Sea ports resume operation.",
+                romania_bulgaria: "Romania and Bulgaria",
+                rb_prices_sep: "Mid-September Prices",
+                rb_prices_sep_text: "Sunflower prices in Romania continued to slip in mid-September. The DAP Constanța quotation for sunflower seed was €519 per ton on September 14, after a €9 decline, and was again €519 in the September 16 report. In the September 17 report, sunflower fell a further €18 to €501 per ton, the largest drop among the six commodities tracked, while rapeseed was nearly unchanged at €533 per ton. Market commentary linked the decline to the prospect of a larger crop. In Bulgaria, signals were mixed: AgroPortal noted on September 14 that wheat was getting cheaper while corn and sunflower were getting more expensive, and on September 15 that the sunflower and corn harvests were showing improving results. In its September report, USDA raised its estimate for Romania's 2026/27 sunflower production from 2.60 to 2.8 million tons, despite a cut in harvested area from 1.22 to 1.17 million hectares, which implies a significantly better yield. For the EU as a whole, Expana estimates the sunflower harvest at 9.5 million tons, while USDA puts it at 9.72 million tons.",
+                metric_ua_rapeseed_exp: "UA Rapeseed Export (10d)",
+                metric_ua_rapeseed_oil_exp: "UA Rapeseed Oil Export",
+                metric_ua_alt_total: "UA Alternative Routes",
+                metric_ua_grain_danube: "Grain Rail to Danube",
+                metric_ua_duty_rev: "UA Duty Revenue",
+                metric_ua_crush_record: "UA Rapeseed Crush Record",
+                metric_ru_wheat_cn: "Wheat RF → China",
+                metric_ru_barley_cn: "Barley RF → China",
+                metric_ru_oilseed_stocks: "RF Oilseed Stocks",
+                metric_ru_sunflower_stocks: "RF Sunflower Stocks",
+                metric_ru_margarine_prod: "RF Margarine Production",
+                metric_ru_palm_price: "RF Palm Oil Price",
+                metric_ro_sunflower_usda: "RO Sunflower Harvest",
+                metric_eu_sunflower_usda: "EU Sunflower Harvest",
+                kazakhstan: "Kazakhstan",
+                kz_korea_deal: "South Korea Deal",
+                kz_korea_deal_text: "Kazakhstan's Samsar Investment plans to export 3,000 tons of sunflower oil monthly to South Korea, totaling 36,000 tons annually. This deal, finalized at the Kazakhstan-Korea Business Forum in Almaty, strengthens Kazakhstan's presence in the Asian market. Additionally, the companies agreed to build a $1.3 million agricultural processing complex in Kazakhstan. The forum resulted in $54.8 million in commercial agreements. Trade between the two nations continues to grow, with bilateral turnover reaching $1.3 billion in the first half of 2026, driven by a 17.2% increase in Kazakh exports to South Korea.",
+                kz_production: "Production and Export",
+                kz_production_text: "Kazakhstan produced 673.2 thousand tons of refined and unrefined vegetable oil in January–July 2026, up 29.1% year-on-year. In the first half of the year exports rose 46.2% to 560.6 thousand tons, while domestic sales fell 24.5%. Sunflower oil exports alone reached 481 thousand tons (+41.2%), worth $533 million. The raw-material base keeps expanding: 5.2 million hectares are sown to oilseeds, 30% more than a year earlier, including a record 2.2 million hectares of sunflower. As of September 18, 1.5 million hectares of oilseeds had been harvested, with 1.4 million tons threshed at an average yield of 9.7 centners per hectare. Rising exports have not lowered domestic prices. In August vegetable oil cost 7.7% more than a year earlier, and sunflower oil 7.5% more, at an average of 904 tenge per liter.",
+                kz_harvest_forecast: "2026 Harvest Forecast",
+                kz_harvest_forecast_text: "Kazakhstan's 2026 oilseed harvest will likely match last year's record, despite a 30% increase in acreage to 5.32 million hectares, due to unfavorable weather. NOPA forecasts a total harvest of 4.15–4.3 million tons, with sunflower seeds at 2.06–2.16 million tons. Growing processing capacities, especially in refining, will intensify competition for raw materials. Meanwhile, demand for high-oleic sunflower seeds is rising, driven by major manufacturers like PepsiCo and Mareven, who require 50,000–55,000 tons annually for stable domestic production.",
+                uzbekistan: "Uzbekistan",
+                uz_import_dependence: "Import Dependence",
+                uz_import_dependence_text: "Uzbekistan's oilseed market is growing faster than its domestic supply, leaving the country heavily dependent on imports. Despite a 38% production increase in 2026, imports reached $985 million, led by soybean meal and sunflower oil. Oybek Zufarov of the Uzbekistan Vegetable Oil Producers Association advocates for closer coordination with Kazakhstan, which supplies 48% of Uzbekistan's oil imports. He suggests that Uzbek investment in Kazakh processing facilities could secure supply chains, shift focus from raw materials to refined products, and reduce price volatility, turning regional competition into a mutually beneficial partnership.",
+                uz_syria_forum: "Uzbek-Syrian Business Forum",
+                uz_syria_forum_text: "On September 19, an Uzbek-Syrian Business Forum was held in Tashkent, attended by Uzbekistan's Minister of Investment, Industry and Trade Laziz Kudratov and Syria's Minister of Economy and Industry Mohammad Nidal al-Shaar. The Syrian side was represented by heads of more than 30 major companies operating in textiles, pharmaceuticals, food and chemical industries, agriculture, construction materials, electrical engineering, and other sectors. A signed memorandum establishing a Joint Economic and Trade Committee, along with a newly formed Business Council, laid the institutional groundwork for regular engagement between government bodies and businesses of the two countries. In February 2027, a \"Made in Uzbekistan\" exhibition is planned for Aleppo and Damascus, with an exhibition of Syrian products in Tashkent later that year. The business program continued with B2B and B2G meetings, and the two sides set up a working group to prepare a unified roadmap for cooperation.",
+                uz_wef: "World Economic Forum",
+                uz_wef_text: "On September 15, Uzbekistan's Deputy Minister of Investment, Industry and Trade Akram Aliyev met with World Economic Forum representative Dietrich N. John. Discussions covered promoting Uzbekistan's reforms, investment opportunities, and promising economic initiatives among leading international companies and financial institutions, as well as strengthening the participation of Uzbek companies in WEF events and building direct contacts with global business leaders and investors. Both sides confirmed their readiness to use the WEF platform to reinforce Uzbekistan's position in the global economic agenda.",
+                uz_fdi: "Foreign Direct Investment",
+                uz_fdi_text: "According to the State Statistics Committee, as of September 1, 2026, Uzbekistan had 21,490 enterprises with foreign investment — 4,758 joint ventures and 16,732 wholly foreign-owned enterprises. China remains the leader by number of such enterprises, with 6,436 companies, or about 29.9% of the total, followed by Russia (16.7%), Turkey (11%), Kazakhstan (6.3%), and South Korea and Afghanistan (3.4% each). Over the past five years, the total number of foreign-invested enterprises has grown 1.7-fold, and the share of wholly foreign-owned enterprises has risen from 56.2% to 77.9%. Year-over-year, from September 2025 to September 2026, their number increased by 4,544 (26.8%), with the main growth in trade, industry, and construction; Tashkent accounts for 62.4% of all active foreign-invested enterprises.",
+                azerbaijan: "Azerbaijan",
+                az_trade_sep: "Foreign Trade (Jan-Aug)",
+                az_trade_sep_text: "According to the State Customs Committee of Azerbaijan, in January-August 2026, the country's foreign trade turnover amounted to $33.2 billion, exceeding the same period last year by $1.12 billion (3.49%). Of this total, exports accounted for $21.8 billion and imports for $11.4 billion; over the year, exports rose by $4.75 billion (27.83%), while imports fell by $3.63 billion (24.11%). As a result, the trade surplus more than quintupled, reaching $10.39 billion, up $8.37 billion year-on-year. A total of 175 foreign countries participated in Azerbaijan's foreign trade operations during the period, with 37,474 trade participants overall — 27,354 individuals and 10,120 legal entities, of which 145 belonged to the public sector and 9,975 to the private sector. Earlier it was reported that Azerbaijan exported 14.678 million metric tons of crude oil and petroleum products in January-August, worth $9.282 billion — up 10.6% in value despite a 7.8% drop in volume — while natural gas exports over the same period totaled 16.37 billion cubic meters worth $5.7 billion, down 4.8% in value year-on-year.",
+                metric_kz_korea_vol: "Oil Export KZ → KR",
+                metric_kz_korea_deals: "KZ-KR Forum Deals",
+                metric_kz_trade_kr: "KZ-KR Trade Turnover",
+                metric_kz_oil_prod: "KZ Oil Production",
+                metric_kz_oil_export: "KZ Oil Export",
+                metric_kz_harvested: "KZ Oilseeds Harvested",
+                metric_kz_yield: "KZ Yield",
+                metric_kz_forecast: "KZ Harvest Forecast",
+                metric_uz_imports: "UZ Oil Imports",
+                metric_uz_fdi: "UZ FDI Enterprises",
+                metric_az_turnover: "AZ Foreign Trade Turnover",
+                metric_az_surplus: "AZ Trade Surplus",
+                blacksea_logistics_title: "Black Sea Region Logistics",
+                ua_logistics_improvement: "Ukraine's export logistics improved in September",
+                ua_logistics_improvement_text: "Export logistics improved in September, with Ukraine shipping 630,000 tons of agricultural products via alternative routes. Deputy Minister T. Vysotsky noted this represents about 40% of potential export capacity, up from 33% in August. Vegetable oil rail transport saw a sharp increase, rising 54.7% to 113,000 tons. The majority of these shipments (79%) were directed toward western border crossings, while only 21% were sent to ports, highlighting a significant shift in logistics toward rail for oil exports.",
+                logistics_map: "Logistics Corridors Map",
+                map_placeholder: "Interactive map of TITR, Danube, and Black Sea corridors",
+                metric_ua_sept_export: "UA Sept Export",
+                metric_ua_sept_capacity: "Capacity Share",
+                metric_ua_aug_capacity: "Share in August",
+                metric_ua_oil_rail_sept: "Rail Oil UA",
+                metric_ua_oil_yoy_sept: "YoY Growth",
+                metric_ua_west_border: "Via Western Border",
+                regulatory_title: "Regulatory Outlook",
+                fefac_update: "FEFAC: EU Soybean Meal Gap ≥5 Mt",
+                fefac_update_text: "On September 17, 2026, the European Feed Manufacturers' Federation (FEFAC) published its fourth update on the feed supply chain disruption risk and economic impact of the EUDR on soy supplies for animal feed. The assessment warns that severe drought, Black Sea trade disruption, and EUDR sourcing constraints are converging to squeeze the EU feed chain simultaneously, projecting a potential EU soybean meal supply gap of at least 5 million tonnes — roughly 20% of the EU's total soybean meal footprint — for the 2026/2027 marketing year, with very limited substitution options available. FEFAC estimates the direct extra cost of EUDR-compliant soy for feed use at up to €1.05 billion (about $1.20 billion), based on total usage of around 35 million tonnes; because rapeseed and sunflower meal prices are pegged to soybean meal quotations, the increase adds a further €449 million in costs for these alternative proteins. FEFAC President Nicolas Coudry-Mesny said the imminent application of the EUDR after December 30, 2026 is already disrupting EU soy purchases from global markets, exacerbating pressure from drought and closed maritime corridors. The federation is urging EU institutions to ensure immediate simplified implementation of the EUDR for in-scope soy products and to suspend the EUDR's application to Palm Kernel Expeller (PKE) to safeguard this alternative livestock feed source heading into 2027.",
+                eudr_timeline: "EUDR Compliance Timeline",
+                eudr_date1: "December 30, 2026",
+                eudr_deadline1: "Large and medium operators: mandatory Due Diligence Statements submission",
+                eudr_date2: "June 30, 2027",
+                eudr_deadline2: "Small and micro businesses (SMEs)",
+                red3_maritime: "RED III in Maritime Sector",
+                red3_maritime_text: "No new RED III/maritime development specific to the September 11–21 window was verifiable in open sources; the most recent confirmed reporting (Offshore Source, September 1, 2026) still describes the same phase of implementation as previously noted — Member States continuing national transposition, with the EU-wide target of at least 14% renewable energy in the transport sector by 2030, and advanced biofuels eligible to count at twice their energy content toward national targets under RED III, reinforced by FuelEU Maritime's compliance multipliers for qualifying fuels.",
+                metric_red3_target: "RED III Target (transport)",
+                metric_red3_deadline: "Deadline",
+                metric_red3_multiplier: "Multiplier for advanced biofuels",
+                moah_delay: "MOAH: Adoption Slipped to October 2026",
+                moah_delay_text: "Contrary to the earlier expectation of a September 2026 adoption, the European Commission's own Food Safety catalogue and multiple industry trackers now confirm that formal adoption of the amendment to Regulation (EU) 2023/915 setting the first harmonized statutory maximum levels for Mineral Oil Aromatic Hydrocarbons (MOAH) — based on the ALARA principle — is targeted for October 2026, subject to scrutiny by the European Parliament and the Council, rather than September as previously reported. The measure, backed by Member States at the May 13, 2026 Standing Committee on Plants, Animals, Food and Feed (SCoPAFF) vote, is still set to apply generally from January 1, 2027. For oils and fats, limits will be phased down progressively toward 2.0 mg/kg by 2030, while low-fat dry products face a 0.5 mg/kg threshold — figures consistent with the previous outlook, though the adoption date itself has slipped by roughly a month.",
+                moah_timeline: "MOAH Implementation Timeline",
+                moah_oct: "October 2026",
+                moah_oct_text: "Expected final adoption of amendments to EU Regulation 2023/915",
+                moah_jan: "January 1, 2027",
+                moah_jan_text: "Regulation enters into force",
+                moah_2030: "2030",
+                moah_2030_text: "Limit for oils and fats: 2.0 mg/kg",
+                moah_progress: "Until Entry into Force",
+                metric_moah_oil: "MOAH Limit (oils/fats 2030)",
+                metric_moah_dry: "MOAH Limit (dry products)",
+                metric_moah_principle: "ALARA Principle",
+                logistics_title: "Logistics and Supply Security",
+                afghanistan_hub: "Afghanistan as Transit Hub",
+                afghanistan_hub_text: "Afghanistan is emerging as a vital transit hub linking Central Asia, Iran, and Turkey. Key projects like the $780 million Herat-Mazar-i-Sharif railway and the \"Five Nations Corridor\" aim to connect China to the West. These routes offer Afghanistan alternatives to Pakistani ports, while Iran seeks to bypass maritime risks. Uzbekistan is actively coordinating with Kabul and Tehran, integrating its infrastructure to boost regional trade. If realized, this interconnected network will bypass traditional bottlenecks, transforming Afghanistan from a regional barrier into a strategic Eurasian transit link, significantly expanding trade access to the Persian Gulf, Turkey, and the EU.",
+                china_iran_train: "First Block Train China → Iran",
+                china_iran_train_text: "The first block train from China to Iran, organized by Uztemiryulkonteyner, has begun its journey through Uzbekistan. The 55-car train, carrying automotive parts and consumer goods, is traveling over 6,000 km across China, Kazakhstan, Uzbekistan, and Turkmenistan. Following its entry via the Khorgos-Altynkol crossing and transit through Uzbekistan, the train is expected to reach the Sarakhs border station in 14–16 days. This new route marks a significant step in establishing regular container block train services along the China–Central Asia–Iran corridor, further integrating regional logistics networks and enhancing trans-Eurasian trade connectivity.",
+                bar_port: "Port of Bar (Montenegro)",
+                bar_port_text: "Kazakh Ambassador to Montenegro, Daulet Batrashev, visited the Port of Bar to explore using Montenegrin infrastructure for cargo transit between Kazakhstan, the Western Balkans, and Europe. Discussions with port and local officials focused on integrating the Port of Bar into the Trans-Caspian International Transport Route (Middle Corridor). The parties examined potential cooperation in logistics, specifically for transporting Kazakh agricultural products and grain, as well as developing container shipping. Both sides agreed to further evaluate the economic feasibility of joint investment projects and the use of terminal facilities to enhance trade connectivity.",
+                ru_zero_duties: "Russia: Zero Duties on Grain",
+                ru_zero_duties_text: "The customs subcommission of the Ministry of Agriculture of the Russian Federation made a fundamental decision to zero duties on wheat, corn, and barley through the end of 2026, a measure that took effect September 1 but continued to draw scrutiny through mid-September, as reported by trade outlets on September 17. Moscow says the move is meant to support exporters after repeated Ukrainian strikes on Black Sea port infrastructure left grain shippers struggling to move the new harvest; before the change, Russia charged 787.5 rubles per tonne on wheat exports and 406.5 rubles per tonne on corn, with barley duties zeroed out as well, while duties on sunflower oil (a major Indian import) remain unchanged at 7,748 rubles per tonne. As of the week of the report, the decision had reportedly still not been formally published in Russia's official gazette — an unusual gap traders were watching closely — reflecting how the Azov-Black Sea basin's shipping constraints continue to disrupt the country's main export corridor.",
+                ua_settlement_extension: "Ukraine: Settlement Deadline Extension",
+                ua_settlement_extension_text: "On a related front, Ukraine's National Bank extended the payment settlement deadline for imports of selected industrial equipment from 180 to 270 days, effective September 17, 2026 — a further easing of foreign-exchange control rules following the National Bank's earlier extension (in late August) of agricultural export settlement periods to 150 days, and the Cabinet of Ministers' related decision allowing the Ministry of Economy to extend settlement deadlines for wheat, corn, soybeans, sunflower seeds, sunflower oil, and oilcake by up to 180 days upon exporter request, both adopted in response to the same Black Sea logistics disruptions.",
+                caspian_connectivity: "Caspian Connectivity",
+                caspian_connectivity_text: "On Caspian connectivity, Kazakhstan and Azerbaijan are preparing to resume passenger ferry service on the Kuryk–Baku (Alat) route, Trend.Az reported on September 10, 2026, alongside plans to develop joint AI-based solutions for managing cargo flows, processing documentation, and assessing risk in cross-border trade between Kazakhstan Railways and the Baku International Sea Trade Port at Alat. A 391-kilometer fiber-optic cable across the Caspian Sea, with capacity of up to 400 Tbps, is expected to be completed by the end of 2026, and cargo shipments along the Middle Corridor through Azerbaijan have grown by roughly 90% over the past three years.",
+                metric_afghan_railway: "Herat-Mazar-i-Sharif Railway",
+                metric_china_iran_dist: "China-Iran Distance",
+                metric_china_iran_time: "Transit Time",
+                metric_caspian_cable: "Caspian Cable",
+                metric_middle_corridor_growth: "Middle Corridor Growth",
+                metric_ua_settlement_days: "UA Settlement Extension",
+                print_report: "Print Report",
+                export_pdf_btn: "PDF",
+                confidential: "Confidential. For internal use only."
+            }
+        };
+
+        function setLang(lang) {
+            document.querySelectorAll('[data-lang-key]').forEach(el => {
+                const key = el.getAttribute('data-lang-key');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.querySelectorAll('.lang-switch .btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.lang-switch .btn[onclick="setLang('${lang}')"]`).classList.add('active');
+        }
+
+        function toggleSection(header) {
+            const section = header.parentElement;
+            section.classList.toggle('collapsed');
+        }
+
+        function expandAll() {
+            document.querySelectorAll('.section').forEach(section => section.classList.remove('collapsed'));
+        }
+
+        function collapseAll() {
+            document.querySelectorAll('.section').forEach(section => section.classList.add('collapsed'));
+        }
+
+        function sortTable(columnIndex) {
+            const table = document.getElementById('pricingTable');
+            const rows = Array.from(table.tBodies[0].rows);
+            rows.sort((a, b) => {
+                const cellA = a.cells[columnIndex].textContent;
+                const cellB = b.cells[columnIndex].textContent;
+                const numA = parseFloat(cellA.replace(/[^0-9.-]+/g, ''));
+                const numB = parseFloat(cellB.replace(/[^0-9.-]+/g, ''));
+                if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
+                return cellA.localeCompare(cellB);
+            });
+            const tbody = table.tBodies[0];
+            tbody.innerHTML = '';
+            rows.forEach(row => tbody.appendChild(row));
+        }
+
+        function switchTab(tabName, event) {
+            const parent = event.target.closest('.tabs-container');
+            parent.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            parent.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function switchRegTab(tabName, event) {
+            const parent = event.target.closest('.tabs-container');
+            parent.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            parent.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`reg-${tabName}`).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function searchContent() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                const text = section.textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    section.style.display = 'block';
+                    section.classList.remove('collapsed');
+                    section.style.opacity = '1';
+                } else if (filter.length > 2) {
+                    section.style.opacity = '0.3';
+                } else {
+                    section.style.display = 'block';
+                    section.style.opacity = '1';
+                }
+            });
+        }
+
+        function exportCSV() {
+            const table = document.getElementById('pricingTable');
+            let csv = [];
+            const rows = table.querySelectorAll('tr');
+            for (let i = 0; i < rows.length; i++) {
+                const row = [], cols = rows[i].querySelectorAll('td, th');
+                for (let j = 0; j < cols.length; j++) 
+                    row.push('"' + cols[j].innerText.replace(/"/g, '""') + '"');
+                csv.push(row.join(','));
+            }
+            const blob = new Blob([csv.join('\n')], { type: 'text/csv;charset=utf-8;' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'pricing_data_21_9_2026.csv';
+            a.click();
+        }
+
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= (sectionTop - 200)) current = section.getAttribute('id');
+            });
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                document.querySelectorAll('.progress-fill').forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0';
+                    setTimeout(() => { bar.style.width = width; }, 100);
+                });
+            }, 500);
+        });
+    </script>
+</body>
+</html>
