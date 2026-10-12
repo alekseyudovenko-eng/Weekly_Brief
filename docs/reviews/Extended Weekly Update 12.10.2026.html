@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extended Weekly Update | 12.10.2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-primary: #2c3e50;
+            --text-secondary: #6c757d;
+            --accent: #34495e;
+            --border: #dee2e6;
+            --header-bg: #e9ecef;
+            --highlight: #f0f4f8;
+            --button-bg: #3498db;
+            --button-hover: #2980b9;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --info: #17a2b8;
+            --section-1: #3498db;
+            --section-2: #27ae60;
+            --section-3: #e67e22;
+            --section-4: #9b59b6;
+        }
+
+        * { box-sizing: border-box; transition: all 0.2s ease; }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            font-size: 15px;
+        }
+
+        .top-nav {
+            position: sticky;
+            top: 0;
+            background: var(--card-bg);
+            border-bottom: 2px solid var(--border);
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .nav-links { display: flex; gap: 10px; flex-wrap: wrap; }
+
+        .nav-link {
+            background: var(--highlight);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: var(--button-bg);
+            color: white;
+            border-color: var(--button-bg);
+            transform: translateY(-2px);
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
+
+        header {
+            background: linear-gradient(135deg, var(--card-bg) 0%, var(--highlight) 100%);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header-content h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+        }
+
+        .header-content .subtitle {
+            margin: 10px 0 0;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-content .company {
+            font-weight: 600;
+            margin-top: 5px;
+            color: var(--accent);
+        }
+
+        .lang-switch { display: flex; gap: 10px; }
+
+        .btn {
+            background: transparent;
+            border: 2px solid var(--border);
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+        .btn:hover { background: var(--highlight); transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .stat-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .stat-card .stat-icon { font-size: 1.8rem; margin-bottom: 8px; color: var(--button-bg); }
+        .stat-card .stat-title { font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
+        .stat-card .stat-value { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); }
+        .stat-card .stat-change { font-size: 0.85rem; margin-top: 5px; }
+        .stat-change.up { color: var(--success); }
+        .stat-change.down { color: var(--danger); }
+
+        .section-nav {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .section-nav h3 { margin: 0; font-size: 1rem; color: var(--text-secondary); min-width: 150px; }
+
+        .section-nav .nav-btn {
+            background: var(--highlight);
+            border: 1px solid var(--border);
+            padding: 10px 18px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .section-nav .nav-btn:hover { background: var(--button-bg); color: white; transform: translateY(-2px); }
+
+        .section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            margin-bottom: 25px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, var(--highlight) 0%, var(--card-bg) 100%);
+            padding: 20px 25px;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-header h2 i { color: var(--button-bg); font-size: 1.4rem; }
+
+        .section-header .toggle-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .section-header .toggle-btn:hover { background: var(--button-bg); color: white; transform: rotate(180deg); }
+        .section-content { padding: 25px; display: block; }
+        .section.collapsed .section-content { display: none; }
+        .section.collapsed .toggle-btn { transform: rotate(180deg); }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 20px 0;
+            font-size: 0.95rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .pricing-table thead { background: linear-gradient(135deg, var(--accent) 0%, var(--button-bg) 100%); color: white; }
+
+        .pricing-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .pricing-table th:hover { background: rgba(255,255,255,0.1); }
+        .pricing-table td { padding: 15px; border-bottom: 1px solid var(--border); background: var(--card-bg); vertical-align: top; }
+        .pricing-table tbody tr { transition: all 0.2s; }
+        .pricing-table tbody tr:hover { background: var(--highlight); transform: scale(1.01); }
+        .pricing-table tbody tr:nth-child(even) { background: #f8f9fa; }
+
+        .price-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .price-up { background: #d4edda; color: #155724; }
+        .price-down { background: #f8d7da; color: #721c24; }
+        .price-neutral { background: var(--highlight); color: var(--text-secondary); }
+
+        .region-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .region-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .region-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+
+        .region-card-header {
+            background: linear-gradient(135deg, var(--section-1) 0%, var(--button-bg) 100%);
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .region-card:nth-child(2) .region-card-header { background: linear-gradient(135deg, var(--section-2) 0%, #229954 100%); }
+        .region-card:nth-child(3) .region-card-header { background: linear-gradient(135deg, var(--section-3) 0%, #d35400 100%); }
+        .region-card:nth-child(4) .region-card-header { background: linear-gradient(135deg, var(--section-4) 0%, #8e44ad 100%); }
+
+        .region-card-content { padding: 20px; }
+
+        .country-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .country-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+        .country-item h4 { margin: 0 0 8px; color: var(--accent); font-size: 1rem; display: flex; align-items: center; gap: 8px; }
+        .country-item p { margin: 0; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+
+        .chart-container { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px; margin: 20px 0; }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .chart-title { font-size: 1.1rem; font-weight: 600; color: var(--text-primary); }
+
+        .chart-placeholder {
+            background: linear-gradient(135deg, var(--highlight) 0%, var(--card-bg) 100%);
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-placeholder::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23dee2e6" stroke-width="1" opacity="0.3"/></svg>');
+            background-size: 20px 20px;
+        }
+
+        .chart-placeholder i { font-size: 3rem; margin-bottom: 15px; color: var(--button-bg); z-index: 1; }
+
+        .progress-container { margin: 15px 0; }
+        .progress-label { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.9rem; }
+
+        .progress-bar {
+            height: 24px;
+            background: var(--highlight);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--button-bg) 0%, var(--info) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: width 1s ease;
+        }
+
+        .tabs-container { margin: 20px 0; }
+
+        .tabs-header {
+            display: flex;
+            gap: 5px;
+            border-bottom: 2px solid var(--border);
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 12px 24px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active { color: var(--button-bg); border-bottom-color: var(--button-bg); }
+        .tab-btn:hover { color: var(--button-bg); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.3s; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-left: 4px solid var(--button-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .info-box.warning { background: linear-gradient(135deg, #fff3cd 0%, #ffe69c 100%); border-left-color: var(--warning); }
+        .info-box.success { background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%); border-left-color: var(--success); }
+        .info-box.danger { background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%); border-left-color: var(--danger); }
+
+        .info-box i { font-size: 1.5rem; color: var(--button-bg); }
+        .info-box.warning i { color: var(--warning); }
+        .info-box.success i { color: var(--success); }
+        .info-box.danger i { color: var(--danger); }
+
+        .info-box-content { flex: 1; }
+        .info-box-title { font-weight: 600; margin-bottom: 5px; color: var(--text-primary); }
+        .info-box-text { margin: 0; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; }
+
+        .footer-actions {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
+        }
+
+        .footer-actions .action-btn {
+            background: var(--button-bg);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .footer-actions .action-btn:hover { background: var(--button-hover); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+
+        .footer-actions .secondary-btn { background: var(--card-bg); color: var(--text-secondary); border: 2px solid var(--border); }
+        .footer-actions .secondary-btn:hover { background: var(--highlight); }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .metric-item {
+            background: var(--highlight);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid var(--button-bg);
+        }
+
+        .metric-item .metric-label { font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; }
+        .metric-item .metric-value { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin-top: 5px; }
+
+        .timeline { position: relative; padding-left: 30px; margin: 20px 0; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item { position: relative; padding: 15px 0; }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 20px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--button-bg);
+            border: 2px solid var(--card-bg);
+        }
+
+        .timeline-date { font-weight: 600; color: var(--button-bg); font-size: 0.9rem; }
+        .timeline-content { margin-top: 5px; color: var(--text-secondary); }
+
+        .search-box { position: relative; margin: 20px 0; }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 20px 12px 45px;
+            border: 2px solid var(--border);
+            border-radius: 25px;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus { outline: none; border-color: var(--button-bg); box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1); }
+
+        .search-box i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { width: 100%; justify-content: center; }
+            header { flex-direction: column; text-align: center; }
+            .header-content h1 { font-size: 1.5rem; }
+            .section-header { flex-direction: column; align-items: flex-start; }
+            .region-grid { grid-template-columns: 1fr; }
+            .footer-actions { flex-direction: column; text-align: center; }
+            .footer-actions .action-btn { width: 100%; justify-content: center; }
+        }
+
+        @media print {
+            .top-nav, .section-nav, .footer-actions, .toggle-btn, .search-box { display: none !important; }
+            .section { break-inside: avoid; box-shadow: none; border: 1px solid #000; }
+            .section.collapsed .section-content { display: block !important; }
+            body { background: white; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="#pricing" class="nav-link active"><i class="fas fa-chart-line"></i> <span data-lang-key="nav_prices">Цены</span></a>
+                <a href="#regional" class="nav-link"><i class="fas fa-globe"></i> <span data-lang-key="nav_regions">Регионы</span></a>
+                <a href="#blacksea" class="nav-link"><i class="fas fa-water"></i> <span data-lang-key="nav_blacksea">Черное море</span></a>
+                <a href="#regulatory" class="nav-link"><i class="fas fa-file-contract"></i> <span data-lang-key="nav_regulatory">Регулирование</span></a>
+                <a href="#logistics" class="nav-link"><i class="fas fa-shipping-fast"></i> <span data-lang-key="nav_logistics">Логистика</span></a>
+            </div>
+            <div class="lang-switch">
+                <button class="btn active" onclick="setLang('ru')"><i class="fas fa-language"></i> RU</button>
+                <button class="btn" onclick="setLang('en')"><i class="fas fa-language"></i> EN</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1 data-lang-key="title">Еженедельный аналитический обзор</h1>
+                <p class="subtitle">
+                    <i class="fas fa-calendar-alt"></i> 
+                    <span data-lang-key="date">Дата отчета: 12 октября 2026 г.</span>
+                </p>
+                <p class="company">International Marketing Agency Ltd</p>
+            </div>
+        </header>
+
+        <div class="quick-stats">
+            <div class="stat-card" onclick="scrollToSection('pricing')">
+                <div class="stat-icon"><i class="fas fa-seedling"></i></div>
+                <div class="stat-title" data-lang-key="stat_cpo">CPO Цена</div>
+                <div class="stat-value">~1,125 USD/T</div>
+                <div class="stat-change down"><i class="fas fa-arrow-down"></i> <span data-lang-key="stat_cpo_change">Рекордные запасы MY</span></div>
+            </div>
+            <div class="stat-card" onclick="scrollToSection('pricing')">
+                <div class="stat-icon"><i class="fas fa-oil-can"></i></div>
+                <div class="stat-title" data-lang-key="stat_sbo">Соевое масло</div>
+                <div class="stat-value">~1,500 USD/T</div>
+                <div class="stat-change neutral"><i class="fas fa-minus"></i> <span data-lang-key="stat_sbo_change">WASDE + Тарифы КНР</span></div>
+            </div>
+            <div class="stat-card" onclick="scrollToSection('pricing')">
+                <div class="stat-icon"><i class="fas fa-sun"></i></div>
+                <div class="stat-title" data-lang-key="stat_sfo">Подсолнечное масло</div>
+                <div class="stat-value">€1,070–1,090/t</div>
+                <div class="stat-change down"><i class="fas fa-arrow-down"></i> <span data-lang-key="stat_sfo_change">UA $1,350 floor vs рынок</span></div>
+            </div>
+            <div class="stat-card" onclick="scrollToSection('pricing')">
+                <div class="stat-icon"><i class="fas fa-leaf"></i></div>
+                <div class="stat-title" data-lang-key="stat_rapeseed">Рапс</div>
+                <div class="stat-value">€502/T (Nov)</div>
+                <div class="stat-change down"><i class="fas fa-arrow-down"></i> <span data-lang-key="stat_rapeseed_change">Давление смежных рынков</span></div>
+            </div>
+            <div class="stat-card" onclick="scrollToSection('blacksea')">
+                <div class="stat-icon"><i class="fas fa-flag"></i></div>
+                <div class="stat-title" data-lang-key="stat_ua_rank">UA экспортный ранг</div>
+                <div class="stat-value">#2 → #1 потеряна</div>
+                <div class="stat-change down"><i class="fas fa-arrow-down"></i> <span data-lang-key="stat_ua_rank_text">Впервые за 20 лет</span></div>
+            </div>
+            <div class="stat-card" onclick="scrollToSection('blacksea')">
+                <div class="stat-icon"><i class="fas fa-train"></i></div>
+                <div class="stat-title" data-lang-key="stat_ua_alt_routes">UA альтернативные маршруты</div>
+                <div class="stat-value">~40% емкости</div>
+                <div class="stat-change up"><i class="fas fa-arrow-up"></i> <span data-lang-key="stat_ua_alt_text">Улучшение с августа</span></div>
+            </div>
+        </div>
+
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Поиск по отчету..." onkeyup="searchContent()">
+        </div>
+
+        <div class="section-nav">
+            <h3><i class="fas fa-compass"></i> <span data-lang-key="navigate">Навигация:</span></h3>
+            <button class="nav-btn" onclick="expandAll()"><i class="fas fa-expand-alt"></i> <span data-lang-key="expand_all">Развернуть все</span></button>
+            <button class="nav-btn" onclick="collapseAll()"><i class="fas fa-compress-alt"></i> <span data-lang-key="collapse_all">Свернуть все</span></button>
+            <button class="nav-btn" onclick="window.print()"><i class="fas fa-print"></i> <span data-lang-key="print">Печать</span></button>
+            <button class="nav-btn" onclick="exportCSV()"><i class="fas fa-file-csv"></i> <span data-lang-key="export_csv">CSV</span></button>
+        </div>
+
+        <section class="section" id="pricing">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2><i class="fas fa-chart-line"></i> <span data-lang-key="pricing_title">Ценовая динамика и рыночные индикаторы</span></h2>
+                <div class="toggle-btn"><i class="fas fa-chevron-down"></i></div>
+            </div>
+            <div class="section-content">
+                <table class="pricing-table" id="pricingTable">
+                    <thead>
+                        <tr>
+                            <th onclick="sortTable(0)"><i class="fas fa-sort"></i> <span data-lang-key="col_commodity">Актив</span></th>
+                            <th onclick="sortTable(1)"><i class="fas fa-sort"></i> <span data-lang-key="col_basis">Базис</span></th>
+                            <th onclick="sortTable(2)"><i class="fas fa-sort"></i> <span data-lang-key="col_price">Цена</span></th>
+                            <th><span data-lang-key="col_comment">Комментарий</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong data-lang-key="item_cpo">Пальмовое масло (CPO)</strong></td>
+                            <td>BMD (Bursa Malaysia)</td>
+                            <td>MYR 4,592/t (~$1,125/t), close Oct 9 <span class="price-indicator price-down"><i class="fas fa-arrow-down"></i></span></td>
+                            <td data-lang-key="desc_cpo">Record Malaysian stocks (3.51 million t) and weak September exports; no export duty waiver in the October 9 Budget; Brent above $100 supports biodiesel demand.</td>
+                        </tr>
+                        <tr>
+                            <td><strong data-lang-key="item_sbo">Соевое масло</strong></td>
+                            <td>CBOT</td>
+                            <td>68.03 US cents/lb (Dec), ~$1,500/t, close Oct 9 <span class="price-indicator price-neutral"><i class="fas fa-minus"></i></span></td>
+                            <td data-lang-key="desc_sbo">EPA proposal on reallocating small-refinery exemptions due by end-October; China's tariff-cut list includes soybean oil; USDA October WASDE raised US 2026/27 soybean ending stocks by 5 million bushels to 315 million.</td>
+                        </tr>
+                        <tr>
+                            <td><strong data-lang-key="item_sfo">Подсолнечное масло</strong></td>
+                            <td>CPT Odesa (Ukraine)</td>
+                            <td>About EUR 1,070–1,090/t, Oct 2–5 <span class="price-indicator price-down"><i class="fas fa-arrow-down"></i></span></td>
+                            <td data-lang-key="desc_sfo">Ukrainian sunflower harvest 49% complete (Oct 6); attacks on Black Sea shipping; Russian exports nearly halted in Sept; Ukraine's minimum export price factor (0.714) extended through Dec.</td>
+                        </tr>
+                        <tr>
+                            <td><strong data-lang-key="item_rapeseed">Рапс</strong></td>
+                            <td>Euronext (Paris)</td>
+                            <td>EUR 502/t (Nov 2026); EUR 555.75/t (Feb 2027), close Oct 9 <span class="price-indicator price-down"><i class="fas fa-arrow-down"></i></span></td>
+                            <td data-lang-key="desc_rapeseed">November contract down EUR 11/t on Oct 9; deferred contracts trade at a steep premium. No specific price-driver commentary was found in verified sources.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box warning">
+                    <i class="fas fa-balance-scale"></i>
+                    <div class="info-box-content">
+                        <div class="info-box-title" data-lang-key="premium_narrowing">Премиум подсолнечного масла над соевым сузился</div>
+                        <p class="info-box-text" data-lang-key="premium_narrowing_text">The price premium of sunflower oil over soybean oil narrowed to $205/t in late September, shifting the global market toward a more balanced distribution compared to the acute shortages seen earlier in the year.</p>
+                    </div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_my_stock">Запасы Малайзии (сен)</div>
+                        <div class="metric-value">3.51M т</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_my_export_sep">Экспорт MY (сен)</div>
+                        <div class="metric-value">-12.13%</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_fao_index">FAO Veg Oil Index (сен)</div>
+                        <div class="metric-value">198.6 pts (+18.3% YoY)</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_oil_price">Нефть Brent</div>
+                        <div class="metric-value">&gt;$100/bbl</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_us_stocks">US Soy Ending Stocks</div>
+                        <div class="metric-value">315M bu (+5M)</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_ua_harvest">UA Sunflower Harvest</div>
+                        <div class="metric-value">49% (Oct 6)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="regional">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2><i class="fas fa-globe"></i> <span data-lang-key="regional_title">Анализ региональных рынков</span></h2>
+                <div class="toggle-btn"><i class="fas fa-chevron-down"></i></div>
+            </div>
+            <div class="section-content">
+                
+                <div class="tabs-container">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" onclick="switchTab('global_eu', event)"><span data-lang-key="tab_global_eu">Global & Europe</span></button>
+                        <button class="tab-btn" onclick="switchTab('blacksea', event)"><span data-lang-key="tab_blacksea">Black Sea</span></button>
+                        <button class="tab-btn" onclick="switchTab('central', event)"><span data-lang-key="tab_central">Central Asia & Caucasus</span></button>
+                    </div>
+
+                    <div id="tab-global_eu" class="tab-content active">
+                        <div class="info-box danger">
+                            <i class="fas fa-fire"></i>
+                            <div class="info-box-content">
+                                <div class="info-box-title" data-lang-key="indonesia_fires">Haze and El Niño Add Supply Risk</div>
+                                <p class="info-box-text" data-lang-key="indonesia_fires_text">Fires in Indonesia have burned at least 200,000 hectares across six provinces, and on October 9 Malaysia closed schools in Kuala Lumpur, Putrajaya and several states because of haze (Al Jazeera). Prime Minister Anwar Ibrahim asked for an urgent meeting of ASEAN ministers. The reports reviewed do not quantify any effect on palm oil output.</p>
+                            </div>
+                        </div>
+
+                        <div class="region-grid">
+                            <div class="region-card">
+                                <div class="region-card-header">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span data-lang-key="palm_oil_trends">Palm Oil Hits a 12-Week Low, Then Recovers Part of the Loss</span>
+                                </div>
+                                <div class="region-card-content">
+                                    <p data-lang-key="palm_oil_trends_text">Malaysian palm oil futures fell for six straight sessions to October 2, when the benchmark contract closed at 4,533 ringgit/t, the lowest close since July 10, on weak export data and expectations of higher stocks (Reuters via Business Recorder). The contract slipped again on October 7 to 4,524 ringgit on concerns about record inventories (UkrAgroConsult), then rebounded to end the week of October 9 at 4,592 ringgit, up 1.26%.</p>
+                                </div>
+                            </div>
+
+                            <div class="region-card">
+                                <div class="region-card-header">
+                                    <i class="fas fa-globe-europe"></i>
+                                    <span data-lang-key="fao_index">FAO Index Confirms Palm-Led Strength in September</span>
+                                </div>
+                                <div class="region-card-content">
+                                    <p data-lang-key="fao_index_text">The FAO Vegetable Oil Price Index averaged 198.6 points in September, up 0.9% from August and 18.3% above a year earlier. Palm oil prices rose for a fourth consecutive month on strong import demand and concerns over production prospects in Southeast Asia, while sunflower oil prices declined for a third consecutive month on expectations of ample Black Sea supplies (FAO, October 2).</p>
+                                </div>
+                            </div>
+
+                            <div class="region-card">
+                                <div class="region-card-header">
+                                    <i class="fas fa-warehouse"></i>
+                                    <span data-lang-key="record_stocks">Record Malaysian Palm Oil Stocks</span>
+                                </div>
+                                <div class="region-card-content">
+                                    <p data-lang-key="record_stocks_text">MPOB's October 12 release put end-September inventories at 3,510,897 t, above the Reuters poll median of 3,373,737 t. Output of 2,116,950 t was up 16.48% from August and exports of 1,120,395 t were down 12.13% (Finimize, citing MPOB). A Bloomberg survey reported by The Star had expected stocks of 3.45 million t; an analyst quoted there said stocks should stay near record levels through the first half of 2027, while El Niño and Indonesia's biofuel mandate could tighten the global market later.</p>
+                                </div>
+                            </div>
+
+                            <div class="region-card">
+                                <div class="region-card-header">
+                                    <i class="fas fa-wheat-awn"></i>
+                                    <span data-lang-key="us_soybeans">US Soybeans: WASDE and Trade Headlines</span>
+                                </div>
+                                <div class="region-card-content">
+                                    <p data-lang-key="us_soybeans_text">CBOT November soybeans were near 1,292 cents/bu on October 9. USDA's October 9 WASDE raised 2026/27 US soybean ending stocks by 5 million bushels to 315 million, left the season-average price at $12.00/bu and put global ending stocks at 124.28 million t (DTN). In US–China trade, China's tariff-cut list covers soybean oil and meal but not commercial soybeans, which still face an additional 10% tariff, and no effective date has been given (Reuters).</p>
+                                </div>
+                            </div>
+
+                            <div class="region-card">
+                                <div class="region-card-header">
+                                    <i class="fas fa-hand-holding-usd"></i>
+                                    <span data-lang-key="ukraine_floor">Ukraine's Minimum Export Price Floor Lowered for the Fourth Quarter</span>
+                                </div>
+                                <div class="region-card-content">
+                                    <p data-lang-key="ukraine_floor_text">In September Ukraine's Economy Ministry set the minimum export price for sunflower oil at $1,350/t CPT, about $225/t above market offers of around $1,125/t. On September 30 the Cabinet (Resolution No. 1192) extended through December the 0.714 correction factor first applied in August, which lowers the binding floor for grains, oilseeds and sunflower, soybean and rapeseed oils. The resulting October floor for sunflower oil was not found in the sources reviewed.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab-blacksea" class="tab-content">
+                        <div class="info-box danger">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <div class="info-box-content">
+                                <div class="info-box-title" data-lang-key="merchant_ships_struck">Merchant Ships Struck Off Romania and Bulgaria</div>
+                                <p class="info-box-text" data-lang-key="merchant_ships_struck_text">On October 5 a drone strike set the Royad Mammadov, a Turkish-owned carrier loaded with corn, on fire in Romania's exclusive economic zone, and the vessel sank. On October 6 the Togo-flagged Alfa Watan and the Palau-flagged Able were hit more than 100 km off Bulgaria; Alfa Watan sank with crew reported missing, and all 18 crew of Able were rescued. It was the first reported drone attack on merchant shipping in Bulgaria's exclusive economic zone. Ukraine's president attributed the attack to Russia, while Romanian and Bulgarian authorities described the incidents as drone strikes without naming the origin (Reuters; Kyiv Independent; UkrAgroConsult).</p>
+                            </div>
+                        </div>
+
+                        <div class="region-grid">
+                            <div class="region-card">
+                                <div class="region-card-header">
+                                    <i class="fas fa-flag"></i>
+                                    <span data-lang-key="eu_bulgaria_response">EU and Bulgarian Response</span>
+                                </div>
+                                <div class="region-card-content">
+                                    <p data-lang-key="eu_bulgaria_response_text">Bulgaria's prime minister called the strike a gross violation of international law (Reuters). European Commission President Ursula von der Leyen said the Black Sea situation was increasingly concerning, and on October 7 the EU called on Russia to stop attacks on commercial vessels and announced cooperation with Bulgaria and Romania, including satellite imagery of the affected sea areas (Sofia Globe; USM).</p>
+                                </div>
+                            </div>
+
+                            <div class="region-card">
+                                <div class="region-card-header">
+                                    <i class="fas fa-chart-pie"></i>
+                                    <span data-lang-key="export_flows_domestic">Export Flows and Domestic Prices</span>
+                                </div>
+                                <div class="region-card-content">
+                                    <p data-lang-key="export_flows_domestic_text">Ukraine's government said average daily agricultural export shipments in the week before September 30 were about 48 thousand t, against about 144 thousand t in the first half of September, while domestic purchase prices fell (milling wheat down 16%, feed wheat 17%, barley 14%, corn 8%, rapeseed 5%). Sunflower seed purchase prices fell to UAH 16,500–17,500/t by October 7 as the harvest advanced (UkrAgroConsult; GrainTrade).</p>
+                                </div>
+                            </div>
+
+                            <div class="region-card">
+                                <div class="region-card-header">
+                                    <i class="fas fa-ship"></i>
+                                    <span data-lang-key="sunflower_oil_outlook">Sunflower Oil Export Outlook for 2026/27</span>
+                                </div>
+                                <div class="region-card-content">
+                                    <p data-lang-key="sunflower_oil_outlook_text">Market estimates presented at the Globoil conference in Mumbai put Ukraine's sunflower oil exports in October–March 2026/27 at roughly 300 thousand t per month, about 50% below normal flows, because of damage to port and storage infrastructure and elevated maritime risk. The same reporting says Russia's 2026/27 exports could fall by up to 38% (CMB News, October 2).</p>
+                                </div>
+                            </div>
+
+                            <div class="region-card">
+                                <div class="region-card-header">
+                                    <i class="fas fa-star"></i>
+                                    <span data-lang-key="usda_russia_overtakes">USDA: Russia Overtakes Ukraine</span>
+                                </div>
+                                <div class="region-card-content">
+                                    <p data-lang-key="usda_russia_overtakes_text">USDA's September Oilseeds: World Markets and Trade report estimated 2025/26 sunflower oil exports at 4.2 million t for Russia and 4.036 million t for Ukraine, ending Ukraine's 20 seasons as the largest exporter. Ukraine's share of world exports fell from about 35% to 30%. For 2026/27 USDA forecasts Ukraine at about 5 million t and Russia at 5.1 million t (kurs.com.ua, citing USDA).</p>
+                                </div>
+                            </div>
+
+                            <div class="region-card">
+                                <div class="region-card-header">
+                                    <i class="fas fa-ruble-sign"></i>
+                                    <span data-lang-key="russia_duty_capped">Russia Export Duty Capped Through December</span>
+                                </div>
+                                <div class="region-card-content">
+                                    <p data-lang-key="russia_duty_capped_text">Global Trade Alert records that Russia capped export duties on sunflower oil at RUB 7,748/t and on sunflower meal at RUB 312/t, applicable until December 31, 2026 (Ministry of Agriculture decision of September 25).</p>
+                                </div>
+                            </div>
+
+                            <div class="region-card">
+                                <div class="region-card-header">
+                                    <i class="fas fa-times-circle"></i>
+                                    <span data-lang-key="sunflower_exports_halted">Sunflower Oil Exports Nearly Halted in September</span>
+                                </div>
+                                <div class="region-card-content">
+                                    <p data-lang-key="sunflower_exports_halted_text">Russia shipped only about 5 thousand t of sunflower oil in September against more than 200 thousand t a year earlier. From January to August, Russian vegetable oil exports were 4.69 million t (up 4%), of which sunflower oil was 3.19 million t (up 2%), with India (913 thousand t) and Turkey (718 thousand t) the main buyers (CMB News, October 5; trade press, not an official statistic).</p>
+                                </div>
+                            </div>
+
+                            <div class="region-card">
+                                <div class="region-card-header">
+                                    <i class="fas fa-flag-checkered"></i>
+                                    <span data-lang-key="slovakia_bulgaria">Slovakia and Bulgaria</span>
+                                </div>
+                                <div class="region-card-content">
+                                    <p data-lang-key="slovakia_bulgaria_text">No new verified data. No vegetable oil developments specific to Bulgaria or Slovakia were found for October 1–12, 2026 in the sources reviewed. Bulgaria's exclusive economic zone was the site of the October 6 ship attacks described above.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_ua_daily_exports">UA Daily Exports (late Sep)</div>
+                                <div class="metric-value">~48k t</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_ua_sunflower_seed">UA Sunflower Seed Price</div>
+                                <div class="metric-value">UAH 16,500–17,500/t</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_ua_sfo_oct_mar">UA SFO Exports (Oct-Mar)</div>
+                                <div class="metric-value">~300k t/mo (-50%)</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_ru_sfo_exports">RU SFO Exports (Sep)</div>
+                                <div class="metric-value">~5k t</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_ru_sfo_jan_aug">RU SFO Exports (Jan-Aug)</div>
+                                <div class="metric-value">3.19M t (+2%)</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_ru_duty_cap">RU Duty Cap (Oil/Meal)</div>
+                                <div class="metric-value">7,748 / 312 RUB/t</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab-central" class="tab-content">
+                        <div class="region-grid">
+                            <div class="region-card">
+                                <div class="region-card-header">
+                                    <i class="fas fa-mountain"></i>
+                                    <span data-lang-key="kazakhstan">Kazakhstan</span>
+                                </div>
+                                <div class="region-card-content">
+                                    <div class="country-item">
+                                        <h4><i class="fas fa-seedling"></i> <span data-lang-key="kz_record_crop">Record Oilseed Crop Pressures Seed Prices</span></h4>
+                                        <p data-lang-key="kz_record_crop_text">Kazakhstan is expected to harvest more than 5 million t of oilseeds this season. Domestic sunflower seed prices have fallen to KZT 162,000/t including VAT and could drop to KZT 150,000/t, according to the Grain and Oilseed Crops Kazakhstan research bureau. Russian seed is offered to Kazakh crushers at about KZT 120,000/t, while the cost of local seed is approaching KZT 160,000/t (UkrAgroConsult, October 9).</p>
+                                    </div>
+                                    <div class="country-item">
+                                        <h4><i class="fas fa-trophy"></i> <span data-lang-key="kz_record_exports">Record Sunflower Oil Exports in 2025/26</span></h4>
+                                        <p data-lang-key="kz_record_exports_text">In marketing year 2025/26 Kazakhstan's sunflower oil production rose 18.2% to 874.9 thousand t, exports rose 34% to an all-time high of 815.4 thousand t, and imports fell 15.9% to 125.7 thousand t (UkrAgroConsult, October 7).</p>
+                                    </div>
+                                    <div class="country-item">
+                                        <h4><i class="fas fa-money-bill-wave"></i> <span data-lang-key="kz_seed_duty">Seed Export Duty Stays</span></h4>
+                                        <p data-lang-key="kz_seed_duty_text">The 20% export duty on sunflower seed (minimum €100/t) continues to apply outside the EAEU, and authorities do not currently plan to revise it, arguing that it secures raw material for domestic crushers and supports oil exports. Seed exports outside the EAEU fell 6.6% to 210 thousand t in 2025/26, with China taking 78.9% (UkrAgroConsult, October 7 and 9).</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="region-card">
+                                <div class="region-card-header">
+                                    <i class="fas fa-industry"></i>
+                                    <span data-lang-key="uzbekistan">Uzbekistan</span>
+                                </div>
+                                <div class="region-card-content">
+                                    <div class="country-item">
+                                        <h4><i class="fas fa-percent"></i> <span data-lang-key="uz_customs_fee">Customs Fee Cut and VAT Offset From October 1</span></h4>
+                                        <p data-lang-key="uz_customs_fee_text">From October 1, 2026 fees for customs clearance, phytosanitary certificates, fumigation and certificates of origin fall by 30%, and low-risk importers holding valid VAT registration certificates may offset VAT payable on imported goods. From January 1, 2027 customs value controls for low-risk importers will take place after release of the goods (UzDaily, September 2 and October 2026). The earlier edition of this report described the 30% reduction as applying to export customs duties; the sources describe fees.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="region-card">
+                                <div class="region-card-header">
+                                    <i class="fas fa-question-circle"></i>
+                                    <span data-lang-key="no_data">Kyrgyzstan, Georgia, Azerbaijan, Armenia</span>
+                                </div>
+                                <div class="region-card-content">
+                                    <p data-lang-key="no_data_text">No New Verified Data. No developments specific to [Country] and the vegetable oil market were found for October 1–12, 2026 in the sources reviewed.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_kz_harvest">KZ Oilseed Harvest Forecast</div>
+                                <div class="metric-value">&gt;5M t</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_kz_seed_price">KZ Sunflower Seed Price</div>
+                                <div class="metric-value">KZT 162,000/t</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_kz_sfo_prod">KZ SFO Production 25/26</div>
+                                <div class="metric-value">874.9k t (+18.2%)</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_kz_sfo_exp">KZ SFO Exports 25/26</div>
+                                <div class="metric-value">815.4k t (+34%)</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_kz_seed_duty">KZ Seed Export Duty</div>
+                                <div class="metric-value">20% (min €100/t)</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_uz_customs_cut">UZ Customs Fees Cut</div>
+                                <div class="metric-value">-30% (from Oct 1)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="blacksea">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2><i class="fas fa-water"></i> <span data-lang-key="blacksea_logistics_title">Logistics and Supply Security</span></h2>
+                <div class="toggle-btn"><i class="fas fa-chevron-down"></i></div>
+            </div>
+            <div class="section-content">
+                <div class="info-box success">
+                    <i class="fas fa-route"></i>
+                    <div class="info-box-content">
+                        <div class="info-box-title" data-lang-key="middle_corridor_status">Middle Corridor Status</div>
+                        <p class="info-box-text" data-lang-key="middle_corridor_status_text">An Astana Times analysis of October 12 says the container hub at Aktau, developed with China's Lianyungang Port, is complete, dredging at Kuryk is complete and similar work at Aktau is planned this year. The Digital Trade Corridor platform is integrated with the railway systems of Kazakhstan, Azerbaijan and Georgia, but the Caspian Sea remains a critical link because cargo must be transferred between rail, sea and road.</p>
+                    </div>
+                </div>
+
+                <div class="info-box danger">
+                    <i class="fas fa-ship"></i>
+                    <div class="info-box-content">
+                        <div class="info-box-title" data-lang-key="black_sea_shipping_risk">Black Sea Shipping Risk</div>
+                        <p class="info-box-text" data-lang-key="black_sea_shipping_risk_text">The October 5–6 attacks on merchant ships extend the shipping risk into the exclusive economic zones of NATO members Romania and Bulgaria. Bulgarian authorities said the incidents complicate navigation and could further raise insurance and transport costs (UkrAgroConsult). Two Russian grain terminals at Novorossiysk had been put out of action by Ukrainian drone attacks in August (Al Jazeera, citing Reuters).</p>
+                    </div>
+                </div>
+
+                <div class="info-box warning">
+                    <i class="fas fa-exchange-alt"></i>
+                    <div class="info-box-content">
+                        <div class="info-box-title" data-lang-key="rerouting_russian_exports">Rerouting of Russian Exports</div>
+                        <p class="info-box-text" data-lang-key="rerouting_russian_exports_text">Trade press reports that alternative corridors through Baltic, Caspian and Far Eastern ports are only partly compensating for the near-halt in Black Sea sunflower oil shipments and carry higher costs (CMB News, October 5).</p>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <div class="chart-title" data-lang-key="logistics_map">Logistics Corridors Map</div>
+                    </div>
+                    <div class="chart-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span data-lang-key="map_placeholder">Interactive map of TITR, Danube, and Black Sea corridors</span>
+                    </div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_aktau_hub">Aktau Container Hub</div>
+                        <div class="metric-value">Complete</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_kuryk_dredging">Kuryk Dredging</div>
+                        <div class="metric-value">Complete</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_digital_corridor">Digital Trade Corridor</div>
+                        <div class="metric-value">Integrated (KZ-AZ-GE)</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_caspian_link">Caspian Sea Link</div>
+                        <div class="metric-value">Critical Bottleneck</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_shipping_risk">Shipping Risk Zone</div>
+                        <div class="metric-value">Romania & Bulgaria EEZ</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_novorossiysk_terminals">Novorossiysk Terminals</div>
+                        <div class="metric-value">2 Out of Action</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="regulatory">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2><i class="fas fa-file-contract"></i> <span data-lang-key="regulatory_title">Regulatory Outlook</span></h2>
+                <div class="toggle-btn"><i class="fas fa-chevron-down"></i></div>
+            </div>
+            <div class="section-content">
+                <div class="tabs-container">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" onclick="switchRegTab('eudr', event)">EUDR</button>
+                        <button class="tab-btn" onclick="switchRegTab('rfs', event)">US RFS</button>
+                        <button class="tab-btn" onclick="switchRegTab('moah', event)">EU MOAH</button>
+                        <button class="tab-btn" onclick="switchRegTab('trade_policy', event)">Trade Policy</button>
+                    </div>
+
+                    <div id="reg-eudr" class="tab-content active">
+                        <div class="info-box success">
+                            <i class="fas fa-calendar-check"></i>
+                            <div class="info-box-content">
+                                <div class="info-box-title" data-lang-key="eudr_application_date">Application Date Unchanged at December 30, 2026</div>
+                                <p class="info-box-text" data-lang-key="eudr_application_date_text">The EUDR applies from December 30, 2026 to large and medium-sized operators and to micro and small operators in the timber sector, and from June 30, 2027 to other micro and small operators. The Commission's May 4, 2026 simplification package confirmed that the application date would not be postponed again and that the regulation would not be reopened. No change to these dates was found in the sources reviewed for October 1–12 (law-firm summaries of the Commission package).</p>
+                            </div>
+                        </div>
+
+                        <div class="chart-container">
+                            <div class="chart-header">
+                                <div class="chart-title" data-lang-key="eudr_timeline">EUDR Compliance Timeline</div>
+                            </div>
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-date" data-lang-key="eudr_date1">December 30, 2026</div>
+                                    <div class="timeline-content" data-lang-key="eudr_deadline1">Large and medium operators + micro/small in timber sector</div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-date" data-lang-key="eudr_date2">June 30, 2027</div>
+                                    <div class="timeline-content" data-lang-key="eudr_deadline2">Other micro and small operators</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="reg-rfs" class="tab-content">
+                        <div class="info-box warning">
+                            <i class="fas fa-flask"></i>
+                            <div class="info-box-content">
+                                <div class="info-box-title" data-lang-key="rfs_reallocation">US Renewable Fuel Standard (RFS): EPA Reallocation Proposal Expected by End-October</div>
+                                <p class="info-box-text" data-lang-key="rfs_reallocation_text">On August 31 EPA decided 34 small-refinery exemption petitions for 2025, granting 18 full and 11 partial exemptions (about 1.76 billion RINs) and denying three, with two found ineligible. EPA said it would propose reallocating 100% of the difference between projected and actual exempted volumes into the 2026 and 2027 volume obligations before the end of October 2026, and extended the 2025 compliance deadline by 30 days to October 1, 2026 (S&P Global; Feedstuffs). No proposal had been found in the sources reviewed as of October 12.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="reg-moah" class="tab-content">
+                        <div class="info-box danger">
+                            <i class="fas fa-flask"></i>
+                            <div class="info-box-content">
+                                <div class="info-box-title" data-lang-key="moah_formal_adoption">EU MOAH Regulation: Formal Adoption Expected in October</div>
+                                <p class="info-box-text" data-lang-key="moah_formal_adoption_text">EU member states backed the Commission's draft on maximum levels of mineral oil aromatic hydrocarbons (MOAH) in food at the SC PAFF on May 13, 2026. Formal adoption is expected in October 2026, subject to scrutiny by the European Parliament and the Council, with limits applying from January 1, 2027. Reported limits include 2.0 mg/kg for maize, rapeseed, sunflower, soybean and linseed oils and 4.0 mg/kg from 2027, falling to 2.0 mg/kg from 2028, for other oils and fats. How palm oil is classified within these categories should be checked against the final text. No confirmation of formal adoption was found as of October 12 (OFI; ChemLinked).</p>
+                            </div>
+                        </div>
+
+                        <div class="chart-container">
+                            <div class="chart-header">
+                                <div class="chart-title" data-lang-key="moah_timeline">MOAH Implementation Timeline</div>
+                            </div>
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-date" data-lang-key="moah_oct">October 2026</div>
+                                    <div class="timeline-content" data-lang-key="moah_oct_text">Expected formal adoption</div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-date" data-lang-key="moah_jan">January 1, 2027</div>
+                                    <div class="timeline-content" data-lang-key="moah_jan_text">Limits apply generally</div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-date" data-lang-key="moah_2028">2028</div>
+                                    <div class="timeline-content" data-lang-key="moah_2028_text">Other oils/fats limit falls to 2.0 mg/kg</div>
+                                </div>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-label">
+                                    <span data-lang-key="moah_progress">Until Entry into Force</span>
+                                    <span>~2.5 months</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 80%; background: linear-gradient(90deg, #f39c12 0%, #e67e22 100%);">80%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_moah_oils">MOAH Limit (Key Oils)</div>
+                                <div class="metric-value">2.0 mg/kg</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_moah_other">MOAH Limit (Other Oils/Fats 2027)</div>
+                                <div class="metric-value">4.0 mg/kg</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label" data-lang-key="metric_moah_other_2028">MOAH Limit (Other Oils/Fats 2028+)</div>
+                                <div class="metric-value">2.0 mg/kg</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="reg-trade_policy" class="tab-content">
+                        <div class="info-box">
+                            <i class="fas fa-globe-asia"></i>
+                            <div class="info-box-content">
+                                <div class="info-box-title" data-lang-key="indonesia_export_charges">Indonesia Raises October Palm Oil Export Charges</div>
+                                <p class="info-box-text" data-lang-key="indonesia_export_charges_text">Indonesia set the October 2026 crude palm oil reference price at $1,042.15/t, up 3.44% from September's $1,007.51/t. The export duty is $178/t and the export levy is 12.5% of the reference price, or $130.27/t, for exports from October 1 to 31. Branded RBD palm olein in packs of 25 kg or less carries an export duty of $48/t (Indonesian Trade Ministry, via RRI and IDNFinancials).</p>
+                            </div>
+                        </div>
+
+                        <div class="info-box warning">
+                            <i class="fas fa-flag"></i>
+                            <div class="info-box-content">
+                                <div class="info-box-title" data-lang-key="malaysia_no_waiver">Malaysia: No Export Duty Waiver in the Budget</div>
+                                <p class="info-box-text" data-lang-key="malaysia_no_waiver_text">The Malaysian Budget presented on October 9 did not include the crude palm oil export duty waiver that the market had speculated about, which would have made Malaysian exports more competitive with those of Indonesia. Palm oil futures fell more than 1% on the day (Reuters via Business Recorder).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="logistics">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2><i class="fas fa-shipping-fast"></i> <span data-lang-key="logistics_title">Logistics and Supply Security</span></h2>
+                <div class="toggle-btn"><i class="fas fa-chevron-down"></i></div>
+            </div>
+            <div class="section-content">
+                <div class="info-box success">
+                    <i class="fas fa-route"></i>
+                    <div class="info-box-content">
+                        <div class="info-box-title" data-lang-key="middle_corridor_status">Middle Corridor Status</div>
+                        <p class="info-box-text" data-lang-key="middle_corridor_status_text">An Astana Times analysis of October 12 says the container hub at Aktau, developed with China's Lianyungang Port, is complete, dredging at Kuryk is complete and similar work at Aktau is planned this year. The Digital Trade Corridor platform is integrated with the railway systems of Kazakhstan, Azerbaijan and Georgia, but the Caspian Sea remains a critical link because cargo must be transferred between rail, sea and road.</p>
+                    </div>
+                </div>
+
+                <div class="info-box danger">
+                    <i class="fas fa-ship"></i>
+                    <div class="info-box-content">
+                        <div class="info-box-title" data-lang-key="black_sea_shipping_risk">Black Sea Shipping Risk</div>
+                        <p class="info-box-text" data-lang-key="black_sea_shipping_risk_text">The October 5–6 attacks on merchant ships extend the shipping risk into the exclusive economic zones of NATO members Romania and Bulgaria. Bulgarian authorities said the incidents complicate navigation and could further raise insurance and transport costs (UkrAgroConsult). Two Russian grain terminals at Novorossiysk had been put out of action by Ukrainian drone attacks in August (Al Jazeera, citing Reuters).</p>
+                    </div>
+                </div>
+
+                <div class="info-box warning">
+                    <i class="fas fa-exchange-alt"></i>
+                    <div class="info-box-content">
+                        <div class="info-box-title" data-lang-key="rerouting_russian_exports">Rerouting of Russian Exports</div>
+                        <p class="info-box-text" data-lang-key="rerouting_russian_exports_text">Trade press reports that alternative corridors through Baltic, Caspian and Far Eastern ports are only partly compensating for the near-halt in Black Sea sunflower oil shipments and carry higher costs (CMB News, October 5).</p>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <div class="chart-title" data-lang-key="logistics_map">Logistics Corridors Map</div>
+                    </div>
+                    <div class="chart-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span data-lang-key="map_placeholder">Interactive map of TITR, Danube, and Black Sea corridors</span>
+                    </div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_aktau_hub">Aktau Container Hub</div>
+                        <div class="metric-value">Complete</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_kuryk_dredging">Kuryk Dredging</div>
+                        <div class="metric-value">Complete</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_digital_corridor">Digital Trade Corridor</div>
+                        <div class="metric-value">Integrated (KZ-AZ-GE)</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_caspian_link">Caspian Sea Link</div>
+                        <div class="metric-value">Critical Bottleneck</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_shipping_risk">Shipping Risk Zone</div>
+                        <div class="metric-value">Romania & Bulgaria EEZ</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label" data-lang-key="metric_novorossiysk_terminals">Novorossiysk Terminals</div>
+                        <div class="metric-value">2 Out of Action</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer-actions">
+            <div>
+                <button class="action-btn" onclick="window.print()">
+                    <i class="fas fa-print"></i> <span data-lang-key="print_report">Print Report</span>
+                </button>
+                <button class="action-btn secondary-btn" onclick="exportCSV()">
+                    <i class="fas fa-file-csv"></i> <span data-lang-key="export_csv">CSV</span>
+                </button>
+                <button class="action-btn secondary-btn" onclick="window.print()">
+                    <i class="fas fa-file-pdf"></i> <span data-lang-key="export_pdf_btn">PDF</span>
+                </button>
+            </div>
+            <div style="color: var(--text-secondary); font-size: 0.85rem;">
+                <i class="fas fa-lock"></i> <span data-lang-key="confidential">Confidential. For internal use only.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            ru: {
+                title: "Еженедельный аналитический обзор",
+                date: "Дата отчета: 12 октября 2026 г.",
+                nav_prices: "Цены",
+                nav_regions: "Регионы",
+                nav_blacksea: "Черное море",
+                nav_regulatory: "Регулирование",
+                nav_logistics: "Логистика",
+                pricing_title: "Ценовая динамика и рыночные индикаторы",
+                col_commodity: "Актив",
+                col_basis: "Базис",
+                col_price: "Цена",
+                col_comment: "Комментарий",
+                item_cpo: "Пальмовое масло (CPO)",
+                desc_cpo: "Рекордные запасы в Малайзии (3,51 млн т) и слабый экспорт в сентябре; отсутствие отмены экспортной пошлины в бюджете от 9 октября; нефть Brent выше $100 поддерживает спрос на биодизель.",
+                item_sbo: "Соевое масло",
+                desc_sbo: "Предложение EPA по перераспределению освобождений для малых НПЗ ожидается до конца октября; список тарифных сокращений Китая включает соевое масло; октябрьский WASDE USDA повысил конечные запасы сои США 2026/27 на 5 млн бушелей до 315 млн.",
+                item_sfo: "Подсолнечное масло",
+                desc_sfo: "Уборка подсолнечника в Украине завершена на 49% (6 октября); атаки на судоходство в Черном море; экспорт России практически остановлен в сентябре; коэффициент минимальной экспортной цены Украины (0,714) продлен до декабря.",
+                item_rapeseed: "Рапс",
+                desc_rapeseed: "Ноябрьский контракт упал на €11/т 9 октября; отложенные контракты торгуются со значительным премиумом. В проверенных источниках не найдено конкретных комментариев о драйверах цен.",
+                regional_title: "Анализ региональных рынков",
+                navigate: "Навигация:",
+                expand_all: "Развернуть все",
+                collapse_all: "Свернуть все",
+                print: "Печать",
+                export_csv: "CSV",
+                stat_cpo: "CPO Цена",
+                stat_cpo_change: "Рекордные запасы MY",
+                stat_sbo: "Соевое масло",
+                stat_sbo_change: "WASDE + Тарифы КНР",
+                stat_sfo: "Подсолнечное масло",
+                stat_sfo_change: "UA $1,350 floor vs рынок",
+                stat_rapeseed: "Рапс",
+                stat_rapeseed_change: "Давление смежных рынков",
+                stat_ua_rank: "UA экспортный ранг",
+                stat_ua_rank_text: "Впервые за 20 лет",
+                stat_ua_alt_routes: "UA альтернативные маршруты",
+                stat_ua_alt_text: "Улучшение с августа",
+                metric_my_stock: "Запасы Малайзии (сен)",
+                metric_my_export_sep: "Экспорт MY (сен)",
+                metric_fao_index: "FAO Veg Oil Index (сен)",
+                metric_oil_price: "Нефть Brent",
+                metric_us_stocks: "Конечные запасы сои США",
+                metric_ua_harvest: "Уборка подсолнечника UA",
+                premium_narrowing: "Премиум подсолнечного масла над соевым сузился",
+                premium_narrowing_text: "Ценовой премиум подсолнечного масла над соевым сузился до $205/т в конце сентября, смещая глобальный рынок к более сбалансированному распределению по сравнению с острым дефицитом, наблюдавшимся ранее в этом году.",
+                tab_global_eu: "Global & Europe",
+                tab_blacksea: "Black Sea",
+                tab_central: "Central Asia & Caucasus",
+                indonesia_fires: "Лесные пожары и Эль-Ниньо добавляют риски поставок",
+                indonesia_fires_text: "Пожары в Индонезии охватили не менее 200 000 гектаров в шести провинциях, и 9 октября Малайзия закрыла школы в Куала-Лумпуре, Путраджае и нескольких штатах из-за смога (Al Jazeera). Премьер-министр Анвар Ибрагим запросил срочную встречу министров АСЕАН. В рассмотренных отчетах не количественно оценено влияние на производство пальмового масла.",
+                palm_oil_trends: "Пальмовое масло достигает 12-недельного минимума, затем частично восстанавливает потери",
+                palm_oil_trends_text: "Малайзийские фьючерсы на пальмовое масло падали шесть сессий подряд до 2 октября, когда базовый контракт закрылся на отметке 4 533 ринггита/т, самом низком уровне с 10 июля, на фоне слабых данных по экспорту и ожиданий роста запасов (Reuters через Business Recorder). Контракт снова снизился 7 октября до 4 524 ринггита из-за опасений по поводу рекордных запасов (UkrAgroConsult), затем восстановился, чтобы завершить неделю 9 октября на уровне 4 592 ринггита, выросши на 1,26%.",
+                fao_index: "Индекс ФАО подтверждает силу рынка пальмового масла в сентябре",
+                fao_index_text: "Индекс цен на растительные масла ФАО составил в среднем 198,6 пункта в сентябре, увеличившись на 0,9% по сравнению с августом и на 18,3% по сравнению с прошлым годом. Цены на пальмовое масло росли четвертый месяц подряд благодаря сильному импортному спросу и опасениям относительно перспектив производства в Юго-Восточной Азии, в то время как цены на подсолнечное масло снижались третий месяц подряд на фоне ожиданий обильных поставок из Черноморского региона (ФАО, 2 октября).",
+                record_stocks: "Рекордные запасы малайзийского пальмового масла",
+                record_stocks_text: "Октябрьский релиз MPOB от 12 октября показал запасы на конец сентября на уровне 3 510 897 т, что выше медианного опроса Reuters в 3 373 737 т. Производство в объеме 2 116 950 т выросло на 16,48% по сравнению с августом, а экспорт в объеме 1 120 395 т снизился на 12,13% (Finimize, ссылаясь на MPOB). Опрос Bloomberg, опубликованный The Star, ожидал запасы в 3,45 млн т; цитируемый там аналитик заявил, что запасы должны оставаться около рекордных уровней в течение первой половины 2027 года, в то время как Эль-Ниньо и биотопливный мандат Индонезии могут ужесточить глобальный рынок позже.",
+                us_soybeans: "Соевые бобы США: WASDE и торговые заголовки",
+                us_soybeans_text: "Ноябрьские фьючерсы CBOT на сою находились около 1 292 центов/бушель 9 октября. Октябрьский WASDE USDA от 9 октября повысил конечные запасы сои США 2026/27 на 5 млн бушелей до 315 млн, оставил среднюю цену сезона на уровне $12,00/бушель и установил глобальные конечные запасы на уровне 124,28 млн т (DTN). В торговле США-Китай список тарифных сокращений Китая включает соевое масло и шрот, но не коммерческие соевые бобы, которые по-прежнему сталкиваются с дополнительным 10% тарифом, и эффективная дата не указана (Reuters).",
+                ukraine_floor: "Минимальная экспортная цена Украины снижена для четвертого квартала",
+                ukraine_floor_text: "В сентябре Министерство экономики Украины установило минимальную допустимую экспортную цену на подсолнечное масло на базисе CPT на уровне $1 350/т, что примерно на $225/т выше рыночных предложений около $1 125/т. 30 сентября Кабинет Министров (Постановление № 1192) продлил до декабря корректирующий коэффициент 0,714, впервые примененный в августе, который снижает обязательный порог для зерна, масличных культур и подсолнечного, соевого и рапсового масел. Результирующий октябрьский порог для подсолнечного масла не был найден в рассмотренных источниках.",
+                blacksea_logistics_title: "Логистика и безопасность поставок",
+                middle_corridor_status: "Статус Среднего коридора",
+                middle_corridor_status_text: "Анализ Astana Times от 12 октября сообщает, что контейнерный хаб в Актау, разработанный совместно с портом Ляньюньган (Китай), завершен, дноуглубительные работы в Курыке завершены, а аналогичные работы в Актау запланированы на этот год. Платформа Цифрового торгового коридора интегрирована с железнодорожными системами Казахстана, Азербайджана и Грузии, но Каспийское море остается критическим звеном, поскольку грузы должны перегружаться между железной дорогой, морем и автотранспортом.",
+                black_sea_shipping_risk: "Риск судоходства в Черном море",
+                black_sea_shipping_risk_text: "Атаки 5–6 октября на торговые суда распространяют риск судоходства в исключительные экономические зоны стран НАТО Румынии и Болгарии. Болгарские власти заявили, что эти инциденты усложняют навигацию и могут еще больше повысить страховые и транспортные расходы (UkrAgroConsult). Два российских зерновых терминала в Новороссийске были выведены из строя украинскими атаками беспилотников в августе (Al Jazeera, ссылаясь на Reuters).",
+                rerouting_russian_exports: "Перенаправление российского экспорта",
+                rerouting_russian_exports_text: "Торговая пресса сообщает, что альтернативные коридоры через балтийские, каспийские и дальневосточные порты лишь частично компенсируют почти полную остановку отгрузок подсолнечного масла через Черное море и несут более высокие затраты (CMB News, 5 октября).",
+                logistics_map: "Карта логистических коридоров",
+                map_placeholder: "Интерактивная карта коридоров TITR, Дуная и Черного моря",
+                metric_aktau_hub: "Хаб Актау",
+                metric_kuryk_dredging: "Дноуглубление Курык",
+                metric_digital_corridor: "Цифровой торговый коридор",
+                metric_caspian_link: "Каспийская связь",
+                metric_shipping_risk: "Зона риска судоходства",
+                metric_novorossiysk_terminals: "Терминалы Новороссийска",
+                regulatory_title: "Регуляторный горизонт",
+                eudr_application_date: "Дата применения EUDR без изменений: 30 декабря 2026",
+                eudr_application_date_text: "EUDR применяется с 30 декабря 2026 года к крупным и средним операторам, а также к микро- и малым операторам в лесном секторе, и с 30 июня 2027 года к другим микро- и малым операторам. Упрощенный пакет Комиссии от 4 мая 2026 года подтвердил, что дата применения не будет снова отложена и что регламент не будет пересмотрен. Никаких изменений в этих датах не было найдено в источниках, рассмотренных за период 1–12 октября (резюме юридических фирм пакета Комиссии).",
+                eudr_timeline: "График соответствия EUDR",
+                eudr_date1: "30 декабря 2026",
+                eudr_deadline1: "Крупные и средние операторы + микро/малые в лесном секторе",
+                eudr_date2: "30 июня 2027",
+                eudr_deadline2: "Другие микро- и малые операторы",
+                rfs_reallocation: "Стандарт возобновляемого топлива США (RFS): Предложение EPA по перераспределению ожидается до конца октября",
+                rfs_reallocation_text: "31 августа EPA приняло решение по 34 петициям об освобождении для малых НПЗ на 2025 год, предоставив 18 полных и 11 частичных освобождений (около 1,76 млрд RIN) и отклонив три, при этом два были признаны не имеющими права. EPA заявило, что предложит перераспределить 100% разницы между прогнозируемыми и фактическими освобожденными объемами в обязательства по объемам 2026 и 2027 годов до конца октября 2026 года и продлило срок соблюдения требований 2025 года на 30 дней до 1 октября 2026 года (S&P Global; Feedstuffs). Никакого предложения не было найдено в рассмотренных источниках по состоянию на 12 октября.",
+                moah_formal_adoption: "Регламент ЕС по MOAH: Ожидается официальное принятие в октябре",
+                moah_formal_adoption_text: "Государства-члены ЕС поддержали проект Комиссии по максимальным уровням ароматических углеводородов минерального масла (MOAH) в пищевых продуктах на заседании SC PAFF 13 мая 2026 года. Ожидается, что официальное принятие состоится в октябре 2026 года после проверки Европейским парламентом и Советом, при этом ограничения будут применяться с 1 января 2027 года. Сообщаемые пределы включают 2,0 мг/кг для кукурузного, рапсового, подсолнечного, соевого и льняного масел и 4,0 мг/кг с 2027 года, снижаясь до 2,0 мг/кг с 2028 года, для других масел и жиров. Как пальмовое масло классифицируется в этих категориях, следует проверить по окончательному тексту. Подтверждения официального принятия не было найдено по состоянию на 12 октября (OFI; ChemLinked).",
+                moah_timeline: "График внедрения MOAH",
+                moah_oct: "Октябрь 2026",
+                moah_oct_text: "Ожидаемое официальное принятие",
+                moah_jan: "1 января 2027",
+                moah_jan_text: "Ограничения применяются повсеместно",
+                moah_2028: "2028",
+                moah_2028_text: "Лимит для других масел/жиров снижается до 2,0 мг/кг",
+                moah_progress: "До вступления в силу",
+                metric_moah_oils: "Лимит MOAH (ключевые масла)",
+                metric_moah_other: "Лимит MOAH (другие масла/жиры 2027)",
+                metric_moah_other_2028: "Лимит MOAH (другие масла/жиры 2028+)",
+                indonesia_export_charges: "Индонезия повышает октябрьские экспортные сборы на пальмовое масло",
+                indonesia_export_charges_text: "Индонезия установила справочную цену сырого пальмового масла на октябрь 2026 года на уровне $1 042,15/т, что на 3,44% выше сентябрьских $1 007,51/т. Экспортная пошлина составляет $178/т, а экспортный сбор — 12,5% от справочной цены, или $130,27/т, для экспорта с 1 по 31 октября. Брендовое RBD пальмовое олеин в упаковках 25 кг или менее облагается экспортной пошлиной $48/т (Министерство торговли Индонезии, через RRI и IDNFinancials).",
+                malaysia_no_waiver: "Малайзия: Отсутствие отмены экспортной пошлины в бюджете",
+                malaysia_no_waiver_text: "Малайзийский бюджет, представленный 9 октября, не включал отмену экспортной пошлины на сырое пальмовое масло, которую ожидал рынок и которая сделала бы малайзийский экспорт более конкурентоспособным по сравнению с индонезийским. Фьючерсы на пальмовое масло упали более чем на 1% в тот день (Reuters через Business Recorder).",
+                merchant_ships_struck: "Торговые суда поражены у берегов Румынии и Болгарии",
+                merchant_ships_struck_text: "5 октября удар дрона поджег турецкое судно Royad Mammadov, груженое кукурузой, в исключительной экономической зоне Румынии, и судно затонуло. 6 октября тогийское судно Alfa Watan и палауское судно Able были поражены более чем в 100 км от берегов Болгарии; Alfa Watan затонуло, экипаж числится пропавшим без вести, а все 18 членов экипажа Able были спасены. Это была первая зарегистрированная атака дрона на торговое судоходство в исключительной экономической зоне Болгарии. Президент Украиныattributed атаку России, в то время как румынские и болгарские власти описали инциденты как удары дронов, не называя происхождения (Reuters; Kyiv Independent; UkrAgroConsult).",
+                eu_bulgaria_response: "Ответ ЕС и Болгарии",
+                eu_bulgaria_response_text: "Премьер-министр Болгарии назвал удар грубым нарушением международного права (Reuters). Президент Европейской комиссии Урсула фон дер Ляйен заявила, что ситуация в Черном море становится все более тревожной, и 7 октября ЕС призвал Россию прекратить атаки на коммерческие суда и объявил о сотрудничестве с Болгарией и Румынией, включая спутниковые снимки пострадавших морских районов (Sofia Globe; USM).",
+                export_flows_domestic: "Потоки экспорта и внутренние цены",
+                export_flows_domestic_text: "Правительство Украины сообщило, что среднесуточные отгрузки сельскохозяйственной продукции за неделю до 30 сентября составили около 48 тыс. т против примерно 144 тыс. т в первой половине сентября, в то время как внутренние закупочные цены снизились (пшеница мельничная -16%, кормовая -17%, ячмень -14%, кукуруза -8%, рапс -5%). Закупочные цены на семена подсолнечника снизились до 16 500–17 500 грн/т к 7 октября по мере продвижения уборки (UkrAgroConsult; GrainTrade).",
+                sunflower_oil_outlook: "Прогноз экспорта подсолнечного масла на 2026/27",
+                sunflower_oil_outlook_text: "Оценки рынка, представленные на конференции Globoil в Мумбаи, ставят экспорт подсолнечного масла Украины в октябре–марте 2026/27 примерно на уровне 300 тыс. т в месяц, что примерно на 50% ниже нормальных потоков из-за повреждения портовой и складской инфраструктуры и повышенного морского риска. Тот же отчет говорит, что экспорт России в 2026/27 может упасть до 38% (CMB News, 2 октября).",
+                usda_russia_overtakes: "USDA: Россия обгоняет Украину",
+                usda_russia_overtakes_text: "Сентябрьский отчет USDA Oilseeds: World Markets and Trade оценил экспорт подсолнечного масла в 2025/26 на уровне 4,2 млн т для России и 4,036 млн т для Украины, положив конец 20-летнему лидерству Украины как крупнейшего экспортера. Доля Украины в мировом экспорте упала с примерно 35% до 30%. На 2026/27 USDA прогнозирует Украину на уровне около 5 млн т и Россию на уровне 5,1 млн т (kurs.com.ua, ссылаясь на USDA).",
+                russia_duty_capped: "Экспортная пошлина России ограничена до декабря",
+                russia_duty_capped_text: "Global Trade Alert фиксирует, что Россия ограничила экспортные пошлины на подсолнечное масло на уровне 7 748 руб./т и на подсолнечный шрот на уровне 312 руб./т, применимо до 31 декабря 2026 года (решение Министерства сельского хозяйства от 25 сентября).",
+                sunflower_exports_halted: "Экспорт подсолнечного масла практически остановлен в сентябре",
+                sunflower_exports_halted_text: "Россия отгрузила всего около 5 тыс. т подсолнечного масла в сентябре против более чем 200 тыс. т годом ранее. С января по август экспорт растительных масел России составил 4,69 млн т (+4%), из которых подсолнечное масло составило 3,19 млн т (+2%), при этом основными покупателями были Индия (913 тыс. т) и Турция (718 тыс. т) (CMB News, 5 октября; торговая пресса, не официальная статистика).",
+                slovakia_bulgaria: "Словакия и Болгария",
+                slovakia_bulgaria_text: "Нет новых проверенных данных. Никаких developments, специфичных для Болгарии или Словакии и рынка растительных масел, не было найдено за период 1–12 октября 2026 года в рассмотренных источниках. Исключительная экономическая зона Болгарии стала местом атак на суда 6 октября, описанных выше.",
+                metric_ua_daily_exports: "Ежедневный экспорт UA (конец сен)",
+                metric_ua_sunflower_seed: "Цена семян подсолнечника UA",
+                metric_ua_sfo_oct_mar: "Экспорт SFO UA (окт-мар)",
+                metric_ru_sfo_exports: "Экспорт SFO РФ (сен)",
+                metric_ru_sfo_jan_aug: "Экспорт SFO РФ (янв-авг)",
+                metric_ru_duty_cap: "Ограничение пошлины РФ (масло/шрот)",
+                kazakhstan: "Казахстан",
+                kz_record_crop: "Рекордный урожай масличных давит на цены семян",
+                kz_record_crop_text: "Ожидается, что Казахстан соберет более 5 млн т масличных культур в этом сезоне. Внутренние цены на семена подсолнечника упали до 162 000 тенге/т с НДС и могут снизиться до 150 000 тенге/т, согласно исследовательскому бюро Grain and Oilseed Crops Kazakhstan. Российские семена предлагаются казахстанским переработчикам по цене около 120 000 тенге/т, в то время как стоимость местных семян приближается к 160 000 тенге/т (UkrAgroConsult, 9 октября).",
+                kz_record_exports: "Рекордный экспорт подсолнечного масла в 2025/26",
+                kz_record_exports_text: "В маркетинговом году 2025/26 производство подсолнечного масла в Казахстане выросло на 18,2% до 874,9 тыс. т, экспорт вырос на 34% до рекордных 815,4 тыс. т, а импорт упал на 15,9% до 125,7 тыс. т (UkrAgroConsult, 7 октября).",
+                kz_seed_duty: "Экспортная пошлина на семена сохраняется",
+                kz_seed_duty_text: "20% экспортная пошлина на семена подсолнечника (минимум €100/т) продолжает применяться за пределами ЕАЭС, и власти в настоящее время не планируют ее пересматривать, утверждая, что она обеспечивает сырьем внутренних переработчиков и поддерживает экспорт масла. Экспорт семян за пределы ЕАЭС упал на 6,6% до 210 тыс. т в 2025/26, при этом Китай забрал 78,9% (UkrAgroConsult, 7 и 9 октября).",
+                uzbekistan: "Узбекистан",
+                uz_customs_fee: "Снижение таможенных сборов и зачет НДС с 1 октября",
+                uz_customs_fee_text: "С 1 октября 2026 года сборы за таможенное оформление, фитосанитарные сертификаты, фумигацию и сертификаты происхождения снижаются на 30%, а импортеры с низким уровнем риска, имеющие действующие сертификаты регистрации плательщика НДС, могут зачитывать НДС, подлежащий уплате на импортируемые товары. С 1 января 2027 года контроль таможенной стоимости для импортеров с низким уровнем риска будет осуществляться после выпуска товаров (UzDaily, 2 сентября и октябрь 2026). Ранее в этом отчете 30% снижение описывалось как применяемое к экспортным таможенным пошлинам; источники описывают сборы.",
+                no_data: "Кыргызстан, Грузия, Азербайджан, Армения",
+                no_data_text: "Нет новых проверенных данных. Никаких developments, специфичных для [Страна] и рынка растительных масел, не было найдено за период 1–12 октября 2026 года в рассмотренных источниках.",
+                metric_kz_harvest: "Прогноз урожая масличных KZ",
+                metric_kz_seed_price: "Цена семян подсолнечника KZ",
+                metric_kz_sfo_prod: "Производство SFO KZ 25/26",
+                metric_kz_sfo_exp: "Экспорт SFO KZ 25/26",
+                metric_kz_seed_duty: "Экспортная пошлина на семена KZ",
+                metric_uz_customs_cut: "Таможенные сборы UZ снижены",
+                print_report: "Печать отчета",
+                export_pdf_btn: "PDF",
+                confidential: "Confidential. For internal use only."
+            },
+            en: {
+                title: "Extended Weekly Analytical Update",
+                date: "Report Date: October 12, 2026",
+                nav_prices: "Prices",
+                nav_regions: "Regions",
+                nav_blacksea: "Black Sea",
+                nav_regulatory: "Regulatory",
+                nav_logistics: "Logistics",
+                pricing_title: "Pricing Dynamics and Market Indicators",
+                col_commodity: "Commodity",
+                col_basis: "Basis",
+                col_price: "Price",
+                col_comment: "Comment",
+                item_cpo: "Crude Palm Oil",
+                desc_cpo: "Record Malaysian stocks (3.51 million t) and weak September exports; no export duty waiver in the October 9 Budget; Brent above $100 supports biodiesel demand.",
+                item_sbo: "Soybean oil",
+                desc_sbo: "EPA proposal on reallocating small-refinery exemptions due by end-October; China's tariff-cut list includes soybean oil; USDA October WASDE raised US 2026/27 soybean ending stocks by 5 million bushels to 315 million.",
+                item_sfo: "Sunflower Oil",
+                desc_sfo: "Ukrainian sunflower harvest 49% complete (Oct 6); attacks on Black Sea shipping; Russian exports nearly halted in Sept; Ukraine's minimum export price factor (0.714) extended through Dec.",
+                item_rapeseed: "Rapeseed",
+                desc_rapeseed: "November contract down EUR 11/t on Oct 9; deferred contracts trade at a steep premium. No specific price-driver commentary was found in verified sources.",
+                regional_title: "Regional Markets Analysis",
+                navigate: "Navigation:",
+                expand_all: "Expand All",
+                collapse_all: "Collapse All",
+                print: "Print",
+                export_csv: "CSV",
+                stat_cpo: "CPO Price",
+                stat_cpo_change: "Record MY stocks",
+                stat_sbo: "Soybean oil",
+                stat_sbo_change: "WASDE + CN Tariffs",
+                stat_sfo: "Sunflower Oil",
+                stat_sfo_change: "UA $1,350 floor vs market",
+                stat_rapeseed: "Rapeseed",
+                stat_rapeseed_change: "Related market pressure",
+                stat_ua_rank: "UA export rank",
+                stat_ua_rank_text: "First time in 20 years",
+                stat_ua_alt_routes: "UA alternative routes",
+                stat_ua_alt_text: "Improvement from Aug",
+                metric_my_stock: "Malaysia Stocks (Sep)",
+                metric_my_export_sep: "MY Export (Sep)",
+                metric_fao_index: "FAO Veg Oil Index (Sep)",
+                metric_oil_price: "Brent Crude",
+                metric_us_stocks: "US Soy Ending Stocks",
+                metric_ua_harvest: "UA Sunflower Harvest",
+                premium_narrowing: "Sunflower-to-soybean oil premium narrows",
+                premium_narrowing_text: "The price premium of sunflower oil over soybean oil narrowed to $205/t in late September, shifting the global market toward a more balanced distribution compared to the acute shortages seen earlier in the year.",
+                tab_global_eu: "Global & Europe",
+                tab_blacksea: "Black Sea",
+                tab_central: "Central Asia & Caucasus",
+                indonesia_fires: "Haze and El Niño Add Supply Risk",
+                indonesia_fires_text: "Fires in Indonesia have burned at least 200,000 hectares across six provinces, and on October 9 Malaysia closed schools in Kuala Lumpur, Putrajaya and several states because of haze (Al Jazeera). Prime Minister Anwar Ibrahim asked for an urgent meeting of ASEAN ministers. The reports reviewed do not quantify any effect on palm oil output.",
+                palm_oil_trends: "Palm Oil Hits a 12-Week Low, Then Recovers Part of the Loss",
+                palm_oil_trends_text: "Malaysian palm oil futures fell for six straight sessions to October 2, when the benchmark contract closed at 4,533 ringgit/t, the lowest close since July 10, on weak export data and expectations of higher stocks (Reuters via Business Recorder). The contract slipped again on October 7 to 4,524 ringgit on concerns about record inventories (UkrAgroConsult), then rebounded to end the week of October 9 at 4,592 ringgit, up 1.26%.",
+                fao_index: "FAO Index Confirms Palm-Led Strength in September",
+                fao_index_text: "The FAO Vegetable Oil Price Index averaged 198.6 points in September, up 0.9% from August and 18.3% above a year earlier. Palm oil prices rose for a fourth consecutive month on strong import demand and concerns over production prospects in Southeast Asia, while sunflower oil prices declined for a third consecutive month on expectations of ample Black Sea supplies (FAO, October 2).",
+                record_stocks: "Record Malaysian Palm Oil Stocks",
+                record_stocks_text: "MPOB's October 12 release put end-September inventories at 3,510,897 t, above the Reuters poll median of 3,373,737 t. Output of 2,116,950 t was up 16.48% from August and exports of 1,120,395 t were down 12.13% (Finimize, citing MPOB). A Bloomberg survey reported by The Star had expected stocks of 3.45 million t; an analyst quoted there said stocks should stay near record levels through the first half of 2027, while El Niño and Indonesia's biofuel mandate could tighten the global market later.",
+                us_soybeans: "US Soybeans: WASDE and Trade Headlines",
+                us_soybeans_text: "CBOT November soybeans were near 1,292 cents/bu on October 9. USDA's October 9 WASDE raised 2026/27 US soybean ending stocks by 5 million bushels to 315 million, left the season-average price at $12.00/bu and put global ending stocks at 124.28 million t (DTN). In US–China trade, China's tariff-cut list covers soybean oil and meal but not commercial soybeans, which still face an additional 10% tariff, and no effective date has been given (Reuters).",
+                ukraine_floor: "Ukraine's Minimum Export Price Floor Lowered for the Fourth Quarter",
+                ukraine_floor_text: "In September Ukraine's Economy Ministry set the minimum export price for sunflower oil at $1,350/t CPT, about $225/t above market offers of around $1,125/t. On September 30 the Cabinet (Resolution No. 1192) extended through December the 0.714 correction factor first applied in August, which lowers the binding floor for grains, oilseeds and sunflower, soybean and rapeseed oils. The resulting October floor for sunflower oil was not found in the sources reviewed.",
+                blacksea_logistics_title: "Logistics and Supply Security",
+                middle_corridor_status: "Middle Corridor Status",
+                middle_corridor_status_text: "An Astana Times analysis of October 12 says the container hub at Aktau, developed with China's Lianyungang Port, is complete, dredging at Kuryk is complete and similar work at Aktau is planned this year. The Digital Trade Corridor platform is integrated with the railway systems of Kazakhstan, Azerbaijan and Georgia, but the Caspian Sea remains a critical link because cargo must be transferred between rail, sea and road.",
+                black_sea_shipping_risk: "Black Sea Shipping Risk",
+                black_sea_shipping_risk_text: "The October 5–6 attacks on merchant ships extend the shipping risk into the exclusive economic zones of NATO members Romania and Bulgaria. Bulgarian authorities said the incidents complicate navigation and could further raise insurance and transport costs (UkrAgroConsult). Two Russian grain terminals at Novorossiysk had been put out of action by Ukrainian drone attacks in August (Al Jazeera, citing Reuters).",
+                rerouting_russian_exports: "Rerouting of Russian Exports",
+                rerouting_russian_exports_text: "Trade press reports that alternative corridors through Baltic, Caspian and Far Eastern ports are only partly compensating for the near-halt in Black Sea sunflower oil shipments and carry higher costs (CMB News, October 5).",
+                logistics_map: "Logistics Corridors Map",
+                map_placeholder: "Interactive map of TITR, Danube, and Black Sea corridors",
+                metric_aktau_hub: "Aktau Container Hub",
+                metric_kuryk_dredging: "Kuryk Dredging",
+                metric_digital_corridor: "Digital Trade Corridor",
+                metric_caspian_link: "Caspian Sea Link",
+                metric_shipping_risk: "Shipping Risk Zone",
+                metric_novorossiysk_terminals: "Novorossiysk Terminals",
+                regulatory_title: "Regulatory Outlook",
+                eudr_application_date: "Application Date Unchanged at December 30, 2026",
+                eudr_application_date_text: "The EUDR applies from December 30, 2026 to large and medium-sized operators and to micro and small operators in the timber sector, and from June 30, 2027 to other micro and small operators. The Commission's May 4, 2026 simplification package confirmed that the application date would not be postponed again and that the regulation would not be reopened. No change to these dates was found in the sources reviewed for October 1–12 (law-firm summaries of the Commission package).",
+                eudr_timeline: "EUDR Compliance Timeline",
+                eudr_date1: "December 30, 2026",
+                eudr_deadline1: "Large and medium operators + micro/small in timber sector",
+                eudr_date2: "June 30, 2027",
+                eudr_deadline2: "Other micro and small operators",
+                rfs_reallocation: "US Renewable Fuel Standard (RFS): EPA Reallocation Proposal Expected by End-October",
+                rfs_reallocation_text: "On August 31 EPA decided 34 small-refinery exemption petitions for 2025, granting 18 full and 11 partial exemptions (about 1.76 billion RINs) and denying three, with two found ineligible. EPA said it would propose reallocating 100% of the difference between projected and actual exempted volumes into the 2026 and 2027 volume obligations before the end of October 2026, and extended the 2025 compliance deadline by 30 days to October 1, 2026 (S&P Global; Feedstuffs). No proposal had been found in the sources reviewed as of October 12.",
+                moah_formal_adoption: "EU MOAH Regulation: Formal Adoption Expected in October",
+                moah_formal_adoption_text: "EU member states backed the Commission's draft on maximum levels of mineral oil aromatic hydrocarbons (MOAH) in food at the SC PAFF on May 13, 2026. Formal adoption is expected in October 2026, subject to scrutiny by the European Parliament and the Council, with limits applying from January 1, 2027. Reported limits include 2.0 mg/kg for maize, rapeseed, sunflower, soybean and linseed oils and 4.0 mg/kg from 2027, falling to 2.0 mg/kg from 2028, for other oils and fats. How palm oil is classified within these categories should be checked against the final text. No confirmation of formal adoption was found as of October 12 (OFI; ChemLinked).",
+                moah_timeline: "MOAH Implementation Timeline",
+                moah_oct: "October 2026",
+                moah_oct_text: "Expected formal adoption",
+                moah_jan: "January 1, 2027",
+                moah_jan_text: "Limits apply generally",
+                moah_2028: "2028",
+                moah_2028_text: "Other oils/fats limit falls to 2.0 mg/kg",
+                moah_progress: "Until Entry into Force",
+                metric_moah_oils: "MOAH Limit (Key Oils)",
+                metric_moah_other: "MOAH Limit (Other Oils/Fats 2027)",
+                metric_moah_other_2028: "MOAH Limit (Other Oils/Fats 2028+)",
+                indonesia_export_charges: "Indonesia Raises October Palm Oil Export Charges",
+                indonesia_export_charges_text: "Indonesia set the October 2026 crude palm oil reference price at $1,042.15/t, up 3.44% from September's $1,007.51/t. The export duty is $178/t and the export levy is 12.5% of the reference price, or $130.27/t, for exports from October 1 to 31. Branded RBD palm olein in packs of 25 kg or less carries an export duty of $48/t (Indonesian Trade Ministry, via RRI and IDNFinancials).",
+                malaysia_no_waiver: "Malaysia: No Export Duty Waiver in the Budget",
+                malaysia_no_waiver_text: "The Malaysian Budget presented on October 9 did not include the crude palm oil export duty waiver that the market had speculated about, which would have made Malaysian exports more competitive with those of Indonesia. Palm oil futures fell more than 1% on the day (Reuters via Business Recorder).",
+                merchant_ships_struck: "Merchant Ships Struck Off Romania and Bulgaria",
+                merchant_ships_struck_text: "On October 5 a drone strike set the Royad Mammadov, a Turkish-owned carrier loaded with corn, on fire in Romania's exclusive economic zone, and the vessel sank. On October 6 the Togo-flagged Alfa Watan and the Palau-flagged Able were hit more than 100 km off Bulgaria; Alfa Watan sank with crew reported missing, and all 18 crew of Able were rescued. It was the first reported drone attack on merchant shipping in Bulgaria's exclusive economic zone. Ukraine's president attributed the attack to Russia, while Romanian and Bulgarian authorities described the incidents as drone strikes without naming the origin (Reuters; Kyiv Independent; UkrAgroConsult).",
+                eu_bulgaria_response: "EU and Bulgarian Response",
+                eu_bulgaria_response_text: "Bulgaria's prime minister called the strike a gross violation of international law (Reuters). European Commission President Ursula von der Leyen said the Black Sea situation was increasingly concerning, and on October 7 the EU called on Russia to stop attacks on commercial vessels and announced cooperation with Bulgaria and Romania, including satellite imagery of the affected sea areas (Sofia Globe; USM).",
+                export_flows_domestic: "Export Flows and Domestic Prices",
+                export_flows_domestic_text: "Ukraine's government said average daily agricultural export shipments in the week before September 30 were about 48 thousand t, against about 144 thousand t in the first half of September, while domestic purchase prices fell (milling wheat down 16%, feed wheat 17%, barley 14%, corn 8%, rapeseed 5%). Sunflower seed purchase prices fell to UAH 16,500–17,500/t by October 7 as the harvest advanced (UkrAgroConsult; GrainTrade).",
+                sunflower_oil_outlook: "Sunflower Oil Export Outlook for 2026/27",
+                sunflower_oil_outlook_text: "Market estimates presented at the Globoil conference in Mumbai put Ukraine's sunflower oil exports in October–March 2026/27 at roughly 300 thousand t per month, about 50% below normal flows, because of damage to port and storage infrastructure and elevated maritime risk. The same reporting says Russia's 2026/27 exports could fall by up to 38% (CMB News, October 2).",
+                usda_russia_overtakes: "USDA: Russia Overtakes Ukraine",
+                usda_russia_overtakes_text: "USDA's September Oilseeds: World Markets and Trade report estimated 2025/26 sunflower oil exports at 4.2 million t for Russia and 4.036 million t for Ukraine, ending Ukraine's 20 seasons as the largest exporter. Ukraine's share of world exports fell from about 35% to 30%. For 2026/27 USDA forecasts Ukraine at about 5 million t and Russia at 5.1 million t (kurs.com.ua, citing USDA).",
+                russia_duty_capped: "Russia Export Duty Capped Through December",
+                russia_duty_capped_text: "Global Trade Alert records that Russia capped export duties on sunflower oil at RUB 7,748/t and on sunflower meal at RUB 312/t, applicable until December 31, 2026 (Ministry of Agriculture decision of September 25).",
+                sunflower_exports_halted: "Sunflower Oil Exports Nearly Halted in September",
+                sunflower_exports_halted_text: "Russia shipped only about 5 thousand t of sunflower oil in September against more than 200 thousand t a year earlier. From January to August, Russian vegetable oil exports were 4.69 million t (up 4%), of which sunflower oil was 3.19 million t (up 2%), with India (913 thousand t) and Turkey (718 thousand t) the main buyers (CMB News, October 5; trade press, not an official statistic).",
+                slovakia_bulgaria: "Slovakia and Bulgaria",
+                slovakia_bulgaria_text: "No New Verified Data. No vegetable oil developments specific to Bulgaria or Slovakia were found for October 1–12, 2026 in the sources reviewed. Bulgaria's exclusive economic zone was the site of the October 6 ship attacks described above.",
+                metric_ua_daily_exports: "UA Daily Exports (late Sep)",
+                metric_ua_sunflower_seed: "UA Sunflower Seed Price",
+                metric_ua_sfo_oct_mar: "UA SFO Exports (Oct-Mar)",
+                metric_ru_sfo_exports: "RU SFO Exports (Sep)",
+                metric_ru_sfo_jan_aug: "RU SFO Exports (Jan-Aug)",
+                metric_ru_duty_cap: "RU Duty Cap (Oil/Meal)",
+                kazakhstan: "Kazakhstan",
+                kz_record_crop: "Record Oilseed Crop Pressures Seed Prices",
+                kz_record_crop_text: "Kazakhstan is expected to harvest more than 5 million t of oilseeds this season. Domestic sunflower seed prices have fallen to KZT 162,000/t including VAT and could drop to KZT 150,000/t, according to the Grain and Oilseed Crops Kazakhstan research bureau. Russian seed is offered to Kazakh crushers at about KZT 120,000/t, while the cost of local seed is approaching KZT 160,000/t (UkrAgroConsult, October 9).",
+                kz_record_exports: "Record Sunflower Oil Exports in 2025/26",
+                kz_record_exports_text: "In marketing year 2025/26 Kazakhstan's sunflower oil production rose 18.2% to 874.9 thousand t, exports rose 34% to an all-time high of 815.4 thousand t, and imports fell 15.9% to 125.7 thousand t (UkrAgroConsult, October 7).",
+                kz_seed_duty: "Seed Export Duty Stays",
+                kz_seed_duty_text: "The 20% export duty on sunflower seed (minimum €100/t) continues to apply outside the EAEU, and authorities do not currently plan to revise it, arguing that it secures raw material for domestic crushers and supports oil exports. Seed exports outside the EAEU fell 6.6% to 210 thousand t in 2025/26, with China taking 78.9% (UkrAgroConsult, October 7 and 9).",
+                uzbekistan: "Uzbekistan",
+                uz_customs_fee: "Customs Fee Cut and VAT Offset From October 1",
+                uz_customs_fee_text: "From October 1, 2026 fees for customs clearance, phytosanitary certificates, fumigation and certificates of origin fall by 30%, and low-risk importers holding valid VAT registration certificates may offset VAT payable on imported goods. From January 1, 2027 customs value controls for low-risk importers will take place after release of the goods (UzDaily, September 2 and October 2026). The earlier edition of this report described the 30% reduction as applying to export customs duties; the sources describe fees.",
+                no_data: "Kyrgyzstan, Georgia, Azerbaijan, Armenia",
+                no_data_text: "No New Verified Data. No developments specific to [Country] and the vegetable oil market were found for October 1–12, 2026 in the sources reviewed.",
+                metric_kz_harvest: "KZ Oilseed Harvest Forecast",
+                metric_kz_seed_price: "KZ Sunflower Seed Price",
+                metric_kz_sfo_prod: "KZ SFO Production 25/26",
+                metric_kz_sfo_exp: "KZ SFO Exports 25/26",
+                metric_kz_seed_duty: "KZ Seed Export Duty",
+                metric_uz_customs_cut: "UZ Customs Fees Cut",
+                print_report: "Print Report",
+                export_pdf_btn: "PDF",
+                confidential: "Confidential. For internal use only."
+            }
+        };
+
+        function setLang(lang) {
+            document.querySelectorAll('[data-lang-key]').forEach(el => {
+                const key = el.getAttribute('data-lang-key');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.querySelectorAll('.lang-switch .btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.lang-switch .btn[onclick="setLang('${lang}')"]`).classList.add('active');
+        }
+
+        function toggleSection(header) {
+            const section = header.parentElement;
+            section.classList.toggle('collapsed');
+        }
+
+        function expandAll() {
+            document.querySelectorAll('.section').forEach(section => section.classList.remove('collapsed'));
+        }
+
+        function collapseAll() {
+            document.querySelectorAll('.section').forEach(section => section.classList.add('collapsed'));
+        }
+
+        function sortTable(columnIndex) {
+            const table = document.getElementById('pricingTable');
+            const rows = Array.from(table.tBodies[0].rows);
+            rows.sort((a, b) => {
+                const cellA = a.cells[columnIndex].textContent;
+                const cellB = b.cells[columnIndex].textContent;
+                const numA = parseFloat(cellA.replace(/[^0-9.-]+/g, ''));
+                const numB = parseFloat(cellB.replace(/[^0-9.-]+/g, ''));
+                if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
+                return cellA.localeCompare(cellB);
+            });
+            const tbody = table.tBodies[0];
+            tbody.innerHTML = '';
+            rows.forEach(row => tbody.appendChild(row));
+        }
+
+        function switchTab(tabName, event) {
+            const parent = event.target.closest('.tabs-container');
+            parent.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            parent.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function switchRegTab(tabName, event) {
+            const parent = event.target.closest('.tabs-container');
+            parent.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            parent.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`reg-${tabName}`).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function searchContent() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                const text = section.textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    section.style.display = 'block';
+                    section.classList.remove('collapsed');
+                    section.style.opacity = '1';
+                } else if (filter.length > 2) {
+                    section.style.opacity = '0.3';
+                } else {
+                    section.style.display = 'block';
+                    section.style.opacity = '1';
+                }
+            });
+        }
+
+        function exportCSV() {
+            const table = document.getElementById('pricingTable');
+            let csv = [];
+            const rows = table.querySelectorAll('tr');
+            for (let i = 0; i < rows.length; i++) {
+                const row = [], cols = rows[i].querySelectorAll('td, th');
+                for (let j = 0; j < cols.length; j++) 
+                    row.push('"' + cols[j].innerText.replace(/"/g, '""') + '"');
+                csv.push(row.join(','));
+            }
+            const blob = new Blob([csv.join('\n')], { type: 'text/csv;charset=utf-8;' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'pricing_data_12_10_2026.csv';
+            a.click();
+        }
+
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= (sectionTop - 200)) current = section.getAttribute('id');
+            });
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                document.querySelectorAll('.progress-fill').forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0';
+                    setTimeout(() => { bar.style.width = width; }, 100);
+                });
+            }, 500);
+        });
+    </script>
+</body>
+</html>
